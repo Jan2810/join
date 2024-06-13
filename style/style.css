@@ -41,11 +41,11 @@ body {
     text-align: center;
 }
 
-.background-lightgrey {
+.bg-lightgrey {
     background-color: rgb(246, 247, 248);
 }
 
-.background-darkblue {
+.bg-darkblue {
     background-color: rgba(42, 54, 71, 1);
 }
 
