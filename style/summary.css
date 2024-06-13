@@ -6,37 +6,119 @@
     font-weight: 400;
 }
 
-.summary-icon {
+.summary-headline h1 {
+    font-size: 61px;
+    line-height: 73px;
+}
+
+.summary-headline h3 {
+    font-weight: lighter;
+    font-size: 27px;
+}
+
+.summary-stats {
+    width: 100%;
+    height: 100%;
+    max-width: 560px;
+    max-height: 562px;
+}
+
+.sum-headbar {
+    height: 59px;
+}
+
+.sum-thirst-row {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.sum-icon-container {
     max-height: 69px;
     max-width: 69px;
     height: 100%;
     width: 100%;
+    border-radius: 1000px;
+    padding: 30px;
 }
 
-.summary-stats {
+.sum-icon-container img {
+    height: 32px;
+    width: 32px;
+}
+
+.sum-number {
+    font-size: 64px;
+    font-weight: 600;
+}
+
+.sum-number-container {
+    height: 101px;
+}
+
+.sum-thirst-row-cont {
+    width: 100%;
+    max-width: 264px;
+    height: 100%;
+    max-height: 168px;
+    border-radius: 30px;
+    padding: 38px, 19px, 38px, 19px;
+    gap: 18px;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    Width: 264px;
+    Height: 168px;
+}
+
+.sum-sec-row {
+    width: 100%;
+    height: 100%;
+    height: 168px;
     max-width: 560px;
-    max-height: 562px;
-    top: 335px;
-    left: 328px;
-    gap: 28px;
+    gap: 61px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
-.summary-edit {
-    width: Fixed (264px)px;
-    height: Fixed (168px)px;
-    padding: 38px 19px 38px 19px;
-    gap: 18px;
-    border-radius: 30px 0px 0px 0px;
-    opacity: 0px;
+.sum-third-row {
+    width: 100%;
+    height: 170px;
+    max-width: 560px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
-.summary-done {
-    width: Fixed (264px)px;
-    height: Fixed (168px)px;
-    left: 296px;
-    padding: 38px 58px 38px 58px;
-    gap: 18px;
-    border-radius: 30px 0px 0px 0px;
-    opacity: 0px;
+.sum-grey-bar {
+    height: 102.02px;
+}
 
+.sum-urgency {
+    width: 100%;
+    height: 100%;
+    max-width: 130px;
+    max-height: 96px;
+    gap: 18px;
+}
+
+.sum-third-cont {
+    width: 100%;
+    max-width: 168px;
+    height: 168px;
+    gap: 13px;
+    Padding: 25px, 0px, 25px, 0px;
+}
+
+.sum-third-cont p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.sum-big-number {
+    font-size: 64px;
+    font-weight: 600;
+}
+
+.sum-third-parent {
+    width: 100%;
+    max-width: 83px;
+    height: 125px;
 }
