@@ -49,6 +49,10 @@ body {
     background-color: rgba(42, 54, 71, 1);
 }
 
+.bg-white {
+    background-color: rgb(255, 255, 255);
+}
+
 .color-lightblue {
     color: rgba(41, 171, 226, 1);
 }
