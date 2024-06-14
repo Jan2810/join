@@ -41,6 +41,11 @@
     font-size: 61px;
 }
 
+.register-underline{
+    height: 3px;
+    width: 150px;
+}
+
 .login-input-fields {
     width: 422px;
     height: 48px;

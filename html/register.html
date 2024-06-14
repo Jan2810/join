@@ -14,22 +14,27 @@
     <main class="flex-column flex-center">
         <img id="register-logo" src="../assets/img/logo.png">
         <div class="register-container flex-column flex-center gap-32">
+            <img class="register-arrow-left-line" src="../assets/icons/arrow-left-line.svg" alt="">
             <div>
                 <h1>Sign up</h1>
             </div>
             <div class="register-underline"></div>
             <form onsubmit="">
                 <div class="flex-column flex-center gap-20">
-                    <input id="register-input-name" class="register-input-fields" type="text" placeholder="Name" required>
-                    <input id="register-input-email" class="register-input-fields" type="text" placeholder="Email" required>
-                    <input id="register-input-password" class="register-input-fields" type="text" placeholder="Password" required>
-                    <input id="register-input-confirm-password" class="register-input-fields" type="text" placeholder="Confirm Password" required>
+                    <input id="register-input-name" class="register-input-fields" type="text" placeholder="Name"
+                        required>
+                    <input id="register-input-email" class="register-input-fields" type="text" placeholder="Email"
+                        required>
+                    <input id="register-input-password" class="register-input-fields" type="text" placeholder="Password"
+                        required>
+                    <input id="register-input-confirm-password" class="register-input-fields" type="text"
+                        placeholder="Confirm Password" required>
                     <label>
-                        <input type="checkbox">I accept the <a href="#">Privacy policy</a>
+                        <input type="checkbox" required> I accept the <a href="#">Privacy policy</a>
                     </label>
-                </div>
-                <div class="register-buttons-container flex-center">
-                    <button type="submit">Sign up</button>
+                    <div class="register-buttons-container flex-center">
+                        <button class="register-signup-button" type="submit">Sign up</button>
+                    </div>
                 </div>
             </form>
         </div>
