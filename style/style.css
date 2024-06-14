@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "inter";
+    src: url("../assets/fonts/Inter-VariableFont.ttf");
+}
+
 * {
     margin: 0;
     box-sizing: border-box;
@@ -9,7 +14,7 @@ html {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "inter";
     font-size: 16px;
     background-color: #F6F7F8;
 }
