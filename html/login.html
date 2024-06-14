@@ -9,13 +9,13 @@
     <title>Login</title>
 </head>
 
-<body>
+<body class="bg-lightgrey">
 
-    <main class="flex-center bg-lightgrey">
+    <main class="flex-column login-main flex-center">
         <img id="login-logo" src="../assets/img/logo.png">
         <div class="login-signup-container flex-row flex-center">
                 <p>Not a Join user?</p>
-                <button class="signup-button" type="button">Sign up</button>
+                <button class="login-signup-button" type="button">Sign up</button>
         </div>
         <div class="login-container flex-column flex-center gap-32">
             <div>
@@ -31,9 +31,13 @@
                     </div>
                     <div class="login-buttons-container flex-row flex-center gap-35">
                         <button class="login-button" type="submit">Log in</button>
-                        <button class="guest-login-button" type="button">Guest Log in</button>
+                        <button class="login-guest-login-button" type="button">Guest Log in</button>
                     </div>
             </form>
+        </div>
+        <div class="login-imprint-container">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Legal notice</a>
         </div>
     </main>
 
