@@ -32,8 +32,8 @@ nav {
 .nav-link-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 0;
+    gap: 8px;
+    padding: 8px 56px 8px 56px;
 }
 
 .nav-link-item:hover {
@@ -61,14 +61,13 @@ nav {
     gap: 20px;
     align-items: flex-start;
     margin-bottom: 50px;
+    padding: 8px 56px 8px 56px;
 
 }
 
 .terms-container a {
     color: #919191;
     text-decoration: none;
-    position: relative;
-    left: 50px;
 }
 
 .terms-container a:hover {
@@ -82,11 +81,6 @@ nav {
 }
 
 @media (min-width: 801px) {
-
-    .nav-link-item>* {
-        position: relative;
-        left: 50px
-    }
 
     .header-logo {
         display: none;
