@@ -1,7 +1,7 @@
 * {
     margin: 0;
     box-sizing: border-box;
-    transition: all 100ms ease-in-out;
+    /* transition: all 100ms ease-in-out; */
 }
 
 html {
@@ -60,4 +60,8 @@ body {
 
 .color-lightblue {
     color: rgba(41, 171, 226, 1);
+}
+
+.color-darkblue {
+    color: rgba(42, 54, 71, 1);
 }

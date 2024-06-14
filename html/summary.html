@@ -3,36 +3,37 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=#, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/summary.css">
     <title>Join - Summary</title>
+    <script src="../script/summary.js"></script>
 </head>
 
-<body class="bg-lightgrey">
-    <div>
-        <div class="flex-center summary-headline">
+<body onload="sumStart()" class="bg-lightgrey">
+    <div class="sum-body">
+        <div class="flex-center summary-headline mgn-l-328">
             <h1>Join 360</h1>
             <img class="sum-headbar" src="../assets/img/bar-blue.png" alt="bar">
             <h3>Key Metrics at a Glance</h3>
         </div>
-        <div class="flex-row">
+        <div class="flex-row sum-stats-cont mgn-l-328">
             <div class="summary-stats">
-                <div class="flex-row sum-thirst-row">
-                    <div class="sum-thirst-row-cont flex-center flex-row">
-                        <div class="flex-center sum-icon-container bg-darkblue">
-                            <img class="" src="../assets/icons/edit-white.svg" alt="">
+                <div class="flex-row sum-first-row">
+                    <div onmouseenter="changeColor1()" onmouseleave="recreateColor1()" class="sum-first-row-cont flex-center flex-row">
+                        <div id="firstRowCont1" class="flex-center sum-icon-container">
+                            <img id="sumEdit" src="../assets/icons/edit-white.svg" alt="">
                         </div>
-                        <div class="sum-number-container">
+                        <div class="sum-number-container flex-center flex-column">
                             <div class="sum-number">1</div>
                             <p>To-do</p><br>
                         </div>
                     </div>
-                    <div class="sum-thirst-row-cont flex-center flex-row">
-                        <div class="flex-center sum-icon-container bg-darkblue">
-                            <img class="" src="../assets/icons/hook-white.svg" alt="">
+                    <div onmouseover="changeColor2()" onmouseleave="recreateColor2()" class="sum-first-row-cont flex-center flex-row">
+                        <div id="firstRowCont2" class="flex-center sum-icon-container">
+                            <img id="sumHook" src="../assets/icons/hook-white.svg" alt="">
                         </div>
-                        <div class="sum-number-container">
+                        <div class="sum-number-container flex-center flex-column">
                             <div class="sum-number">1</div>
                             <p>Done</p><br>
                         </div>
@@ -57,27 +58,27 @@
                 <div class="sum-third-row flex-row flex-center">
                     <div class="sum-third-cont flex-center">
                         <div class="sum-third-parent flex-center flex-column">
-                        <div class="sum-big-number">5</div>
+                            <div class="sum-big-number">5</div>
                             <p class="text-center">Tasks in Board</p><br>
                         </div>
                     </div>
                     <div class="sum-third-cont flex-center">
                         <div class="sum-third-parent flex-center flex-column">
-                        <div class="sum-big-number">2</div>
+                            <div class="sum-big-number">2</div>
                             <p class="text-center">Tasks in Progress</p><br>
                         </div>
                     </div>
                     <div class="sum-third-cont flex-center">
                         <div class="sum-third-parent flex-center flex-column">
-                        <div class="sum-big-number">2</div>
+                            <div class="sum-big-number">2</div>
                             <p class="text-center">Awaiting Feedback</p><br>
                         </div>
                     </div>
                 </div>
             </div>
-            <div>
-                <h2>Good morning</h2>
-                <h1 class="color-lightblue">Max Mustermann</h1>
+            <div class="sum-greet-cont flex-center flex-column">
+                <h2 class="color-darkblue">Good morning,</h2>
+                <h1 class="color-lightblue">Sofia Müller</h1>
             </div>
         </div>
     </div>
