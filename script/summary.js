@@ -20,11 +20,10 @@ function changeColor2() {
     document.getElementById("firstRowCont2").classList.remove("bg-darkblue");
     document.getElementById('firstRowCont2').classList.add("bg-white");
     document.getElementById("sumHook").src = "../assets/icons/hook-black.svg";
-}
+};
 
 function recreateColor2() {
     document.getElementById("firstRowCont2").classList.add("bg-darkblue");
     document.getElementById('firstRowCont2').classList.remove("bg-white");
     document.getElementById("sumHook").src = "../assets/icons/hook-white.svg";
-}
-
+};
