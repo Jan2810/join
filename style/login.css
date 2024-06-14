@@ -1,4 +1,4 @@
-main {
+.login-main {
     height: 100vh;
 }
 
@@ -20,7 +20,7 @@ main {
     margin-right: 35px;
 }
 
-.signup-button {
+.login-signup-button {
     border-radius: 8px;
     color: white;
     background-color: #2A3647;
@@ -30,8 +30,10 @@ main {
 }
 
 .login-container {
-    height: 493px;
-    width: 652px;
+    max-height: 493px;
+    max-width: 652px;
+    height: 100%;
+    width: 100%;
     background-color: white;
     border-radius: 30px;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
@@ -67,7 +69,7 @@ main {
     font-weight: 700;
 }
 
-.guest-login-button {
+.login-guest-login-button {
     width: 177px;
     border-radius: 8px;
     color: #2A3647;
@@ -75,6 +77,21 @@ main {
     border: 1px solid #2A3647;
     padding: 15px 24px;
     font-weight: 700;
+}
+
+.login-imprint-container {
+    position: absolute;
+    top: 949px;
+    height: 35px;
+    width: 246px;
+}
+
+.login-imprint-container a {
+    padding: 8px;
+    gap: 8px;
+    text-decoration: none;
+    color: rgba(168, 168, 168, 1);
+    font-weight: 400px;
 }
 
 .gap-20 {
