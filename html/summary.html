@@ -6,72 +6,84 @@
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/summary.css">
+    <link rel="stylesheet" href="../style/navigation.css">
     <title>Join - Summary</title>
     <script src="../script/summary.js"></script>
+    <script src="../script/script.js"></script>
 </head>
 
 <body onload="sumStart()" class="bg-lightgrey">
+    <div w3-include-html="/assets/templates/navigation.html"></div>
     <div class="sum-body">
         <div class="flex-center summary-headline mgn-l-328">
             <h1>Join 360</h1>
             <img class="sum-headbar" src="../assets/img/bar-blue.png" alt="bar">
             <h3>Key Metrics at a Glance</h3>
         </div>
+        <div class="flex-center summary-headline2 mgn-l-328">
+            <h1>Join 360</h1>
+            <h3>Key Metrics at a Glance</h3>
+            <div class="sum-bluebar-cont">
+                <img src="../assets/img/bar-blue-horizontal.png" alt="bar">
+            </div>
+        </div>
         <div class="flex-row sum-stats-cont mgn-l-328">
-            <div class="summary-stats">
+            <div class="summary-stats flex-column">
                 <div class="flex-row sum-first-row">
-                    <div onmouseenter="changeColor1()" onmouseleave="recreateColor1()" class="sum-first-row-cont flex-center flex-row">
+                    <div onmouseenter="changeColor1()" onmouseleave="recreateColor1()"
+                        class="sum-first-row-cont flex-center flex-row">
                         <div id="firstRowCont1" class="flex-center sum-icon-container">
                             <img id="sumEdit" src="../assets/icons/edit-white.svg" alt="">
                         </div>
                         <div class="sum-number-container flex-center flex-column">
                             <div class="sum-number">1</div>
-                            <p>To-do</p><br>
+                            <p>To-do</p>
                         </div>
                     </div>
-                    <div onmouseover="changeColor2()" onmouseleave="recreateColor2()" class="sum-first-row-cont flex-center flex-row">
+                    <div onmouseover="changeColor2()" onmouseleave="recreateColor2()"
+                        class="sum-first-row-cont flex-center flex-row">
                         <div id="firstRowCont2" class="flex-center sum-icon-container">
                             <img id="sumHook" src="../assets/icons/hook-white.svg" alt="">
                         </div>
                         <div class="sum-number-container flex-center flex-column">
                             <div class="sum-number">1</div>
-                            <p>Done</p><br>
+                            <p>Done</p>
                         </div>
                     </div>
                 </div>
                 <div class="sum-sec-row flex-row flex-center">
-                    <div class="flex-center flex-row sum-urgency">
+                    <div class="sum-urgency">
                         <div class="flex-center sum-icon-container bg-orange">
                             <img class="" src="../assets/icons/prio-high-white.png" alt="">
                         </div>
-                        <div class="flex-center">
+                        <div class="flex-center flex-column">
                             <div class="sum-number">1</div>
-                            <p>Urgent</p><br>
+                            <p>Urgent</p>
                         </div>
                     </div>
                     <img class="sum-grey-bar" src="../assets/img/bar-grey.png" alt="">
-                    <div>
-                        <p>June 13, 2024</p>
-                        <p>Upcoming Deadline</p>
+                    <div class="sum-date flex-center flex-column">
+                        <p><b>June 13, 2024</b></p>
+                        <p class="sum-dateline">Upcoming Deadline</p>
                     </div>
                 </div>
                 <div class="sum-third-row flex-row flex-center">
                     <div class="sum-third-cont flex-center">
                         <div class="sum-third-parent flex-center flex-column">
                             <div class="sum-big-number">5</div>
-                            <p class="text-center">Tasks in Board</p><br>
+                            <p class="text-center">Tasks in Board</p>
                         </div>
                     </div>
                     <div class="sum-third-cont flex-center">
                         <div class="sum-third-parent flex-center flex-column">
                             <div class="sum-big-number">2</div>
-                            <p class="text-center">Tasks in Progress</p><br>
+                            <p class="text-center">Tasks in Progress</p>
                         </div>
                     </div>
                     <div class="sum-third-cont flex-center">
                         <div class="sum-third-parent flex-center flex-column">
                             <div class="sum-big-number">2</div>
-                            <p class="text-center">Awaiting Feedback</p><br>
+                            <p class="text-center">Awaiting Feedback</p>
                         </div>
                     </div>
                 </div>

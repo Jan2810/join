@@ -6,6 +6,8 @@
     height: 100vh;
     position: relative;
     overflow-x: hidden;
+    z-index: 99;
+    padding: 10px;
 }
 
 .summary-headline {
@@ -14,8 +16,12 @@
     height: 73px;
     gap: 30px;
     font-weight: 400;
-    margin-top: 100px;
+    margin-top: 90px;
     justify-content: flex-start;
+}
+
+.summary-headline2 {
+    display: none;
 }
 
 .summary-headline h1 {
@@ -30,7 +36,7 @@
 }
 
 .sum-stats-cont {
-    margin-top: 100px;
+    margin-top: 56px;
     width: 100%;
     height: 100%;
     max-height: 562px;
@@ -39,6 +45,8 @@
 .summary-stats {
     width: 100%;
     max-width: 560px;
+    max-height: 562px;
+    justify-content: space-between;
 }
 
 .sum-greet-cont {
@@ -65,7 +73,6 @@
 .sum-first-row {
     width: 100%;
     justify-content: space-between;
-    margin-bottom: 30px;
 }
 
 .sum-icon-container {
@@ -88,14 +95,12 @@
 }
 
 .sum-number-container {
-    height: 101px;
+    height: 100%
 }
 
 .sum-first-row-cont {
     width: 100%;
-    max-width: 264px;
     height: 100%;
-    max-height: 168px;
     border-radius: 30px;
     padding: 38px, 19px, 38px, 19px;
     gap: 18px;
@@ -110,7 +115,13 @@
     transform: scale(1.05);
     cursor: pointer;
     background-color: rgba(42, 54, 71, 1);
+}
 
+.sum-first-row-cont:active {
+    color: white;
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: rgba(42, 54, 71, 1);
 }
 
 .sum-sec-row {
@@ -120,7 +131,6 @@
     max-width: 560px;
     gap: 61px;
     border-radius: 30px;
-    margin-bottom: 30px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
     transition: all 100ms ease-in-out;
 }
@@ -130,6 +140,22 @@
     background-color: rgba(42, 54, 71, 1);
     cursor: pointer;
     transform: scale(1.05);
+}
+
+.sum-sec-row:active {
+    color: white;
+    background-color: rgba(42, 54, 71, 1);
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.sum-date {
+    gap: 13px;
+    align-items: flex-start;
+}
+
+.sum-date b {
+    font-size: 21px;
 }
 
 .sum-third-row {
@@ -147,15 +173,15 @@
     width: 100%;
     height: 100%;
     max-width: 130px;
-    max-height: 96px;
     gap: 18px;
+    display: flex;
+    align-items: center;
 }
 
 .sum-third-cont {
     width: 100%;
     max-width: 168px;
-    height: 168px;
-    gap: 13px;
+    height: 100%;
     Padding: 25px, 0px, 25px, 0px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
@@ -163,6 +189,13 @@
 }
 
 .sum-third-cont:hover {
+    color: white;
+    background-color: rgba(42, 54, 71, 1);
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.sum-third-cont:active {
     color: white;
     background-color: rgba(42, 54, 71, 1);
     cursor: pointer;
@@ -181,6 +214,139 @@
 
 .sum-third-parent {
     width: 100%;
-    max-width: 83px;
-    height: 125px;
+    max-width: 86px;
+    height: 100%;
+}
+
+@media(max-width: 1375px) {
+
+    .mgn-l-328 {
+        margin-left: 128px;
+    }
+
+    .summary-headline {
+        display: none;
+        margin-left: 0;
+    }
+
+    .summary-headline2 {
+        display: flex;
+        width: 100%;
+        height: 73px;
+        gap: 30px;
+        font-weight: 400;
+        margin-top: 78px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .summary-headline2 h1 {
+        width: 100%;
+        max-width: 384px;
+        text-align: start;
+    }
+
+    .summary-headline2 h3 {
+        width: 100%;
+        max-width: 384px;
+        text-align: start;
+        font-weight: 400;
+    }
+
+    .sum-bluebar-cont {
+        width: 100%;
+        max-width: 384px;
+    }
+
+    .sum-stats-cont {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .summary-stats {
+        max-height: 384px;
+        max-width: 396px;
+    }
+
+    .sum-first-row-cont {
+        max-height: 110px;
+        max-width: 186px;
+        border-radius: 20px;
+    }
+
+    .sum-icon-container {
+        height: 40px;
+        width: 40px;
+    }
+
+    .sum-icon-container img {
+        max-width: 19.62px;
+        max-height: 16.75px;
+    }
+
+    .sum-number-container {
+        height: 100%;
+    }
+
+    .sum-number {
+        font-size: 47px;
+    }
+
+    .sum-number-container p {
+        font-size: 14px;
+    }
+
+    .sum-sec-row {
+        max-height: 110px;
+        gap: 20px;
+        border-radius: 20px;
+    }
+
+    .sum-grey-bar {
+        height: 68px;
+        width: 2px;
+
+    }
+
+    .sum-date {
+        gap: 8px;
+    }
+    
+    .sum-date b {
+        font-size: 16px;
+    }
+
+    .sum-dateline {
+        font-size: 14px;
+    }
+
+    .sum-third-row {
+        max-height: 116px;
+    }
+
+    .sum-third-cont {
+        max-height: 116px;
+        max-width: 116px;
+        border-radius: 20px;
+    }
+
+    .sum-big-number {
+        font-size: 47px;
+    }
+
+    .sum-third-parent p {
+        font-size: 14px;
+    }
+    
+    .sum-greet-cont {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .mgn-l-328 {
+        margin-left: 0;
+    }
 }

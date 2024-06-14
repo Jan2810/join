@@ -1,4 +1,5 @@
 function sumStart() {
+    includeHTML();
     document.getElementById("firstRowCont1").classList.add("bg-darkblue");
     document.getElementById("firstRowCont2").classList.add("bg-darkblue");
 };
