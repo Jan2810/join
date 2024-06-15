@@ -10,7 +10,8 @@
 </head>
 
 <body>
-
+    <div id="register-success-overlay" class="register-success-overlay"></div>
+    <div id="register-success-message" class="register-success-message">You Signed up successfully</div>
     <main class="flex-column flex-center">
         <img id="register-logo" src="../assets/img/logo.png">
         <div class="register-container flex-column flex-center">
@@ -20,7 +21,7 @@
                 <h1>Sign up</h1>
             </div>
             <div class="register-underline"></div>
-            <form onsubmit="register();return false">
+            <form id="register-form" onsubmit="register(event)">
                 <div class="flex-column flex-center">
                     <input id="register-input-name" class="register-input-fields" type="text" placeholder="Name"
                         required>
