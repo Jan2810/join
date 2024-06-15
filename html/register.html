@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/register.css">
-    <title>Sing up</title>
+    <script src="/script/register.js"></script>
+    <script src="/script/login.js"></script>
+        <title>Sing up</title>
 </head>
 
 <body>
@@ -19,7 +21,7 @@
                 <h1>Sign up</h1>
             </div>
             <div class="register-underline"></div>
-            <form onsubmit=";return false">
+            <form onsubmit="register();return false">
                 <div class="flex-column flex-center gap-20">
                     <input id="register-input-name" class="register-input-fields" type="text" placeholder="Name"
                         required>
