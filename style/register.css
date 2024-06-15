@@ -28,6 +28,12 @@
     width: 32px;
 }
 
+.register-arrow-left-line:hover {
+    background-color: rgb(246, 247, 248);
+    border-radius: 50px;
+    cursor: pointer;
+}
+
 .register-container h1 {
     font-size: 61px;
     margin-bottom: 16px;
