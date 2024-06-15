@@ -63,6 +63,14 @@ body {
     background-color: rgba(255, 61, 0, 1);
 }
 
+.bg-lightorange {
+    background-color: rgba(255, 168, 0, 1);
+}
+
+.bg-lightgreen {
+    background-color: rgba(122, 226, 41, 1);
+}
+
 .color-lightblue {
     color: rgba(41, 171, 226, 1);
 }
