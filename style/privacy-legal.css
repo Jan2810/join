@@ -1,0 +1,118 @@
+.privacy-container {
+    max-width: 1016px;
+}
+
+.privacy {
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 48px 16px 0;
+}
+
+.privacy h1 {
+    
+    font-size: 47px;
+    line-height: 56.4px;
+    font-weight: 700;
+    color: #000;
+}
+
+.privacy-arrow-left {
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+}
+
+.privacy-text {
+    margin: 16px 16px 184px;
+}
+
+.privacy-text h1 {
+    font-size: 24px;
+    padding: 32px 0 16px;
+}
+
+.privacy-text h2 {
+    font-size: 20px;
+    padding: 40px 0 16px;
+}
+
+.privacy-text h3,
+.privacy-text h4 {
+    padding: 24px 0 12px;
+}
+
+.privacy-text p,
+.privacy-text li {
+    font-size: 14px;
+}
+
+.legal-text h3,
+.legal-insert-line {
+    margin: 0;
+    padding-top: 16px;
+    padding-bottom: 0;
+}
+
+.privacy-link {
+    text-decoration: none;
+}
+
+@media only screen and (min-width: 440px) {
+    .privacy-text h1 {
+        font-size: 32px;
+    }
+
+    .privacy-text h2 {
+        font-size: 24px;
+    }
+
+    .privacy-text p,
+    .privacy-text li {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .privacy {
+        margin: 48px 96px 0 96px;
+        align-items: center;
+    }
+
+    .privacy-text {
+        margin: 16px 96px 184px;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .privacy-container {
+        margin-left: 232px;
+    }
+    
+    .privacy {
+        margin: 110px 96px 0 96px;
+        align-items: center;
+    }
+
+    .privacy-text {
+        margin: 16px 96px 110px;
+    }
+
+    .privacy h1 {
+        font-size: 61px;
+        line-height: 73.2px;
+    }
+
+    .privacy-arrow-left {
+        height: 37px;
+        width: 37px;
+}
+}
+/* Centers text for larger screen widths */
+
+/* @media only screen and (min-width: 1016px) {
+    .privacy-container {
+        margin-left: calc((100vw - 1016px - 232px) / 2 + 232px + 116px);
+        margin-right: calc((100vw - 1016px - 232px) / 2  + 116px);
+    }
+} */
+
