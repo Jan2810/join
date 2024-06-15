@@ -76,6 +76,7 @@
 .sum-first-row {
     width: 100%;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .sum-icon-container {
@@ -163,6 +164,7 @@
     height: 170px;
     max-width: 560px;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .sum-grey-bar {
@@ -170,9 +172,9 @@
 }
 
 .sum-urgency {
-    gap: 18px;
     display: flex;
     align-items: center;
+    gap: 18px;
 }
 
 .sum-third-cont {
@@ -300,6 +302,16 @@
         max-height: 110px;
         border-radius: 20px;
         gap: 20px;
+    }
+
+    .sum-urgency {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 108px;
+        width: 100%;
+        margin-left: 10px;
+        gap: 0;
     }
 
     .sum-grey-bar {
