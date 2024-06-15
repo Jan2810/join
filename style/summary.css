@@ -3,20 +3,22 @@
 }
 
 .sum-body {
-    height: 100vh;
+    height: calc(100vh - 96px);
     position: relative;
     overflow-x: hidden;
-    z-index: 99;
-    padding: 10px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 96px;
+    z-index: 1;
 }
 
 .summary-headline {
     width: 100%;
-    max-width: 625px;
     height: 73px;
     gap: 30px;
-    font-weight: 400;
-    margin-top: 90px;
     justify-content: flex-start;
 }
 
@@ -28,10 +30,11 @@
     font-size: 61px;
     line-height: 73px;
     font-weight: 700;
+    width: 264px;
 }
 
 .summary-headline h3 {
-    font-weight: lighter;
+    font-weight: 400;
     font-size: 27px;
 }
 
@@ -73,15 +76,13 @@
 .sum-first-row {
     width: 100%;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .sum-icon-container {
-    max-height: 69px;
-    max-width: 69px;
-    height: 100%;
-    width: 100%;
-    border-radius: 1000px;
-    padding: 30px;
+    height: 69px;
+    width: 69px;
+    border-radius: 100%;
 }
 
 .sum-icon-container img {
@@ -99,8 +100,6 @@
 }
 
 .sum-first-row-cont {
-    width: 100%;
-    height: 100%;
     border-radius: 30px;
     padding: 38px, 19px, 38px, 19px;
     gap: 18px;
@@ -108,6 +107,7 @@
     Width: 264px;
     Height: 168px;
     transition: all 100ms ease-in-out;
+    background-color: white;
 }
 
 .sum-first-row-cont:hover {
@@ -129,6 +129,7 @@
     height: 100%;
     height: 168px;
     max-width: 560px;
+    background-color: white;
     gap: 61px;
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
@@ -163,6 +164,7 @@
     height: 170px;
     max-width: 560px;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .sum-grey-bar {
@@ -170,12 +172,9 @@
 }
 
 .sum-urgency {
-    width: 100%;
-    height: 100%;
-    max-width: 130px;
-    gap: 18px;
     display: flex;
     align-items: center;
+    gap: 18px;
 }
 
 .sum-third-cont {
@@ -232,10 +231,8 @@
     .summary-headline2 {
         display: flex;
         width: 100%;
-        height: 73px;
         gap: 30px;
-        font-weight: 400;
-        margin-top: 78px;
+        font-weight: 700;
         justify-content: center;
         align-items: center;
         flex-direction: column;
@@ -244,6 +241,7 @@
 
     .summary-headline2 h1 {
         width: 100%;
+        height: 100%;
         max-width: 384px;
         text-align: start;
     }
@@ -256,6 +254,7 @@
     }
 
     .sum-bluebar-cont {
+        height: 20px;
         width: 100%;
         max-width: 384px;
     }
@@ -263,6 +262,7 @@
     .sum-stats-cont {
         width: 100%;
         justify-content: center;
+        margin-top: 45px;
     }
 
     .summary-stats {
@@ -300,8 +300,18 @@
 
     .sum-sec-row {
         max-height: 110px;
-        gap: 20px;
         border-radius: 20px;
+        gap: 20px;
+    }
+
+    .sum-urgency {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 108px;
+        width: 100%;
+        margin-left: 10px;
+        gap: 0;
     }
 
     .sum-grey-bar {
@@ -348,5 +358,9 @@
 @media (max-width: 800px) {
     .mgn-l-328 {
         margin-left: 0;
+    }
+
+    .summary-headline2 {
+        margin-top: 32px;
     }
 }

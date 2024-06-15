@@ -27,3 +27,7 @@ function recreateColor2() {
     document.getElementById('firstRowCont2').classList.remove("bg-white");
     document.getElementById("sumHook").src = "../assets/icons/hook-white.svg";
 };
+
+function prevent(ev) {
+    ev.preventDefault();
+}
