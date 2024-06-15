@@ -123,7 +123,7 @@
     background-color: rgba(42, 54, 71, 1);
 }
 
-.sum-first-row-cont:active {
+.sum-first-row-cont:focus {
     color: white;
     transform: scale(1.05);
     cursor: pointer;
@@ -149,7 +149,7 @@
     transform: scale(1.05);
 }
 
-.sum-sec-row:active {
+.sum-sec-row:focus {
     color: white;
     background-color: rgba(42, 54, 71, 1);
     cursor: pointer;
@@ -200,7 +200,7 @@
     transform: scale(1.05);
 }
 
-.sum-third-cont:active {
+.sum-third-cont:focus {
     color: white;
     background-color: rgba(42, 54, 71, 1);
     cursor: pointer;

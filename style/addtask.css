@@ -1,0 +1,16 @@
+.mgn-l-328 {
+    margin-left: 328px;
+}
+
+.task-body {
+    height: calc(100vh - 96px);
+    position: relative;
+    overflow-x: hidden;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 96px;
+    z-index: 1;
+}
