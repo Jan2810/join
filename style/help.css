@@ -1,0 +1,139 @@
+.help-container {
+    max-width: 1016px;
+}
+
+.help {
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 48px 16px 0;
+}
+
+.help h1 {
+    
+    font-size: 47px;
+    line-height: 56.4px;
+    font-weight: 700;
+    color: #000;
+}
+
+.help-arrow-left {
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+}
+
+.help-text {
+    margin: 16px 16px 184px;
+}
+
+.help-text h1 {
+    font-size: 24px;
+    padding: 32px 0 16px;
+}
+
+.help-text h2 {
+    font-size: 20px;
+    padding: 0 0 16px;
+    margin: 0;
+}
+
+.help-text h3 {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0;
+}
+
+/* .help-text h3,
+.help-text h4 {
+    padding: 24px 0 12px;
+} */
+
+.help-text p,
+.help-text li {
+    font-size: 14px;
+}
+
+.help-padding-16 {
+    padding-bottom: 16px;
+}
+
+.help-padding-24 {
+    padding-bottom: 24px;
+}
+
+.help-link {
+    text-decoration: none;
+}
+
+
+.help-grid-layout {
+  display: grid;
+  grid-template-columns: 56px minmax(auto, 958px);
+}
+
+.help-number {
+    font-size: 27px;
+    line-height: 32.4px;
+    font-weight: 700;
+    color: #000;
+}
+
+@media only screen and (min-width: 440px) {
+    .help-text h1 {
+        font-size: 32px;
+    }
+
+    .help-text h2 {
+        font-size: 24px;
+    }
+
+    .help-text p,
+    .help-text li {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .help {
+        margin: 48px 96px 0 96px;
+        align-items: center;
+    }
+
+    .help-text {
+        margin: 16px 96px 184px;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .help-container {
+        margin-left: 232px;
+    }
+    
+    .help {
+        margin: 110px 96px 0 96px;
+        align-items: center;
+    }
+
+    .help-text {
+        margin: 16px 96px 110px;
+    }
+
+    .help h1 {
+        font-size: 61px;
+        line-height: 73.2px;
+    }
+
+    .help-arrow-left {
+        height: 37px;
+        width: 37px;
+}
+}
+/* Centers text for larger screen widths */
+
+/* @media only screen and (min-width: 1016px) {
+    .help-container {
+        margin-left: calc((100vw - 1016px - 232px) / 2 + 232px + 116px);
+        margin-right: calc((100vw - 1016px - 232px) / 2  + 116px);
+    }
+} */
+
