@@ -13,8 +13,8 @@
 .register-container {
     position: relative;
     margin-top: 200px;
-    height: 630px;
-    width: 598px;
+    margin-bottom: 64px;
+    padding: 44px 88px;
     background-color: white;
     border-radius: 30px;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
@@ -30,11 +30,13 @@
 
 .register-container h1 {
     font-size: 61px;
+    margin-bottom: 16px;
 }
 
 .register-underline{
     height: 3px;
     width: 150px;
+    margin-bottom: 32px;
     background-color:rgba(41, 171, 226, 1); ;
 }
 
@@ -44,7 +46,6 @@
     border-radius: 10px;
     padding: 12px 21px;
     border: 1px solid rgba(209, 209, 209, 1);
-    color: rgba(209, 209, 209, 1);
     font-size: 20px;
 }
 
@@ -57,6 +58,21 @@
     border: hidden;
     padding: 15px 24px;
     font-weight: 700;
+    font-size: 21px;
+}
+
+.register-checkbox-link {
+    text-decoration: none;
+}
+
+.register-imprint-container a{
+    text-decoration: none;
+    padding: 8px;
+    color: rgba(168, 168, 168, 1);
+}
+
+.register-imprint-container {
+    margin-bottom: 48px;
 }
 
 .gap-20 {

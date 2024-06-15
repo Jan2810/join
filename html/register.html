@@ -13,13 +13,13 @@
 
     <main class="flex-column flex-center">
         <img id="register-logo" src="../assets/img/logo.png">
-        <div class="register-container flex-column flex-center gap-32">
+        <div class="register-container flex-column flex-center">
             <img class="register-arrow-left-line" src="../assets/icons/arrow-left-line.svg" alt="">
             <div>
                 <h1>Sign up</h1>
             </div>
             <div class="register-underline"></div>
-            <form onsubmit="">
+            <form onsubmit=";return false">
                 <div class="flex-column flex-center gap-20">
                     <input id="register-input-name" class="register-input-fields" type="text" placeholder="Name"
                         required>
@@ -30,13 +30,18 @@
                     <input id="register-input-confirm-password" class="register-input-fields" type="text"
                         placeholder="Confirm Password" required>
                     <label>
-                        <input type="checkbox" required> I accept the <a href="#">Privacy policy</a>
+                        <input type="checkbox" required> I accept the <a class="register-checkbox-link color-lightblue" href="#">Privacy policy</a>
                     </label>
                     <div class="register-buttons-container flex-center">
                         <button class="register-signup-button" type="submit">Sign up</button>
                     </div>
                 </div>
             </form>
+        </div>
+
+        <div class="register-imprint-container">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Legal notice</a>
         </div>
     </main>
 

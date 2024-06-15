@@ -1,7 +1,3 @@
-.login-main {
-    height: 100vh;
-}
-
 #login-logo {
     position: absolute;
     top: 67px;
@@ -30,24 +26,31 @@
 }
 
 .login-container {
-    height: 493px;
-    width: 652px;
+    padding: 48px 115px;
     background-color: white;
     border-radius: 30px;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    margin-top: 265px;
 }
 
 .login-container h1 {
     font-size: 61px;
+    margin-bottom: 16px;
+}
+
+.login-underline {
+    height: 3px;
+    width: 150px;
+    background-color:rgba(41, 171, 226, 1); ;
+    margin-bottom: 20px;
 }
 
 .login-input-fields {
-    width: 422px;
-    height: 48px;
+    max-width: 422px;
+    max-height: 48px;
     border-radius: 10px;
     padding: 12px 21px;
     border: 1px solid #D1D1D1;
-    color: #D1D1D1;
     font-size: 20px;
 }
 
@@ -62,23 +65,25 @@
 }
 
 .login-button {
-    width: 110px;
+    width: 111px;
     border-radius: 8px;
     color: white;
     background-color: #2A3647;
     border: hidden;
     padding: 15px 24px;
     font-weight: 700;
+    font-size: 21px;
 }
 
 .login-guest-login-button {
-    width: 177px;
+    width: 178px;
     border-radius: 8px;
     color: #2A3647;
     background-color: white;
     border: 1px solid #2A3647;
     padding: 15px 24px;
     font-weight: 700;
+    font-size: 21px;
 }
 
 .login-imprint-container {
