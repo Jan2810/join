@@ -39,11 +39,11 @@
     margin-bottom: 16px;
 }
 
-.register-underline{
+.register-underline {
     height: 3px;
     width: 150px;
     margin-bottom: 32px;
-    background-color:rgba(41, 171, 226, 1); ;
+    background-color: rgba(41, 171, 226, 1);
 }
 
 .register-input-fields {
@@ -53,6 +53,7 @@
     padding: 12px 21px;
     border: 1px solid rgba(209, 209, 209, 1);
     font-size: 20px;
+    margin-bottom: 20px;
 }
 
 .register-signup-button {
@@ -65,6 +66,7 @@
     padding: 15px 24px;
     font-weight: 700;
     font-size: 21px;
+    margin-top: 32px;
 }
 
 .register-signup-button:hover {
@@ -73,11 +75,15 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+#register-privacy-policy-checkbox {
+    margin-top: 36px;
+}
+
 .register-checkbox-link {
     text-decoration: none;
 }
 
-.register-imprint-container a{
+.register-imprint-container a {
     text-decoration: none;
     padding: 8px;
     color: rgba(168, 168, 168, 1);
@@ -91,6 +97,57 @@
     gap: 20px;
 }
 
-.gap-32 {
-    gap: 32px;
+
+@media (max-width: 800px) {
+    #register-logo {
+        top: 37px;
+        left: 38px;
+        height: 78px;
+        width: 64px;
+    }
+
+    .register-container {
+        margin-top: 165.5px;
+        padding: 32px 16px;
+    }
+
+    .register-arrow-left-line {
+        left: 32px;
+        top: 40px;
+        height: 21px;
+        width: 21px;
+    }
+
+    .register-container h1 {
+        font-size: 47px;
+    }
+
+    .register-underline {
+        width: 88px;
+        margin-bottom: 24px;
+    }
+
+    .register-input-fields {
+        max-width: 364px;
+    }
+
+    .register-signup-button {
+        width: 180px;
+        height: 51px;
+    }
+}
+
+@media (max-width: 480px) {
+    .register-container {
+        padding:32px 16px;
+        width: 90%;
+    }
+
+    .register-input-fields {
+        width: 90%;
+    }
+
+    .register-arrow-left-line {
+        left: 20px;
+    }
 }

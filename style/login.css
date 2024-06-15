@@ -182,7 +182,7 @@
 
 @media (max-width: 480px) {
     .login-container {
-        padding:16px;
+        padding:32px 16px;
         width: 90%;
     }
 
@@ -192,5 +192,6 @@
 
     .login-checkbox-field {
         width: 90%;
+        padding-left: 16px;
     }
 }

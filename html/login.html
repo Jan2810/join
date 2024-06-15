@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/login.css">
-    <script src="/script/login.js"></script>
     <title>Login</title>
 </head>
 
@@ -25,15 +24,17 @@
             <div class="login-underline"></div>
             <form onsubmit="login();return false">
                 <div class="flex-column flex-center gap-20">
-                        <input id="login-input-email" class="login-input-fields" type="email" placeholder="Email" required>
-                        <input id="login-input-password" class="login-input-fields" type="password" placeholder="Password" required>
+                    <input id="login-input-email" class="login-input-fields" type="email" placeholder="Email" required>
+                    <input id="login-input-password" class="login-input-fields" type="password" placeholder="Password"
+                        required>
                     <label class="login-checkbox-field">
                         <input id="login-input-checkbox" type="checkbox"> Remember me
                     </label>
                 </div>
                 <div class="login-buttons-container flex-row flex-center">
                     <button class="login-button" type="submit">Log in</button>
-                    <a href="./board.html"><button class="login-guest-login-button" type="button">Guest Log in</button></a>
+                    <a href="./board.html"><button class="login-guest-login-button" type="button">Guest Log
+                            in</button></a>
                 </div>
             </form>
         </div>
@@ -47,6 +48,7 @@
         </div>
     </main>
 
+    <script src="/script/login.js"></script>
 </body>
 
 </html>
