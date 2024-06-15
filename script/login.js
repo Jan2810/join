@@ -1,9 +1,13 @@
-const BASE_URL = "https://join-14fdc-default-rtdb.europe-west1.firebasedatabase.app/";
+const USERS_URL = "https://join-14fdc-default-rtdb.europe-west1.firebasedatabase.app/";
+let users;
 
 async function loadData(path = "") {
-    let response = await fetch(BASE_URL + path + ".json");
+    let response = await fetch(SERS_URL + path + ".json");
     return responseToJson = await response.json();
 }
+
+
+
 
 const msgBox = document.getElementById("msgBox");
 const urlParams = new URLSearchParams(window.location.search);
@@ -17,7 +21,7 @@ else {
 
 async function login() {
     console.log("test");
-    users= await loadData();
+    users = await loadData();
     let email = document.getElementById("login-input-email");
     let password = document.getElementById("login-input-password");
     let user = users.find(u => u.email == email.value && u.password == password.value);
@@ -28,5 +32,5 @@ async function login() {
     else {
         alert("USer nicht gefunden");
     }
-    
+
 }
