@@ -1,10 +1,6 @@
-const USERS_URL = "https://join-14fdc-default-rtdb.europe-west1.firebasedatabase.app/";
-let users;
 
-async function loadData(path = "") {
-    let response = await fetch(SERS_URL + path + ".json");
-    return responseToJson = await response.json();
-}
+
+
 
 
 

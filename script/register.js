@@ -1,13 +1,4 @@
-let users = [
-    {
-        email: "felix.kirmsegmail.com",
-        password: "123"
-    },
-    {
-        email: "felix.kirmsegmail.com",
-        password: "123"
-    }
-];
+
 
 function register(event) {
     event.preventDefault();
