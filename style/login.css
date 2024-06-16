@@ -67,6 +67,10 @@
     padding-left: 39px
 }
 
+#login-remember-me-checkbox:hover {
+    cursor: pointer;
+}
+
 .login-buttons-container {
     gap: 35px;
 }

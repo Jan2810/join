@@ -79,6 +79,10 @@
     margin-top: 36px;
 }
 
+#register-privacy-policy-checkbox:hover {
+    cursor: pointer;
+}
+
 .register-checkbox-link {
     text-decoration: none;
 }
