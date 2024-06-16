@@ -1,0 +1,5 @@
+
+function boardInit() {
+    includeHTML();
+}
+
