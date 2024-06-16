@@ -3,15 +3,14 @@
 }
 
 .sum-body {
-    height: calc(100vh - 96px);
     position: relative;
+    top: 190px;
     overflow-x: hidden;
     padding: 8px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
-    margin-bottom: 96px;
+    justify-content: flex-start;
     z-index: 1;
 }
 
@@ -56,6 +55,7 @@
     max-width: 560px;
     max-height: 562px;
     justify-content: space-between;
+    gap: 30px;
 }
 
 .sum-greet-cont {
@@ -223,7 +223,7 @@
     height: 100%;
 }
 
-@media(max-width: 1375px) {
+@media(max-width: 1325px) {
 
     .mgn-l-328 {
         margin-left: 128px;
@@ -366,7 +366,8 @@
         margin-left: 0;
     }
 
-    .summary-headline2 {
-        margin-top: 32px;
+    .sum-body {
+        top: 103px;
+        margin-bottom: 189px;
     }
 }
