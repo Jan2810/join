@@ -1,19 +1,65 @@
 .contacts-container {
     max-width: 1016px;
+    height: calc(100vh - 160px);
+    overflow: hidden;
+    display: flex;
 }
 
 .contacts-list {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-auto-rows: min-content;
     gap: 24px;
-    margin: 48px  0;
+    height: auto;
+    background: #fff;
+    overflow-y: scroll;
+    box-shadow: inset 0px 4px 6px 0px #00000014; 
+    scrollbar-width: thin; /* "thin" is used to style WebKit browsers */
+    overflow-y: auto; /* Ensure overflow is set to auto for scrollbar visibility */
+    
 }
+
+
+/* Track styles */
+.contacts-list::-webkit-scrollbar-track {
+    background: #fff; /* Track color */
+}
+
+/* Thumb styles */
+.contacts-list::-webkit-scrollbar-thumb {
+    background-color: #A8A8A8; /* Thumb color */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Thumb hover styles */
+.contacts-list::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(0, 0%, 62%); /* Lighter color on hover */
+}
+
+/* Thumb active styles */
+.contacts-list::-webkit-scrollbar-thumb:active {
+    background-color: hsl(0, 0%, 58%); /* Darker color on active */
+}
+
+/* Adjust scrollbar width */
+.contacts-list::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+/* Optionally adjust scrollbar height */
+.contacts-list::-webkit-scrollbar-thumb {
+    height: 48px; /* Height of the scrollbar thumb */
+}
+
+/* Optionally adjust margin-right */
+.contacts-list::-webkit-scrollbar {
+    margin-right: 10px; /* Margin to the right of the scrollbar */
+}
+
 
 .contacts-list h3,
 .contacts-list p {
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .contacts-list h3,
@@ -21,22 +67,32 @@
     justify-self: center;
 }
 
+.contacts-line {
+    width: 352px;
+    height: 1px;
+    background-color: #d1d1d1;
+    justify-self: center;
+}
 
 .contacts-list-box {
-    width: 92%;
+    /* width: 92%; */
+    width: 352px;
     display: grid;
     grid-template-columns: 1fr 4fr;
+    justify-self: center;
 }
 
 .contacts-profile-badge {
-    width: 42px;
-    height: 42px;
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
     color: #fff;
     border-radius: 50%;
 }
 
 .contacts-link {
     text-decoration: none;
+    font-size: 12px;
 }
 
 .contact-details h1 {
@@ -46,46 +102,71 @@
     color: #000;
 }
 
+.contact-details {
+        width: 0;
+    } 
+
+@media only screen and (min-width: 352px) {
+    .contacts-profile-badge {
+        width: 42px;
+        height: 42px;
+        font-size: 16px;
+    }
+
+    .contacts-list h3,
+    .contacts-list p {
+        font-size: 16px;
+    }
+
+    .contacts-link {
+        font-size: 13px;
+    }
+}
 
 @media only screen and (min-width: 440px) {
-    .contacts-list {
-        width: 428px;
-    }
+    
 
-    .contacts-list-box {
-        width: 352px;
-    }
     .contacts-list h3,
     .contacts-list p {
         font-size: 20px;
     }
 
     .contacts-list-box {
-    grid-template-columns: 1fr 3fr;
-}
+        grid-template-columns: 88px 264px;
+        min-width: 352px;
+    }
+
+    .contacts-link {
+        font-size: 16px;
+    }
 }
 
 @media only screen and (min-width: 576px) {
-    /* .contacts-list {
-        margin: 48px  0;
-    } */
-
-    /* .contact-details {
-        display: flex;
-    } */
-
     
 }
 
 @media only screen and (min-width: 800px) {
     .contacts-container {
         margin-left: 232px;
+        height: 100vh - 96px;
+    }
+
+    .contacts-list {
+        
     }
     
+    
+}
+
+@media only screen and (min-width: 1040px) {
     .contacts-list {
-        margin: 110px 0;
+        width: 428px;
         align-items: center;
     }
+    
+    .contact-details {
+        width: auto;
+    } 
 
     .contact-details h1 {
         font-size: 61px;
