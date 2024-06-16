@@ -83,11 +83,15 @@
     text-decoration: none;
 }
 
-.register-imprint-container a {
+.register-imprint-links {
     text-decoration: none;
     padding: 8px;
     color: rgba(168, 168, 168, 1);
 }
+
+/* .register-imprint-links:hover {
+    transform: scale(1.1);
+} */
 
 .register-imprint-container {
     margin-bottom: 48px;
@@ -105,7 +109,7 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    z-index: 10;
 }
 
 .register-success-message {
@@ -120,7 +124,7 @@
     font-size: 21px;
     font-weight: 400;
     border-radius: 10px;
-    z-index: 1001;
+    z-index: 11;
     text-align: center;
 }
 
@@ -175,6 +179,19 @@
     .register-signup-button {
         width: 180px;
         height: 51px;
+    }
+
+    .register-success-overlay {
+        background: rgba(0, 0, 0, 0);
+    }
+
+    @keyframes slideUp {
+        from {
+            bottom: -100px;
+        }
+        to {
+            bottom: 22%;
+        }
     }
 }
 
