@@ -10,9 +10,13 @@ async function login() {
     user = users.find(u => u.email === email.value && u.password === password.value);
     console.log(user);
     if (user) {
+        saveUser(user);
+        console.log("done");
         window.location.href = "board.html";
     }
     else {
         alert("User nicht gefunden");
     }
 }
+
+

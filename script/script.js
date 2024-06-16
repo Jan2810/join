@@ -2,7 +2,7 @@ const USERS_URL = "https://join-14fdc-default-rtdb.europe-west1.firebasedatabase
 const TASKS_URL = "https://join-tasks-default-rtdb.europe-west1.firebasedatabase.app/";
 const CONTACTS_URL = "https://join---contacts-default-rtdb.europe-west1.firebasedatabase.app/";
 let users = [];
-let user= {};
+let user = {};
 
 async function loadData(path = "", url) {
     let response = await fetch(url + path + ".json");
@@ -36,5 +36,21 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
+}
+
+
+function saveUser() {
+    const userString = JSON.stringify(user);
+    console.log(userString);
+    localStorage.setItem('user', userString);
+
+
+}
+
+function loadUser() {
+    const retrievedUserString = localStorage.getItem('user');
+    user = JSON.parse(retrievedUserString);
+    console.log(user);
+
 }
 
