@@ -16,7 +16,7 @@ function addUser() {
 
     postData(path = "", user)
     //weiterleitung zu login seite
-   
+
 }
 
 function showOverlay() {
@@ -28,7 +28,7 @@ function showOverlay() {
         successMessage.classList.remove('show');
         document.getElementById('register-success-overlay').style.display = 'none';
     }, 1000);
-    window.location.href = "login.html?msg=Du hast dich erfolgreich registriert";
+    setTimeout(function () { window.location.href = "login.html?msg=Du hast dich erfolgreich registriert" }, 1000);
 }
 
 function checkPassword() {
@@ -38,5 +38,5 @@ function checkPassword() {
         showOverlay();
         addUser();
     }
-    else {alert("fehler")}
+    else { alert("fehler") }
 }
