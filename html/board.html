@@ -1,23 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="../style/board.css">
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/board.css">
     <link rel="stylesheet" href="/style/navigation.css">
     <title>Board</title>
     <script src="/script/board.js"></script>
     <script src="/script/script.js"></script>
 </head>
+
 <body onload="includeHTML()">
     <div w3-include-html="/assets/templates/navigation.html"></div>
+
+
     <main>
 
+        <div class="board-upper-content">
+            <div class="board-header flex-row">
+                <div>
+                    <h1>Board</h1>
+                </div>
+                <div class="flex-row">
+                    <input id="board-find-input" type="text" placeholder="Find Task">
+                    <button id="board-add-task-button" class="bg-darkblue flex-center" type="button">Add task<img src="/assets/icons/add.svg" alt="+"></button>
+                </div>
+            </div>
+            <div class="board-categories flex-row text-center">
+                <div class="board-categories-container">
+                    <span>To Do</span>
+                    <img src="/assets/icons/plus-button.svg" alt="+">
+                </div>
+                <div class="board-categories-container">
+                    <span>In progress</span>
+                    <img src="/assets/icons/plus-button.svg" alt="+">
+                </div>
+                <div class="board-categories-container">
+                    <span>Await feedback</span>
+                    <img src="/assets/icons/plus-button.svg" alt="+">
+                </div>
+                <div class="board-categories-container">
+                    <span>Done</span>
+                </div>
+            </div>
+        </div>
+        <div class="board-ticket-section flex-row">
+            <div id="board-todo-section" class="board-ticket-container">
+
+                <div class="board-ticket flex-column">
+                    <div class="board-ticket-gategory">category</div>
+                    <div class="board-ticket-description">
+                        <div class="board-ticket-headline">headline</div>
+                        <div class="board-ticket-task">hier steht die ausführliche Beschreibung des Tasks</div>
+                    </div>
+                    <div>Statusbar</div>
+                    <div class="flex-row flex-sb">
+                        <div>Users</div>
+                        <div>priority</div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="board-in-progress-section" class="board-ticket-container">
+                <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
+            </div>
+            <div id="board-await-feedback-section" class="board-ticket-container"></div>
+            <div id="board-done-section" class="board-ticket-container"></div>
+        </div>
 
     </main>
 
 
-
 </body>
+
 </html>

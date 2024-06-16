@@ -1,0 +1,94 @@
+main {
+    height: calc(100vh - 96px);
+    margin-left: 232px;
+}
+
+.board-upper-content {
+    width: 1208px;
+}
+
+.board-header {
+    margin-top: 79.5px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 64px;
+}
+
+.board-upper-content h1 {
+    font-size: 61px;
+    font-weight: 700;
+}
+
+#board-find-input {
+    margin-right: 32px;
+    height: 48px;
+    width: 312px;
+    border-radius: 10px;
+    padding: 8px 16px;
+    border: 1px solid rgba(168, 168, 168, 1);
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#board-add-task-button {
+    width: 160px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid rgba(42, 54, 71, 1);
+    padding: 8px 16px;
+    color: white;
+    font-weight: 700;
+    font-size: 21px;
+}
+
+.board-categories {
+    position: absolute;
+    width: 1208px;
+    top: 296.5px;
+    padding: 0px 64px;
+    justify-content: space-between;
+}
+
+.flex-sb {
+    display: flex;
+    justify-content: space-between;
+}
+
+.board-categories-container {
+    width: 252px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.board-ticket-section {
+    position: absolute;
+    width: 1208px;
+    height: 100vh;
+    padding: 0px 64px;
+    top: 336px;
+    justify-content: space-between;
+}
+
+.board-ticket-container {
+    border: 1px solid grey;
+    width: 252px;
+    height: 100vh;
+}
+
+.board-ticket {
+    width: 252px;
+    border-radius: 24px;
+    padding: 16px;
+    gap: 10px;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08)
+}
+
+.board-no-tasks-placeholder {
+    width: 252px;
+    height: 48px;
+    color: rgba(168, 168, 168, 1);
+    border-radius: 10px;
+    background-color: rgba(231, 231, 231, 1);
+    border: 1px dashed rgba(168, 168, 168, 1);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+}
