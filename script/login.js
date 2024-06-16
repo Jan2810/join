@@ -1,20 +1,5 @@
 
 
-
-
-
-
-
-const msgBox = document.getElementById("msgBox");
-const urlParams = new URLSearchParams(window.location.search);
-const msg = urlParams.get("msg");
-if (msg) {
-    msgBox.innerHTML = msg;
-}
-else {
-    // msgBox.style = "display:none";
-}
-
 async function login() {
     console.log("test");
     users = await loadData();
