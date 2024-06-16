@@ -15,5 +15,4 @@ async function login() {
     else {
         alert("User nicht gefunden");
     }
-
 }
