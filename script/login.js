@@ -2,7 +2,7 @@
 
 async function login() {
     console.log("test");
-    users = await loadData();
+    users = await loadData("", USERS_URL);
     let email = document.getElementById("login-input-email");
     let password = document.getElementById("login-input-password");
     let user = users.find(u => u.email == email.value && u.password == password.value);
@@ -13,5 +13,5 @@ async function login() {
     else {
         alert("USer nicht gefunden");
     }
-
+    console.log(users);
 }

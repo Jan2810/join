@@ -1,13 +1,15 @@
 const USERS_URL = "https://join-14fdc-default-rtdb.europe-west1.firebasedatabase.app/";
+const TASKS_URL = "https://join-tasks-default-rtdb.europe-west1.firebasedatabase.app/";
+const CONTACTS_URL = "https://join---contacts-default-rtdb.europe-west1.firebasedatabase.app/";
 let users;
 
-async function loadData(path = "") {
-    let response = await fetch(USERS_URL + path + ".json");
+async function loadData(path = "",url) {
+    let response = await fetch(url + path + ".json");
     return responseToJson = await response.json();
-}
+}loadData
 
-async function postData(path = "", data = {}) {
-    let response = await fetch(USERS_URL + path + ".json", {
+async function postData(path = "", data = {}, url) {
+    let response = await fetch(url + path + ".json", {
         method: "POST",
         header: {
             "Content-type": "application/json",

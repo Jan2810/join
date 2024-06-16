@@ -1,0 +1,93 @@
+[
+    {
+      "category": "technical task",
+      "title": "Code-Review für Feature A",
+      "description": "Der Code für Feature A muss geprüft werden.",
+      "assigned_to": "Monika",
+      "due_date": "2024-06-20",
+      "priority": "high",
+      "subtasks": ["Überprüfung der Logik", "Testabdeckung prüfen", "Code-Stil prüfen"]
+    },
+    {
+      "category": "technical task",
+      "title": "Bugfix für Ticket #456",
+      "description": "Ein kritischer Fehler im Authentifizierungssystem muss behoben werden.",
+      "assigned_to": "Alex",
+      "due_date": "2024-06-18",
+      "priority": "high",
+      "subtasks": ["Fehler reproduzieren", "Fehlerbehebung implementieren", "Tests ausführen"]
+    },
+    {
+      "category": "user story",
+      "title": "Implementierung von Unit Tests",
+      "description": "Unit Tests für das Modul X müssen implementiert werden.",
+      "assigned_to": "Chris",
+      "due_date": "2024-06-25",
+      "priority": "medium",
+      "subtasks": ["Testfälle erstellen", "Tests schreiben", "Testlauf ausführen"]
+    },
+    {
+      "category": "technical task",
+      "title": "Datenbank-Migration",
+      "description": "Migration der Datenbank von Version 1.0 zu 2.0.",
+      "assigned_to": "Samira",
+      "due_date": "2024-06-22",
+      "priority": "medium",
+      "subtasks": ["Schema-Änderungen planen", "Migration schreiben", "Migration testen"]
+    },
+    {
+      "category": "user story",
+      "title": "Dokumentation aktualisieren",
+      "description": "Technische Dokumentation für das neue API-Update muss aktualisiert werden.",
+      "assigned_to": "Lisa",
+      "due_date": "2024-06-24",
+      "priority": "low",
+      "subtasks": ["API-Änderungen dokumentieren", "Beispiele aktualisieren", "Review der Dokumentation"]
+    },
+    {
+      "category": "technical task",
+      "title": "Refactoring der Benutzeroberfläche",
+      "description": "Die Benutzeroberfläche benötigt ein Refactoring zur Verbesserung der Wartbarkeit.",
+      "assigned_to": "David",
+      "due_date": "2024-06-30",
+      "priority": "medium",
+      "subtasks": ["Code analysieren", "Verbesserungen planen", "Refactoring umsetzen"]
+    },
+    {
+      "category": "technical task",
+      "title": "Performance-Optimierung",
+      "description": "Optimierung des Backends zur Reduzierung der Latenzzeiten.",
+      "assigned_to": "Julia",
+      "due_date": "2024-06-28",
+      "priority": "high",
+      "subtasks": ["Bottlenecks identifizieren", "Optimierung implementieren", "Leistungstests durchführen"]
+    },
+    {
+      "category": "technical task",
+      "title": "Integration von externem Dienst",
+      "description": "Integration des neuen Zahlungsdienstleisters in das System.",
+      "assigned_to": "Tom",
+      "due_date": "2024-07-02",
+      "priority": "medium",
+      "subtasks": ["API-Dokumentation lesen", "Integration implementieren", "Integrationstests durchführen"]
+    },
+    {
+      "category": "user story",
+      "title": "Sicherheitsaudit",
+      "description": "Durchführung eines Sicherheitsaudits für die neue Version.",
+      "assigned_to": "Sophia",
+      "due_date": "2024-07-05",
+      "priority": "high",
+      "subtasks": ["Sicherheitslücken identifizieren", "Patches planen", "Audit-Bericht erstellen"]
+    },
+    {
+      "category": "technical task",
+      "title": "Fehleranalyse im Fehlerprotokoll",
+      "description": "Analyse und Priorisierung der Fehler aus dem Fehlerprotokoll.",
+      "assigned_to": "Michael",
+      "due_date": "2024-06-26",
+      "priority": "low",
+      "subtasks": ["Protokolle prüfen", "Fehler kategorisieren", "Prioritäten zuweisen"]
+    }
+  ]
+  

@@ -14,7 +14,7 @@ function addUser() {
     user.email = email.value;
     user.password = password.value;
 
-    postData(path = "", user)
+    postData(path = "", user, USERS_URL)
     //weiterleitung zu login seite
 
 }
