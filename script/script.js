@@ -5,14 +5,10 @@ let users = [];
 
 async function loadData(path = "", url) {
     let response = await fetch(url + path + ".json");
-<<<<<<< HEAD
     console.log(response);
     let data = await response.json();
     console.log(data);
     return Object.keys(data).map(key => data[key]);
-=======
-    return responseToJson = await response.json();
->>>>>>> c9fc4594e6b8d9d4730557fc845ee713c762c610
 }
 
 async function postData(path = "", data = {}, url) {
