@@ -1,5 +1,4 @@
 
-function boardInit() {
-    includeHTML();
-}
-
+async function boardInit() {
+    
+} 
