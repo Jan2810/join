@@ -59,7 +59,7 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
-.bg-orange {
+.bg-red {
     background-color: rgba(255, 61, 0, 1);
 }
 
@@ -77,4 +77,8 @@ body {
 
 .color-darkblue {
     color: rgba(42, 54, 71, 1);
+}
+
+.color-lightgrey {
+    color: rgba(209, 209, 209, 1);
 }

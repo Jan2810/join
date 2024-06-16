@@ -17,9 +17,122 @@
 
 .task-body form {
     width: 100%;
+    max-width: 880px;
+}
+
+.task-form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+}
+
+.task-left-cont {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-right: 48px;
+}
+
+.task-right-cont {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-left: 1px solid rgba(209, 209, 209, 1);
+    padding-left: 48px;
+}
+
+.task-width {
+    width: 100%;
+}
+
+.task-input {
+    border: 1px solid rgba(209, 209, 209, 1);
+    border-radius: 10px;
+    padding: 12px 21px 12px 21px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.task-textarea {
+    font-family: "inter";
+    resize: vertical;
+    max-height: 170px;
+    min-height: 120px;
+}
+
+.task-form-font {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.task-body form {
+    width: 100%;
 }
 
 .task-bottom-line {
     width: 100%;
     justify-content: space-between;
+}
+
+.task-btn-cont {
+    gap: 16px;
+}
+
+.task-btn-cont img {
+    width: 20px;
+}
+
+.task-urgent-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    width: 136px;
+    height: 56px;
+    padding: 16px 10px;
+    border-radius: 10px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+    transition: all 100ms ease-in-out;
+    ;
+}
+
+#high:hover {
+    background: rgba(255, 61, 0, 1);
+    color: white;
+    cursor: pointer;
+}
+
+.high-focus {
+    background: rgba(255, 61, 0, 1);
+    color: white;
+}
+
+#mid:hover {
+    background: rgba(255, 168, 0, 1);
+    color: white;
+    cursor: pointer;
+}
+
+.mid-focus {
+    background: rgba(255, 168, 0, 1);
+    color: white;
+}
+
+#low:hover {
+    background: rgba(122, 226, 41, 1);
+    color: white;
+    cursor: pointer;
+}
+
+.low-focus {
+    background: rgba(122, 226, 41, 1);
+    color: white;
 }

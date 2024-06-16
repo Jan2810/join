@@ -19,19 +19,19 @@
             <h1>Add Task</h1>
         </div>
         <form>
-            <div class="flex-row">
-                <div>
-                    <div>
-                        <h3>Title<span>*</span></h3>
-                        <input type="text" placeholder="Enter a title" required>
+            <div class="flex-row task-form">
+                <div class="task-left-cont">
+                    <div class="task-width">
+                        <h3 class="task-form-font">Title<span>*</span></h3>
+                        <input class="task-width task-form-font task-input" type="text" placeholder="Enter a title" required>
                     </div>
                     <div>
-                        <h3>Description<span>*</span></h3>
-                        <textarea type="text" placeholder="Enter a Description"></textarea>
+                        <h3 class="task-form-font">Description<span>*</span></h3>
+                        <textarea class="task-width task-form-font task-textarea task-input" type="text" placeholder="Enter a Description"></textarea>
                     </div>
                     <div>
-                        <h3>Assigned to<span>*</span></h3>
-                        <select id="contacts">
+                        <h3 class="task-form-font">Assigned to<span>*</span></h3>
+                        <select class="task-width task-form-font task-input" id="contacts">
                             <option value="" disabled selected hidden>
                                 Select contacts to assign
                             </option>
@@ -58,31 +58,31 @@
                         </select>
                     </div>
                 </div>
-                <div>
-                    <div>
-                        <h3>Due date<span>*</span></h3>
-                        <input type="date" required>
+                <div class="task-right-cont">
+                    <div class="task-width">
+                        <h3 class="task-form-font">Due date<span>*</span></h3>
+                        <input class="task-width task-form-font color-lightgrey task-input" type="date" placeholder="dd/mm/yyyy" required>
                     </div>
                     <div>
-                        <h3>Prio</h3>
-                        <div class="flex-row">
-                            <div id="high">
+                        <h3 class="task-form-font">Prio</h3>
+                        <div class="flex-row task-btn-cont">
+                            <div onclick="changeUrgency('high')" onmouseover="hoverBtn(true, 'img-high')" onmouseout="hoverBtn(false, 'img-high')" class="task-urgent-btn" id="high">
                                 <span>Urgent</span>
-                                <img src="../assets/icons-addtask/prio-high-red.png" alt="">
+                                <img id="img-high" src="../assets/icons-addtask/prio-high-red.png" alt="">
                             </div>
-                            <div id="medium">
+                            <div onclick="changeUrgency('mid')" onmouseover="hoverBtn(true, 'img-mid')" onmouseout="hoverBtn(false, 'img-mid')" class="task-urgent-btn" id="mid">
                                 <span>Medium</span>
-                                <img src="../assets/icons-addtask/prio-mid-white.png" alt="">
+                                <img id="img-mid" src="../assets/icons-addtask/prio-mid-white.png" alt="">
                             </div>
-                            <div id="low">
+                            <div onclick="changeUrgency('low')" onmouseover="hoverBtn(true, 'img-low')" onmouseout="hoverBtn(false, 'img-low')" class="task-urgent-btn" id="low">
                                 <span>Low</span>
-                                <img src="../assets/icons-addtask/prio-low-green.png" alt="">
+                                <img id="img-low" src="../assets/icons-addtask/prio-low-green.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div>
-                        <h3>Category<span>*</span></h3>
-                        <select required>
+                        <h3 class="task-form-font">Category<span>*</span></h3>
+                        <select class="task-width task-form-font task-input" required>
                             <option value="" disabled selected hidden>
                                 Select task category
                             </option>
@@ -95,8 +95,8 @@
                         </select>
                     </div>
                     <div>
-                        <h3>Subtasks</h3>
-                        <input type="text" placeholder="Add new subtask">
+                        <h3 class="task-form-font">Subtasks</h3>
+                        <input class="task-width task-form-font task-input" type="text" placeholder="Add new subtask">
                     </div>
                 </div>
             </div>
