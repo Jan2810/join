@@ -14,3 +14,12 @@
     margin-bottom: 96px;
     z-index: 1;
 }
+
+.task-body form {
+    width: 100%;
+}
+
+.task-bottom-line {
+    width: 100%;
+    justify-content: space-between;
+}

@@ -1,13 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/navigation.css">
     <link rel="stylesheet" href="../style/addtask.css">
     <title>New Task - Join</title>
+    <script src="../script/script.js"></script>
+    <script src="../script/addtask.js"></script>
 </head>
-<body>
-    <h1>Add Task</h1>
+
+<body onload="addStart()">
+    <div w3-include-html="../assets/templates/navigation.html"></div>
+    <div class="task-body mgn-l-328 ">
+        <div>
+            <h1>Add Task</h1>
+        </div>
+        <form>
+            <div class="flex-row">
+                <div>
+                    <div>
+                        <h3>Title<span>*</span></h3>
+                        <input type="text" placeholder="Enter a title" required>
+                    </div>
+                    <div>
+                        <h3>Description<span>*</span></h3>
+                        <textarea type="text" placeholder="Enter a Description"></textarea>
+                    </div>
+                    <div>
+                        <h3>Assigned to<span>*</span></h3>
+                        <select id="contacts">
+                            <option value="" disabled selected hidden>
+                                Select contacts to assign
+                            </option>
+                            <option value="Sofia Müller (You)">
+                                <div class="contact-sign" id="contactsign1">SF </div>
+                                Sofia Müller (You)
+                            </option>
+                            <option value="Anton Mayer">
+                                <div class="contact-sign" id="contactsign2">AM </div>
+                                Anton Mayer
+                            </option>
+                            <option value="Anja Schulz">
+                                <div class="contact-sign" id="contactsign3">AS </div>
+                                Anja Schulz
+                            </option>
+                            <option value="Benedikt Ziegler">
+                                <div class="contact-sign" id="contactsign4">BZ </div>
+                                Benedikt Ziegler
+                            </option>
+                            <option value="David Eisenberg">
+                                <div class="contact-sign" id="contactsign5">DE </div>
+                                David Eisenberg
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Due date<span>*</span></h3>
+                        <input type="date" required>
+                    </div>
+                    <div>
+                        <h3>Prio</h3>
+                        <div class="flex-row">
+                            <div id="high">
+                                <span>Urgent</span>
+                                <img src="../assets/icons-addtask/prio-high-red.png" alt="">
+                            </div>
+                            <div id="medium">
+                                <span>Medium</span>
+                                <img src="../assets/icons-addtask/prio-mid-white.png" alt="">
+                            </div>
+                            <div id="low">
+                                <span>Low</span>
+                                <img src="../assets/icons-addtask/prio-low-green.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Category<span>*</span></h3>
+                        <select required>
+                            <option value="" disabled selected hidden>
+                                Select task category
+                            </option>
+                            <option value="technicalTask">
+                                Technical Task
+                            </option>
+                            <option value="Medium">
+                                User Story
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <h3>Subtasks</h3>
+                        <input type="text" placeholder="Add new subtask">
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row flex-center task-bottom-line">
+                <h4><span>*</span>This field is required</h4>
+                <div class="flex-center">
+                    <button>
+                        <span>Clear</span>
+                        <img src="../assets/icons/x-black.png" alt="">
+                    </button>
+                    <button>
+                        <span>Create Task</span>
+                        <img src="../assets/icons/hook-white.svg" alt="">
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
+
 </html>
