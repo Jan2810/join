@@ -1,10 +1,22 @@
-async function loadData(path = "") {
-    let response = await fetch(SERS_URL + path + ".json");
-    return responseToJson = await response.json();
-}
+const USERS_URL = "https://join-14fdc-default-rtdb.europe-west1.firebasedatabase.app/";
 let users;
 
-const USERS_URL = "https://join-14fdc-default-rtdb.europe-west1.firebasedatabase.app/";
+async function loadData(path = "") {
+    let response = await fetch(USERS_URL + path + ".json");
+    return responseToJson = await response.json();
+}
+
+async function postData(path = "", data = {}) {
+    let response = await fetch(USERS_URL + path + ".json", {
+        method: "POST",
+        header: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(data)
+    });
+    return response;
+}
+
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');

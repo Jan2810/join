@@ -1,17 +1,22 @@
-
-
 function register(event) {
     event.preventDefault();
-    showOverlay();
-    addUser();
+    checkPassword();
+    console.log("test");
+
 }
 
 function addUser() {
-    let email = document.getElementById("signup-input-email");
-    let password = document.getElementById("signup-input-password");
-    users.push({ email: email.value, password: password.value })
+    let user = {};
+    let email = document.getElementById("register-input-email");
+    let password = document.getElementById("register-input-password");
+    let name = document.getElementById("register-input-name");
+    user.name = name.value;
+    user.email = email.value;
+    user.password = password.value;
+
+    postData(path = "", user)
     //weiterleitung zu login seite
-    window.location.href = "login.html?msg=Du hast dich erfolgreich registriert";
+   
 }
 
 function showOverlay() {
@@ -19,8 +24,19 @@ function showOverlay() {
     let successMessage = document.getElementById('register-success-message');
     successMessage.classList.add('show');
 
-    setTimeout(function() {
+    setTimeout(function () {
         successMessage.classList.remove('show');
         document.getElementById('register-success-overlay').style.display = 'none';
     }, 1000);
+    window.location.href = "login.html?msg=Du hast dich erfolgreich registriert";
+}
+
+function checkPassword() {
+    let password = document.getElementById("register-input-password");
+    let passwordConfirm = document.getElementById("register-input-confirm-password");
+    if (password.value == passwordConfirm.value) {
+        showOverlay();
+        addUser();
+    }
+    else {alert("fehler")}
 }
