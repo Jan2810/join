@@ -1,12 +1,12 @@
 const USERS_URL = "https://join-14fdc-default-rtdb.europe-west1.firebasedatabase.app/";
 const TASKS_URL = "https://join-tasks-default-rtdb.europe-west1.firebasedatabase.app/";
 const CONTACTS_URL = "https://join---contacts-default-rtdb.europe-west1.firebasedatabase.app/";
-let users;
+let users = [];
 
-async function loadData(path = "",url) {
+async function loadData(path = "", url) {
     let response = await fetch(url + path + ".json");
     return responseToJson = await response.json();
-}loadData
+}
 
 async function postData(path = "", data = {}, url) {
     let response = await fetch(url + path + ".json", {
