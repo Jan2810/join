@@ -4,14 +4,17 @@ main {
 }
 
 .board-upper-content {
+    margin-top: 96px;
     width: 1208px;
+    height: 232px;
+    display: flex;
 }
 
 .board-header {
-    margin-top: 79.5px;
+    width: 1208px;
+    padding: 0 64px;
     justify-content: space-between;
     align-items: center;
-    padding: 0 64px;
 }
 
 .board-upper-content h1 {
