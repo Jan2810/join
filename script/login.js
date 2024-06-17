@@ -2,7 +2,7 @@
 
 async function login() {
 
-    users = await loadData("", USERS_URL);
+    users = await loadData(USERS_URL);
     console.log(users);
 
     let email = document.getElementById("login-input-email");
