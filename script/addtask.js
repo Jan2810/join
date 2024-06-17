@@ -4,7 +4,7 @@ let activeUrg = {
     "low": false
 }
 
-async function addStart() {
+async function initAddTask() {
     await includeHTML();
     changeUrgency("mid")
 };
@@ -70,3 +70,11 @@ function hoverBtn(boolean, id) {
         document.getElementById(id).src = "../assets/icons-addtask/prio-low-green.png";
     }
 };
+
+function enterIcon() {
+    document.getElementById("task-x").src = "../assets/icons-addtask/clear-blue.png";
+}
+
+function outIcon() {
+    document.getElementById("task-x").src = "../assets/icons-addtask/clear-black.png";
+}

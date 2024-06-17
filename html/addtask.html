@@ -12,76 +12,84 @@
     <script src="../script/addtask.js"></script>
 </head>
 
-<body onload="addStart()">
+<body onload="initAddTask()">
     <div w3-include-html="../assets/templates/navigation.html"></div>
     <div class="task-body mgn-l-328 ">
-        <div>
+        <div class="task-h1">
             <h1>Add Task</h1>
         </div>
         <form>
-            <div class="flex-row task-form">
+            <div class="flex-row task-content">
                 <div class="task-left-cont">
                     <div class="task-width">
-                        <h3 class="task-form-font">Title<span>*</span></h3>
-                        <input class="task-width task-form-font task-input" type="text" placeholder="Enter a title" required>
+                        <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
+                        <input class="task-width task-form-font task-input" type="text" placeholder="Enter a title"
+                            required>
                     </div>
                     <div>
-                        <h3 class="task-form-font">Description<span>*</span></h3>
-                        <textarea class="task-width task-form-font task-textarea task-input" type="text" placeholder="Enter a Description"></textarea>
+                        <h3 class="task-form-font">Description<span class="task-star">*</span></h3>
+                        <textarea class="task-width task-form-font task-textarea task-input" type="text"
+                            placeholder="Enter a Description"></textarea>
                     </div>
                     <div>
-                        <h3 class="task-form-font">Assigned to<span>*</span></h3>
-                        <select class="task-width task-form-font task-input" id="contacts">
-                            <option value="" disabled selected hidden>
-                                Select contacts to assign
-                            </option>
-                            <option value="Sofia Müller (You)">
-                                <div class="contact-sign" id="contactsign1">SF </div>
-                                Sofia Müller (You)
-                            </option>
-                            <option value="Anton Mayer">
-                                <div class="contact-sign" id="contactsign2">AM </div>
-                                Anton Mayer
-                            </option>
-                            <option value="Anja Schulz">
-                                <div class="contact-sign" id="contactsign3">AS </div>
-                                Anja Schulz
-                            </option>
-                            <option value="Benedikt Ziegler">
-                                <div class="contact-sign" id="contactsign4">BZ </div>
-                                Benedikt Ziegler
-                            </option>
-                            <option value="David Eisenberg">
-                                <div class="contact-sign" id="contactsign5">DE </div>
-                                David Eisenberg
-                            </option>
-                        </select>
+                        <h3 class="task-form-font">Assigned to<span class="task-star">*</span></h3>
+                        <div class="task-wrapper">
+                            <select class="task-width task-form-font task-input" id="contacts">
+                                <option value="" disabled selected hidden>
+                                    Select contacts to assign
+                                </option>
+                                <option value="1">
+                                    <div class="task-cnt-sign" id="contactsign1">SF</div>
+                                    Sofia Müller (You)
+                                </option>
+                                <option value="2">
+                                    <div class="task-cnt-sign" id="contactsign2">AM</div>
+                                    Anton Mayer
+                                </option>
+                                <option value="3">
+                                    <div class="task-cnt-sign" id="contactsign3">AS</div>
+                                    Anja Schulz
+                                </option>
+                                <option value="4">
+                                    <div class="task-cnt-sign" id="contactsign4">BZ</div>
+                                    Benedikt Ziegler
+                                </option>
+                                <option value="5">
+                                    <div class="task-cnt-sign" id="contactsign5">DE</div>
+                                    David Eisenberg
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="task-right-cont">
                     <div class="task-width">
-                        <h3 class="task-form-font">Due date<span>*</span></h3>
-                        <input class="task-width task-form-font color-lightgrey task-input" type="date" placeholder="dd/mm/yyyy" required>
+                        <h3 class="task-form-font">Due date<span class="task-star">*</span></h3>
+                        <input class="task-date-input task-width task-form-font color-lightgrey task-input" type="date"
+                            placeholder="dd/mm/yyyy" required>
                     </div>
                     <div>
                         <h3 class="task-form-font">Prio</h3>
                         <div class="flex-row task-btn-cont">
-                            <div onclick="changeUrgency('high')" onmouseover="hoverBtn(true, 'img-high')" onmouseout="hoverBtn(false, 'img-high')" class="task-urgent-btn" id="high">
+                            <div onclick="changeUrgency('high')" onmouseover="hoverBtn(true, 'img-high')"
+                                onmouseout="hoverBtn(false, 'img-high')" class="task-urgent-btn bg-white" id="high">
                                 <span>Urgent</span>
                                 <img id="img-high" src="../assets/icons-addtask/prio-high-red.png" alt="">
                             </div>
-                            <div onclick="changeUrgency('mid')" onmouseover="hoverBtn(true, 'img-mid')" onmouseout="hoverBtn(false, 'img-mid')" class="task-urgent-btn" id="mid">
+                            <div onclick="changeUrgency('mid')" onmouseover="hoverBtn(true, 'img-mid')"
+                                onmouseout="hoverBtn(false, 'img-mid')" class="task-urgent-btn bg-white" id="mid">
                                 <span>Medium</span>
                                 <img id="img-mid" src="../assets/icons-addtask/prio-mid-white.png" alt="">
                             </div>
-                            <div onclick="changeUrgency('low')" onmouseover="hoverBtn(true, 'img-low')" onmouseout="hoverBtn(false, 'img-low')" class="task-urgent-btn" id="low">
+                            <div onclick="changeUrgency('low')" onmouseover="hoverBtn(true, 'img-low')"
+                                onmouseout="hoverBtn(false, 'img-low')" class="task-urgent-btn bg-white" id="low">
                                 <span>Low</span>
                                 <img id="img-low" src="../assets/icons-addtask/prio-low-green.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div>
-                        <h3 class="task-form-font">Category<span>*</span></h3>
+                        <h3 class="task-form-font">Category<span class="task-star">*</span></h3>
                         <select class="task-width task-form-font task-input" required>
                             <option value="" disabled selected hidden>
                                 Select task category
@@ -100,17 +108,19 @@
                     </div>
                 </div>
             </div>
-            <div class="flex-row flex-center task-bottom-line">
-                <h4><span>*</span>This field is required</h4>
-                <div class="flex-center">
-                    <button>
-                        <span>Clear</span>
-                        <img src="../assets/icons/x-black.png" alt="">
-                    </button>
-                    <button>
-                        <span>Create Task</span>
-                        <img src="../assets/icons/hook-white.svg" alt="">
-                    </button>
+            <div class="task-bottom-line-cont flex-center">
+                <div class="flex-row flex-center task-bottom-line">
+                    <h4><span class="task-star">*</span>This field is required</h4>
+                    <div class="flex-center task-form-btn-cont">
+                        <div class="task-clear-btn" onmouseover="enterIcon()" onmouseout="outIcon()">
+                            <span>Clear</span>
+                            <img id="task-x" src="../assets/icons/x-black.png" alt="">
+                        </div>
+                        <button class="task-send-form-btn">
+                            <span>Create Task</span>
+                            <img src="../assets/icons-addtask/check.png" alt="">
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>
