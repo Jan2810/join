@@ -61,6 +61,9 @@ main {
     width: 252px;
     display: flex;
     justify-content: space-between;
+    font-size: 20px;
+    font-weight: 700;
+    color: rgba(66, 82, 110, 1);
 }
 
 .board-ticket-section {
@@ -73,7 +76,6 @@ main {
 }
 
 .board-ticket-container {
-    border: 1px solid grey;
     width: 252px;
     height: 100vh;
 }
@@ -100,14 +102,40 @@ main {
 .board-ticket-headline {
     font-weight: 700;
     margin-bottom: 10px;
+    color: rgba(42, 54, 71, 1)
 }
 
 .board-ticket-task {
     color: rgba(168, 168, 168, 1);
 }
 
+.board-ticket-statusbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 
+.board-ticket-bar {
+    width: 128px;
+    height: 8px;
+    background-color: rgba(244, 244, 244, 1);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
 
+.board-ticket-bar-progress {
+    height: 100%;
+    background-color: rgba(0, 56, 255, 1);
+    border-radius: 16px;
+    transition: width 0.3s ease-in-out;
+    width: 50%; /* bar zu soviel % aufefüllt */
+}
+
+.board-ticket-progress {
+    font-size: 12px;
+    color: (0, 0, 0, 1);
+}
 
 
 .board-no-tasks-placeholder {
