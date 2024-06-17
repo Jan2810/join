@@ -28,7 +28,7 @@ function showOverlay() {
         successMessage.classList.remove('show');
         document.getElementById('register-success-overlay').style.display = 'none';
     }, 1000);
-    setTimeout(function () { window.location.href = "login.html" }, 1000);
+    setTimeout(function () { window.location.href = "index.html" }, 1000);
 }
 
 function checkPassword() {
