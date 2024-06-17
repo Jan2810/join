@@ -1,11 +1,13 @@
 .contacts-container {
     max-width: 1016px;
-    height: calc(100vh - 160px);
+    /* height: calc(100vh - 160px); */
+    height: calc(100vh - 80px);
     overflow: hidden;
     display: flex;
 }
 
 .contacts-list {
+    padding: 120px 0;
     width: 100%;
     display: grid;
     grid-auto-rows: min-content;
@@ -14,47 +16,64 @@
     background: #fff;
     overflow-y: scroll;
     box-shadow: inset 0px 4px 6px 0px #00000014; 
-    scrollbar-width: thin; /* "thin" is used to style WebKit browsers */
-    overflow-y: auto; /* Ensure overflow is set to auto for scrollbar visibility */
-    
+    /* scrollbar-width: thin; /* "thin" is used to style WebKit browsers */
+    /* overflow-y: auto; Ensure overflow is set to auto for scrollbar visibility */ 
+}
+/* ::-webkit-scrollbar {
+width: 4px;
+height: 48px;
 }
 
+::-webkit-scrollbar-track {
+background: var(--white);
+box-shadow: inset 0 0 5px var(--zinc-400);
+width: 8px;
+}
 
-/* Track styles */
+::-webkit-scrollbar-thumb {
+background: #A8A8A8;
+}
+
+::-webkit-scrollbar-thumb
+{
+background: hsl(0, 0%, 62%);
+}
+
+::-webkit-scrollbar-thumb
+{
+background: hsl(0, 0%, 58%);
+} */
+
+
+
+.contacts-list::-webkit-scrollbar {
+  width: 4px; /* works */
+
+}
+
 .contacts-list::-webkit-scrollbar-track {
-    background: #fff; /* Track color */
+  background: #fff;
+  width: 20px;
+  margin-right: 13px;
 }
 
-/* Thumb styles */
 .contacts-list::-webkit-scrollbar-thumb {
-    background-color: #A8A8A8; /* Thumb color */
-    border-radius: 10px; /* Rounded corners */
+  background: #A8A8A8;
+  border-radius: 7px; /* works */
+  height: 78px; /* set the height of the scrollbar thumb */
+  margin-right: 13px; /* add a margin to the right of the scrollbar thumb */
 }
 
-/* Thumb hover styles */
 .contacts-list::-webkit-scrollbar-thumb:hover {
-    background-color: hsl(0, 0%, 62%); /* Lighter color on hover */
+  cursor: pointer;
+  background: hsl(0, 0%, 60%);
+ 
 }
 
-/* Thumb active styles */
 .contacts-list::-webkit-scrollbar-thumb:active {
-    background-color: hsl(0, 0%, 58%); /* Darker color on active */
-}
+  background: hsl(0, 0%, 54%); 
+}    
 
-/* Adjust scrollbar width */
-.contacts-list::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
-}
-
-/* Optionally adjust scrollbar height */
-.contacts-list::-webkit-scrollbar-thumb {
-    height: 48px; /* Height of the scrollbar thumb */
-}
-
-/* Optionally adjust margin-right */
-.contacts-list::-webkit-scrollbar {
-    margin-right: 10px; /* Margin to the right of the scrollbar */
-}
 
 
 .contacts-list h3,
@@ -148,7 +167,8 @@
 @media only screen and (min-width: 800px) {
     .contacts-container {
         margin-left: 232px;
-        height: 100vh - 96px;
+        /* height: calc(100vh - 96px); */
+        height: calc(100vh);
     }
 
     .contacts-list {
