@@ -19,7 +19,7 @@
             <h1>Add Task</h1>
         </div>
         <form>
-            <div class="flex-row task-content">
+            <div class="flex-row task-content" onclick="closeContacts()">
                 <div class="task-left-cont">
                     <div class="task-width">
                         <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
@@ -27,46 +27,54 @@
                             required>
                     </div>
                     <div>
-                        <h3 class="task-form-font">Description<span class="task-star">*</span></h3>
+                        <h3 class="task-form-font">Description</h3>
                         <textarea class="task-width task-form-font task-textarea task-input" type="text"
                             placeholder="Enter a Description"></textarea>
                     </div>
                     <div>
-                        <h3 class="task-form-font">Assigned to<span class="task-star">*</span></h3>
-                        <div class="task-wrapper">
-                            <select class="task-width task-form-font task-input" id="contacts">
-                                <option value="" disabled selected hidden>
-                                    Select contacts to assign
-                                </option>
-                                <option value="1">
+                        <h3 class="task-form-font">Assigned to</h3>
+                        <div onclick="openContacts(); stopProp(event);" class="dropdown task-width">
+                            <div class="dropdown-toggle" id="dropdownToggle">
+                                <span id="selectedItem">Select contacts to assign</span>
+                                <img src="../assets/icons/dropdown.png">
+                            </div>
+                            <input type="text" id="dropdownInput" class="task-width task-form-font task-input" style="display: none;">
+                            <div class="dropdown-menu" id="dropdownMenu" style="display: none;">
+                                <!-- <div class="dropdown-item" data-value="1">
                                     <div class="task-cnt-sign" id="contactsign1">SF</div>
-                                    Sofia Müller (You)
-                                </option>
-                                <option value="2">
+                                    <div class="task-cnt-name">Sofia Müller (You)</div>
+                                    <img src="../assets/icons/rb-unchecked.png" alt="User Image">
+                                </div>
+                                <div class="dropdown-item" data-value="2">
                                     <div class="task-cnt-sign" id="contactsign2">AM</div>
-                                    Anton Mayer
-                                </option>
-                                <option value="3">
+                                    <div class="task-cnt-name">Anton Mayer</div>
+                                    <img src="../assets/icons/rb-unchecked.png" alt="User Image">
+                                </div>
+                                <div class="dropdown-item" data-value="3">
                                     <div class="task-cnt-sign" id="contactsign3">AS</div>
-                                    Anja Schulz
-                                </option>
-                                <option value="4">
+                                    <div class="task-cnt-name">Anja Schulz</div>
+                                    <img src="../assets/icons/rb-unchecked.png" alt="User Image">
+                                </div>
+                                <div class="dropdown-item" data-value="4">
                                     <div class="task-cnt-sign" id="contactsign4">BZ</div>
-                                    Benedikt Ziegler
-                                </option>
-                                <option value="5">
+                                    <div class="task-cnt-name">Benedikt Ziegler</div>
+                                    <img src="../assets/icons/rb-unchecked.png" alt="User Image">
+                                </div>
+                                <div class="dropdown-item" data-value="5">
                                     <div class="task-cnt-sign" id="contactsign5">DE</div>
-                                    David Eisenberg
-                                </option>
-                            </select>
+                                    <div class="task-cnt-name">David Eisenberg</div>
+                                    <img src="../assets/icons/rb-unchecked.png" alt="User Image">
+                                </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="task-right-cont">
                     <div class="task-width">
                         <h3 class="task-form-font">Due date<span class="task-star">*</span></h3>
-                        <input class="task-date-input task-width task-form-font color-lightgrey task-input" type="date"
-                            placeholder="dd/mm/yyyy" required>
+                        <div class="custom-date-input task-width">
+                            <input onclick="openCalender()" id="taskDate" class="task-date-input task-form-font color-lightgrey bg-white task-input" type="date" required>
+                        </div>
                     </div>
                     <div>
                         <h3 class="task-form-font">Prio</h3>
