@@ -12,7 +12,7 @@ async function login() {
     if (user) {
         saveUser(user);
         console.log("done");
-        window.location.href = "board.html";
+        window.location.href = "/html/board.html";
     }
     else {
         alert("User nicht gefunden");
