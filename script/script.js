@@ -4,11 +4,10 @@ const CONTACTS_URL = "https://join---contacts-default-rtdb.europe-west1.firebase
 let users = [];
 let user = {};
 
-async function loadData(path = "", url) {
-    let response = await fetch(url + path + ".json");
+async function loadData(url) {
+    let response = await fetch(url + ".json");
     console.log(response);
     let data = await response.json();
-    console.log(data);
     return Object.keys(data).map(key => data[key]);
 }
 
