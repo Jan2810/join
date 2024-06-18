@@ -2,15 +2,15 @@ function initBoard() {
     loadData(TASKS_URL);
 }
 
-function updateTasksbyStatus(dataArray, status, categoryId) {
+function updateTasksByStatus(dataArray, status, categoryId) {
     let tasks = dataArray.filter(t => t['status'] === status);
     console.log(tasks);
     document.getElementById(categoryId).innerHTML = '';
 
-    for (let i = 0; i = tasks.length; i++) {
+    for (let i = 0; i < tasks.length; i++) {
         const element = tasks[i];
         let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
-        document.getElementById(containerId).innerHTML += generateTicketHTML(element, categoryBG);
+        document.getElementById(categoryId).innerHTML += generateTicketHTML(element, categoryBG);
     }
 }
 
