@@ -72,23 +72,23 @@ function changeBgOfBtn() {
         document.getElementById("mid").classList.remove("mid-focus");
         document.getElementById("low").classList.remove("low-focus");
         document.getElementById("img-high").src = `../assets/icons-addtask/prio-high-white.png`;
-        document.getElementById("img-mid").src = `../assets/icons-addtask/prio-mid-orange.png`;
-        document.getElementById("img-low").src = `../assets/icons-addtask/prio-low-green.png`;
+        document.getElementById("img-mid").src = `../assets/icons-addtask/prio-mid-color.png`;
+        document.getElementById("img-low").src = `../assets/icons-addtask/prio-low-color.png`;
     }
     if (activeUrg.mid === true) {
         document.getElementById("high").classList.remove("high-focus");
         document.getElementById("mid").classList.add("mid-focus");
         document.getElementById("low").classList.remove("low-focus");
-        document.getElementById("img-high").src = `../assets/icons-addtask/prio-high-red.png`;
+        document.getElementById("img-high").src = `../assets/icons-addtask/prio-high-color.png`;
         document.getElementById("img-mid").src = `../assets/icons-addtask/prio-mid-white.png`;
-        document.getElementById("img-low").src = `../assets/icons-addtask/prio-low-green.png`;
+        document.getElementById("img-low").src = `../assets/icons-addtask/prio-low-color.png`;
     }
     if (activeUrg.low === true) {
         document.getElementById("high").classList.remove("high-focus");
         document.getElementById("mid").classList.remove("mid-focus");
         document.getElementById("low").classList.add("low-focus");
-        document.getElementById("img-high").src = `../assets/icons-addtask/prio-high-red.png`;
-        document.getElementById("img-mid").src = `../assets/icons-addtask/prio-mid-orange.png`;
+        document.getElementById("img-high").src = `../assets/icons-addtask/prio-high-color.png`;
+        document.getElementById("img-mid").src = `../assets/icons-addtask/prio-mid-color.png`;
         document.getElementById("img-low").src = `../assets/icons-addtask/prio-low-white.png`;
     }
 };
@@ -98,17 +98,17 @@ function hoverBtn(boolean, id) {
     if (boolean === true && id === "img-high") {
         document.getElementById(id).src = "../assets/icons-addtask/prio-high-white.png";
     } else if (boolean === false && id === "img-high" && activeUrg.high === false) {
-        document.getElementById(id).src = "../assets/icons-addtask/prio-high-red.png";
+        document.getElementById(id).src = "../assets/icons-addtask/prio-high-color.png";
     }
     if (boolean === true && id === "img-mid") {
         document.getElementById(id).src = "../assets/icons-addtask/prio-mid-white.png";
     } else if (boolean === false && id === "img-mid" && activeUrg.mid === false) {
-        document.getElementById(id).src = "../assets/icons-addtask/prio-mid-orange.png";
+        document.getElementById(id).src = "../assets/icons-addtask/prio-mid-color.png";
     }
     if (boolean === true && id === "img-low") {
         document.getElementById(id).src = "../assets/icons-addtask/prio-low-white.png";
     } else if (boolean === false && id === "img-low" && activeUrg.low === false) {
-        document.getElementById(id).src = "../assets/icons-addtask/prio-low-green.png";
+        document.getElementById(id).src = "../assets/icons-addtask/prio-low-color.png";
     }
 };
 
