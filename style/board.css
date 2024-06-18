@@ -182,3 +182,13 @@ main {
     display: flex;
     justify-content: space-between;
 }
+
+@media (max-width: 1400px) {
+    .board-categories {
+        flex-direction: column;
+    }
+
+    .board-ticket-container {
+        flex-direction: row;
+    }
+}
