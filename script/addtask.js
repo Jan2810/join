@@ -4,44 +4,6 @@ let activeUrg = {
     "low": false
 }
 
-// let contacts = [
-//     {
-//         "name": "Sofia Müller",
-//         "sign": "SM",
-//         "color": "background: rgba(0, 190, 232, 1)",
-//         "checked": false,
-//         "userAccount": true
-//     },
-//     {
-//         "name": "Anton Mayer",
-//         "sign": "AM",
-//         "color": "background: rgba(255, 122, 0, 1)",
-//         "checked": false,
-//         "userAccount": false
-//     },
-//     {
-//         "name": "Anja Schulz",
-//         "sign": "AS",
-//         "color": "background: rgba(147, 39, 255, 1)",
-//         "checked": false,
-//         "userAccount": false
-//     },
-//     {
-//         "name": "Benedikt Ziegler",
-//         "sign": "BZ",
-//         "color": "background: rgba(110, 82, 255, 1)",
-//         "checked": false,
-//         "userAccount": false
-//     },
-//     {
-//         "name": "David Eisenberg",
-//         "sign": "DE",
-//         "color": "background: rgba(252, 113, 255, 1)",
-//         "checked": false,
-//         "userAccount": false
-//     }
-// ];
-
 let taskData = [
     {
         "title": "",
@@ -55,14 +17,12 @@ let taskData = [
     }
 ];
 
-
-let signList = [];
+let checkedContacts = [];
 
 async function initAddTask() {
     await includeHTML();
     changeUrgency("mid")
 };
-
 function changeUrgency(urg) {
     if (urg === "high") {
         activeUrg.high = true;
@@ -77,35 +37,47 @@ function changeUrgency(urg) {
         activeUrg.mid = false;
         activeUrg.low = true;
     }
-    changeBgOfBtn()
+    changeBgBtn()
 };
 
-function changeBgOfBtn() {
+function changeBgBtn() {
     if (activeUrg.high === true) {
-        document.getElementById("high").classList.add("high-focus");
-        document.getElementById("mid").classList.remove("mid-focus");
-        document.getElementById("low").classList.remove("low-focus");
-        document.getElementById("img-high").src = `../assets/icons-addtask/prio-high-white.png`;
-        document.getElementById("img-mid").src = `../assets/icons-addtask/prio-mid-color.png`;
-        document.getElementById("img-low").src = `../assets/icons-addtask/prio-low-color.png`;
+        highlightButtonHigh();
     }
     if (activeUrg.mid === true) {
-        document.getElementById("high").classList.remove("high-focus");
-        document.getElementById("mid").classList.add("mid-focus");
-        document.getElementById("low").classList.remove("low-focus");
-        document.getElementById("img-high").src = `../assets/icons-addtask/prio-high-color.png`;
-        document.getElementById("img-mid").src = `../assets/icons-addtask/prio-mid-white.png`;
-        document.getElementById("img-low").src = `../assets/icons-addtask/prio-low-color.png`;
+        highlightButtonMid();
     }
     if (activeUrg.low === true) {
-        document.getElementById("high").classList.remove("high-focus");
-        document.getElementById("mid").classList.remove("mid-focus");
-        document.getElementById("low").classList.add("low-focus");
-        document.getElementById("img-high").src = `../assets/icons-addtask/prio-high-color.png`;
-        document.getElementById("img-mid").src = `../assets/icons-addtask/prio-mid-color.png`;
-        document.getElementById("img-low").src = `../assets/icons-addtask/prio-low-white.png`;
+        highlightButtonLow();
     }
 };
+
+function highlightButtonHigh() {
+    document.getElementById("high").classList.add("high-focus");
+    document.getElementById("mid").classList.remove("mid-focus");
+    document.getElementById("low").classList.remove("low-focus");
+    document.getElementById("img-high").src = `../assets/icons-addtask/prio-high-white.png`;
+    document.getElementById("img-mid").src = `../assets/icons-addtask/prio-mid-color.png`;
+    document.getElementById("img-low").src = `../assets/icons-addtask/prio-low-color.png`;
+};
+
+function highlightButtonMid() {
+    document.getElementById("high").classList.remove("high-focus");
+    document.getElementById("mid").classList.add("mid-focus");
+    document.getElementById("low").classList.remove("low-focus");
+    document.getElementById("img-high").src = `../assets/icons-addtask/prio-high-color.png`;
+    document.getElementById("img-mid").src = `../assets/icons-addtask/prio-mid-white.png`;
+    document.getElementById("img-low").src = `../assets/icons-addtask/prio-low-color.png`;
+};
+
+function highlightButtonLow() {
+    document.getElementById("high").classList.remove("high-focus");
+    document.getElementById("mid").classList.remove("mid-focus");
+    document.getElementById("low").classList.add("low-focus");
+    document.getElementById("img-high").src = `../assets/icons-addtask/prio-high-color.png`;
+    document.getElementById("img-mid").src = `../assets/icons-addtask/prio-mid-color.png`;
+    document.getElementById("img-low").src = `../assets/icons-addtask/prio-low-white.png`;
+}
 
 
 function hoverBtn(boolean, id) {
@@ -144,11 +116,17 @@ function openCalender() {
 };
 
 
-function openContacts() {
+async function openContacts() {
     document.getElementById("dropdownToggle").style.display = "none";
     document.getElementById("dropdownInput").style.display = "block";
     document.getElementById("dropdownMenu").style.display = "block";
     renderContactList();
+    let contacts = await loadData(CONTACTS_URL);
+    for (let i = 0; i < contacts.length; i++) {
+        if (contacts.length - 1 > checkedContacts.length) {
+            const count = checkedContacts.push(false);
+        }
+    }
 };
 
 function closeContacts() {
@@ -162,49 +140,30 @@ async function renderContactList() {
     let content = document.getElementById("dropdownMenu");
     content.innerHTML = "";
     let contacts = await loadData(CONTACTS_URL);
-    console.log(contacts);
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-        
-        // content.innerHTML += returnContactList(contact, i);
-        // checkAssignments(i);
+        content.innerHTML += returnContactList(contact, i)
+        checkAssignments(i);
     }
 };
 
 function returnContactList(cnt, i) {
     return `
         <div onclick="assignContact(${i})" class="dropdown-item" id="cntnum${i}" data-value="${i + 1}">
-            <div class="task-cnt-sign" id="contactsign${i}" style='${cnt.color}'>${getNameSign(contact.name)}</div>
+            <div class="task-cnt-sign flex-center" id="contactsign${i}" style='${backgroundColors[i]}'>${getNameSign(cnt.name)}</div>
             <div class="task-cnt-name">${cnt.name}</div>
             <img id="cntimg${i}" src="../assets/icons/rb-unchecked.png" alt="check">
         </div>
     `;
 };
 
-function renderSignList() {
-    let content = document.getElementById("signContainer");
-    content.style.display = "";
-    content.innerHTML = "";
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        if (contact.checked === true) {
-            content.innerHTML += `
-           <div class="task-cnt-assigned-sign">
-                <div class="task-cnt-sign flex-center" id="contactsign${i}" style='${contact.color}'>
-                ${contact.sign}
-                </div>
-           </div>`;
-        }
-    }
-}
-
 function checkAssignments(i) {
-    if (contacts[i].checked === true) {
+    if (checkedContacts[i] === true) {
         document.getElementById(`cntimg${i}`).src = "../assets/icons/rb-checked.png";
         document.getElementById(`cntnum${i}`).classList.add("bg-darkblue");
         document.getElementById(`cntnum${i}`).classList.add("task-hover-dark");
         document.getElementById(`cntnum${i}`).classList.add("color-white");
-    } else if (contacts[i].checked === false) {
+    } else if (checkedContacts[i] === false) {
         document.getElementById(`cntimg${i}`).src = "../assets/icons/rb-unchecked.png";
         document.getElementById(`cntnum${i}`).classList.remove("bg-darkblue");
         document.getElementById(`cntnum${i}`).classList.remove("color-white");
@@ -212,11 +171,41 @@ function checkAssignments(i) {
 };
 
 function assignContact(i) {
-    if (contacts[i].checked === true) {
-        contacts[i].checked = false;
-    } else if (contacts[i].checked === false) {
-        contacts[i].checked = true;
+    if (checkedContacts[i] === true) {
+        checkedContacts[i] = false;
+    } else if (checkedContacts[i] === false) {
+        checkedContacts[i] = true;
     }
-    renderContactList();
     renderSignList();
 };
+
+async function renderSignList() {
+    let content = document.getElementById("signContainer");
+    controlCheckedLength(content);
+    content.innerHTML = "";
+    let contacts = await loadData(CONTACTS_URL);
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        if (checkedContacts[i] === true) {
+            content.innerHTML += returnSignList(contact, i)
+        }
+    }
+};
+
+function controlCheckedLength(content) {
+    let trueCount = checkedContacts.filter(value => value === true).length;
+    if (trueCount >= 1) {
+        content.style.display = "";
+    } else if (trueCount < 1) {
+        content.style.display = "none";
+    }
+};
+
+function returnSignList(cnt, i) {
+    return `
+           <div class="task-cnt-assigned-sign">
+                <div class="task-cnt-sign flex-center" id="contactsign${i}" style='${backgroundColors[i]}'>
+                ${getNameSign(cnt.name)}
+                </div>
+           </div>`;
+}
