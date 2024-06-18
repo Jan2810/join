@@ -98,10 +98,17 @@ main {
 
 .board-ticket-gategory {
     border-radius: 8px;
-    background-color: rgba(0, 56, 255, 1);
     width: fit-content;
     padding: 4px 16px;
     color: white;
+}
+
+.user-story-bg {
+    background-color: rgba(0, 56, 255, 1);
+}
+
+.technical-task-bg {
+    background-color: rgba(31, 215, 193, 1);
 }
 
 .board-ticket-headline {

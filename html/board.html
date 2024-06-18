@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="../style/board.css">
     <link rel="stylesheet" href="../style/navigation.css">
     <title>Board</title>
-    <script src="../script/board.js"></script>
-    <script src="../script/script.js"></script>
+    <script src="/script/board.js"></script>
+    <script src="/script/script.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); initBoard()">
     <div w3-include-html="../assets/templates/navigation.html"></div>
 
 
@@ -47,7 +47,7 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="board-ticket-container">
+                    <div id="board-ticket-container-todo" class="board-ticket-container">
                         <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="board-ticket-container">
+                    <div id="board-ticket-container-in-progress" class="board-ticket-container">
                         <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                             </svg>
                         </div>
                     </div>
-                    <div id="board-ticket-container-done" class="board-ticket-container">
+                    <div id="board-ticket-container-await-feedback" class="board-ticket-container">
                         <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
 
 
 
-
+<!-- 
 <div draggable="true" class="board-ticket">
     <div class="board-ticket-content flex-column">
         <div class="board-ticket-gategory">Category</div>
@@ -140,4 +140,4 @@
             <div class="board-ticket-priority"><img src="../assets/icons-addtask/prio-high-red.png" alt=""></div>
         </div>
     </div>
-</div>
+</div> -->

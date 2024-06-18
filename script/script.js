@@ -8,7 +8,9 @@ async function loadData(url) {
     let response = await fetch(url + ".json");
     console.log(response);
     let data = await response.json();
-    return Object.keys(data).map(key => data[key]);
+    let dataArray = Object.keys(data).map(key => data[key]);
+    
+    updateTasks(dataArray);
 }
 
 async function postData(path = "", data = {}, url) {
