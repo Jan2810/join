@@ -82,3 +82,7 @@ body {
 .color-lightgrey {
     color: rgba(209, 209, 209, 1);
 }
+
+.color-white {
+    color: white;
+}

@@ -110,6 +110,18 @@ function hoverBtn(boolean, id) {
     }
 };
 
+function stopProp(ev) {
+    ev.stopPropagation();
+}
+
+function enterIcon() {
+    document.getElementById("task-x").src = "../assets/icons-addtask/clear-blue.png";
+};
+
+function outIcon() {
+    document.getElementById("task-x").src = "../assets/icons-addtask/clear-black.png";
+};
+
 function openCalender() {
     document.getElementById("taskDate").showPicker();
     document.getElementById("taskDate").style.color = "black";
@@ -136,42 +148,39 @@ function renderContactList() {
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         content.innerHTML += returnContactList(contact, i);
+        checkAssignments(i);
     }
-};
-
-function stopProp(ev) {
-    ev.stopPropagation();
-}
-
-function enterIcon() {
-    document.getElementById("task-x").src = "../assets/icons-addtask/clear-blue.png";
-};
-
-function outIcon() {
-    document.getElementById("task-x").src = "../assets/icons-addtask/clear-black.png";
 };
 
 function returnContactList(cnt, i) {
 
     return `
-        <div onclick="checkcnt(${i})" class="dropdown-item" id="cntnum${i}" data-value="${i + 1}">
+        <div onclick="assignContact(${i})" class="dropdown-item" id="cntnum${i}" data-value="${i + 1}">
             <div class="task-cnt-sign" id="contactsign${i}" style='${cnt.color}'>${cnt.sign}</div>
             <div class="task-cnt-name">${cnt.name}</div>
-            <img id="cntimg${i}" src="" alt="User Image">
+            <img id="cntimg${i}" src="../assets/icons/rb-unchecked.png" alt="check">
         </div>
     `;
 };
 
-function checkcnt(i) {
-    if (contacts[i].checked === false) {
-        console.log("checked");
-        contacts[i].checked = true;
+function checkAssignments(i) {
+    if (contacts[i].checked === true) {
         document.getElementById(`cntimg${i}`).src = "../assets/icons/rb-checked.png";
-        renderContactList();
-    } else if (contacts[i].checked === true) {
-        console.log("unchecked");
-        contacts[i].checked = false;
+        document.getElementById(`cntnum${i}`).classList.add("bg-darkblue");
+        document.getElementById(`cntnum${i}`).classList.add("task-hover-dark");
+        document.getElementById(`cntnum${i}`).classList.add("color-white");
+    } else if (contacts[i].checked === false) {
         document.getElementById(`cntimg${i}`).src = "../assets/icons/rb-unchecked.png";
-        renderContactList();
+        document.getElementById(`cntnum${i}`).classList.remove("bg-darkblue");
+        document.getElementById(`cntnum${i}`).classList.remove("color-white");
     }
-}
+};
+
+function assignContact(i) {
+    if (contacts[i].checked === true) {
+        contacts[i].checked = false;
+    } else if (contacts[i].checked === false) {
+        contacts[i].checked = true;
+    }
+    renderContactList();
+};
