@@ -50,7 +50,7 @@ function generateTicketHTML(element, categoryBG) {
         </div>
         <div class="flex-row flex-sb">
             <div>Users</div>
-            <div class="board-ticket-priority"><img src="/assets/icons-addtask/prio-${element['priority']}-color.png" alt="priority"></div>
+            <div class="board-ticket-priority"><img src="../assets/icons-addtask/prio-${element['priority']}-color.png" alt="priority"></div>
         </div>
     </div>
 </div>`
