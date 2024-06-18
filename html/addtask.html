@@ -38,11 +38,17 @@
                                 <span id="selectedItem">Select contacts to assign</span>
                                 <img src="../assets/icons/dropdown.png">
                             </div>
-                            <input type="text" id="dropdownInput" class="task-hidden-input task-width task-form-font task-input" style="display: none;">
+                            <input type="text" id="dropdownInput"
+                                class="task-hidden-input task-width task-form-font task-input" style="display: none;">
                             <div class="dropdown-menu" id="dropdownMenu" style="display: none;">
                                 <!-- rendered with openContacts()  -->
                             </div>
-                            <div></div>
+                            <div class="flex-center" style="width: 100%;">
+                                <div id="signContainer" class="task-sign-cont task-width flex-center"
+                                    style="display: none;">
+                                    <!-- rendered signs -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,7 +56,9 @@
                     <div class="task-width">
                         <h3 class="task-form-font">Due date<span class="task-star">*</span></h3>
                         <div class="custom-date-input task-width">
-                            <input onclick="openCalender()" id="taskDate" class="task-date-input task-form-font color-lightgrey bg-white task-input" type="date" required>
+                            <input onclick="openCalender()" id="taskDate"
+                                class="task-date-input task-form-font color-lightgrey bg-white task-input" type="date"
+                                required>
                         </div>
                     </div>
                     <div>

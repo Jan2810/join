@@ -42,6 +42,8 @@ let contacts = [
     }
 ];
 
+let signList = [];
+
 async function initAddTask() {
     await includeHTML();
     changeUrgency("mid")
@@ -153,7 +155,6 @@ function renderContactList() {
 };
 
 function returnContactList(cnt, i) {
-
     return `
         <div onclick="assignContact(${i})" class="dropdown-item" id="cntnum${i}" data-value="${i + 1}">
             <div class="task-cnt-sign" id="contactsign${i}" style='${cnt.color}'>${cnt.sign}</div>
@@ -162,6 +163,23 @@ function returnContactList(cnt, i) {
         </div>
     `;
 };
+
+function renderSignList() {
+    let content = document.getElementById("signContainer");
+    content.style.display = "";
+    content.innerHTML = "";
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        if (contact.checked === true) {
+           content.innerHTML += `
+           <div class="task-cnt-assigned-sign">
+                <div class="task-cnt-sign flex-center" id="contactsign${i}" style='${contact.color}'>
+                ${contact.sign}
+                </div>
+           </div>`;
+        }
+    }
+}
 
 function checkAssignments(i) {
     if (contacts[i].checked === true) {
@@ -183,4 +201,5 @@ function assignContact(i) {
         contacts[i].checked = true;
     }
     renderContactList();
+    renderSignList();
 };
