@@ -1,8 +1,12 @@
 function initBoard() {
-    loadData(TASKS_URL);
+    updateTodos();
+    updateInProgress();
+    updateAwaitFeedback();
+    updateDone();
 }
 
-function updateTasksByStatus(dataArray, status, categoryId) {
+async function updateTasksByStatus(status, categoryId) {
+    let dataArray = await loadData(TASKS_URL)
     let tasks = dataArray.filter(t => t['status'] === status);
     console.log(tasks);
     document.getElementById(categoryId).innerHTML = '';
@@ -14,20 +18,20 @@ function updateTasksByStatus(dataArray, status, categoryId) {
     }
 }
 
-function updateTodos(dataArray) {
-    updateTasksByStatus(dataArray, 'todo', 'board-ticket-container-todo');
+function updateTodos() {
+    updateTasksByStatus('todo', 'board-ticket-container-todo');
 }
 
-function updateInProgress(dataArray) {
-    updateTasksByStatus(dataArray, 'inprogress', 'board-ticket-container-in-progress');
+function updateInProgress() {
+    updateTasksByStatus('inprogress', 'board-ticket-container-in-progress');
 }
 
-function updateAwaitFeedback(dataArray) {
-    updateTasksByStatus(dataArray, 'awaitfeedback', 'board-ticket-container-await-feedback');
+function updateAwaitFeedback() {
+    updateTasksByStatus('awaitfeedback', 'board-ticket-container-await-feedback');
 }
 
-function updateDone(dataArray) {
-    updateTasksByStatus(dataArray, 'done', 'board-ticket-container-done');
+function updateDone() {
+    updateTasksByStatus('done', 'board-ticket-container-done');
 }
 
 function generateTicketHTML(element, categoryBG) {
