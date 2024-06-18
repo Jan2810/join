@@ -19,6 +19,8 @@ let taskData = [
 
 let checkedContacts = [];
 
+let contactsTaskOpen = false;
+
 async function initAddTask() {
     await includeHTML();
     changeUrgency("mid")
@@ -98,10 +100,6 @@ function hoverBtn(boolean, id) {
     }
 };
 
-function stopProp(ev) {
-    ev.stopPropagation();
-}
-
 function enterIcon() {
     document.getElementById("task-x").src = "../assets/icons-addtask/clear-blue.png";
 };
@@ -117,31 +115,40 @@ function openCalender() {
 
 
 async function openContacts() {
-    document.getElementById("dropdownToggle").style.display = "none";
-    document.getElementById("dropdownInput").style.display = "block";
-    document.getElementById("dropdownMenu").style.display = "block";
-    renderContactList();
-    let contacts = await loadData(CONTACTS_URL);
-    for (let i = 0; i < contacts.length; i++) {
-        if (contacts.length - 1 > checkedContacts.length) {
-            const count = checkedContacts.push(false);
+    console.log(contactsTaskOpen)
+    if (contactsTaskOpen === false) {
+        document.getElementById("dropdownToggle").style.display = "none";
+        document.getElementById("dropdownMenuContainer").style.display = "";
+        document.getElementById("dropdownMenu").style.display = "block";
+        renderContactList();
+        let contacts = await loadData(CONTACTS_URL);
+        for (let i = 0; i < contacts.length; i++) {
+            if (contacts.length > checkedContacts.length) {
+                const count = checkedContacts.push(false);
+            }
         }
-    }
+        contactsTaskOpen = true;
+    } 
 };
 
-function closeContacts() {
+function closeContacts(event) {
+    if (contactsTaskOpen === true) {
+    event.stopPropagation();
     document.getElementById("dropdownToggle").style.display = "flex";
-    document.getElementById("dropdownInput").style.display = "none";
+    document.getElementById("dropdownMenuContainer").style.display = "none";
     document.getElementById("dropdownMenu").style.display = "none";
-    document.getElementById("dropdownInput").value = "";
+    contactsTaskOpen = false;
+    } 
 };
 
 async function renderContactList() {
     let content = document.getElementById("dropdownMenu");
     content.innerHTML = "";
     let contacts = await loadData(CONTACTS_URL);
+    content.innerHTML = ``;
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
+
         content.innerHTML += returnContactList(contact, i)
         checkAssignments(i);
     }
@@ -149,7 +156,7 @@ async function renderContactList() {
 
 function returnContactList(cnt, i) {
     return `
-        <div onclick="assignContact(${i})" class="dropdown-item" id="cntnum${i}" data-value="${i + 1}">
+        <div onclick="assignContact(${i})" class="dropdown-item" id="cntnum${i}" data-value="${i}">
             <div class="task-cnt-sign flex-center" id="contactsign${i}" style='${backgroundColors[i]}'>${getNameSign(cnt.name)}</div>
             <div class="task-cnt-name">${cnt.name}</div>
             <img id="cntimg${i}" src="../assets/icons/rb-unchecked.png" alt="check">
@@ -167,6 +174,7 @@ function checkAssignments(i) {
         document.getElementById(`cntimg${i}`).src = "../assets/icons/rb-unchecked.png";
         document.getElementById(`cntnum${i}`).classList.remove("bg-darkblue");
         document.getElementById(`cntnum${i}`).classList.remove("color-white");
+        document.getElementById(`cntnum${i}`).classList.remove("task-hover-dark");
     }
 };
 
@@ -177,11 +185,12 @@ function assignContact(i) {
         checkedContacts[i] = true;
     }
     renderSignList();
+    checkAssignments(i);
 };
 
 async function renderSignList() {
     let content = document.getElementById("signContainer");
-    controlCheckedLength(content);
+    controlCheckedLength();
     content.innerHTML = "";
     let contacts = await loadData(CONTACTS_URL);
     for (let i = 0; i < contacts.length; i++) {
@@ -192,12 +201,15 @@ async function renderSignList() {
     }
 };
 
-function controlCheckedLength(content) {
+function controlCheckedLength() {
+    let container = document.getElementById("signContainer");
     let trueCount = checkedContacts.filter(value => value === true).length;
     if (trueCount >= 1) {
-        content.style.display = "";
+        container.style.display = "";
+        document.getElementById("taskRightCont").classList.add("task-margin-top");
     } else if (trueCount < 1) {
-        content.style.display = "none";
+        container.style.display = "none";
+        document.getElementById("taskRightCont").classList.remove("task-margin-top");
     }
 };
 

@@ -19,7 +19,7 @@
             <h1>Add Task</h1>
         </div>
         <form>
-            <div class="flex-row task-content" onclick="closeContacts()">
+            <div class="flex-row task-content">
                 <div class="task-left-cont">
                     <div class="task-width">
                         <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
@@ -38,21 +38,24 @@
                                 <span id="selectedItem">Select contacts to assign</span>
                                 <img src="../assets/icons/dropdown.png">
                             </div>
-                            <input type="text" id="dropdownInput"
-                                class="task-hidden-input task-width task-form-font task-input" style="display: none;">
-                            <div class="dropdown-menu" id="dropdownMenu" style="display: none;">
-                                <!-- rendered with openContacts()  -->
+                            <div class="dropdown-menu" id="dropdownMenuContainer" style="display: none;">
+                                <div onclick="closeContacts(event)" class="dropdown-item upper-dropdown-item bg-white">
+                                    <span>Select contacts to assign</span>
+                                    <img src="../assets/icons/x-black.png" alt="">
+                                </div>
+                                <div id="dropdownMenu">
+                                    <!-- rendered with openContacts()  -->
+                                </div>
                             </div>
-                            <div class="flex-center" style="width: 100%;">
-                                <div id="signContainer" class="task-sign-cont task-width flex-center"
-                                    style="display: none;">
+                            <div id="signParentContainer" class="flex-center" style="width: 100%;">
+                                <div  id="signContainer" class="task-sign-cont task-width flex-center" style="display: none;">
                                     <!-- rendered signs -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="task-right-cont">
+                <div class="task-right-cont" id="taskRightCont">
                     <div class="task-width">
                         <h3 class="task-form-font">Due date<span class="task-star">*</span></h3>
                         <div class="custom-date-input task-width">
@@ -84,15 +87,15 @@
                     <div>
                         <h3 class="task-form-font">Category<span class="task-star">*</span></h3>
                         <input class="task-width task-form-font task-input" required>
-                            <option value="" disabled selected hidden>
-                                Select task category
-                            </option>
-                            <option value="technicalTask">
-                                Technical Task
-                            </option>
-                            <option value="Medium">
-                                User Story
-                            </option>
+                        <option value="" disabled selected hidden>
+                            Select task category
+                        </option>
+                        <option value="technicalTask">
+                            Technical Task
+                        </option>
+                        <option value="Medium">
+                            User Story
+                        </option>
                         </select>
                     </div>
                     <div>

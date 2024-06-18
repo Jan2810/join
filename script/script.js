@@ -48,6 +48,9 @@ let backgroundColors = [
     "background: rgba(255, 187, 43, 1)"
 ];
 
+function stopProp(ev) {
+    ev.stopPropagation();
+};
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
