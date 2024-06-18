@@ -44,40 +44,41 @@ main {
     font-size: 21px;
 }
 
-.board-categories {
-    position: absolute;
-    width: 1208px;
-    top: 296.5px;
-    padding: 0px 64px;
-    justify-content: space-between;
-}
-
-.flex-sb {
-    display: flex;
-    justify-content: space-between;
-}
-
-.board-categories-container {
-    width: 252px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    font-weight: 700;
-    color: rgba(66, 82, 110, 1);
+#board-add-task-button:hover {
+    cursor: pointer;
+    background-color: rgba(41, 171, 226, 1);
+    border: 1px solid rgba(41, 171, 226, 1);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .board-ticket-section {
     position: absolute;
     width: 1208px;
-    height: 100vh;
+    top: 296.5px;
     padding: 0px 64px;
-    top: 336px;
+}
+
+.board-categories {
+    display: flex;
     justify-content: space-between;
+}
+
+.board-category {
+    width: 252px;
+}
+
+.board-category-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
 }
 
 .board-ticket-container {
     width: 252px;
-    height: 100vh;
+    min-height: 252px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .board-ticket {
@@ -85,6 +86,10 @@ main {
     border-radius: 24px;
     padding: 16px;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08)
+}
+
+.board-ticket:hover {
+    cursor: pointer;
 }
 
 .board-ticket-content {
@@ -129,7 +134,8 @@ main {
     background-color: rgba(0, 56, 255, 1);
     border-radius: 16px;
     transition: width 0.3s ease-in-out;
-    width: 50%; /* bar zu soviel % aufefüllt */
+    width: 50%;
+    /* bar zu soviel % aufefüllt */
 }
 
 .board-ticket-progress {
@@ -146,4 +152,22 @@ main {
     background-color: rgba(231, 231, 231, 1);
     border: 1px dashed rgba(168, 168, 168, 1);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+}
+
+.flex-sb {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.board-categories-add-task-button:hover rect {
+    stroke: rgba(41, 171, 226, 1);
+}
+
+.board-categories-add-task-button:hover path {
+    stroke: rgba(41, 171, 226, 1);
+}
+
+.board-categories-add-task-button:hover {
+    cursor: pointer;
 }
