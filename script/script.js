@@ -9,14 +9,9 @@ async function loadData(url) {
     let data = await response.json();
     let dataArray = Object.keys(data).map(key => data[key]);
     return dataArray;
-    
-    // updateTodos(dataArray);
-    // updateInProgress(dataArray);
-    // updateAwaitFeedback(dataArray);
-    // updateDone(dataArray);
 }
 
-async function postData(path = "", data = {}, url) {
+async function postData(url, path = "", data = {}) {
     let response = await fetch(url + path + ".json", {
         method: "POST",
         header: {

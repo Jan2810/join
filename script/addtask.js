@@ -42,6 +42,20 @@ let activeUrg = {
 //     }
 // ];
 
+let taskData = [
+    {
+        "title": "",
+        "description": "",
+        "assigned_to": [],
+        "due_date": "",
+        "priority": "",
+        "category": "",
+        "subtasks": [],
+        "status": ""
+    }
+];
+
+
 let signList = [];
 
 async function initAddTask() {
@@ -173,7 +187,7 @@ function renderSignList() {
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         if (contact.checked === true) {
-           content.innerHTML += `
+            content.innerHTML += `
            <div class="task-cnt-assigned-sign">
                 <div class="task-cnt-sign flex-center" id="contactsign${i}" style='${contact.color}'>
                 ${contact.sign}
