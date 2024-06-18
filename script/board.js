@@ -2,56 +2,36 @@ function initBoard() {
     loadData(TASKS_URL);
 }
 
-function updateTodos(dataArray) {
-    let todo = dataArray.filter(t => t['status'] == 'todo');
-    console.log(todo);
-    document.getElementById('board-ticket-container-todo').innerHTML ='';
+function updateTasksbyStatus(dataArray, status, categoryId) {
+    let tasks = dataArray.filter(t => t['status'] === status);
+    console.log(tasks);
+    document.getElementById(categoryId).innerHTML = '';
 
-    for (let i = 0; i < todo.length; i++) {
-        const element = todo[i];
+    for (let i = 0; i = tasks.length; i++) {
+        const element = tasks[i];
         let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
-        document.getElementById('board-ticket-container-todo').innerHTML += generateTicketHTML(element, categoryBG);
+        document.getElementById(containerId).innerHTML += generateTicketHTML(element, categoryBG);
     }
+}
+
+function updateTodos(dataArray) {
+    updateTasksByStatus(dataArray, 'todo', 'board-ticket-container-todo');
 }
 
 function updateInProgress(dataArray) {
-    let inProgress = dataArray.filter(t => t['status'] == 'inprogress');
-    console.log(inProgress);
-    document.getElementById('board-ticket-container-in-progress').innerHTML ='';
-
-    for (let i = 0; i < inProgress.length; i++) {
-        const element = inProgress[i];
-        let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
-        document.getElementById('board-ticket-container-in-progress').innerHTML += generateTicketHTML(element, categoryBG);
-    }
+    updateTasksByStatus(dataArray, 'inprogress', 'board-ticket-container-in-progress');
 }
 
 function updateAwaitFeedback(dataArray) {
-    let awaitFeedback = dataArray.filter(t => t['status'] == 'awaitfeedback');
-    console.log(awaitFeedback);
-    document.getElementById('board-ticket-container-await-feedback').innerHTML ='';
-
-    for (let i = 0; i < awaitFeedback.length; i++) {
-        const element = awaitFeedback[i];
-        let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
-        document.getElementById('board-ticket-container-await-feedback').innerHTML += generateTicketHTML(element, categoryBG);
-    }
+    updateTasksByStatus(dataArray, 'awaitfeedback', 'board-ticket-container-await-feedback');
 }
 
 function updateDone(dataArray) {
-    let done = dataArray.filter(t => t['status'] == 'done');
-    console.log(done);
-    document.getElementById('board-ticket-container-done').innerHTML ='';
-
-    for (let i = 0; i < done.length; i++) {
-        const element = done[i];
-        let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
-        document.getElementById('board-ticket-container-done').innerHTML += generateTicketHTML(element, categoryBG);
-    }
+    updateTasksByStatus(dataArray, 'done', 'board-ticket-container-done');
 }
 
-function generateTicketHTML (element, categoryBG) {
-    return  `<div draggable="true" class="board-ticket">
+function generateTicketHTML(element, categoryBG) {
+    return `<div draggable="true" class="board-ticket">
     <div class="board-ticket-content flex-column">
         <div class="board-ticket-gategory ${categoryBG}-bg">${element['category']}</div>
         <div class="board-ticket-description">
