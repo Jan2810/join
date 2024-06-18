@@ -277,7 +277,7 @@
     height: 45px;
     margin: 16px 0px 4px 0px;
     padding: 10px;
-    border: 1px dashed #ccc;
+    border: 1px solid #ccc;
     border-radius: 10px;
     background-color: white;
     cursor: pointer;
@@ -391,6 +391,7 @@
     .task-right-cont {
         border-left: 0;
         padding-left: 0;
+        margin-top: 24px;
     }
 
     .task-btn-cont {

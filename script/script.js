@@ -11,7 +11,7 @@ async function loadData(url) {
     return dataArray;
 }
 
-async function postData(path = "", data = {}, url) {
+async function postData(url, path = "", data = {}) {
     let response = await fetch(url + path + ".json", {
         method: "POST",
         header: {
