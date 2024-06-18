@@ -165,15 +165,16 @@ async function renderContactList() {
     console.log(contacts);
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-        content.innerHTML += returnContactList(contact, i);
-        checkAssignments(i);
+        
+        // content.innerHTML += returnContactList(contact, i);
+        // checkAssignments(i);
     }
 };
 
 function returnContactList(cnt, i) {
     return `
         <div onclick="assignContact(${i})" class="dropdown-item" id="cntnum${i}" data-value="${i + 1}">
-            <div class="task-cnt-sign" id="contactsign${i}" style='${cnt.color}'>${cnt.sign}</div>
+            <div class="task-cnt-sign" id="contactsign${i}" style='${cnt.color}'>${getNameSign(contact.name)}</div>
             <div class="task-cnt-name">${cnt.name}</div>
             <img id="cntimg${i}" src="../assets/icons/rb-unchecked.png" alt="check">
         </div>
