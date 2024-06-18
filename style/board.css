@@ -73,6 +73,18 @@ main {
     margin-bottom: 16px;
 }
 
+.board-categories-add-task-button:hover rect {
+    stroke: rgba(41, 171, 226, 1);
+}
+
+.board-categories-add-task-button:hover path {
+    stroke: rgba(41, 171, 226, 1);
+}
+
+.board-categories-add-task-button:hover {
+    cursor: pointer;
+}
+
 .board-ticket-container {
     width: 252px;
     min-height: 252px;
@@ -164,17 +176,4 @@ main {
 .flex-sb {
     display: flex;
     justify-content: space-between;
-}
-
-
-.board-categories-add-task-button:hover rect {
-    stroke: rgba(41, 171, 226, 1);
-}
-
-.board-categories-add-task-button:hover path {
-    stroke: rgba(41, 171, 226, 1);
-}
-
-.board-categories-add-task-button:hover {
-    cursor: pointer;
 }

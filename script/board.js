@@ -26,11 +26,11 @@ function generateTicketHTML (element, categoryBG) {
             <div class="board-ticket-bar">
                 <div class="board-ticket-bar-progress"></div>
             </div>
-            <div class="board-ticket-progress">1/2 Subtasks</div>
+            <div class="board-ticket-progress">${element['subtasks'].length}/${element['subtasks'].length} Subtasks</div>
         </div>
         <div class="flex-row flex-sb">
             <div>Users</div>
-            <div class="board-ticket-priority">${element['priority']}</div>
+            <div class="board-ticket-priority"><img src="/assets/icons-addtask/prio-${element['priority']}-color.png" alt="priority"></div>
         </div>
     </div>
 </div>`
