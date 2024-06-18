@@ -71,6 +71,10 @@ main {
     display: flex;
     justify-content: space-between;
     margin-bottom: 16px;
+    padding-left: 8px;
+    font-weight: 700;
+    font-size: 20px;
+    color: rgba(66, 82, 110, 1);
 }
 
 .board-categories-add-task-button:hover rect {
@@ -162,6 +166,7 @@ main {
     color: (0, 0, 0, 1);
 }
 
+.board-
 
 .board-no-tasks-placeholder {
     width: 252px;

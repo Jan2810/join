@@ -2,7 +2,7 @@ function initBoard() {
     loadData(TASKS_URL);
 }
 
-function updateTasks(dataArray) {
+function updateTodos(dataArray) {
     let todo = dataArray.filter(t => t['status'] == 'todo');
     console.log(todo);
     document.getElementById('board-ticket-container-todo').innerHTML ='';
@@ -11,6 +11,42 @@ function updateTasks(dataArray) {
         const element = todo[i];
         let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
         document.getElementById('board-ticket-container-todo').innerHTML += generateTicketHTML(element, categoryBG);
+    }
+}
+
+function updateInProgress(dataArray) {
+    let inProgress = dataArray.filter(t => t['status'] == 'inprogress');
+    console.log(inProgress);
+    document.getElementById('board-ticket-container-in-progress').innerHTML ='';
+
+    for (let i = 0; i < inProgress.length; i++) {
+        const element = inProgress[i];
+        let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
+        document.getElementById('board-ticket-container-in-progress').innerHTML += generateTicketHTML(element, categoryBG);
+    }
+}
+
+function updateAwaitFeedback(dataArray) {
+    let awaitFeedback = dataArray.filter(t => t['status'] == 'awaitfeedback');
+    console.log(awaitFeedback);
+    document.getElementById('board-ticket-container-await-feedback').innerHTML ='';
+
+    for (let i = 0; i < awaitFeedback.length; i++) {
+        const element = awaitFeedback[i];
+        let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
+        document.getElementById('board-ticket-container-await-feedback').innerHTML += generateTicketHTML(element, categoryBG);
+    }
+}
+
+function updateDone(dataArray) {
+    let done = dataArray.filter(t => t['status'] == 'done');
+    console.log(done);
+    document.getElementById('board-ticket-container-done').innerHTML ='';
+
+    for (let i = 0; i < done.length; i++) {
+        const element = done[i];
+        let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
+        document.getElementById('board-ticket-container-done').innerHTML += generateTicketHTML(element, categoryBG);
     }
 }
 
