@@ -165,8 +165,9 @@ async function renderContactList() {
     console.log(contacts);
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-        content.innerHTML += returnContactList(contact, i);
-        checkAssignments(i);
+        getNameSign(contact.name);
+        // content.innerHTML += returnContactList(contact, i);
+        // checkAssignments(i);
     }
 };
 

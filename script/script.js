@@ -22,6 +22,21 @@ async function postData(url, path = "", data = {}) {
     return response;
 }
 
+function getNameSign(name) {
+    let splittetName = name.split(" ");
+    let firstLetter = splittetName[0].charAt(0).toUpperCase();
+    let secondLetter = splittetName[1].charAt(0).toUpperCase();
+    return `${firstLetter}${secondLetter}`;
+}
+
+
+let backgroundColors = [
+    "background: rgba(255, 122, 0, 1)",
+    "background: rgba(255, 94, 179, 1)",
+    "background: rgba(110, 82, 255, 1)",
+
+];
+
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -50,6 +65,6 @@ function loadUser() {
     const retrievedUserString = localStorage.getItem('user');
     user = JSON.parse(retrievedUserString);
     console.log(user);
-
 }
+
 
