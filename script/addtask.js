@@ -4,43 +4,43 @@ let activeUrg = {
     "low": false
 }
 
-let contacts = [
-    {
-        "name": "Sofia Müller",
-        "sign": "SM",
-        "color": "background: rgba(0, 190, 232, 1)",
-        "checked": false,
-        "userAccount": true
-    },
-    {
-        "name": "Anton Mayer",
-        "sign": "AM",
-        "color": "background: rgba(255, 122, 0, 1)",
-        "checked": false,
-        "userAccount": false
-    },
-    {
-        "name": "Anja Schulz",
-        "sign": "AS",
-        "color": "background: rgba(147, 39, 255, 1)",
-        "checked": false,
-        "userAccount": false
-    },
-    {
-        "name": "Benedikt Ziegler",
-        "sign": "BZ",
-        "color": "background: rgba(110, 82, 255, 1)",
-        "checked": false,
-        "userAccount": false
-    },
-    {
-        "name": "David Eisenberg",
-        "sign": "DE",
-        "color": "background: rgba(252, 113, 255, 1)",
-        "checked": false,
-        "userAccount": false
-    }
-];
+// let contacts = [
+//     {
+//         "name": "Sofia Müller",
+//         "sign": "SM",
+//         "color": "background: rgba(0, 190, 232, 1)",
+//         "checked": false,
+//         "userAccount": true
+//     },
+//     {
+//         "name": "Anton Mayer",
+//         "sign": "AM",
+//         "color": "background: rgba(255, 122, 0, 1)",
+//         "checked": false,
+//         "userAccount": false
+//     },
+//     {
+//         "name": "Anja Schulz",
+//         "sign": "AS",
+//         "color": "background: rgba(147, 39, 255, 1)",
+//         "checked": false,
+//         "userAccount": false
+//     },
+//     {
+//         "name": "Benedikt Ziegler",
+//         "sign": "BZ",
+//         "color": "background: rgba(110, 82, 255, 1)",
+//         "checked": false,
+//         "userAccount": false
+//     },
+//     {
+//         "name": "David Eisenberg",
+//         "sign": "DE",
+//         "color": "background: rgba(252, 113, 255, 1)",
+//         "checked": false,
+//         "userAccount": false
+//     }
+// ];
 
 let signList = [];
 
@@ -144,9 +144,11 @@ function closeContacts() {
     document.getElementById("dropdownInput").value = "";
 };
 
-function renderContactList() {
+async function renderContactList() {
     let content = document.getElementById("dropdownMenu");
     content.innerHTML = "";
+    let contacts = await loadData(CONTACTS_URL);
+    console.log(contacts);
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         content.innerHTML += returnContactList(contact, i);
