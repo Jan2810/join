@@ -23,7 +23,8 @@ function showTask() {
     taskContainer.classList.remove("task-container-hidden");
     setTimeout(() => bg.classList.add("task-bg-color"), 0);
     bg.classList.remove("d-none");
-    bg.classList.add("flex-center",);
+    bg.classList.add("flex-center");
+    body.classList.toggle("overflow-hidden");
 }
 
 
@@ -31,6 +32,7 @@ function closeTask () {
     bg.classList.remove("task-bg-color");
     bg.classList.remove("flex-center",);
     bg.remove();
+    body.classList.toggle("overflow-hidden");
     prepareTask();
 }
 
