@@ -48,7 +48,8 @@
                                 </div>
                             </div>
                             <div id="signParentContainer" class="flex-center" style="width: 100%;">
-                                <div  id="signContainer" class="task-sign-cont task-width flex-center" style="display: none;">
+                                <div id="signContainer" class="task-sign-cont task-width flex-center"
+                                    style="display: none;">
                                     <!-- rendered signs -->
                                 </div>
                             </div>
@@ -84,19 +85,21 @@
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div onclick="openCategorys(); stopProp(event);" class="dropdown task-width">
                         <h3 class="task-form-font">Category<span class="task-star">*</span></h3>
-                        <input class="task-width task-form-font task-input" required>
-                        <option value="" disabled selected hidden>
-                            Select task category
-                        </option>
-                        <option value="technicalTask">
-                            Technical Task
-                        </option>
-                        <option value="Medium">
-                            User Story
-                        </option>
-                        </select>
+                        <div class="dropdown-toggle" id="dropdownCategoryToggle">
+                            <span id="selectedItem">Select task category</span>
+                            <img src="../assets/icons/dropdown.png">
+                        </div>
+                        <div class="dropdown-menu" id="dropdownCategoryContainer" style="display: none;">
+                            <div onclick="closeCategorys(event)" class="dropdown-item upper-dropdown-item bg-white">
+                                <span>Select task category</span>
+                                <img src="../assets/icons/x-black.png" alt="">
+                            </div>
+                            <div id="dropdownCategorys">
+                                <!-- rendered Categorys  -->
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <h3 class="task-form-font">Subtasks</h3>

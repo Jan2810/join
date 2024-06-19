@@ -113,6 +113,18 @@ function openCalender() {
     document.getElementById("taskDate").style.color = "black";
 };
 
+function openCategorys() {
+    document.getElementById("dropdownCategoryToggle").style.display = "none";
+    document.getElementById("dropdownCategoryContainer").style.display = "";
+    document.getElementById("dropdownCategorys").style.display = "block";
+}
+
+function closeCategorys() {
+    document.getElementById("dropdownCategoryToggle").style.display = "none";
+    document.getElementById("dropdownCategoryContainer").style.display = "";
+    document.getElementById("dropdownCategorys").style.display = "block";
+}
+
 
 async function openContacts() {
     console.log(contactsTaskOpen)
@@ -128,17 +140,17 @@ async function openContacts() {
             }
         }
         contactsTaskOpen = true;
-    } 
+    }
 };
 
 function closeContacts(event) {
     if (contactsTaskOpen === true) {
-    event.stopPropagation();
-    document.getElementById("dropdownToggle").style.display = "flex";
-    document.getElementById("dropdownMenuContainer").style.display = "none";
-    document.getElementById("dropdownMenu").style.display = "none";
-    contactsTaskOpen = false;
-    } 
+        event.stopPropagation();
+        document.getElementById("dropdownToggle").style.display = "flex";
+        document.getElementById("dropdownMenuContainer").style.display = "none";
+        document.getElementById("dropdownMenu").style.display = "none";
+        contactsTaskOpen = false;
+    }
 };
 
 async function renderContactList() {
