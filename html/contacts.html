@@ -15,10 +15,10 @@
     <div w3-include-html="../assets/templates/navigation.html"></div>
     <div class="contacts-container">
         <div class="contacts-list">
-            <div class="add-new-contact-button-div">
-                <img src="../assets/icons/add-new-contact-button.png" alt="">
-            </div>
-            <img class="add-person-icon bg-darkblue" src="../assets/icons/add-person.png" alt="">
+
+            <button class="add-new-contact-button"><span>Add new contact</span> <img class=""
+                    src="../assets/icons/add-person.svg" alt=""></button>
+            <img class="add-person-icon bg-darkblue" src="../assets/icons/add-person.svg" alt="">
             <div class="contacts-list-box">
                 <h3>A</h3>
             </div>
@@ -174,10 +174,66 @@
 
 
 
-        <div class="contact-details">
-            <h1>Contacts</h1>
+        <div class="contact-desktop-details">
+            <div class="contact-desktop-container">
+                <div class="contact-desktop flex">
+                    <h1>Contacts</h1>
+                    <div class="contact-desktop-blue-line"></div>
+                    <p class="contact-desktop-27">Better with a team</p>
+                </div>
+                <div class="contact-desktop-badge-and-name">
+                    <div class="contact-desktop-profile-badge bg-lightorange flex-center">TW</div>
+                    <div class="contact-name-edit-delete">
+                        <div class="contact-desktop-name">Tatjana Wolf</div>
+                        <div class="edit-and-delete-contact">
+                            <div class="edit-contact">
+                                <img src="../assets/icons/edit.svg" alt="">
+                                <span>Edit</span>
+                            </div>
+                            <div class="delete-contact">
+                                <img src="../assets/icons/delete.svg" alt="">
+                                <span>Delete</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div>
+                    <p class="contact-desktop-20 padding-bottom-40">Contact Information</p>
+                    <p class="contact-mobile-email-phone padding-bottom-16">Email</p>
+                    <p class="padding-bottom-24"><a class="contact-mobile-link color-lightblue"
+                            href="mailto:tatjana_wolf&#8203;@gmail.com">tatjana_wolf&#8203;@gmail.com</a>
+                    </p>
+                    <p class="contact-mobile-email-phone padding-bottom-16">Phone</p>
+                    <p>+49 2222 222 22 2</p>
+                </div>
+            </div>
         </div>
 
+    </div>
+    <div class="contact-mobile-container d-none">
+        <img class="contact-mobile-triple-dots bg-darkblue" src="../assets/icons/contact-mobile-triple-dots.svg" alt="">
+        <div class="contact-mobile flex">
+            <h1>Contacts</h1>
+            <img src="../assets/icons/arrow-left-line.svg" class="contact-mobile-arrow-left" alt="">
+        </div>
+        <div class="contact-mobile">
+            <p class="contact-mobile-20">Better with a team</p>
+        </div>
+        <div class="contact-mobile-blue-line"></div>
+        <div class="contact-mobile-badge-and-name">
+            <div class="contact-mobile-profile-badge bg-lightorange flex-center">TW</div>
+            <div class="contact-mobile-name">Tatjana Wolf</div>
+        </div>
+        <div class="contact-mobile">
+            <p class="contact-mobile-20">Contact Information</p>
+            <p class="contact-mobile-email-phone">Email</p>
+            <p><a class="contact-mobile-link color-lightblue"
+                    href="mailto:tatjana_wolf&#8203;@gmail.com">tatjana_wolf&#8203;@gmail.com</a>
+            </p>
+            <p class="contact-mobile-email-phone">Phone</p>
+            <p>+49 2222 222 22 2</p>
+        </div>
     </div>
 
 </body>

@@ -1,5 +1,5 @@
 .contacts-container {
-    max-width: 1016px;
+    max-width: 1208px;
     height: calc(100vh - 160px);
     overflow: hidden;
     display: flex;
@@ -40,10 +40,12 @@
   background: hsl(0, 0%, 54%); 
 }  
 
-.add-new-contact-button-div {
+.add-new-contact-button {
     display: none;
 }
-.add-person-icon {
+
+.add-person-icon,
+.contact-mobile-triple-dots {
     width: 56px;
     height: 56px;
     padding: 12px;
@@ -54,6 +56,21 @@
     position: fixed;
     bottom: calc(88px - 56px + 80px);
     right: calc(70px - 56px);
+    transition: all 100ms ease-in-out;
+}
+
+.add-person-icon:hover,
+.contact-mobile-triple-dots:hover {
+    background: hsl(215, 26%, 32%); 
+    transform: scale(1.02);
+    box-shadow: 0px 5px 4px 0px #00000038;
+}
+    
+.add-person-icon:active,
+.contact-mobile-triple-dots:active {
+    background: hsl(215, 26%, 16%); 
+    transform: scale(1.05);
+    box-shadow: 0px 6px 4px 0px #00000032;
 }
 
 .contacts-list h3,
@@ -80,7 +97,7 @@
 }
 
 .contacts-list-box {
-    width: 352px;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 4fr;
     justify-self: center;
@@ -90,7 +107,6 @@
 .contacts-view-contact {
     background: #2A3647;
     color: #fff;
-    border-radius: 12px;
 }
 
 .contacts-profile-badge {
@@ -108,16 +124,89 @@
     font-size: 12px;
 }
 
-.contact-details h1 {
-    font-size: 47px;
-    line-height: 56.4px;
-    font-weight: 700;
-    color: #000;
-}
+/* Single contact desktop view */
 
-.contact-details {
+.contact-desktop-details {
         width: 0;
     } 
+
+/* Single contact mobile view */
+
+.contact-mobile-container {
+    max-width: 1016px;
+    margin-top: 80px;
+    padding-top: 48px;
+    height: calc(100vh - 160px);
+}
+
+.contact-mobile {
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 0 16px;
+}
+
+.contact-mobile h1 {
+    font-size: 47px;
+    font-weight: 700;
+    color: #000;
+    padding-bottom: 12px;
+}
+
+.contact-mobile p {
+    padding-bottom: 16px;
+}
+
+.contact-mobile-20 {
+    font-size: 20px;
+}
+
+.contact-mobile-arrow-left {
+    height: 48px;
+    width: 48px;
+    cursor: pointer;
+}
+
+.contact-mobile-blue-line {
+    width: 90px;
+    background: #29ABE2;
+    height: 4px;
+    margin: 0 16px 40px;
+}
+
+.contact-mobile-profile-badge {
+    width: 80px;
+    height: 80px;
+    font-size: 27px;
+    color: #fff;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.contact-mobile-badge-and-name {
+    margin: 20px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.contact-mobile-name {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.contact-mobile-link {
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.contact-mobile-email-phone {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* .contact-mobile-triple-dots {
+
+} */
 
 @media only screen and (min-width: 352px) {
     .contacts-profile-badge {
@@ -133,6 +222,13 @@
 
     .contacts-link {
         font-size: 13px;
+    }
+}
+
+@media only screen and (min-width: 376px) {
+    .contacts-list-box {
+    width: 352px;
+    border-radius: 10px;
     }
 }
 
@@ -157,7 +253,7 @@
 @media only screen and (min-width: 576px) {
     
 }
-
+    
 @media only screen and (min-width: 800px) {
     .contacts-container {
         margin-left: 232px;
@@ -165,30 +261,168 @@
         margin-top: 96px;
     }
 
-    .add-person-icon {
+    .add-person-icon,
+    .contact-mobile-triple-dots {
         display: none;
     }
 
     .add-new-contact-button-div {
-        display: flex;
-        justify-content: center;
+        justify-self: center;
         margin: 3px 0 8px;
+        
+    }
+
+    .add-new-contact-button {
+        width: 352px;
+        height: 56px;
+        background: #2A3647;
+        color: #fff;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        font-size: 21px;
+        font-weight: 700;
+        cursor: pointer;
+        justify-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        transition: all 100ms ease-in-out;
+    }
+
+    .add-new-contact-button:hover {
+        background: hsl(215, 26%, 32%);
+        transform: scale(1.005); 
+    }
+    
+    .add-new-contact-button:active {
+        background: hsl(215, 26%, 16%); 
+        transform: scale(1.01);
+    }
+
+
+
+    .contact-mobile-container {
+        display: none;
     }
 }
 
-@media only screen and (min-width: 1040px) {
+@media only screen and (min-width: 1080px) {
     .contacts-list {
         width: 428px;
         align-items: center;
     }
     
-    .contact-details {
+    
+
+
+/* Single contact desktop view */
+
+    .contact-desktop-details {
         width: auto;
     } 
 
-    .contact-details h1 {
-        font-size: 61px;
-        line-height: 73.2px;
+    .contact-desktop-container {
+        margin-top: 80px;
+        padding-top: 32px;
+        margin-left: 55px;
+        height: calc(100vh - 96px);
     }
-}
+    
+    .contact-desktop {
+        align-items: center;
+        gap: 24px;
+    }
+    
+    .contact-desktop h1 {
+        font-size: 61px;
+        font-weight: 700;
+        color: #000;
+        padding-bottom: 16px;
+    }
+    
+    .padding-bottom-16 {
+        padding-bottom: 16px;
+    }
 
+    .padding-bottom-24 {
+        padding-bottom: 24px;
+    }
+
+    .padding-bottom-40 {
+        padding-bottom: 40px;
+    }
+    
+    .contact-desktop-20 {
+        font-size: 20px;
+    }
+
+    .contact-desktop-27 {
+        font-size: 27px;
+    }
+    
+    .contact-desktop-blue-line {
+        width: 4px;
+        background: #29ABE2;
+        height: 59px;
+    }
+
+    .contact-desktop-profile-badge {
+        width: 120px;
+        height: 120px;
+        font-size: 47px;
+        color: #fff;
+        border-radius: 50%;
+        border: 2px solid #fff;
+    }
+
+    .contact-desktop-badge-and-name {
+        margin: 20px 0 48px 0;
+        display: flex;
+        align-items: center;
+        gap: 48px;
+    }
+
+    .contact-name-edit-delete {
+        display: flex;
+        flex-flow: column;
+        gap: 8px;
+    }
+
+    .contact-desktop-name {
+        font-size: 47px;
+        font-weight: 500;
+    }
+
+    .edit-and-delete-contact {
+        color: #2A3647;
+        display: flex;
+        gap: 18px;
+    }
+
+    .edit-contact,
+    .delete-contact {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .edit-and-delete-contact img {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* .contact-mobile-link {
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+.contact-mobile-email-phone {
+    font-size: 16px;
+    font-weight: 700; 
+}
+*/
+}
+ 
