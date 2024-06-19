@@ -19,8 +19,33 @@
     align-items: center;
 }
 
+.task-detail-font-regular {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.task-detail-font-small {
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.task-detail-close-container {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+}
+
+.task-detail-contact-name {
+    font-family: 'Open Sans'
+}
+
+.task-detail-close-container:hover {
+    background-color: rgb(226, 226, 226);
+}
+
 .task-detail-close {
     height: 13px;
+    cursor: pointer;
 }
 
 .task-detail-heading {
@@ -36,9 +61,27 @@
     align-items: center;
 }
 
+.task-detail-assigned-area,
+.task-detail-subtasks-area {
+    gap: 8px;
+}
+
+.task-detail-prio-value img {
+    width: 17px;
+}
+
 .task-detail-date-value,
+{
+gap: 10px;
+}
+
 .task-detail-prio-value {
     padding: 4px 18px;
+    gap: 10px;
+}
+
+.task-detail-todo-value {
+    font-size: 16px;
 }
 
 .task-detail-contact-icon {
@@ -46,6 +89,8 @@
     height: 42px;
     width: 42px;
     border-radius: 50%;
+    font-size: 12px;
+    color: white;
 }
 
 .task-detail-contact-container,
@@ -53,6 +98,17 @@
     align-items: center;
     gap: 16px;
     padding: 7px 16px 7px 16px;
+    display: inline-block;
+}
+
+.task-detail-subtask-container:hover {
+    background-color: rgb(231, 231, 231);
+    border-radius: 10px;
+}
+
+.task-detail-subtask-container img {
+    height: 16px;
+    width: 16px;
 }
 
 .task-detail-footer {
@@ -62,22 +118,29 @@
     height: 24px;
 }
 
-.task-detail-edit-icon {
-    height: 18px;
-    width: 18px;
-}
-
-.task-detail-delete-icon {
-    height: 18px;
-    width: 16px;
-}
-
 .task-detail-edit-container,
 .task-detail-delete-container {
     gap: 8px;
+    cursor: pointer;
 }
 
+
+.task-detail-edit-container:hover,
+.task-detail-delete-container:hover {
+    color: #29ABE2;
+    font-weight: bold;
+}
+
+.task-detail-edit-container:hover svg path,
+.task-detail-delete-container:hover svg path {
+    fill: #29ABE2;
+    /* Change fill color to #29ABE2 on hover */
+}
+
+
+
+
 .task-detail-footer-divider {
-height: 100%;
-border-left: 1px solid black;
+    height: 24px;
+    border-left: 1px solid #D1D1D1;
 }
