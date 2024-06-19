@@ -17,15 +17,24 @@ function showTask() {
     bg.classList.toggle("task-bg-low-index");
     taskContainer.classList.remove("task-container-hidden");
     body.classList.toggle("overflow-hidden");
+
+
+    bg.addEventListener('click', function (event) {
+        if (event.target == this) {
+            closeTask();
+        }
+    });
+
 }
 
 
-async function closeTask() {
+function closeTask() {
     taskContainer.classList.add("task-container-hidden");
-    bg.classList.toggle("task-bg-active");
-    body.classList.toggle("overflow-hidden");
-    bg.classList.toggle("task-bg-low-index");
+    bg.classList.remove("task-bg-active");
+    body.classList.remove("overflow-hidden");
+    bg.classList.add("task-bg-low-index");
 }
+
 
 
 function renderTask() {
