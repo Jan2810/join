@@ -17,6 +17,11 @@ let taskData = [
     }
 ];
 
+let availableCategorys = [
+    "Technical Task",
+    "User Story"
+];
+
 let checkedContacts = [];
 
 let contactsTaskOpen = false;
@@ -116,18 +121,31 @@ function openCalender() {
 function openCategorys() {
     document.getElementById("dropdownCategoryToggle").style.display = "none";
     document.getElementById("dropdownCategoryContainer").style.display = "";
-    document.getElementById("dropdownCategorys").style.display = "block";
-}
+    document.getElementById("dropdownCategorys").style.display = "block";    
+    renderTaskList();
+};
 
-function closeCategorys() {
-    document.getElementById("dropdownCategoryToggle").style.display = "none";
-    document.getElementById("dropdownCategoryContainer").style.display = "";
-    document.getElementById("dropdownCategorys").style.display = "block";
-}
+function closeCategorys(ev) {
+    ev.stopPropagation();
+    document.getElementById("dropdownCategoryToggle").style.display = "";
+    document.getElementById("dropdownCategoryContainer").style.display = "none";
+    document.getElementById("dropdownCategorys").style.display = "none";
+};
 
+function renderTaskList() {
+    let content = document.getElementById("dropdownCategorys");
+    content.innerHTML = "";
+    for (let i = 0; i < availableCategorys.length; i++) {
+        const category = availableCategorys[i];
+        content.innerHTML += `
+        <div onclick="addCategory(${i})" class="category-dd-item" id="ctg${i}">
+            <div class="task-cnt-name">${category}</div>
+        </div>
+        `;
+    }
+}
 
 async function openContacts() {
-    console.log(contactsTaskOpen)
     if (contactsTaskOpen === false) {
         document.getElementById("dropdownToggle").style.display = "none";
         document.getElementById("dropdownMenuContainer").style.display = "";

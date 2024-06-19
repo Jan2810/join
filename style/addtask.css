@@ -275,7 +275,6 @@
     justify-content: space-between;
     height: 45px;
     margin: 16px 0px 4px 0px;
-    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: white;
@@ -285,15 +284,25 @@
 
 .dropdown-menu {
     position: absolute;
-    top: -4px;
+    top: 0px;
     left: 0;
     width: 100%;
     max-height: 250px;
     border-radius: 10px;
     overflow-y: scroll;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     background-color: white;
     z-index: 2;
+}
+
+.dropdownmenu-ctg {
+    width: 100%;
+    max-height: 250px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    z-index: 2;
+    margin: 16px 0px 4px 0px;
 }
 
 #signParentContainer {
@@ -344,6 +353,21 @@
     height: 45px;
     padding: 12px 21px 12px 21px!important;
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);
+}
+
+.category-dd-item {
+    padding: 12px 21px 12px 21px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    border-radius: 10px;
+    border-top: 0;
+}
+
+.category-dd-item:hover {
+    cursor: pointer;
+    background-color: lightgrey;
 }
 
 .dropdown-item {
