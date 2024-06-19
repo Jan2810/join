@@ -11,6 +11,7 @@ function toggleNav() {
     subMenu.classList.toggle("d-none");
     subMenu.classList.toggle("display-column");
     navOpen = !navOpen;
+    console.log(navOpen);
     document.removeEventListener("click", toggleNav);
     if (navOpen) {
         setTimeout(() => {
