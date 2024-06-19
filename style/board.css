@@ -122,8 +122,8 @@ main {
 }
 
 .board-ticket-container {
-    width: 252px;
     min-height: 252px;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -167,6 +167,14 @@ main {
 
 .board-ticket-task {
     color: rgba(168, 168, 168, 1);
+    height: 40px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    white-space: normal;
+    text-overflow: ellipsis;
 }
 
 .board-ticket-statusbar {
@@ -198,7 +206,7 @@ main {
     color: (0, 0, 0, 1);
 }
 
-.board- .board-no-tasks-placeholder {
+.board-no-tasks-placeholder {
     width: 252px;
     height: 48px;
     color: rgba(168, 168, 168, 1);
@@ -217,10 +225,6 @@ main {
     .board-categories {
         flex-direction: column;
         width: fit-content;
-    }
-
-    .board-category-header {
-        width: 396px;
     }
 
     .board-ticket-section {
@@ -245,7 +249,7 @@ main {
     }
 
     #board-find-input-responsive {
-        display: block;
+        display: flex;
         margin: 48px 64px;
     }
 
@@ -258,7 +262,7 @@ main {
     }
 
     .board-category-header {
-        width: 396px;
+        max-width: 396px;
     }
 
     .board-header h1 {
@@ -298,5 +302,10 @@ main {
 @media (max-width: 470px) {
     #board-find-input-responsive {
         width: 100%;
+    }
+
+    .board-categories-add-task-button {
+        position: absolute;
+        right: 16px;
     }
 }

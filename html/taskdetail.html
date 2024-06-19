@@ -8,58 +8,13 @@
     <link rel="stylesheet" href="../style/taskdetail.css">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/board.css">
+    <script src="../script/task.js" defer></script>
 </head>
 
-<body>
-    <div class="task-detail-bg flex-center">
-        <div class="task-detail-container flex-column">
-            <div class="task-detail-eyebrow-container">
-                <div class="board-ticket-gategory">Category</div>
-                <img src="../assets/icons/close.svg" alt="" class="task-detail-close">
-            </div>
-            <div class="task-detail-heading">This is my ticket</div>
-            <div class="task-detail-description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-            <div class="task-detail-date-container flex">
-                <div class="task-detail-date-key">Due date:</div>
-                <div class="task-detail-date-value">02/09/2023</div>
-            </div>
-            <div class="task-detail-prio-container flex">
-                <div class="task-detail-prio-key">Priority:</div>
-                <div class="task-detail-prio-value">Urgent</div>
-            </div>
-            <div class="task-detail-assigned-area flex-column">
-                <div class="task-detail-prio-key">Assigned To::</div>
-                <div class="task-detail-contact-container flex">
-                    <div class="task-detail-contact-icon flex-center">FK</div>
-                    <div class="task-detail-contact-name">Felix Kirmse</div>
-                </div>
-                <div class="task-detail-contact-container flex">
-                    <div class="task-detail-contact-icon flex-center">HM</div>
-                    <div class="task-detail-contact-name">Hans Müller</div>
-                </div>
-            </div>
-            <div class="task-detail-subtasks-area flex-column">
-                <div class="task-detail-prio-key">Subtasks</div>
-                <div class="task-detail-subtask-container flex">
-                    <img src="../assets/icons/checked.svg" alt="">
-                    <div class="task-detail-contact-name">Do this and that</div>
-                </div>
-                <div class="task-detail-subtask-container flex">
-                    <img src="../assets/icons/unchecked.svg" alt="">
-                    <div class="task-detail-contact-name">Become a developer</div>
-                </div>
-            </div>
-            <div class="task-detail-footer flex">
-                <div class="task-detail-delete-container flex">
-                    <img class="task-detail-delete-icon" src="../assets/icons/delete.svg" alt="">Delete
-                </div>
-                <div class="task-detail-footer-divider"></div>
-                <div class="task-detail-edit-container flex">
-                    <img class="task-detail-edit-icon" src="../assets/icons/edit-black.svg" alt="">Edit
-                </div>
-            </div>
+<body onload="prepareTask()">
+    <button onclick="showTask()">show</button>
+    <button onclick="closeTask()">close</button>
 
-        </div>
     </div>
 </body>
 

@@ -17,6 +17,11 @@ let taskData = [
     }
 ];
 
+let availableCategorys = [
+    "Technical Task",
+    "User Story"
+];
+
 let checkedContacts = [];
 
 let contactsTaskOpen = false;
@@ -113,9 +118,44 @@ function openCalender() {
     document.getElementById("taskDate").style.color = "black";
 };
 
+function openCategorys() {
+    document.getElementById("dropdownCategoryToggle").style.display = "none";
+    document.getElementById("dropdownCategoryContainer").style.display = "";
+    document.getElementById("dropdownCategorys").style.display = "flex";
+    renderTaskList();
+};
+
+function closeCategorys(ev) {
+    ev.stopPropagation();
+    document.getElementById("dropdownCategoryToggle").style.display = "";
+    document.getElementById("dropdownCategoryContainer").style.display = "none";
+    document.getElementById("dropdownCategorys").style.display = "none";
+};
+
+function renderTaskList() {
+    let content = document.getElementById("dropdownCategorys");
+    content.innerHTML = "";
+    for (let i = 0; i < availableCategorys.length; i++) {
+        const category = availableCategorys[i];
+        content.innerHTML += `
+        <div onclick="addCategory(${i}); closeCategorys(event);" class="category-dd-item" id="ctg${i}">
+            <div class="task-cnt-name">${category}</div>
+        </div>
+        `;
+    }
+};
+
+function addCategory(i) {
+    if (taskData.category === "") {
+        taskData.category = availableCategorys[i];
+    } else {
+        taskData.category = "";
+        taskData.category = availableCategorys[i];
+    }
+    document.getElementById("selectedTask").innerHTML = `${taskData.category}`;
+}
 
 async function openContacts() {
-    console.log(contactsTaskOpen)
     if (contactsTaskOpen === false) {
         document.getElementById("dropdownToggle").style.display = "none";
         document.getElementById("dropdownMenuContainer").style.display = "";
@@ -128,17 +168,17 @@ async function openContacts() {
             }
         }
         contactsTaskOpen = true;
-    } 
+    }
 };
 
 function closeContacts(event) {
     if (contactsTaskOpen === true) {
-    event.stopPropagation();
-    document.getElementById("dropdownToggle").style.display = "flex";
-    document.getElementById("dropdownMenuContainer").style.display = "none";
-    document.getElementById("dropdownMenu").style.display = "none";
-    contactsTaskOpen = false;
-    } 
+        event.stopPropagation();
+        document.getElementById("dropdownToggle").style.display = "flex";
+        document.getElementById("dropdownMenuContainer").style.display = "none";
+        document.getElementById("dropdownMenu").style.display = "none";
+        contactsTaskOpen = false;
+    }
 };
 
 async function renderContactList() {

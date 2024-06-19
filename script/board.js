@@ -35,7 +35,7 @@ function updateDone() {
 }
 
 function generateTicketHTML(element, categoryBG) {
-    return `<div draggable="true" class="board-ticket">
+    return `<div draggable="true" class="board-ticket" onclick="showTask()">
     <div class="board-ticket-content flex-column">
         <div class="board-ticket-gategory ${categoryBG}-bg">${element['category']}</div>
         <div class="board-ticket-description">
