@@ -1,90 +1,116 @@
-.task-detail-bg {
-    background-color: rgba(0, 0, 0, 0.1);
-    height: 100vh;
+.task-bg {
+    height: 100%;
     width: 100vw;
+    position: fixed;
+    top: 0;
 }
 
-.task-detail-container {
+.task-bg-active {
+    height: 100%;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+}
+
+.task-bg-off {
+    height: 100%;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+}
+
+.task-bg-color {
+    background-color: rgba(0, 0, 0, 0.10);
+}
+
+.task-container {
     width: 525px;
     background-color: white;
     border-radius: 30px;
     padding: 48px 40px;
     z-index: 100;
-    gap: 24px
+    gap: 24px;
+    transition: all 100ms ease-in-out;
 }
 
-.task-detail-eyebrow-container {
+.task-container-hidden {
+    position: absolute;
+    right: 0px;
+    transform: translate(100%);
+}
+
+.task-eyebrow-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.task-detail-font-regular {
+.task-font-regular {
     font-size: 20px;
     font-weight: 400;
 }
 
-.task-detail-font-small {
+.task-font-small {
     font-size: 19px;
     font-weight: 400;
 }
 
-.task-detail-close-container {
+.task-close-container {
     height: 24px;
     width: 24px;
     border-radius: 50%;
 }
 
-.task-detail-contact-name {
+.task-contact-name {
     font-family: 'Open Sans'
 }
 
-.task-detail-close-container:hover {
+.task-close-container:hover {
     background-color: rgb(226, 226, 226);
 }
 
-.task-detail-close {
+.task-close {
     height: 13px;
     cursor: pointer;
 }
 
-.task-detail-heading {
+.task-heading {
     max-height: 219px;
     font-weight: 700;
     font-size: 61px;
     line-height: 73.2px;
 }
 
-.task-detail-date-container,
-.task-detail-prio-container {
+.task-date-container,
+.task-prio-container {
     gap: 25px;
     align-items: center;
 }
 
-.task-detail-assigned-area,
-.task-detail-subtasks-area {
+.task-assigned-area,
+.task-subtasks-area {
     gap: 8px;
 }
 
-.task-detail-prio-value img {
+.task-prio-value img {
     width: 17px;
 }
 
-.task-detail-date-value,
+.task-date-value,
 {
 gap: 10px;
 }
 
-.task-detail-prio-value {
+.task-prio-value {
     padding: 4px 18px;
     gap: 10px;
 }
 
-.task-detail-todo-value {
+.task-todo-value {
     font-size: 16px;
 }
 
-.task-detail-contact-icon {
+.task-contact-icon {
     background-color: green;
     height: 42px;
     width: 42px;
@@ -93,46 +119,46 @@ gap: 10px;
     color: white;
 }
 
-.task-detail-contact-container,
-.task-detail-subtask-container {
+.task-contact-container,
+.task-subtask-container {
     align-items: center;
     gap: 16px;
     padding: 7px 16px 7px 16px;
     display: inline-block;
 }
 
-.task-detail-subtask-container:hover {
+.task-subtask-container:hover {
     background-color: rgb(231, 231, 231);
     border-radius: 10px;
 }
 
-.task-detail-subtask-container img {
+.task-subtask-container img {
     height: 16px;
     width: 16px;
 }
 
-.task-detail-footer {
+.task-footer {
     justify-content: end;
     align-items: center;
     gap: 8px;
     height: 24px;
 }
 
-.task-detail-edit-container,
-.task-detail-delete-container {
+.task-edit-container,
+.task-delete-container {
     gap: 8px;
     cursor: pointer;
 }
 
 
-.task-detail-edit-container:hover,
-.task-detail-delete-container:hover {
+.task-edit-container:hover,
+.task-delete-container:hover {
     color: #29ABE2;
     font-weight: bold;
 }
 
-.task-detail-edit-container:hover svg path,
-.task-detail-delete-container:hover svg path {
+.task-edit-container:hover svg path,
+.task-delete-container:hover svg path {
     fill: #29ABE2;
     /* Change fill color to #29ABE2 on hover */
 }
@@ -140,7 +166,7 @@ gap: 10px;
 
 
 
-.task-detail-footer-divider {
+.task-footer-divider {
     height: 24px;
     border-left: 1px solid #D1D1D1;
 }
