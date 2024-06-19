@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/style.css">
-    <link rel="stylesheet" href="/style/board.css">
-    <link rel="stylesheet" href="/style/navigation.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/board.css">
+    <link rel="stylesheet" href="../style/navigation.css">
     <title>Board</title>
-    <script src="/script/board.js"></script>
-    <script src="/script/script.js"></script>
+    <script src="../script/board.js"></script>
+    <script src="../script/script.js"></script>
 </head>
 
-<body onload="includeHTML()">
-    <div w3-include-html="/assets/templates/navigation.html"></div>
+<body onload="includeHTML(); initBoard()">
+    <div w3-include-html="../assets/templates/navigation.html"></div>
 
 
     <main>
@@ -26,57 +26,93 @@
                 <div class="flex-row">
                     <input id="board-find-input" type="text" placeholder="Find Task">
                     <button id="board-add-task-button" class="bg-darkblue flex-center" type="button">Add task<img
-                            src="/assets/icons/add.svg" alt="+"></button>
+                            src="../assets/icons/add.svg" alt="+"></button>
+                    <button id="board-add-task-button-responsive" class="bg-darkblue flex-center" type="button"><img
+                        src="../assets/icons/add.svg" alt="+"></button>
                 </div>
             </div>
-            <div class="board-categories flex-row text-center">
-                <div class="board-categories-container">
-                    <span>To Do</span>
-                    <img src="/assets/icons/plus-button.svg" alt="+">
-                </div>
-                <div class="board-categories-container">
-                    <span>In progress</span>
-                    <img src="/assets/icons/plus-button.svg" alt="+">
-                </div>
-                <div class="board-categories-container">
-                    <span>Await feedback</span>
-                    <img src="/assets/icons/plus-button.svg" alt="+">
-                </div>
-                <div class="board-categories-container">
-                    <span>Done</span>
-                </div>
-            </div>
+            <input id="board-find-input-responsive" type="text" placeholder="Find Task">
         </div>
-        <div class="board-ticket-section flex-row">
-            <div id="board-todo-section" class="board-ticket-container">
 
-                <div class="board-ticket">
-                    <div class="board-ticket-content flex-column">
-                        <div class="board-ticket-gategory">Category</div>
-                        <div class="board-ticket-description">
-                            <div class="board-ticket-headline">Headline</div>
-                            <div class="board-ticket-task">Hier steht die ausführliche Beschreibung des Tasks...</div>
+        <div class="board-ticket-section">
+            <div class="board-categories flex-row">
+
+                <div class="board-category">
+                    <div class="board-category-header">
+                        <span>To do</span>
+                        <div class="board-categories-add-task-button">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
+                                <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                                <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
                         </div>
-                        <div class="board-ticket-statusbar flex-row">
-                            <div class="board-ticket-bar">
-                                <div class="board-ticket-bar-progress"></div>
-                            </div>
-                            <div class="board-ticket-progress">1/2 Subtasks</div>
-                        </div>
-                        <div class="flex-row flex-sb">
-                            <div>Users</div>
-                            <div class="board-ticket-priority"><img src="/assets/icons-addtask/prio-high-red.png" alt=""></div>
-                        </div>
+                    </div>
+                    <div id="board-ticket-container-todo" class="board-ticket-container">
+                        <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
                     </div>
                 </div>
 
+                <div class="board-category">
+                    <div class="board-category-header">
+                        <span>In progress</span>
+                        <div class="board-categories-add-task-button">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
+                                <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                                <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="board-ticket-container-in-progress" class="board-ticket-container">
+                        <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
+                    </div>
+                </div>
+
+                <div class="board-category">
+                    <div class="board-category-header">
+                        <span>Await feedback</span>
+                        <div class="board-categories-add-task-button">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
+                                <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                                <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="board-ticket-container-await-feedback" class="board-ticket-container">
+                        <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
+                    </div>
+                </div>
+
+                <div class="board-category">
+                    <div class="board-category-header">
+                        <span>Done</span>
+                        <div class="board-categories-add-task-button">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
+                                <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                                <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="board-ticket-container-done" class="board-ticket-container">
+                        <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
+                    </div>
+                </div>
             </div>
-            <div id="board-in-progress-section" class="board-ticket-container">
-                <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
-            </div>
-            <div id="board-await-feedback-section" class="board-ticket-container"></div>
-            <div id="board-done-section" class="board-ticket-container"></div>
         </div>
+
+
+
 
     </main>
 

@@ -2,7 +2,7 @@
 
 async function login() {
 
-    users = await loadData("", USERS_URL);
+    users = await loadData(USERS_URL);
     console.log(users);
 
     let email = document.getElementById("login-input-email");
@@ -12,7 +12,7 @@ async function login() {
     if (user) {
         saveUser(user);
         console.log("done");
-        window.location.href = "board.html";
+        window.location.href = "./html/board.html";
     }
     else {
         alert("User nicht gefunden");

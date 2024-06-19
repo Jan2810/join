@@ -1,0 +1,83 @@
+.task-detail-bg {
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    width: 100vw;
+}
+
+.task-detail-container {
+    width: 525px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 48px 40px;
+    z-index: 100;
+    gap: 24px
+}
+
+.task-detail-eyebrow-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-detail-close {
+    height: 13px;
+}
+
+.task-detail-heading {
+    max-height: 219px;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 73.2px;
+}
+
+.task-detail-date-container,
+.task-detail-prio-container {
+    gap: 25px;
+    align-items: center;
+}
+
+.task-detail-date-value,
+.task-detail-prio-value {
+    padding: 4px 18px;
+}
+
+.task-detail-contact-icon {
+    background-color: green;
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+}
+
+.task-detail-contact-container,
+.task-detail-subtask-container {
+    align-items: center;
+    gap: 16px;
+    padding: 7px 16px 7px 16px;
+}
+
+.task-detail-footer {
+    justify-content: end;
+    align-items: center;
+    gap: 8px;
+    height: 24px;
+}
+
+.task-detail-edit-icon {
+    height: 18px;
+    width: 18px;
+}
+
+.task-detail-delete-icon {
+    height: 18px;
+    width: 16px;
+}
+
+.task-detail-edit-container,
+.task-detail-delete-container {
+    gap: 8px;
+}
+
+.task-detail-footer-divider {
+height: 100%;
+border-left: 1px solid black;
+}
