@@ -9,7 +9,7 @@ async function loadData(url) {
     let data = await response.json();
     let dataArray = Object.keys(data).map(key => data[key]);
     return dataArray;
-}
+};
 
 async function postData(url, path = "", data = {}) {
     let response = await fetch(url + path + ".json", {
@@ -20,15 +20,14 @@ async function postData(url, path = "", data = {}) {
         body: JSON.stringify(data)
     });
     return response;
-}
+};
 
 function getNameSign(name) {
     let splittetName = name.split(" ");
     let firstLetter = splittetName[0].charAt(0).toUpperCase();
     let secondLetter = splittetName[1].charAt(0).toUpperCase();
     return `${firstLetter}${secondLetter}`;
-}
-
+};
 
 let backgroundColors = [
     "background: rgba(255, 122, 0, 1)",
@@ -64,21 +63,19 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
-}
+};
 
 
 function saveUser() {
     const userString = JSON.stringify(user);
     console.log(userString);
     localStorage.setItem('user', userString);
-
-
-}
+};
 
 function loadUser() {
     const retrievedUserString = localStorage.getItem('user');
     user = JSON.parse(retrievedUserString);
     console.log(user);
-}
+};
 
 

@@ -426,7 +426,7 @@
 .subtask-input input[type="text"] {
     font-family: "inter";
     width: 100%;
-    background: url('../assets/icons/calender.png') no-repeat right 42px center;
+    background: url('../assets/icons/add.png') no-repeat right 21px center;
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: white;

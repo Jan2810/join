@@ -4,18 +4,16 @@ let activeUrg = {
     "low": false
 }
 
-let taskData = [
-    {
-        "title": "",
-        "description": "",
-        "assigned_to": [],
-        "due_date": "",
-        "priority": "",
-        "category": "",
-        "subtasks": [],
-        "status": ""
-    }
-];
+let taskData = {
+    "title": "",
+    "description": "",
+    "assigned_to": [],
+    "due_date": "",
+    "priority": "",
+    "category": "",
+    "subtasks": [],
+    "status": ""
+}
 
 let availableCategorys = [
     "Technical Task",
@@ -153,7 +151,7 @@ function addCategory(i) {
         taskData.category = availableCategorys[i];
     }
     document.getElementById("selectedTask").innerHTML = `${taskData.category}`;
-}
+};
 
 async function openContacts() {
     if (contactsTaskOpen === false) {
@@ -218,7 +216,8 @@ function checkAssignments(i) {
     }
 };
 
-function assignContact(i) {
+async function assignContact(i) {
+    let contacts = await loadData(CONTACTS_URL);
     if (checkedContacts[i] === true) {
         checkedContacts[i] = false;
     } else if (checkedContacts[i] === false) {
