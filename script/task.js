@@ -3,37 +3,28 @@ let bg = document.createElement("div");
 let taskContainer = document.createElement("div")
 
 
-
-
 function prepareTask() {
-
-   
-    bg.classList.add("task-bg");
-    bg.style.zIndex="-10";
+    bg.classList.add("task-bg", "task-bg-low-index", "flex-center");
     body.appendChild(bg);
     taskContainer.classList.add("task-container", "flex-column", "task-container-hidden",);
     bg.appendChild(taskContainer);
-    taskContainer.innerHTML = renderTask();
-    
-    
+
 }
 
 function showTask() {
-    bg.style.zIndex="10";
+    taskContainer.innerHTML = renderTask();
+    bg.classList.toggle("task-bg-active");
+    bg.classList.toggle("task-bg-low-index");
     taskContainer.classList.remove("task-container-hidden");
-    setTimeout(() => bg.classList.add("task-bg-color"), 0);
-    bg.classList.remove("d-none");
-    bg.classList.add("flex-center");
     body.classList.toggle("overflow-hidden");
 }
 
 
-function closeTask () {
-    bg.classList.remove("task-bg-color");
-    bg.classList.remove("flex-center",);
-    bg.remove();
+async function closeTask() {
+    taskContainer.classList.add("task-container-hidden");
+    bg.classList.toggle("task-bg-active");
     body.classList.toggle("overflow-hidden");
-    prepareTask();
+    bg.classList.toggle("task-bg-low-index");
 }
 
 
