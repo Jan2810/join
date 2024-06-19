@@ -4,11 +4,26 @@ const CONTACTS_URL = "https://join---contacts-default-rtdb.europe-west1.firebase
 let users = [];
 let user = {};
 
+let navOpen = false;
+
 function toggleNav() {
     let subMenu = document.querySelector(".submenu");
     subMenu.classList.toggle("d-none");
     subMenu.classList.toggle("display-column");
+    navOpen = !navOpen;
+    document.removeEventListener("click", toggleNav);
+    if (navOpen) {
+        setTimeout(() => {
+            document.addEventListener("click", toggleNav);
+        }, 0);
+    }
 }
+
+
+
+
+
+
 
 async function loadData(url) {
     let response = await fetch(url + ".json");
