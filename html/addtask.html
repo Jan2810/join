@@ -12,7 +12,7 @@
     <script src="../script/addtask.js"></script>
 </head>
 
-<body onload="initAddTask()" onclick="closeContacts(event)">
+<body onload="initAddTask()" onclick="closeContacts(event); closeCategorys(event);">
     <div w3-include-html="../assets/templates/navigation.html"></div>
     <div class="task-body mgn-l-328">
         <div class="task-h1">
@@ -39,7 +39,7 @@
                                 <img src="../assets/icons/dropdown.png">
                             </div>
                             <div class="dropdown-menu" id="dropdownMenuContainer" style="display: none;">
-                                <div onclick="closeContacts(event)" class="dropdown-item upper-dropdown-item bg-white">
+                                <div onclick="closeContacts(event)" class="upper-dropdown-item bg-white">
                                     <span>Select contacts to assign</span>
                                     <img src="../assets/icons/dropup.png" alt="">
                                 </div>
@@ -59,7 +59,7 @@
                 <div class="task-right-cont" id="taskRightCont">
                     <div class="task-width">
                         <h3 class="task-form-font">Due date<span class="task-star">*</span></h3>
-                        <div class="custom-date-input task-width">
+                        <div class="task-date-input task-width">
                             <input onclick="openCalender()" id="taskDate"
                                 class="task-date-input task-form-font color-lightgrey bg-white task-input" type="date"
                                 required>
@@ -85,25 +85,30 @@
                             </div>
                         </div>
                     </div>
-                    <div onclick="openCategorys(); stopProp(event);" class="dropdown task-width">
+                    <div>
                         <h3 class="task-form-font">Category<span class="task-star">*</span></h3>
-                        <div class="dropdown-toggle" id="dropdownCategoryToggle">
-                            <span id="selectedItem">Select task category</span>
-                            <img src="../assets/icons/dropdown.png">
-                        </div>
-                        <div class="dropdownmenu-ctg" id="dropdownCategoryContainer" style="display: none;">
-                            <div onclick="closeCategorys(event)" class="category-dd-item bg-white">
-                                <span>Select task category</span>
-                                <img src="../assets/icons/dropup.png" alt="">
+                        <div onclick="openCategorys(); stopProp(event);" class="dropdown task-width">
+                            <div class="dropdown-toggle" id="dropdownCategoryToggle">
+                                <span id="selectedTask">Select task category</span>
+                                <img src="../assets/icons/dropdown.png">
                             </div>
-                            <div id="dropdownCategorys">
-                                <!-- rendered Categorys  -->
+                            <div class="dropdownmenu-ctg" id="dropdownCategoryContainer" style="display: none;">
+                                <div onclick="closeCategorys(event)" class="category-dd-upper-item bg-white">
+                                    <span>Select task category</span>
+                                    <img src="../assets/icons/dropup.png" alt="">
+                                </div>
+                                <div id="dropdownCategorys" class="dropdown-ctg">
+                                    <!-- rendered Categorys  -->
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div>
                         <h3 class="task-form-font">Subtasks</h3>
-                        <input class="task-width task-form-font task-input" type="text" placeholder="Add new subtask">
+                        <div class="subtask-input">
+                            <input class="task-width task-form-font task-input" type="text"
+                                placeholder="Add new subtask">
+                        </div>
                     </div>
                 </div>
             </div>
