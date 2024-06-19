@@ -122,8 +122,8 @@ main {
 }
 
 .board-ticket-container {
-    width: 252px;
     min-height: 252px;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -219,10 +219,6 @@ main {
         width: fit-content;
     }
 
-    .board-category-header {
-        width: 396px;
-    }
-
     .board-ticket-section {
         width: 100%;
         position: unset;
@@ -245,7 +241,7 @@ main {
     }
 
     #board-find-input-responsive {
-        display: block;
+        display: flex;
         margin: 48px 64px;
     }
 
@@ -258,7 +254,7 @@ main {
     }
 
     .board-category-header {
-        width: 396px;
+        max-width: 396px;
     }
 
     .board-header h1 {
@@ -298,5 +294,10 @@ main {
 @media (max-width: 470px) {
     #board-find-input-responsive {
         width: 100%;
+    }
+
+    .board-categories-add-task-button {
+        position: absolute;
+        right: 16px;
     }
 }
