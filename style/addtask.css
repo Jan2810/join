@@ -82,6 +82,14 @@
     margin: 12px 0px;
 }
 
+.task-input:focus {
+    outline: none;
+}
+
+.task-input:hover {
+    cursor: pointer;
+}
+
 .task-textarea {
     font-family: "inter";
     resize: vertical;
@@ -418,23 +426,110 @@
     background: rgba(9, 25, 49, 1) !important;
 }
 
-.subtask-input input[type="text"] {
-    font-family: "inter";
-    width: 100%;
-    background: url('../assets/icons/add.png') no-repeat right 21px center;
+.subtask-input-cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: white;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    margin-top: 16px;
 }
 
-.subtask-input input[type="text"]::-webkit-calendar-picker-indicator {
-    position: absolute;
-    right: 10px;
-    opacity: 0;
+.subtasks-input {
+    border: 0;
+    width: 100%;
+    height: 45px;
+    margin: 0!important;
+    border: 0;
+    padding-right: 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.subtask-img-cont{
+    margin-right: 21px;
+    gap: 5px;
+}
+
+.img-cont-subtask {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.img-cont-subtask img{
+    width: 24px;
+    height: auto;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.img-cont-subtask-first {
+    border-right: 1px solid #cccccca2;
+    padding-right: 5px;
+}
+
+.required-text {
+    color: red;
+    font-size: 16px;
+}
+
+.rendered-subtasks {
+    margin-top: 10px;
+    font-size: 14px;
+    font: 400;
+}
+
+.subtask-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 21px;
+    border-radius: 10px;
+    transition: all 100ms ease-in-out;
+    margin: 5px 0px;
+}
+
+.subtask-item:hover{
+    background-color: rgba(197, 197, 197, 0.26);
+    cursor: pointer;
+}
+
+.rendered-subtasks-img-cnt {
+    gap: 5px;
+}
+
+.subtask-edit-img{
+    border-radius: 1000px;
+}
+
+.subtask-edit-img:hover{
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.edit-subtask-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 21px;
+    transition: all 100ms ease-in-out;
+    margin: 5px 0px;
+    background-color: white;
+    border-bottom: 2px solid rgba(41, 171, 226, 1);
+}
+
+.editable-input {
+    padding-inline: 0px;
+    padding-block: 0px;
+    width: 100%;
+    border: 0;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: none;
+    outline: none;
 }
 
 @media (max-width: 1175px) {
@@ -495,10 +590,7 @@
     .task-clear-btn {
         display: none;
     }   
-
-    .task-margin-top {
-        margin-top: 70px;
-    }
+    
     .dropdown-ctg {
         height: 95px;
     }

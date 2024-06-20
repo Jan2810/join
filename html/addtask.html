@@ -12,7 +12,7 @@
     <script src="../script/addtask.js"></script>
 </head>
 
-<body onload="initAddTask()" onclick="closeContacts(event); closeCategorys(event);">
+<body onload="initAddTask()" onclick="closeContacts(event); closeCategorys(event); closeSubtasks(event);">
     <div w3-include-html="../assets/templates/navigation.html"></div>
     <div class="task-body mgn-l-328">
         <div class="task-h1">
@@ -105,13 +105,20 @@
                     </div>
                     <div>
                         <h3 class="task-form-font">Subtasks</h3>
-                        <div class="subtask-input">
-                            <div class="task-width task-form-font task-input">
-                                <input onclick="startAddSubtasks()" id="subtasksInput"
-                                    class="" type="text"
+                        <div >
+                            <div onkeydown="checkKey(event)" onclick="openSubtasks(); stopProp(event);" id="subtaskInputCont" class="task-width task-form-font subtask-input-cont">
+                                <input id="subtasksInput" class="subtasks-input task-input" type="text"
                                     placeholder="Add new subtask">
+                                <div id="subtaskImgCont" class="subtask-img-cont flex-center">
+                                    <div class="img-cont-subtask">
+                                        <img src="../assets/icons/add.png" alt="">
+                                    </div>
+                                </div>
                             </div>
-                            <div id="addedSubtasks"></div>
+                            <span id="requiredSubtext" class="required-text" style="display: none;">Cannot set empty subtask</span>
+                            <div class="rendered-subtasks" id="addedSubtasks">
+                                <!-- rendered subtasks -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -126,7 +133,7 @@
                         </div>
                         <button class="task-send-form-btn">
                             <span>Create Task</span>
-                            <img src="../assets/icons-addtask/check.png" alt="">
+                            <img src="../assets/icons/hook-white.svg" alt="">
                         </button>
                     </div>
                 </div>

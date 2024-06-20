@@ -1,8 +1,11 @@
+let checkedContacts = [];
+let contactsTaskOpen = false;
+
 let activeUrg = {
     "high": false,
     "mid": false,
     "low": false
-}
+};
 
 let taskData = {
     "title": "",
@@ -13,16 +16,12 @@ let taskData = {
     "category": "",
     "subtasks": [],
     "status": ""
-}
+};
 
 let availableCategorys = [
     "Technical Task",
     "User Story"
 ];
-
-let checkedContacts = [];
-
-let contactsTaskOpen = false;
 
 async function initAddTask() {
     await includeHTML();
@@ -82,8 +81,19 @@ function highlightButtonLow() {
     document.getElementById("img-high").src = `../assets/icons-addtask/prio-high-color.png`;
     document.getElementById("img-mid").src = `../assets/icons-addtask/prio-mid-color.png`;
     document.getElementById("img-low").src = `../assets/icons-addtask/prio-low-white.png`;
-}
+};
 
+function showWarning() {
+    document.getElementById("subtasksInput").value = "";
+    document.getElementById("subtaskInputCont").style.borderColor = "";
+    document.getElementById("requiredSubtext").style.display = "none";
+};
+
+function hideWarning() {
+    document.getElementById("subtaskInputCont").style.borderColor = "red";
+    document.getElementById("requiredSubtext").style.display = "block";
+    document.getElementById("subtasksInput").focus();
+};
 
 function hoverBtn(boolean, id) {
     if (boolean === true && id === "img-high") {
@@ -224,7 +234,7 @@ async function assignContact(i) {
     }
     renderSignList();
     checkAssignments(i);
-}; 
+};
 
 async function renderSignList() {
     let content = document.getElementById("signContainer");
@@ -260,6 +270,113 @@ function returnSignList(cnt, i) {
            </div>`;
 };
 
-function startAddSubtasks() {
-    let input = document.createElement("subtasksInput");
+function addSubtask() {
+    let input = document.getElementById("subtasksInput").value;
+    if (input !== "" && taskData.subtasks.length < 4) {
+        taskData.subtasks.push(input);
+        showWarning();
+        renderSubtasks();
+    } else {
+        hideWarning
+    }
+    if (taskData.subtasks.length === 4) {
+        document.getElementById("requiredSubtext").style.display = "block";
+        requiredSubtext.innerHTML = "You reached the maximum number of tasks"
+    }
+};
+
+function renderSubtasks() {
+    container = document.getElementById("addedSubtasks")
+    container.innerHTML = "";
+    for (let i = 0; i < taskData.subtasks.length; i++) {
+        const subtask = taskData.subtasks[i];
+        container.innerHTML += `
+        <div id="subtask${i}">
+            <div class="subtask-item">
+                <li>${subtask}</li>
+                <div class="img-cont-subtask flex-center">
+                    <div onclick="editSubtask(${i})" class="img-cont-subtask-first img-cont-subtask">
+                        <img src="../assets/icons/edit.png" alt="">
+                    </div>
+                    <div onclick="deleteSubtask(${i})" class="img-cont-subtask-last">
+                        <img src="../assets/icons/delete.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+       `;
+    }
+    console.log(taskData.subtasks);
+};
+
+function editSubtask(i) {
+    document.getElementById(`subtask${i}`).innerHTML = `
+            <div onkeydown="checkEditKey(event, ${i})" class="edit-subtask-item">
+                <input id="editedValue" type="text" class="editable-input" value="${taskData.subtasks[i]}">
+                <div class="img-cont-subtask flex-center">
+                    <div onclick="deleteSubtask(${i})" class="img-cont-subtask-first img-cont-subtask">
+                        <img src="../assets/icons/delete.png" alt="">
+                    </div>
+                    <div onclick="saveSubtask(${i})" class="img-cont-subtask-last">
+                        <img src="../assets/icons/hook-small-dark.png" alt="">
+                    </div>
+                </div>
+            </div>
+    `;
+    document.getElementById("editedValue").focus()
+    document.getElementById("editedValue").select()
+}
+function checkEditKey(ev, i) {
+    if (ev.key === "Enter") {
+        ev.preventDefault();
+        saveSubtask(i);
+    }
+}
+
+function deleteSubtask(i) {
+    taskData.subtasks.splice(i, 1);
+    renderSubtasks();
+};
+
+function saveSubtask(i) {
+    taskData.subtasks[i] = document.getElementById("editedValue").value;
+    renderSubtasks();
+};
+
+function checkKey(ev) {
+    if (ev.key === 'Enter') {
+        ev.preventDefault();
+        addSubtask();
+    }
+};
+
+function openSubtasks() {
+    let imgContainer = document.getElementById("subtaskImgCont");
+    document.getElementById("subtasksInput").focus();
+    imgContainer.innerHTML = "";
+    imgContainer.innerHTML = `
+    <div onclick="clearInputfield()" class=" img-cont-subtask-first img-cont-subtask">
+        <img src="../assets/icons/x-black.png" alt="">
+    </div>
+    <div onclick="addSubtask()" class="img-cont-subtask">
+        <img src="../assets/icons/hook-small-dark.png" alt="">
+    </div>
+    `;
+};
+
+function closeSubtasks(ev) {
+    ev.stopPropagation();
+    document.getElementById("subtaskInputCont").style.borderColor = "";
+    document.getElementById("requiredSubtext").style.display = "none";
+    let imgContainer = document.getElementById("subtaskImgCont");
+    imgContainer.innerHTML = "";
+    imgContainer.innerHTML = `
+    <div class="img-cont-subtask">
+        <img src="../assets/icons/add.png" alt="">
+    </div>
+    `;
+};
+
+function clearInputfield() {
+    document.getElementById("subtasksInput").value = "";
 }
