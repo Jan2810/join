@@ -4,7 +4,7 @@
     left: 0;
     height: 100vh;
     width: 100vw;
-
+    background-color: rgba(0, 0, 0, 0.20);
 }
 
 .edit-contact {
@@ -15,6 +15,8 @@
 .add-contact {
     transition: transform 100ms ease-in-out;
     transform: translateY(0%); 
+    width: 100%;
+    border-radius: 12px;
 }
 
 .hide-add-contact-overlay {
@@ -30,7 +32,6 @@
 }
 
 .add-contact-top {
-    max-width: 396px;
     height: 352px;
     padding: 66px 24px 66px 24px;
     background: #2A3647;
@@ -38,6 +39,8 @@
     position: relative;
     display: flex;
     align-items: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 
     
 
@@ -107,8 +110,82 @@
 }
 
 .add-contact-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 
 }
+
+.add-contact-form {
+    width: 364px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 15px;
+    margin: 96px 0 72px;
+
+}
+
+.add-contact-form input {
+    width: 100%;
+     padding: 10px;
+    /*margin-bottom: 15px; */
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 16px;
+}
+.add-contact-form input::placeholder {
+    color: #D1D1D1;
+}
+
+.add-contact-form input:focus {
+    border-color: #29ABE2;
+    outline: none;
+}
+.add-contact-form button {
+    width: 202px;
+    height: 51px;
+    background-color: #2A3647;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 16px;
+}
+
+.add-contact-form button:hover {
+    background: #29ABE2;
+}
+
+.add-contact-form button:active {
+        background: #091931;
+}
+
+.add-new-contact-button {
+        width: 352px;
+        height: 56px;
+        background: #2A3647;
+        color: #fff;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        font-size: 21px;
+        font-weight: 700;
+        cursor: pointer;
+        justify-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        /* transition: all 100ms ease-in-out; */
+    }
+    
+
 
 
 
@@ -121,8 +198,10 @@
     
 }
 
-@media only screen and (min-width: 376px) {
-    
+@media only screen and (min-width: 396px) {
+    .add-contact {
+    width: 396px;
+}
 }
 
 @media only screen and (min-width: 440px) {
