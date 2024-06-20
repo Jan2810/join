@@ -19,7 +19,7 @@ function recreateColor1() {
 function changeColor2() {
     document.getElementById("firstRowCont2").classList.remove("bg-darkblue");
     document.getElementById('firstRowCont2').classList.add("bg-white");
-    document.getElementById("sumHook").src = "../assets/icons/hook-black.svg";
+    document.getElementById("sumHook").src = "../assets/icons/hook-sum-dark.png";
 };
 
 function recreateColor2() {

@@ -217,7 +217,6 @@ function checkAssignments(i) {
 };
 
 async function assignContact(i) {
-    let contacts = await loadData(CONTACTS_URL);
     if (checkedContacts[i] === true) {
         checkedContacts[i] = false;
     } else if (checkedContacts[i] === false) {
@@ -225,7 +224,7 @@ async function assignContact(i) {
     }
     renderSignList();
     checkAssignments(i);
-};
+}; 
 
 async function renderSignList() {
     let content = document.getElementById("signContainer");

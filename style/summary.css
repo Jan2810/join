@@ -90,7 +90,7 @@
 }
 
 .sum-icon-container img {
-    height: 32px;
+    height: auto;
     width: 32px;
 }
 
@@ -237,7 +237,7 @@
 @media (max-width: 970px) {
     .sum-body {
         top: 133px;
-        margin-bottom: 189px;
+        margin-bottom: 250px;
     }
 
     .summary-headline {
