@@ -22,7 +22,7 @@ async function updateTasksByStatus(status, categoryId) {
     for (let i = 0; i < tasks.length; i++) {
         const element = tasks[i];
         let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
-        document.getElementById(categoryId).innerHTML += generateTicketHTML(i, element, categoryBG);
+        document.getElementById(categoryId).innerHTML += generateTicketHTML(element, categoryBG);
     }
 
     if (categoryId.innerHTML = '') {
@@ -86,8 +86,7 @@ function showFilteredTasks(filteredTasks) {
     }
     filteredTasks.forEach(task => {
         let categoryBG = task['category'].replace(/\s+/g, '-').toLowerCase();
-        let taskHTML = generateTicketHTML(task, categoryBG);
-        containers[task['status']].innerHTML += taskHTML;
+        containers[task['status']].innerHTML += generateTicketHTML(task, categoryBG);
     });
     for (let key in containers) {
         if (containers[key].innerHTML === '') {
@@ -96,8 +95,8 @@ function showFilteredTasks(filteredTasks) {
     }
 }
 
-function generateTicketHTML(i, element, categoryBG) {
-    return `<div id="board-ticket${i}" draggable="true" class="board-ticket" onclick="showTask(${element})">
+function generateTicketHTML(element, categoryBG) {
+    return `<div id="board-ticket" draggable="true" class="board-ticket" onclick="showTask(${element})">
     <div class="board-ticket-content flex-column">
         <div class="board-ticket-gategory ${categoryBG}-bg">${element['category']}</div>
         <div class="board-ticket-description">
