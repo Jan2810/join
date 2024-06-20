@@ -34,6 +34,14 @@ function updateDone() {
     updateTasksByStatus('done', 'board-ticket-container-done');
 }
 
+function filterTasks() {
+    
+}
+
+
+
+
+
 function generateTicketHTML(element, categoryBG) {
     return `<div draggable="true" class="board-ticket" onclick="showTask()">
     <div class="board-ticket-content flex-column">
