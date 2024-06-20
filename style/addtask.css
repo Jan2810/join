@@ -377,6 +377,7 @@
     cursor: pointer;
     border-bottom: 1px solid #ccc;
     border-radius: 10px;
+    z-index: 4;
 }
 
 .category-dd-upper-item {
@@ -415,7 +416,6 @@
     padding: 10px;
     cursor: pointer;
     border-radius: 10px;
-    border-top: 0;
 }
 
 .dropdown-item:hover {
@@ -460,10 +460,14 @@
 }
 
 .img-cont-subtask img{
-    width: 24px;
+    width: 28px;
     height: auto;
     padding: 5px;
     cursor: pointer;
+}
+
+.img-cont-subtask-first-n img{
+    width: 24px;
 }
 
 .img-cont-subtask-first {
@@ -568,7 +572,7 @@
     .task-right-cont {
         border-left: 0;
         padding-left: 0;
-        margin-top: 20px;
+        margin-top: 60px;
     }
 
     .task-btn-cont {

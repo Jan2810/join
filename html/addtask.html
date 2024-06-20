@@ -23,13 +23,15 @@
                 <div class="task-left-cont">
                     <div class="task-width">
                         <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
-                        <input class="task-width task-form-font task-input" type="text" placeholder="Enter a title"
+                        <input id="taskTitle" class="task-width task-form-font task-input" type="text" placeholder="Enter a title"
                             required>
+                            <span id="requiredTitle" class="required-text" style="display: none;">This field is required</span>
                     </div>
                     <div>
                         <h3 class="task-form-font">Description</h3>
-                        <textarea class="task-width task-form-font task-textarea task-input" type="text"
+                        <textarea id="taskDescription" class="task-width task-form-font task-textarea task-input" type="text"
                             placeholder="Enter a Description"></textarea>
+                        <span id="requiredDescription" class="required-text" style="display: none;">This field is required</span>
                     </div>
                     <div>
                         <h3 class="task-form-font">Assigned to</h3>
@@ -127,11 +129,11 @@
                 <div class="flex-row flex-center task-bottom-line">
                     <p><span class="task-star">*</span>This field is required</p>
                     <div class="flex-center task-form-btn-cont">
-                        <div class="task-clear-btn" onmouseover="enterIcon()" onmouseout="outIcon()">
+                        <div class="task-clear-btn" onclick="clearAll()" onmouseover="enterIcon()" onmouseout="outIcon()">
                             <span>Clear</span>
                             <img id="task-x" src="../assets/icons/x-black.png" alt="">
                         </div>
-                        <button class="task-send-form-btn">
+                        <button onclick="addNewTask(); return false;" class="task-send-form-btn">
                             <span>Create Task</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
                         </button>

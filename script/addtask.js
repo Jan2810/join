@@ -1,11 +1,20 @@
 let checkedContacts = [];
 let contactsTaskOpen = false;
 
-let activeUrg = {
-    "high": false,
-    "mid": false,
-    "low": false
-};
+let activeUrg = [
+    {
+        "urgency": "high",
+        "active": false
+    },
+    {
+        "urgency": "mid",
+        "active": false
+    },
+    {
+        "urgency": "low",
+        "active": false
+    }
+];
 
 let taskData = {
     "title": "",
@@ -25,33 +34,33 @@ let availableCategorys = [
 
 async function initAddTask() {
     await includeHTML();
-    changeUrgency("mid")
+    changeUrgency("mid");
 };
 function changeUrgency(urg) {
     if (urg === "high") {
-        activeUrg.high = true;
-        activeUrg.mid = false;
-        activeUrg.low = false;
+        activeUrg[0].active = true;
+        activeUrg[1].active = false;
+        activeUrg[2].active = false;
     } else if (urg === "mid") {
-        activeUrg.high = false;
-        activeUrg.mid = true;
-        activeUrg.low = false;
+        activeUrg[0].active = false;
+        activeUrg[1].active = true;
+        activeUrg[2].active = false;
     } else if (urg === "low") {
-        activeUrg.high = false;
-        activeUrg.mid = false;
-        activeUrg.low = true;
+        activeUrg[0].active = false;
+        activeUrg[1].active = false;
+        activeUrg[2].active = true;
     }
     changeBgBtn()
 };
 
 function changeBgBtn() {
-    if (activeUrg.high === true) {
+    if (activeUrg[0].active === true) {
         highlightButtonHigh();
     }
-    if (activeUrg.mid === true) {
+    if (activeUrg[1].active === true) {
         highlightButtonMid();
     }
-    if (activeUrg.low === true) {
+    if (activeUrg[2].active === true) {
         highlightButtonLow();
     }
 };
@@ -98,17 +107,17 @@ function hideWarning() {
 function hoverBtn(boolean, id) {
     if (boolean === true && id === "img-high") {
         document.getElementById(id).src = "../assets/icons-addtask/prio-high-white.png";
-    } else if (boolean === false && id === "img-high" && activeUrg.high === false) {
+    } else if (boolean === false && id === "img-high" && activeUrg[0].active === false) {
         document.getElementById(id).src = "../assets/icons-addtask/prio-high-color.png";
     }
     if (boolean === true && id === "img-mid") {
         document.getElementById(id).src = "../assets/icons-addtask/prio-mid-white.png";
-    } else if (boolean === false && id === "img-mid" && activeUrg.mid === false) {
+    } else if (boolean === false && id === "img-mid" && activeUrg[1].active === false) {
         document.getElementById(id).src = "../assets/icons-addtask/prio-mid-color.png";
     }
     if (boolean === true && id === "img-low") {
         document.getElementById(id).src = "../assets/icons-addtask/prio-low-white.png";
-    } else if (boolean === false && id === "img-low" && activeUrg.low === false) {
+    } else if (boolean === false && id === "img-low" && activeUrg[2].active === false) {
         document.getElementById(id).src = "../assets/icons-addtask/prio-low-color.png";
     }
 };
@@ -306,7 +315,6 @@ function renderSubtasks() {
         </div>
        `;
     }
-    console.log(taskData.subtasks);
 };
 
 function editSubtask(i) {
@@ -355,7 +363,7 @@ function openSubtasks() {
     document.getElementById("subtasksInput").focus();
     imgContainer.innerHTML = "";
     imgContainer.innerHTML = `
-    <div onclick="clearInputfield()" class=" img-cont-subtask-first img-cont-subtask">
+    <div onclick="clearInputfield()" class=" img-cont-subtask-first-n img-cont-subtask">
         <img src="../assets/icons/x-black.png" alt="">
     </div>
     <div onclick="addSubtask()" class="img-cont-subtask">
@@ -379,4 +387,67 @@ function closeSubtasks(ev) {
 
 function clearInputfield() {
     document.getElementById("subtasksInput").value = "";
-}
+};
+
+function clearAll() {
+    clearAllInputs()
+    checkedContacts = [];
+    taskData = {
+        "title": "",
+        "description": "",
+        "assigned_to": [],
+        "due_date": "",
+        "priority": "",
+        "category": "",
+        "subtasks": [],
+        "status": ""
+    };
+    renderSignList();
+    changeUrgency("mid");
+    renderSubtasks();
+};
+
+function clearAllInputs() {
+    document.getElementById("taskTitle").value = "";
+    document.getElementById("taskDescription").value = "";
+    document.getElementById("taskDate").value = "";
+    document.getElementById("selectedTask").innerHTML = "Select task category";
+};
+
+async function getAssignedContacts() {
+    let contacts = await loadData(CONTACTS_URL);
+    console.log(checkedContacts);
+    if (checkedContacts.length > 0) {
+        for (let i = 0; i < checkedContacts.length; i++) {
+            const assignedContact = checkedContacts[i];
+            console.log(assignedContact);
+            if (assignedContact === true) {
+                taskData.assigned_to.push(contacts[i])
+            }
+        }
+    } else {
+        console.log("false");
+    }
+};
+
+function getUrgency() {
+    for (let i = 0; i < activeUrg.length; i++) {
+        const urg = activeUrg[i];
+        if (urg.active === true) {
+            console.log();
+            taskData.priority = urg.urgency;
+        }
+    }
+};
+
+async function addNewTask() {
+    getAssignedContacts();
+    getUrgency();
+    taskData.title = document.getElementById("taskTitle").value;
+    taskData.description = document.getElementById("taskDescription").value;
+    taskData.due_date = document.getElementById("taskDate").value;
+    taskData.category = document.getElementById("selectedTask").innerHTML;
+    taskData.status = "todo";
+    console.log(taskData);
+    clearAll();
+};
