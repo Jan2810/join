@@ -264,10 +264,11 @@
                 </div>
             </div>
             <div class="add-contact-bottom">
-                <form action="">
-                    <input type="text" placeholder="Name">
-                    <input type="email" placeholder="Email">
-                    <input type="tel" placeholder="Phone">
+                <form id="add-contact-form" class="add-contact-form">
+                    <input type="text" placeholder="Name" required minlength="2">
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Phone" required minlength="10">
+                    <button type="submit">Create contact</button>
                 </form>
 
             </div>
