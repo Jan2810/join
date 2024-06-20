@@ -96,6 +96,16 @@
     padding: 15px 0;
 }
 
+.contacts-list-box:hover {
+    background: rgb(246, 247, 248);
+    cursor: pointer;
+}
+
+.contacts-list-box:active {
+    background: #2A3647;
+    color: #fff;
+}
+
 .contacts-view-contact {
     background: #2A3647;
     color: #fff;

@@ -5,11 +5,15 @@
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.20);
+    transition: transform 200ms ease-in-out;
+    z-index: 200;
 }
 
-.edit-contact {
+.overlay-edit-contact {
     transition: transform 100ms ease-in-out;
     transform: translateX(0%); 
+    width: 100%;
+    border-radius: 12px;
 }
 
 .add-contact {
@@ -49,8 +53,8 @@
 
 .close-svg {
     position: absolute;
-    top: 4px;
-    right: 4px;
+    top: 24px;
+    right: 8px;
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -80,7 +84,7 @@
     font-size: 47px;
     color: #fff;
     border-radius: 50%;
-    border: 2px solid #fff;
+    border: 3px solid #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,11 +135,14 @@
 
 .add-contact-form input {
     width: 100%;
-     padding: 10px;
+     padding: 13px 21px;
     /*margin-bottom: 15px; */
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     font-size: 16px;
+    padding-right: 40px;
+    background-position: right 10px center;
+    background-repeat: no-repeat;
 }
 .add-contact-form input::placeholder {
     color: #D1D1D1;
@@ -145,6 +152,22 @@
     border-color: #29ABE2;
     outline: none;
 }
+
+.add-contact-form-name {
+    background-image: url(../assets/icons/person.svg);
+
+}
+
+.add-contact-form-email {
+    background-image: url(../assets/icons/mail.svg);
+
+}
+
+.add-contact-form-phone {
+    background-image: url(../assets/icons/call.svg);
+
+}
+
 .add-contact-form button {
     width: 202px;
     height: 51px;
@@ -189,8 +212,32 @@
 
 
 
+/* Contact successfully created pop-up */
 
+.contact-created-popup {
+    transition: transform 100ms ease-in-out;
+    transform: translateX(0%); 
+    width: 326px;
+    height: 74px;
+    border-radius: 20px;    
+    background: #2A3647;
+    color: #fff;
+    box-shadow: 0px 0px 4px 0px #00000026;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
 
+}
+
+.hide-contact-created-popup {
+    position: absolute;
+    right: 0;
+    transform: translateX(100%);
+}
 
 
 
@@ -199,7 +246,8 @@
 }
 
 @media only screen and (min-width: 396px) {
-    .add-contact {
+    .add-contact, 
+    .overlay-edit-contact {
     width: 396px;
 }
 }
