@@ -49,8 +49,8 @@
 
 .close-svg {
     position: absolute;
-    top: 4px;
-    right: 4px;
+    top: 24px;
+    right: 8px;
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -80,7 +80,7 @@
     font-size: 47px;
     color: #fff;
     border-radius: 50%;
-    border: 2px solid #fff;
+    border: 3px solid #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,11 +131,14 @@
 
 .add-contact-form input {
     width: 100%;
-     padding: 10px;
+     padding: 13px 21px;
     /*margin-bottom: 15px; */
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     font-size: 16px;
+    padding-right: 40px;
+    background-position: right 10px center;
+    background-repeat: no-repeat;
 }
 .add-contact-form input::placeholder {
     color: #D1D1D1;
@@ -145,6 +148,22 @@
     border-color: #29ABE2;
     outline: none;
 }
+
+.add-contact-form-name {
+    background-image: url(../assets/icons/person.svg);
+
+}
+
+.add-contact-form-email {
+    background-image: url(../assets/icons/mail.svg);
+
+}
+
+.add-contact-form-phone {
+    background-image: url(../assets/icons/call.svg);
+
+}
+
 .add-contact-form button {
     width: 202px;
     height: 51px;
