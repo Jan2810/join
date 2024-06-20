@@ -124,7 +124,7 @@ main {
 }
 
 .board-ticket-container {
-    min-height: 252px;
+    min-height: 100px;
     display: flex;
     flex-direction: column;
 }
@@ -210,6 +210,7 @@ main {
 }
 
 .board-no-tasks-placeholder {
+    margin-top: 12px;
     width: 252px;
     height: 48px;
     color: rgba(168, 168, 168, 1);
@@ -242,6 +243,7 @@ main {
         max-width: 396px;
         width: 100%;
         flex-direction: row;
+        padding: 0;
     }
 
     .board-category {
@@ -253,6 +255,10 @@ main {
     .board-ticket-container {
         flex-direction: row;
         overflow-x: scroll;
+    }
+
+    .board-no-tasks-placeholder{
+        margin-left: 8px;
     }
 }
 

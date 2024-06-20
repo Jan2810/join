@@ -1,3 +1,9 @@
+let tasksArray = [];
+
+async function initTaskArray() {
+    tasksArray = await loadData(TASKS_URL);
+}
+
 function initBoard() {
     updateTodos();
     updateInProgress();
@@ -6,8 +12,10 @@ function initBoard() {
 }
 
 async function updateTasksByStatus(status, categoryId) {
-    let dataArray = await loadData(TASKS_URL)
-    let tasks = dataArray.filter(t => t['status'] === status);
+    if (tasksArray.length === 0) {
+        await initTaskArray();
+    }
+    let tasks = tasksArray.filter(t => t['status'] === status);
     console.log(tasks);
     document.getElementById(categoryId).innerHTML = '';
 
@@ -15,6 +23,10 @@ async function updateTasksByStatus(status, categoryId) {
         const element = tasks[i];
         let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
         document.getElementById(categoryId).innerHTML += generateTicketHTML(element, categoryBG);
+    }
+
+    if (categoryId.innerHTML = '') {
+        categoryId.innerHTML = `<div class="board-no-tasks-placeholder flex-center">No tasks to do</div>`
     }
 }
 
@@ -34,13 +46,55 @@ function updateDone() {
     updateTasksByStatus('done', 'board-ticket-container-done');
 }
 
-function filterTasks() {
-    
+function startFilterTasks() {
+    if (document.getElementById('board-find-input').value.length >= 2) {
+        filterTasks()
+    } else {
+        initBoard();
+    }
 }
 
+function filterTasks() {
+    let search = document.getElementById('board-find-input').value.toLowerCase();
+    let filteredTasks = tasksArray.filter(task => task.title.toLowerCase().includes(search));
+    showFilteredTasks(filteredTasks);
+}
 
+function startFilterTasksResponsive() {
+    if (document.getElementById('board-find-input-responsive').value.length >= 2) {
+        filterTasksResponsive()
+    } else {
+        initBoard();
+    }
+}
 
+function filterTasksResponsive() {
+    let search = document.getElementById('board-find-input-responsive').value.toLowerCase();
+    let filteredTasks = tasksArray.filter(task => task.title.toLowerCase().includes(search));
+    showFilteredTasks(filteredTasks);
+}
 
+function showFilteredTasks(filteredTasks) {
+    let containers = {
+        'todo': document.getElementById('board-ticket-container-todo'),
+        'inprogress': document.getElementById('board-ticket-container-in-progress'),
+        'awaitfeedback': document.getElementById('board-ticket-container-await-feedback'),
+        'done': document.getElementById('board-ticket-container-done')
+    };
+    for (let key in containers) {
+        containers[key].innerHTML = '';
+    }
+    filteredTasks.forEach(task => {
+        let categoryBG = task['category'].replace(/\s+/g, '-').toLowerCase();
+        let taskHTML = generateTicketHTML(task, categoryBG);
+        containers[task['status']].innerHTML += taskHTML;
+    });
+    for (let key in containers) {
+        if (containers[key].innerHTML === '') {
+            containers[key].innerHTML = '<div class="board-no-tasks-placeholder flex-center">No tasks to do</div>';
+        }
+    }
+}
 
 function generateTicketHTML(element, categoryBG) {
     return `<div draggable="true" class="board-ticket" onclick="showTask()">
