@@ -20,6 +20,13 @@ main {
     align-items: center;
 }
 
+.board-header-lower-section-responsive {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
 .board-upper-content h1 {
     font-size: 61px;
     font-weight: 700;
@@ -121,13 +128,14 @@ main {
     min-height: 252px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
 }
 
 .board-ticket {
     width: 252px;
+    flex: 0 0 auto;
     border-radius: 24px;
     padding: 16px;
+    margin: 8px;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
     background-color: white;
 }
@@ -217,6 +225,15 @@ main {
     justify-content: space-between;
 }
 
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.width100 {
+    width: 100%;
+}
+
 @media (max-width: 1400px) {
     .board-categories {
         flex-direction: column;
@@ -276,6 +293,10 @@ main {
         font-size: 47px;
     }
 
+    .board-header-lower-section-responsive {
+        justify-content: flex-start;
+    }
+
     .board-ticket-section {
         margin-top: 32px;
     }
@@ -290,6 +311,14 @@ main {
 
     .board-upper-content {
         margin-top: 80px;
+    }
+
+    .board-header {
+        padding: 0 16px;
+    }
+
+    .board-ticket-section {
+        padding: 0 16px;
     }
 }
 
