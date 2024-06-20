@@ -166,7 +166,7 @@
 .contact-mobile-blue-line {
     width: 90px;
     background: #29ABE2;
-    height: 4px;
+    height: 3px;
     margin: 0 16px 40px;
 }
 
@@ -363,7 +363,7 @@
     }
     
     .contact-desktop-blue-line {
-        width: 4px;
+        width: 3px;
         background: #29ABE2;
         height: 59px;
     }

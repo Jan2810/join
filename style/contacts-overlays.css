@@ -1,0 +1,138 @@
+.contacts-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+
+}
+
+.edit-contact {
+    transition: transform 100ms ease-in-out;
+    transform: translateX(0%); 
+}
+
+.add-contact {
+    transition: transform 100ms ease-in-out;
+    transform: translateY(0%); 
+}
+
+.hide-add-contact-overlay {
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+}
+
+.hide-edit-contact-overlay {
+    position: absolute;
+    right: 0;
+    transform: translateX(100%);
+}
+
+.add-contact-top {
+    max-width: 396px;
+    height: 352px;
+    padding: 66px 24px 66px 24px;
+    background: #2A3647;
+    color: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    
+
+
+}
+
+.close-svg {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+
+}
+
+.add-contact-top-header h3{
+    font-weight: 700;
+    font-size: 47px;
+    padding-bottom: 16px;
+}
+
+.add-contact-top-header p{
+    font-size: 20px;
+    padding-bottom: 24px;
+}
+
+.add-contact-blue-line {
+    width: 90px;
+    background: #29ABE2;
+    height: 3px;
+}
+
+.add-contact-person-svg {
+    width: 120px;
+    height: 120px;
+    font-size: 47px;
+    color: #fff;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #D9D9D9;
+}
+
+.add-contact-center {
+    display: flex;
+    justify-content: center;
+    height: 0;
+    
+}
+
+.add-contact-person-svg {
+    width: 120px;
+    height: 120px;
+    font-size: 47px;
+    color: #fff;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #D9D9D9;
+    transform: translateY(-50%);
+    z-index: 4;
+}
+
+.add-contact-bottom {
+
+}
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 352px) {
+    
+}
+
+@media only screen and (min-width: 376px) {
+    
+}
+
+@media only screen and (min-width: 440px) {
+    
+}
+
+@media only screen and (min-width: 576px) {
+    
+}
+    
+@media only screen and (min-width: 800px) {
+    
+}
