@@ -6,9 +6,10 @@
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.20);
     transition: transform 200ms ease-in-out;
+    z-index: 200;
 }
 
-.edit-contact {
+.overlay-edit-contact {
     transition: transform 100ms ease-in-out;
     transform: translateX(0%); 
     width: 100%;
@@ -245,7 +246,8 @@
 }
 
 @media only screen and (min-width: 396px) {
-    .add-contact {
+    .add-contact, 
+    .overlay-edit-contact {
     width: 396px;
 }
 }
