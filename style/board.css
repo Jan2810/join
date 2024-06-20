@@ -300,11 +300,24 @@ main {
         margin-top: 32px;
     }
 
+    .board-ticket-container {
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+
+    .board-ticket-container .board-ticket:first-child {
+        margin-left: 16px;
+    }
+
+    .board-ticket-container .board-ticket:last-child {
+        margin-right: 16px;
+    }
+
 }
 
 @media (max-width: 800px) {
     main {
-        height: calc(100vh -80px);
+        height: calc(100vh - 80px);
         margin-left: 0;
     }
 
@@ -317,7 +330,9 @@ main {
     }
 
     .board-ticket-section {
-        padding: 0 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 80px;
     }
 }
 
