@@ -240,7 +240,7 @@ main {
     }
 
     .board-category-header {
-        max-width: 396px;
+        max-width: 364px;
         width: 100%;
         flex-direction: row;
         padding: 0;
@@ -255,6 +255,15 @@ main {
     .board-ticket-container {
         flex-direction: row;
         overflow-x: scroll;
+        margin: 0 -64px;
+    }
+
+    .board-ticket-container .board-ticket:first-child {
+        margin-left: 64px;
+    }
+
+    .board-ticket-container .board-ticket:last-child {
+        margin-right: 64px;
     }
 
     .board-no-tasks-placeholder{
@@ -307,18 +316,17 @@ main {
     }
 
     .board-ticket-container {
-        margin-left: -16px;
-        margin-right: -16px;
+        margin-left: -64px;
+        margin-right: -64px;
     }
 
     .board-ticket-container .board-ticket:first-child {
-        margin-left: 16px;
+        margin-left: 64px;
     }
 
     .board-ticket-container .board-ticket:last-child {
-        margin-right: 16px;
+        margin-right: 64px;
     }
-
 }
 
 @media (max-width: 800px) {
@@ -344,6 +352,7 @@ main {
 
 @media (max-width: 470px) {
     #board-find-input-responsive {
+        max-width: 364px;
         width: 100%;
     }
 }
