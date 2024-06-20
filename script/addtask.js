@@ -258,4 +258,8 @@ function returnSignList(cnt, i) {
                 ${getNameSign(cnt.name)}
                 </div>
            </div>`;
+};
+
+function startAddSubtasks() {
+    let input = document.createElement("subtasksInput");
 }

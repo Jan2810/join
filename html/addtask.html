@@ -106,8 +106,12 @@
                     <div>
                         <h3 class="task-form-font">Subtasks</h3>
                         <div class="subtask-input">
-                            <input class="task-width task-form-font task-input" type="text"
-                                placeholder="Add new subtask">
+                            <div class="task-width task-form-font task-input">
+                                <input onclick="startAddSubtasks()" id="subtasksInput"
+                                    class="" type="text"
+                                    placeholder="Add new subtask">
+                            </div>
+                            <div id="addedSubtasks"></div>
                         </div>
                     </div>
                 </div>
