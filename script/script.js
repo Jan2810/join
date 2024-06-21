@@ -21,11 +21,31 @@ function toggleNav() {
 };
 
 async function loadData(url) {
-    let response = await fetch(url + ".json");
-    let data = await response.json();
-    let dataArray = Object.keys(data).map(key => data[key]);
-    return dataArray;
+    try {
+        let response = await fetch(url + ".json");
+        if (!response.ok) {
+            throw new Error('Netzwerkantwort war nicht ok');
+        }
+        let data = await response.json();
+        let dataArray = Object.keys(data).map(key => {
+            return {
+                id: key,   // Hier fügen wir den Firebase-Schlüssel als ID hinzu
+                ...data[key]  // Und fügen alle anderen Daten hinzu
+            };
+        });
+        console.log(dataArray);
+        return dataArray;
+    } catch (error) {
+        console.error('Fehler beim Laden der Daten:', error);
+    }
 };
+
+// async function loadData(url) {
+//     let response = await fetch(url + ".json");
+//     let data = await response.json();
+//     let dataArray = Object.keys(data).map(key => data[key]);
+//     return dataArray;
+// };
 
 async function postData(url, data = {}) {
     let response = await fetch(url + ".json", {
