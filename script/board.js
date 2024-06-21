@@ -26,7 +26,7 @@ async function updateTasksByStatus(status, categoryId) {
     }
 
     if (categoryId.innerHTML = '') {
-        categoryId.innerHTML = `<div class="board-no-tasks-placeholder flex-center">No tasks to do</div>`
+        categoryId.innerHTML = generatePlaceholderHTML();
     }
 }
 
@@ -115,4 +115,8 @@ function generateTicketHTML(element, categoryBG) {
         </div>
     </div>
 </div>`
+}
+
+function generatePlaceholderHTML() {
+    return `<div class="board-no-tasks-placeholder flex-center">No tasks to do</div>`
 }
