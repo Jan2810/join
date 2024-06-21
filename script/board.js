@@ -59,6 +59,15 @@ function updateDone() {
     updateTasksByStatus('done', 'board-ticket-container-done');
 }
 
+function filterTasks() {
+    let search = document.getElementById('board-find-input').value.toLowerCase();
+    filteredTasks = tasksArray.filter(task => task.title.toLowerCase().includes(search));
+    updateFilteredTodos();
+    updateFilteredInProgress();
+    updateFilteredAwaitFeedback()
+    updateFilteredDone();
+}
+
 function updateFilteredTasks(status, containerId) {
     let tasks = filteredTasks.filter(t => t['status'] === status);
     console.log(tasks);
@@ -70,7 +79,7 @@ function updateFilteredTasks(status, containerId) {
         document.getElementById(containerId).innerHTML += generateTicketHTML(i, element, categoryBG);
     }
 
-   if (document.getElementById(containerId).innerHTML === '') {
+    if (document.getElementById(containerId).innerHTML === '') {
         document.getElementById(containerId).innerHTML = generatePlaceholderHTML();
     }
 }
@@ -81,15 +90,6 @@ function startFilterTasks() {
     } else {
         initBoard();
     }
-}
-
-function filterTasks() {
-    let search = document.getElementById('board-find-input').value.toLowerCase();
-    filteredTasks = tasksArray.filter(task => task.title.toLowerCase().includes(search));
-    updateFilteredTodos();
-    updateFilteredInProgress();
-    updateFilteredAwaitFeedback()
-    updateFilteredDone();
 }
 
 function startFilterTasksResponsive() {
@@ -126,7 +126,14 @@ function updateFilteredDone() {
 }
 
 function generateTicketHTML(i, element, categoryBG) {
-    return `<div id="board-ticket${i}" draggable="true" ondragstart="startDragging(${i})" class="board-ticket" onclick="showTask(${element})">
+    let assignedHTML = '';
+    for (let j = 0; j < element['assigned_to'].length; j++) {
+        let initials = getNameSign(element['assigned_to'][j]);
+        assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div>`;
+    }
+
+    return `
+<div id="board-ticket${i}" draggable="true" ondragstart="startDragging(${i})" class="board-ticket" onclick="showTask(${i})">
     <div class="board-ticket-content flex-column">
         <div class="board-ticket-gategory ${categoryBG}-bg">${element['category']}</div>
         <div class="board-ticket-description">
@@ -139,13 +146,18 @@ function generateTicketHTML(i, element, categoryBG) {
             </div>
             <div class="board-ticket-progress">${element['subtasks'].length}/${element['subtasks'].length} Subtasks</div>
         </div>
-        <div class="flex-row flex-sb">
-            <div>Users</div>
-            <div class="board-ticket-priority"><img src="../assets/icons-addtask/prio-${element['priority']}-color.png" alt="priority"></div>
+        <div class="flex-row flex-sb flex-center">
+            <div class="board-ticket-assigned-container flex-row">
+                ${assignedHTML}
+            </div>
+            <div class="board-ticket-priority">
+                <img src="../assets/icons-addtask/prio-${element['priority']}-color.png" alt="priority">
+            </div>
         </div>
     </div>
-</div>`
+</div>`;
 }
+
 
 function generatePlaceholderHTML() {
     return `<div class="board-no-tasks-placeholder flex-center">No tasks to do</div>`

@@ -105,7 +105,7 @@ main {
 .board-category-header {
     display: flex;
     justify-content: space-between;
-    padding: 0 16px;
+    padding: 0 8px;
     font-weight: 700;
     font-size: 20px;
     color: rgba(66, 82, 110, 1);
@@ -131,6 +131,7 @@ main {
 
 .board-ticket {
     width: 252px;
+    height: fit-content;
     flex: 0 0 auto;
     border-radius: 24px;
     padding: 16px;
@@ -152,6 +153,21 @@ main {
     width: fit-content;
     padding: 4px 16px;
     color: white;
+}
+
+.board-ticket-assigned-container {
+    margin-left: 8px;
+}
+
+.board-ticket-assigned {
+    height: 32px;
+    width: 32px;
+    background-color: aqua;
+    border-radius: 45px;
+    color: white;
+    border: 1px solid white;
+    font-size: 12px;
+    margin-left: -8px;
 }
 
 .user-story-bg {
