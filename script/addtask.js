@@ -169,7 +169,7 @@ function addCategory(i) {
         taskData.category = "";
         taskData.category = availableCategorys[i];
     }
-    document.getElementById("selectedTask").innerHTML = `${taskData.category}`;
+    document.getElementById("categoryInput").value = `${taskData.category}`
 };
 
 async function openContacts() {
@@ -409,7 +409,7 @@ function clearAllInputs() {
     document.getElementById("taskTitle").value = "";
     document.getElementById("taskDescription").value = "";
     document.getElementById("taskDate").value = "";
-    document.getElementById("selectedTask").innerHTML = "Select task category";
+    document.getElementById("categoryInput").value = "Select task category";
 };
 
 async function getAssignedContacts(contacts) {
@@ -420,8 +420,6 @@ async function getAssignedContacts(contacts) {
                 taskData.assigned_to.push(contacts[i]);
             }
         }
-    } else {
-        console.log("false");
     }
 };
 
@@ -435,7 +433,18 @@ function getUrgency() {
     }
 };
 
+function formValidationFeedback() {
+    document.getElementById("taskTitle").style.borderColor = "red";
+    document.getElementById("requiredTitle").style.display = "";
+    document.getElementById("taskDate").style.borderColor = "red";
+    document.getElementById("requiredDate").style.display = "";
+    document.getElementById("dropdownCategoryToggle").style.borderColor = "red";
+    document.getElementById("requiredCategorys").style.display = "";
+
+};
+
 async function addNewTask() {
+    formValidationFeedback();
     let contacts = await loadData(CONTACTS_URL);
     if (taskData.subtasks.length === 0) {
         taskData.subtasks = "";
@@ -443,9 +452,11 @@ async function addNewTask() {
     title = document.getElementById("taskTitle").value;
     description = document.getElementById("taskDescription").value;
     due_date = document.getElementById("taskDate").value;
-    category = document.getElementById("selectedTask").innerHTML;
-    console.log(category);
-    if (title !== "" && description !== "" && due_date !== "" && category != "Select task category") {
+    category = document.getElementById("categoryInput").value;
+    console.log(category.length);
+    console.log(title.length);
+    console.log(due_date.length);
+    if (title.length > 1 && due_date.length > 1 && category.length > 1) {
         getAssignedContacts(contacts);
         getUrgency();
         taskData.title = title
@@ -453,7 +464,9 @@ async function addNewTask() {
         taskData.due_date = due_date
         taskData.category = category
         taskData.status = "todo";
+        console.log(taskData);
         postData(TASKS_URL, taskData);
         clearAll();
     }
+
 };

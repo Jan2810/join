@@ -31,7 +31,6 @@
                         <h3 class="task-form-font">Description</h3>
                         <textarea id="taskDescription" class="task-width task-form-font task-textarea task-input" type="text"
                             placeholder="Enter a Description"></textarea>
-                        <span id="requiredDescription" class="required-text" style="display: none;">This field is required</span>
                     </div>
                     <div>
                         <h3 class="task-form-font">Assigned to</h3>
@@ -65,6 +64,7 @@
                             <input onclick="openCalender()" id="taskDate"
                                 class="task-date-input task-form-font color-lightgrey bg-white task-input" type="date"
                                 required>
+                                <span id="requiredDate" class="required-text" style="display: none;">This field is required</span>
                         </div>
                     </div>
                     <div>
@@ -90,8 +90,9 @@
                     <div>
                         <h3 class="task-form-font">Category<span class="task-star">*</span></h3>
                         <div onclick="openCategorys(); stopProp(event);" class="dropdown task-width">
-                            <div class="dropdown-toggle" id="dropdownCategoryToggle">
-                                <span id="selectedTask">Select task category</span>
+                            <div class="dropdown-toggle ctg-input-cnt" id="dropdownCategoryToggle">
+                                <input onclick="openCategorys(); preventDf(event); stopProp(event);" id="categoryInput" type="text" placeholder="Select task category" 
+                                class="category-dd-upper-item-input task-width bg-white" required>
                                 <img src="../assets/icons/dropdown.png">
                             </div>
                             <div class="dropdownmenu-ctg" id="dropdownCategoryContainer" style="display: none;">
@@ -103,6 +104,7 @@
                                     <!-- rendered Categorys  -->
                                 </div>
                             </div>
+                            <span id="requiredCategorys" class="required-text" style="display: none;">This field is required</span>
                         </div>
                     </div>
                     <div>
