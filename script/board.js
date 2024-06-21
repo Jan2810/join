@@ -132,7 +132,7 @@ function generateTicketHTML(i, element, categoryBG) {
         assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div>`;
     }
     return `
-<div id="board-ticket${i}" draggable="true" ondragstart="startDragging(${i})" class="board-ticket" onclick="showTask(${element['id']})">
+<div id="board-ticket${i}" draggable="true" ondragstart="startDragging(${i})" class="board-ticket" onclick="getTask(${element['id']})">
     <div class="board-ticket-content flex-column">
         <div class="board-ticket-gategory ${categoryBG}-bg">${element['category']}</div>
         <div class="board-ticket-description">

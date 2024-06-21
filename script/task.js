@@ -11,8 +11,8 @@ function prepareTask() {
 
 }
 
-function showTask() {
-    taskContainer.innerHTML = renderTask();
+function showTask(id) {
+    taskContainer.innerHTML = renderTask(id);
     bg.classList.toggle("task-bg-active");
     bg.classList.toggle("task-bg-low-index");
     taskContainer.classList.remove("task-container-hidden");
@@ -35,15 +35,18 @@ function closeTask() {
     bg.classList.add("task-bg-low-index");
 }
 
+function getTask(id) {
+    let task= tasksArray.find((e) => e['id'] == id);
+    console.log(task);
+}
 
-
-function renderTask() {
+function renderTask(id) {
     return /*html*/`<div class="task-eyebrow-container">
                 <div class="board-ticket-gategory technical-task-bg">Category</div>
                 <div onclick="closeTask()" class="task-close-container flex-center"><img src="../assets/icons/close.svg" alt=""
                         class="task-close"></div>
             </div>
-            <div class="task-heading">This is my ticket</div>
+            <div class="task-heading">Das is ein Titel</div>
             <div class="task-description task-font-regular">Lorem ipsum dolor sit amet consectetur
                 adipisicing elit.</div>
             <div class="task-date-container task-font-regular flex">
