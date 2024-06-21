@@ -1,4 +1,17 @@
 let tasksArray = [];
+let filteredTasks = [];
+let currentDraggedElement;
+
+// let taskData = {
+//     "title": "",
+//     "description": "",
+//     "assigned_to": [],
+//     "due_date": "",
+//     "priority": "",
+//     "category": "",
+//     "subtasks": [],
+//     "status": ""
+// };
 
 async function initTaskArray() {
     tasksArray = await loadData(TASKS_URL);
@@ -11,22 +24,22 @@ function initBoard() {
     updateDone();
 }
 
-async function updateTasksByStatus(status, categoryId) {
+async function updateTasksByStatus(status, containerId) {
     if (tasksArray.length === 0) {
         await initTaskArray();
     }
     let tasks = tasksArray.filter(t => t['status'] === status);
     console.log(tasks);
-    document.getElementById(categoryId).innerHTML = '';
+    document.getElementById(containerId).innerHTML = '';
 
     for (let i = 0; i < tasks.length; i++) {
         const element = tasks[i];
         let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
-        document.getElementById(categoryId).innerHTML += generateTicketHTML(element, categoryBG);
+        document.getElementById(containerId).innerHTML += generateTicketHTML(i, element, categoryBG);
     }
 
-    if (categoryId.innerHTML = '') {
-        categoryId.innerHTML = generatePlaceholderHTML();
+    if (document.getElementById(containerId).innerHTML === '') {
+        document.getElementById(containerId).innerHTML = generatePlaceholderHTML();
     }
 }
 
@@ -46,6 +59,22 @@ function updateDone() {
     updateTasksByStatus('done', 'board-ticket-container-done');
 }
 
+function updateFilteredTasks(status, containerId) {
+    let tasks = filteredTasks.filter(t => t['status'] === status);
+    console.log(tasks);
+    document.getElementById(containerId).innerHTML = '';
+
+    for (let i = 0; i < tasks.length; i++) {
+        const element = tasks[i];
+        let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
+        document.getElementById(containerId).innerHTML += generateTicketHTML(i, element, categoryBG);
+    }
+
+   if (document.getElementById(containerId).innerHTML === '') {
+        document.getElementById(containerId).innerHTML = generatePlaceholderHTML();
+    }
+}
+
 function startFilterTasks() {
     if (document.getElementById('board-find-input').value.length >= 2) {
         filterTasks()
@@ -56,8 +85,11 @@ function startFilterTasks() {
 
 function filterTasks() {
     let search = document.getElementById('board-find-input').value.toLowerCase();
-    let filteredTasks = tasksArray.filter(task => task.title.toLowerCase().includes(search));
-    showFilteredTasks(filteredTasks);
+    filteredTasks = tasksArray.filter(task => task.title.toLowerCase().includes(search));
+    updateFilteredTodos();
+    updateFilteredInProgress();
+    updateFilteredAwaitFeedback()
+    updateFilteredDone();
 }
 
 function startFilterTasksResponsive() {
@@ -70,33 +102,31 @@ function startFilterTasksResponsive() {
 
 function filterTasksResponsive() {
     let search = document.getElementById('board-find-input-responsive').value.toLowerCase();
-    let filteredTasks = tasksArray.filter(task => task.title.toLowerCase().includes(search));
-    showFilteredTasks(filteredTasks);
+    filteredTasks = tasksArray.filter(task => task.title.toLowerCase().includes(search));
+    updateFilteredTodos();
+    updateFilteredInProgress();
+    updateFilteredAwaitFeedback()
+    updateFilteredDone();
 }
 
-function showFilteredTasks(filteredTasks) {
-    let containers = {
-        'todo': document.getElementById('board-ticket-container-todo'),
-        'inprogress': document.getElementById('board-ticket-container-in-progress'),
-        'awaitfeedback': document.getElementById('board-ticket-container-await-feedback'),
-        'done': document.getElementById('board-ticket-container-done')
-    };
-    for (let key in containers) {
-        containers[key].innerHTML = '';
-    }
-    filteredTasks.forEach(task => {
-        let categoryBG = task['category'].replace(/\s+/g, '-').toLowerCase();
-        containers[task['status']].innerHTML += generateTicketHTML(task, categoryBG);
-    });
-    for (let key in containers) {
-        if (containers[key].innerHTML === '') {
-            containers[key].innerHTML = '<div class="board-no-tasks-placeholder flex-center">No tasks to do</div>';
-        }
-    }
+function updateFilteredTodos() {
+    updateFilteredTasks('todo', 'board-ticket-container-todo');
 }
 
-function generateTicketHTML(element, categoryBG) {
-    return `<div id="board-ticket" draggable="true" class="board-ticket" onclick="showTask(${element})">
+function updateFilteredInProgress() {
+    updateFilteredTasks('inprogress', 'board-ticket-container-in-progress');
+}
+
+function updateFilteredAwaitFeedback() {
+    updateFilteredTasks('awaitfeedback', 'board-ticket-container-await-feedback');
+}
+
+function updateFilteredDone() {
+    updateFilteredTasks('done', 'board-ticket-container-done');
+}
+
+function generateTicketHTML(i, element, categoryBG) {
+    return `<div id="board-ticket${i}" draggable="true" ondragstart="startDragging(${i})" class="board-ticket" onclick="showTask(${element})">
     <div class="board-ticket-content flex-column">
         <div class="board-ticket-gategory ${categoryBG}-bg">${element['category']}</div>
         <div class="board-ticket-description">
@@ -119,4 +149,16 @@ function generateTicketHTML(element, categoryBG) {
 
 function generatePlaceholderHTML() {
     return `<div class="board-no-tasks-placeholder flex-center">No tasks to do</div>`
+}
+
+function startDragging(id) {
+    currentDraggedElement = id;
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function moveTo(status) {
+    tasksArray[currentDraggedElement]['status'] = status;
 }
