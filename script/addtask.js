@@ -468,5 +468,4 @@ async function addNewTask() {
         postData(TASKS_URL, taskData);
         clearAll();
     }
-
 };
