@@ -263,10 +263,8 @@ function controlCheckedLength() {
     let trueCount = checkedContacts.filter(value => value === true).length;
     if (trueCount >= 1) {
         container.style.display = "";
-        document.getElementById("taskRightCont").classList.add("task-margin-top");
     } else if (trueCount < 1) {
         container.style.display = "none";
-        document.getElementById("taskRightCont").classList.remove("task-margin-top");
     }
 };
 
@@ -414,15 +412,12 @@ function clearAllInputs() {
     document.getElementById("selectedTask").innerHTML = "Select task category";
 };
 
-async function getAssignedContacts() {
-    let contacts = await loadData(CONTACTS_URL);
-    console.log(checkedContacts);
+async function getAssignedContacts(contacts) {
     if (checkedContacts.length > 0) {
         for (let i = 0; i < checkedContacts.length; i++) {
             const assignedContact = checkedContacts[i];
-            console.log(assignedContact);
-            if (assignedContact === true) {
-                taskData.assigned_to.push(contacts[i])
+            if (assignedContact == true) {
+                taskData.assigned_to.push(contacts[i]);
             }
         }
     } else {
@@ -430,24 +425,35 @@ async function getAssignedContacts() {
     }
 };
 
+
 function getUrgency() {
     for (let i = 0; i < activeUrg.length; i++) {
         const urg = activeUrg[i];
         if (urg.active === true) {
-            console.log();
             taskData.priority = urg.urgency;
         }
     }
 };
 
 async function addNewTask() {
-    getAssignedContacts();
-    getUrgency();
-    taskData.title = document.getElementById("taskTitle").value;
-    taskData.description = document.getElementById("taskDescription").value;
-    taskData.due_date = document.getElementById("taskDate").value;
-    taskData.category = document.getElementById("selectedTask").innerHTML;
-    taskData.status = "todo";
-    console.log(taskData);
-    clearAll();
+    let contacts = await loadData(CONTACTS_URL);
+    if (taskData.subtasks.length === 0) {
+        taskData.subtasks = "";
+    }
+    title = document.getElementById("taskTitle").value;
+    description = document.getElementById("taskDescription").value;
+    due_date = document.getElementById("taskDate").value;
+    category = document.getElementById("selectedTask").innerHTML;
+    console.log(category);
+    if (title !== "" && description !== "" && due_date !== "" && category != "Select task category") {
+        getAssignedContacts(contacts);
+        getUrgency();
+        taskData.title = title
+        taskData.description = description
+        taskData.due_date = due_date
+        taskData.category = category
+        taskData.status = "todo";
+        postData(TASKS_URL, taskData);
+        clearAll();
+    }
 };

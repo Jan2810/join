@@ -18,13 +18,7 @@ function toggleNav() {
             document.addEventListener("click", toggleNav);
         }, 0);
     }
-}
-
-
-
-
-
-
+};
 
 async function loadData(url) {
     let response = await fetch(url + ".json");
@@ -33,8 +27,8 @@ async function loadData(url) {
     return dataArray;
 };
 
-async function postData(url, path = "", data = {}) {
-    let response = await fetch(url + path + ".json", {
+async function postData(url, data = {}) {
+    let response = await fetch(url + ".json", {
         method: "POST",
         header: {
             "Content-type": "application/json",

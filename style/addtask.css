@@ -466,6 +466,11 @@
     cursor: pointer;
 }
 
+.img-cont-subtask-first-n {
+    border-right: 1px solid #cccccca2;
+    padding-right: 5px;
+}
+
 .img-cont-subtask-first-n img{
     width: 24px;
 }
@@ -483,7 +488,6 @@
 .rendered-subtasks {
     margin-top: 10px;
     font-size: 14px;
-    font: 400;
 }
 
 .subtask-item{
@@ -518,7 +522,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 21px;
+    padding: 5px 21px;
     transition: all 100ms ease-in-out;
     margin: 5px 0px;
     background-color: white;
