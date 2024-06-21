@@ -258,6 +258,24 @@ main {
         margin: 0 -64px;
     }
 
+    .board-ticket-container::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .board-ticket-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .board-ticket-container::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+    }
+    
+    .board-ticket-container::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
     .board-ticket-container .board-ticket:first-child {
         margin-left: 64px;
     }
