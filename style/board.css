@@ -103,7 +103,7 @@ main {
 }
 
 .board-category {
-    width: 268px
+    min-width: 268px
 }
 
 .board-category-header {
