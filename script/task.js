@@ -81,6 +81,17 @@ function renderTodos(task) {
     }
 };
 
+
+function findIndex(id) {
+    let index = tasksArray.findIndex(element => element.id === id);
+    deleteTask(index);
+};
+
+
+function deleteTask(index) {
+    tasksArray.splice(index, 1);
+}
+
 function renderTask(id) {
     let task = getActualTask(id);
     renderTaskOwners(task);

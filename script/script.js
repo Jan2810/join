@@ -42,12 +42,6 @@ async function loadData(url) {
     }
 };
 
-// async function loadData(url) {
-//     let response = await fetch(url + ".json");
-//     let data = await response.json();
-//     let dataArray = Object.keys(data).map(key => data[key]);
-//     return dataArray;
-// };
 
 async function postData(url, data = {}) {
     let response = await fetch(url + ".json", {
@@ -59,6 +53,7 @@ async function postData(url, data = {}) {
     });
     return response;
 };
+
 
 async function putData(url, data = {}) {
     let response = await fetch(url + ".json", {
