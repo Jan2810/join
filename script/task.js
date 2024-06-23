@@ -26,7 +26,7 @@ function showTask(id) {
     });
 
 }
-
+//"-O03zgtnBFNkeLLOA26i"
 
 function closeTask() {
     taskContainer.classList.add("task-container-hidden");
@@ -37,59 +37,59 @@ function closeTask() {
 
 function getActualTask(id) {
     let task = tasksArray.find((e) => e['id'] == id);
+    console.log(task)
     return task;
 }
 
 function getInitials(user) {
     const nameParts = user.trim().split(/\s+/);
-    // Map over the name parts to get the first letter of each, convert to uppercase, and join them
     const initials = nameParts.map(part => part[0].toUpperCase()).join('');
-    console.log(initials);
     return initials;
 }
 
 function renderTaskOwners(task) {
-    console.log("test");
-    console.log(task);
     let taskOwnerHtml = "";
-    task.assigned_to.forEach(element => {
-        console.log(element);
-        getInitials(element);
-        taskOwnerHtml += /*html*/ `
+    if (task.assigned_to) {
+
+
+        task.assigned_to.forEach(element => {
+            getInitials(element);
+            taskOwnerHtml += /*html*/ `
         <div class="task-contact-container flex task-font-small">
         <div class="task-contact-icon flex-center">${getInitials(element)}</div>
         <div class="task-contact-name">${element}</div>
         </div>`
-    });
-    return ` <div class="task-assigned-area flex-column">
+        });
+        return ` <div class="task-assigned-area flex-column">
                 <div class="task-prio-key task-font-regular">Assigned To:</div>
                 ${taskOwnerHtml} </div></div>`
+    }
 };
 
 function renderTodos(task) {
-    console.log("test");
-    console.log(task);
     let taskTodoHtml = "";
-    task.subtasks.forEach(element => {
-        getInitials(element);
-        taskTodoHtml += /*html*/ `
+    if (task.subtasks) {
+        task.subtasks.forEach(element => {
+            getInitials(element);
+            taskTodoHtml += /*html*/ `
         <div class="flex">
                     <div class="task-subtask-container flex">
-                        <img src="../assets/icons/checked.svg" alt="">
+                        <input type="checkbox" checked>
                         <div class="task-todo-value">${element}</div>
                     </div>
                 </div>`
-    });
-    return `  <div class="task-subtasks-area flex-column">
+        });
+        return `  <div class="task-subtasks-area flex-column">
                 <div class="task-prio-key task-font-regular">Subtasks</div>
                 ${taskTodoHtml} </div></div>`
+    }
 };
 
 function renderTask(id) {
     let task = getActualTask(id);
     renderTaskOwners(task);
     return /*html*/`<div class="task-eyebrow-container">
-                <div class="board-ticket-gategory technical-task-bg">Category</div>
+                <div class="board-ticket-gategory technical-task-bg">${task.category}</div>
                 <div onclick="closeTask()" class="task-close-container flex-center"><img src="../assets/icons/close.svg" alt=""
                         class="task-close"></div>
             </div>
