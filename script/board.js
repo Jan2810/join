@@ -13,7 +13,7 @@ let currentDraggedElement;
 //     "status": ""
 // };
 
-async function initTaskArray() {
+async function getTasks() {
     tasksArray = await loadData(TASKS_URL);
 }
 
@@ -26,7 +26,7 @@ function initBoard() {
 
 async function updateTasksByStatus(status, containerId) {
     if (tasksArray.length === 0) {
-        await initTaskArray();
+        await getTasks();
     }
     let tasks = tasksArray.filter(t => t['status'] === status);
     console.log(tasks);
@@ -132,7 +132,7 @@ function generateTicketHTML(i, element, categoryBG) {
         assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div>`;
     }
     return `
-<div id="board-ticket${i}" draggable="true" ondragstart="startDragging(${i})" class="board-ticket" onclick="getTask(${element['id']})">
+<div id="board-ticket${element['id']}" draggable="true" ondragstart="startDragging(${element['id']})" class="board-ticket" onclick="getTask(${element['id']})">
     <div class="board-ticket-content flex-column">
         <div class="board-ticket-gategory ${categoryBG}-bg">${element['category']}</div>
         <div class="board-ticket-description">
