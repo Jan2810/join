@@ -64,14 +64,14 @@ function renderTaskOwners(task) {
 
 function renderTodos(task) {
     let taskTodoHtml = "";
-    if (task.subtasks) {
+    if (task.subtasks.length > 0) {
         task.subtasks.forEach(element => {
-            getInitials(element);
+            getInitials(element.text);
             taskTodoHtml += /*html*/ `
         <div class="flex">
-                    <div class="task-subtask-container flex">
-                        <input type="checkbox" checked>
-                        <div class="task-todo-value">${element}</div>
+                    <div class="task-subtask-container flex" onlcick>
+                        <input type="checkbox" ${element.status}>
+                        <div class="task-todo-value">${element.text}</div>
                     </div>
                 </div>`
         });
