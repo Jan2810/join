@@ -122,8 +122,9 @@ function allowDrop(ev) {
 
 function moveTo(status) {
     const currentTask = tasksArray.find((ct) => ct['id'] == currentDraggedElement);
-    console.log("current task:" + currentTask);
     currentTask['status'] = status;
+    console.log("current task:", currentTask);
+    putData(TASKS_URL, tasksArray);
     initBoard();
 }
 
