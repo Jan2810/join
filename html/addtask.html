@@ -10,6 +10,7 @@
     <title>New Task - Join</title>
     <script src="../script/script.js"></script>
     <script src="../script/addtask.js"></script>
+    <!-- <script src="../script-templates/AddTaskTemplates.js"></script> -->
 </head>
 
 <body onload="initAddTask()" onclick="closeContacts(event); closeCategorys(event); closeSubtasks(event);">
@@ -18,7 +19,7 @@
         <div class="task-h1">
             <h1>Add Task</h1>
         </div>
-        <form onsubmit="await addNewTask();" action="../html/board.html">
+        <form>
             <div class="flex-row task-content">
                 <div class="task-left-cont">
                     <div class="task-width">
@@ -135,7 +136,7 @@
                             <span>Clear</span>
                             <img id="task-x" src="../assets/icons/x-black.png" alt="">
                         </div>
-                        <button onclick="return false" id="createButton" class="task-send-form-btn">
+                        <button onclick="addNewTask(); return false;" id="createButton" class="task-send-form-btn">
                             <span>Create Task</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
                         </button>

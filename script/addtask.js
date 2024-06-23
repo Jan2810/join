@@ -417,12 +417,13 @@ async function getAssignedContacts(contacts) {
         for (let i = 0; i < checkedContacts.length; i++) {
             const assignedContact = checkedContacts[i];
             if (assignedContact == true) {
-                taskData.assigned_to.push(contacts[i]);
+                taskData.assigned_to.push(contacts[i].name);
             }
         }
+    } else {
+        taskData.assigned_to = "";
     }
 };
-
 
 function getUrgency() {
     for (let i = 0; i < activeUrg.length; i++) {
