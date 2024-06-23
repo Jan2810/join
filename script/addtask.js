@@ -81,7 +81,7 @@ function highlightButtonMid() {
     document.getElementById("img-high").src = `../assets/icons-addtask/prio-high-color.png`;
     document.getElementById("img-mid").src = `../assets/icons-addtask/prio-mid-white.png`;
     document.getElementById("img-low").src = `../assets/icons-addtask/prio-low-color.png`;
-};
+}
 
 function highlightButtonLow() {
     document.getElementById("high").classList.remove("high-focus");
@@ -280,7 +280,8 @@ function returnSignList(cnt, i) {
 function addSubtask() {
     let input = document.getElementById("subtasksInput").value;
     if (input !== "" && taskData.subtasks.length < 4) {
-        taskData.subtasks.push(input);
+        let subtaskArray = { text: 'dsadsada', status: "unchecked" }
+        taskData.subtasks.push(subtaskArray);
         showWarning();
         renderSubtasks();
     } else {
@@ -297,10 +298,11 @@ function renderSubtasks() {
     container.innerHTML = "";
     for (let i = 0; i < taskData.subtasks.length; i++) {
         const subtask = taskData.subtasks[i];
+        console.log(subtask);
         container.innerHTML += `
         <div id="subtask${i}">
             <div class="subtask-item">
-                <li>${subtask}</li>
+                <li>${subtask.text}</li>
                 <div class="img-cont-subtask flex-center">
                     <div onclick="editSubtask(${i})" class="img-cont-subtask-first img-cont-subtask">
                         <img src="../assets/icons/edit.png" alt="">
@@ -316,9 +318,10 @@ function renderSubtasks() {
 };
 
 function editSubtask(i) {
+    console.log(taskData.subtasks);
     document.getElementById(`subtask${i}`).innerHTML = `
             <div onkeydown="checkEditKey(event, ${i})" class="edit-subtask-item">
-                <input id="editedValue" type="text" class="editable-input" value="${taskData.subtasks[i]}">
+                <input id="editedValue" type="text" class="editable-input" value="${taskData.subtasks[i].text}">
                 <div class="img-cont-subtask flex-center">
                     <div onclick="deleteSubtask(${i})" class="img-cont-subtask-first img-cont-subtask">
                         <img src="../assets/icons/delete.png" alt="">
@@ -344,8 +347,11 @@ function deleteSubtask(i) {
     renderSubtasks();
 };
 
-function saveSubtask(i) {
-    taskData.subtasks[i] = document.getElementById("editedValue").value;
+function saveSubtask() {
+    let subtask = document.getElementById("editedValue").value
+    let subtaskArray = { text: subtask, status: "unchecked" };
+    console.log(subtaskArray);
+    taskData.subtasks.push(subtaskArray)
     renderSubtasks();
 };
 
@@ -434,18 +440,26 @@ function getUrgency() {
     }
 };
 
-function formValidationFeedback() {
+function formValidationFeedbackOn() {
     document.getElementById("taskTitle").style.borderColor = "red";
     document.getElementById("requiredTitle").style.display = "";
     document.getElementById("taskDate").style.borderColor = "red";
     document.getElementById("requiredDate").style.display = "";
     document.getElementById("dropdownCategoryToggle").style.borderColor = "red";
     document.getElementById("requiredCategorys").style.display = "";
+};
 
+function formValidationFeedbackOff() {
+    document.getElementById("taskTitle").style.borderColor = "";
+    document.getElementById("requiredTitle").style.display = "none";
+    document.getElementById("taskDate").style.borderColor = "";
+    document.getElementById("requiredDate").style.display = "none";
+    document.getElementById("dropdownCategoryToggle").style.borderColor = "";
+    document.getElementById("requiredCategorys").style.display = "none";
 };
 
 async function addNewTask() {
-    formValidationFeedback();
+    formValidationFeedbackOn();
     let contacts = await loadData(CONTACTS_URL);
     if (taskData.subtasks.length === 0) {
         taskData.subtasks = "";
@@ -454,9 +468,6 @@ async function addNewTask() {
     description = document.getElementById("taskDescription").value;
     due_date = document.getElementById("taskDate").value;
     category = document.getElementById("categoryInput").value;
-    console.log(category.length);
-    console.log(title.length);
-    console.log(due_date.length);
     if (title.length > 1 && due_date.length > 1 && category.length > 1) {
         getAssignedContacts(contacts);
         getUrgency();
@@ -468,5 +479,7 @@ async function addNewTask() {
         console.log(taskData);
         postData(TASKS_URL, taskData);
         clearAll();
+        formValidationFeedbackOff();
     }
+    window.location = "../html/board.html";
 };
