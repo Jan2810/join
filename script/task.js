@@ -66,6 +66,25 @@ function renderTaskOwners(task) {
                 ${taskOwnerHtml} </div></div>`
 };
 
+function renderTodos(task) {
+    console.log("test");
+    console.log(task);
+    let taskTodoHtml = "";
+    task.subtasks.forEach(element => {
+        getInitials(element);
+        taskTodoHtml += /*html*/ `
+        <div class="flex">
+                    <div class="task-subtask-container flex">
+                        <img src="../assets/icons/checked.svg" alt="">
+                        <div class="task-todo-value">${element}</div>
+                    </div>
+                </div>`
+    });
+    return `  <div class="task-subtasks-area flex-column">
+                <div class="task-prio-key task-font-regular">Subtasks</div>
+                ${taskTodoHtml} </div></div>`
+};
+
 function renderTask(id) {
     let task = getActualTask(id);
     renderTaskOwners(task);
@@ -86,21 +105,8 @@ function renderTask(id) {
                         src="../assets/icons-addtask/prio-high-color.png" alt=""></div>
             </div>
             ${renderTaskOwners(task)}
-            <div class="task-subtasks-area flex-column">
-                <div class="task-prio-key task-font-regular">Subtasks</div>
-                <div class="flex">
-                    <div class="task-subtask-container flex">
-                        <img src="../assets/icons/checked.svg" alt="">
-                        <div class="task-todo-value">Do this and that</div>
-                    </div>
-                </div>
-                <div class="flex">
-                    <div class="task-subtask-container flex">
-                        <img src="../assets/icons/unchecked.svg" alt="">
-                        <div class="task-todo-value">Become a developer</div>
-                    </div>
-                </div>
-            </div>
+            ${renderTodos(task)}
+            
             <div class="task-footer flex">
                 <div class="task-delete-container flex">
                     <svg width="16" height="18" viewBox="0 0 16 18" fill="red" xmlns="http://www.w3.org/2000/svg">
