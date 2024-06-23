@@ -13,6 +13,11 @@ let currentDraggedElement;
 //     "status": ""
 // };
 
+setTimeout(() => {
+    console.log("Alle Tasks:")
+    console.log(tasksArray)
+}, 500);
+
 async function getTasks() {
     tasksArray = await loadData(TASKS_URL);
 }
@@ -29,6 +34,7 @@ async function updateTasksByStatus(status, containerId) {
         await getTasks();
     }
     let tasks = tasksArray.filter(t => t['status'] === status);
+    console.log("Category: " + status);
     console.log(tasks);
     document.getElementById(containerId).innerHTML = '';
 
@@ -78,7 +84,8 @@ function filterTasks(search) {
 
 function updateFilteredTasks(status, containerId) {
     let tasks = filteredTasks.filter(t => t['status'] === status);
-    console.log(tasks);
+    // console.log(status);
+    // console.log(tasks);
     document.getElementById(containerId).innerHTML = '';
 
     for (let i = 0; i < tasks.length; i++) {
@@ -128,7 +135,7 @@ function generateTicketHTML(element, categoryBG) {
         assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div>`;
     }
     return `
-<div id="board-ticket${element['id']}" draggable="true" ondragstart="startDragging(${element['id']})" class="board-ticket" onclick="getTask(${element['id']})">
+<div id="board-ticket${element['id']}" draggable="true" ondragstart="startDragging(${element['id']})" class="board-ticket" onclick="showTask(${element['id']})">
     <div class="board-ticket-content flex-column">
         <div class="board-ticket-gategory ${categoryBG}-bg">${element['category']}</div>
         <div class="board-ticket-description">

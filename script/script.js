@@ -33,7 +33,7 @@ async function loadData(url) {
                 ...data[key]  // Und fügen alle anderen Daten hinzu
             };
         });
-        console.log(dataArray);
+        // console.log(dataArray);
         return dataArray;
     } catch (error) {
         console.error('Fehler beim Laden der Daten:', error);

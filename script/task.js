@@ -35,27 +35,27 @@ function closeTask() {
     bg.classList.add("task-bg-low-index");
 }
 
-function getTask(id) {
-    let task= tasksArray.find((e) => e['id'] == id);
-    console.log(task);
+function getActualTask(id) {
+    let task = tasksArray.find((e) => e['id'] == id);
+    return task;
 }
 
 function renderTask(id) {
+    let task = getActualTask(id);
     return /*html*/`<div class="task-eyebrow-container">
                 <div class="board-ticket-gategory technical-task-bg">Category</div>
                 <div onclick="closeTask()" class="task-close-container flex-center"><img src="../assets/icons/close.svg" alt=""
                         class="task-close"></div>
             </div>
-            <div class="task-heading">Das is ein Titel</div>
-            <div class="task-description task-font-regular">Lorem ipsum dolor sit amet consectetur
-                adipisicing elit.</div>
+            <div class="task-heading">${task.title}</div>
+            <div class="task-description task-font-regular">${task.description}</div>
             <div class="task-date-container task-font-regular flex">
                 <div class="task-date-key">Due date:</div>
-                <div class="task-date-value">02/09/2023</div>
+                <div class="task-date-value">${task.due_date}</div>
             </div>
             <div class="task-prio-container flex task-font-regular ">
                 <div class="task-prio-key">Priority:</div>
-                <div class="task-prio-value flex-center">Urgent <img
+                <div class="task-prio-value flex-center">${task.priority}<img
                         src="../assets/icons-addtask/prio-high-color.png" alt=""></div>
             </div>
             <div class="task-assigned-area flex-column">
