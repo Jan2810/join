@@ -4,6 +4,8 @@ const CONTACTS_URL = "https://join---contacts-default-rtdb.europe-west1.firebase
 let users = [];
 let user = {};
 
+console
+
 let navOpen = false;
 
 function toggleNav() {
@@ -114,8 +116,47 @@ function saveUser() {
 
 function loadUser() {
     const retrievedUserString = localStorage.getItem('user');
-    user = JSON.parse(retrievedUserString);
-    console.log(user);
+    if (retrievedUserString) {
+        user = JSON.parse(retrievedUserString);
+        console.log("Nutzer gefunden");
+        console.log(user);
+    }
+    else {
+        window.location.href = "../index.html";
+    }
 };
 
+if (!window.location.pathname.includes('index.html') && window.location.pathname !== '/') {
+    loadUser();
+}
 
+// document.getElementById("userInitials").innerHTML = "test";
+
+
+
+function logout() {
+    localStorage.removeItem('user');
+    user= "";
+    setTimeout(goTologin, 1000)
+}
+
+function guestUserActive() {
+    user.name = "Gast Nutzer";
+    saveUser();
+    goToBoard()
+}
+
+function getInitials(username) {
+    const nameParts = username.trim().split(/\s+/);
+    const initials = nameParts.map(part => part[0].toUpperCase()).join('');
+    return initials;
+}
+
+
+function goToBoard() {
+    window.location.href = "./html/summary.html"
+}
+
+function goTologin() {
+    window.location.href = "../index.html"
+}
