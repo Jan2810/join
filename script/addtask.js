@@ -273,19 +273,9 @@ async function addNewTask() {
     if (taskData.subtasks.length === 0) {
         taskData.subtasks = "";
     }
-    title = document.getElementById("taskTitle").value;
-    description = document.getElementById("taskDescription").value;
-    due_date = document.getElementById("taskDate").value;
-    category = document.getElementById("categoryInput").value;
+    setInputValuesIntoData();
     if (title.length > 1 && due_date.length > 1 && category.length > 1) {
-        getAssignedContacts(contacts);
-        getUrgency();
-        taskData.title = title
-        taskData.description = description
-        taskData.due_date = due_date
-        taskData.category = category
-        taskData.status = "todo";
-        console.log(taskData);
+        setTaskData(contacts);
         postData(TASKS_URL, taskData);
         clearAll();
         formValidationFeedbackOff();
