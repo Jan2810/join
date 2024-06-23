@@ -120,7 +120,7 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(status, containerId) {
+function moveTo(status) {
     const currentTask = tasksArray.find((ct) => ct['id'] == currentDraggedElement);
     console.log("current task:" + currentTask);
     currentTask['status'] = status;
