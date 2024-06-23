@@ -30,22 +30,24 @@ function initBoard() {
 }
 
 async function updateTasksByStatus(status, containerId) {
-    if (tasksArray.length === 0) {
-        await getTasks();
-    }
-    let tasks = tasksArray.filter(t => t['status'] === status);
-    console.log("Category: " + status);
-    console.log(tasks);
-    document.getElementById(containerId).innerHTML = '';
+    if (tasksArray.length > 0) {
+        if (tasksArray.length === 0) {
+            await getTasks();
+        }
+        let tasks = tasksArray.filter(t => t['status'] === status);
+        console.log("Category: " + status);
+        console.log(tasks);
+        document.getElementById(containerId).innerHTML = '';
 
-    for (let i = 0; i < tasks.length; i++) {
-        const element = tasks[i];
-        let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
-        document.getElementById(containerId).innerHTML += generateTicketHTML(element, categoryBG);
-    }
+        for (let i = 0; i < tasks.length; i++) {
+            const element = tasks[i];
+            let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
+            document.getElementById(containerId).innerHTML += generateTicketHTML(element, categoryBG);
+        }
 
-    if (document.getElementById(containerId).innerHTML === '') {
-        document.getElementById(containerId).innerHTML = generatePlaceholderHTML();
+        if (document.getElementById(containerId).innerHTML === '') {
+            document.getElementById(containerId).innerHTML = generatePlaceholderHTML();
+        }
     }
 }
 
@@ -66,7 +68,7 @@ function updateDone() {
 }
 
 function startFilterTasks(inputId) {
-    const search =  document.getElementById(inputId).value.toLowerCase();
+    const search = document.getElementById(inputId).value.toLowerCase();
     if (document.getElementById(inputId).value.length >= 2) {
         filterTasks(search)
     } else {
