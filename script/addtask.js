@@ -280,7 +280,7 @@ function returnSignList(cnt, i) {
 function addSubtask() {
     let input = document.getElementById("subtasksInput").value;
     if (input !== "" && taskData.subtasks.length < 4) {
-        let subtaskArray = { text: 'dsadsada', status: "unchecked" }
+        let subtaskArray = { text: `${input}`, status: "unchecked" }
         taskData.subtasks.push(subtaskArray);
         showWarning();
         renderSubtasks();
