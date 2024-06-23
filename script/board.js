@@ -120,9 +120,11 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(status) {
-    tasksArray[currentDraggedElement]['status'] = status;
-    updateTasksByStatus(status, containerId);
+function moveTo(status, containerId) {
+    const currentTask = tasksArray.find((ct) => ct['id'] == currentDraggedElement);
+    console.log("current task:" + currentTask);
+    currentTask['status'] = status;
+    initBoard();
 }
 
 function generateTicketHTML(element, categoryBG) {
