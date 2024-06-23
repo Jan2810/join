@@ -26,7 +26,7 @@ function showTask(id) {
     });
 
 }
-//"-O03zgtnBFNkeLLOA26i"
+
 
 function closeTask() {
     taskContainer.classList.add("task-container-hidden");
@@ -41,11 +41,7 @@ function getActualTask(id) {
     return task;
 }
 
-function getInitials(user) {
-    const nameParts = user.trim().split(/\s+/);
-    const initials = nameParts.map(part => part[0].toUpperCase()).join('');
-    return initials;
-}
+
 
 function renderTaskOwners(task) {
     let taskOwnerHtml = "";
