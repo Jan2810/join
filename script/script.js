@@ -101,6 +101,7 @@ async function includeHTML() {
         let resp = await fetch(file);
         if (resp.ok) {
             element.innerHTML = await resp.text();
+            document.getElementById("userInitials").innerHTML = getInitials(user.name);
         } else {
             element.innerHTML = 'Page not found';
         }
@@ -130,13 +131,14 @@ if (!window.location.pathname.includes('index.html') && window.location.pathname
     loadUser();
 }
 
-// document.getElementById("userInitials").innerHTML = "test";
+
+
 
 
 
 function logout() {
     localStorage.removeItem('user');
-    user= "";
+    user = "";
     setTimeout(goTologin, 1000)
 }
 
@@ -160,3 +162,5 @@ function goToBoard() {
 function goTologin() {
     window.location.href = "../index.html"
 }
+
+
