@@ -147,15 +147,6 @@ function controlCheckedLength() {
     }
 };
 
-function returnSignList(cnt, i) {
-    return `
-           <div class="task-cnt-assigned-sign">
-                <div class="task-cnt-sign flex-center" id="contactsign${i}" style='${backgroundColors[i]}'>
-                ${getNameSign(cnt.name)}
-                </div>
-           </div>`;
-};
-
 function addSubtask() {
     let input = document.getElementById("subtasksInput").value;
     if (input !== "" && taskData.subtasks.length < 4) {
@@ -178,39 +169,13 @@ function renderSubtasks() {
     for (let i = 0; i < taskData.subtasks.length; i++) {
         const subtask = taskData.subtasks[i];
         console.log(subtask);
-        container.innerHTML += `
-        <div id="subtask${i}">
-            <div class="subtask-item">
-                <li>${subtask.text}</li>
-                <div class="img-cont-subtask flex-center">
-                    <div onclick="editSubtask(${i})" class="img-cont-subtask-first img-cont-subtask">
-                        <img src="../assets/icons/edit.png" alt="">
-                    </div>
-                    <div onclick="deleteSubtask(${i})" class="img-cont-subtask-last">
-                        <img src="../assets/icons/delete.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-       `;
+        container.innerHTML += returnSubtasksList(subtask, i);
     }
 };
 
 function editSubtask(i) {
     console.log(taskData.subtasks);
-    document.getElementById(`subtask${i}`).innerHTML = `
-            <div onkeydown="checkEditKey(event, ${i})" class="edit-subtask-item">
-                <input id="editedValue" type="text" class="editable-input" value="${taskData.subtasks[i].text}">
-                <div class="img-cont-subtask flex-center">
-                    <div onclick="deleteSubtask(${i})" class="img-cont-subtask-first img-cont-subtask">
-                        <img src="../assets/icons/delete.png" alt="">
-                    </div>
-                    <div onclick="saveSubtask(${i})" class="img-cont-subtask-last">
-                        <img src="../assets/icons/hook-small-dark.png" alt="">
-                    </div>
-                </div>
-            </div>
-    `;
+    document.getElementById(`subtask${i}`).innerHTML = returnEditSubtaskHTML(i);
     document.getElementById("editedValue").focus()
     document.getElementById("editedValue").select()
 }
@@ -244,14 +209,7 @@ function openSubtasks() {
     let imgContainer = document.getElementById("subtaskImgCont");
     document.getElementById("subtasksInput").focus();
     imgContainer.innerHTML = "";
-    imgContainer.innerHTML = `
-    <div onclick="clearInputfield()" class=" img-cont-subtask-first-n img-cont-subtask">
-        <img src="../assets/icons/x-black.png" alt="">
-    </div>
-    <div onclick="addSubtask()" class="img-cont-subtask">
-        <img src="../assets/icons/hook-small-dark.png" alt="">
-    </div>
-    `;
+    imgContainer.innerHTML = returnSubtaskImg()
 };
 
 function closeSubtasks(ev) {
@@ -274,16 +232,7 @@ function clearInputfield() {
 function clearAll() {
     clearAllInputs()
     checkedContacts = [];
-    taskData = {
-        "title": "",
-        "description": "",
-        "assigned_to": [],
-        "due_date": "",
-        "priority": "",
-        "category": "",
-        "subtasks": [],
-        "status": ""
-    };
+    clearTaskDataArray();
     renderSignList();
     changeUrgency("mid");
     renderSubtasks();
@@ -316,24 +265,6 @@ function getUrgency() {
             taskData.priority = urg.urgency;
         }
     }
-};
-
-function formValidationFeedbackOn() {
-    document.getElementById("taskTitle").style.borderColor = "red";
-    document.getElementById("requiredTitle").style.display = "";
-    document.getElementById("taskDate").style.borderColor = "red";
-    document.getElementById("requiredDate").style.display = "";
-    document.getElementById("dropdownCategoryToggle").style.borderColor = "red";
-    document.getElementById("requiredCategorys").style.display = "";
-};
-
-function formValidationFeedbackOff() {
-    document.getElementById("taskTitle").style.borderColor = "";
-    document.getElementById("requiredTitle").style.display = "none";
-    document.getElementById("taskDate").style.borderColor = "";
-    document.getElementById("requiredDate").style.display = "none";
-    document.getElementById("dropdownCategoryToggle").style.borderColor = "";
-    document.getElementById("requiredCategorys").style.display = "none";
 };
 
 async function addNewTask() {

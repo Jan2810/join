@@ -10,6 +10,20 @@ function changeBgBtn() {
     }
 };
 
+function clearTaskDataArray() {
+    taskData = {
+        "title": "",
+        "description": "",
+        "assigned_to": [],
+        "due_date": "",
+        "priority": "",
+        "category": "",
+        "subtasks": [],
+        "status": ""
+    };
+};
+
+
 function highlightButton(urg) {
     if (urg === "high") {
         document.getElementById("high").classList.add("high-focus");
@@ -135,3 +149,78 @@ function displayAssignments(check, i) {
         document.getElementById(`cntnum${i}`).classList.remove("task-hover-dark");
     }
 };
+
+function returnSignList(cnt, i) {
+    return `
+           <div class="task-cnt-assigned-sign">
+                <div class="task-cnt-sign flex-center" id="contactsign${i}" style='${backgroundColors[i]}'>
+                ${getNameSign(cnt.name)}
+                </div>
+           </div>`;
+};
+
+function returnSubtasksList(subtask, i) {
+    return `
+        <div id="subtask${i}">
+            <div class="subtask-item">
+                <li>${subtask.text}</li>
+                <div class="img-cont-subtask flex-center">
+                    <div onclick="editSubtask(${i})" class="img-cont-subtask-first img-cont-subtask">
+                        <img src="../assets/icons/edit.png" alt="">
+                    </div>
+                    <div onclick="deleteSubtask(${i})" class="img-cont-subtask-last">
+                        <img src="../assets/icons/delete.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+       `;
+};
+
+function returnEditSubtaskHTML(i) {
+    return `
+            <div onkeydown="checkEditKey(event, ${i})" class="edit-subtask-item">
+                <input id="editedValue" type="text" class="editable-input" value="${taskData.subtasks[i].text}">
+                <div class="img-cont-subtask flex-center">
+                    <div onclick="deleteSubtask(${i})" class="img-cont-subtask-first img-cont-subtask">
+                        <img src="../assets/icons/delete.png" alt="">
+                    </div>
+                    <div onclick="saveSubtask(${i})" class="img-cont-subtask-last">
+                        <img src="../assets/icons/hook-small-dark.png" alt="">
+                    </div>
+                </div>
+            </div>
+    `;
+};
+
+function returnSubtaskImg() {
+    return `
+    <div onclick="clearInputfield()" class=" img-cont-subtask-first-n img-cont-subtask">
+        <img src="../assets/icons/x-black.png" alt="">
+    </div>
+    <div onclick="addSubtask()" class="img-cont-subtask">
+        <img src="../assets/icons/hook-small-dark.png" alt="">
+    </div>
+    `;
+};
+function formValidationFeedbackOn() {
+    document.getElementById("taskTitle").style.borderColor = "red";
+    document.getElementById("requiredTitle").style.display = "";
+    document.getElementById("taskDate").style.borderColor = "red";
+    document.getElementById("requiredDate").style.display = "";
+    document.getElementById("dropdownCategoryToggle").style.borderColor = "red";
+    document.getElementById("requiredCategorys").style.display = "";
+};
+
+function formValidationFeedbackOff() {
+    document.getElementById("taskTitle").style.borderColor = "";
+    document.getElementById("requiredTitle").style.display = "none";
+    document.getElementById("taskDate").style.borderColor = "";
+    document.getElementById("requiredDate").style.display = "none";
+    document.getElementById("dropdownCategoryToggle").style.borderColor = "";
+    document.getElementById("requiredCategorys").style.display = "none";
+};
+
+
+
+
