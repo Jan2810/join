@@ -10,15 +10,15 @@ setTimeout(() => {
 async function getTasks() {
     tasksArray = await loadData(TASKS_URL);
     if (tasksArray.length > 0) {
-        initBoard();
+    initBoard();
     }
 }
 
-function initBoard() {
-    updateTodos();
-    updateInProgress();
-    updateAwaitFeedback();
-    updateDone();
+async function initBoard() {
+   await updateTodos();
+   await updateInProgress();
+   await updateAwaitFeedback();
+   await updateDone();
 }
 
 async function updateTasksByStatus(status, containerId) {
@@ -28,20 +28,23 @@ async function updateTasksByStatus(status, containerId) {
     let tasks = tasksArray.filter(t => t['status'] === status);
     console.log("Category: " + status);
     console.log(tasks);
-    document.getElementById(containerId).innerHTML = '';
 
-    if (tasks.length < 1) {
+    let container = document.getElementById(containerId);
+    container.innerHTML = '';
+
+    if (tasks.length > 0) {
+        let taskHTML = '';
         for (let i = 0; i < tasks.length; i++) {
             const element = tasks[i];
             let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
-            document.getElementById(containerId).innerHTML += generateTicketHTML(element, categoryBG);
+            taskHTML += generateTicketHTML(element, categoryBG);
         }
-
-        if (document.getElementById(containerId).innerHTML === '') {
-            document.getElementById(containerId).innerHTML = generatePlaceholderHTML();
-        }
+        container.innerHTML = taskHTML;
+    } else {
+        container.innerHTML = generatePlaceholderHTML();
     }
 }
+
 
 function updateTodos() {
     updateTasksByStatus('todo', 'board-ticket-container-todo');
