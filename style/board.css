@@ -102,6 +102,10 @@ main {
     justify-content: space-between;
 }
 
+.board-category {
+    width: 268px
+}
+
 .board-category-header {
     display: flex;
     justify-content: space-between;
@@ -124,7 +128,7 @@ main {
 }
 
 .board-ticket-container {
-    min-height: 100px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -266,9 +270,11 @@ main {
         display: flex;
         flex-direction: column;
         margin-bottom: 26px;
+        width: 100%;
     }
 
     .board-ticket-container {
+        height: fit-content;
         flex-direction: row;
         overflow-x: scroll;
         margin: 0 -64px;
