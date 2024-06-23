@@ -37,7 +37,7 @@ function closeTask() {
 
 function getTask(id) {
     let task= tasksArray.find((e) => e['id'] == id);
-    console.log(task);
+    // console.log(task);
 }
 
 function renderTask(id) {
