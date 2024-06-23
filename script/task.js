@@ -40,8 +40,35 @@ function getActualTask(id) {
     return task;
 }
 
+function getInitials(user) {
+    const nameParts = user.trim().split(/\s+/);
+    // Map over the name parts to get the first letter of each, convert to uppercase, and join them
+    const initials = nameParts.map(part => part[0].toUpperCase()).join('');
+    console.log(initials);
+    return initials;
+}
+
+function renderTaskOwners(task) {
+    console.log("test");
+    console.log(task);
+    let taskOwnerHtml = "";
+    task.assigned_to.forEach(element => {
+        console.log(element);
+        getInitials(element);
+        taskOwnerHtml += /*html*/ `
+        <div class="task-contact-container flex task-font-small">
+        <div class="task-contact-icon flex-center">${getInitials(element)}</div>
+        <div class="task-contact-name">${element}</div>
+        </div>`
+    });
+    return ` <div class="task-assigned-area flex-column">
+                <div class="task-prio-key task-font-regular">Assigned To:</div>
+                ${taskOwnerHtml} </div></div>`
+};
+
 function renderTask(id) {
     let task = getActualTask(id);
+    renderTaskOwners(task);
     return /*html*/`<div class="task-eyebrow-container">
                 <div class="board-ticket-gategory technical-task-bg">Category</div>
                 <div onclick="closeTask()" class="task-close-container flex-center"><img src="../assets/icons/close.svg" alt=""
@@ -58,17 +85,7 @@ function renderTask(id) {
                 <div class="task-prio-value flex-center">${task.priority}<img
                         src="../assets/icons-addtask/prio-high-color.png" alt=""></div>
             </div>
-            <div class="task-assigned-area flex-column">
-                <div class="task-prio-key task-font-regular">Assigned To:</div>
-                <div class="task-contact-container flex task-font-small">
-                    <div class="task-contact-icon flex-center">FK</div>
-                    <div class="task-contact-name">Felix Kirmse</div>
-                </div>
-                <div class="task-contact-container flex task-font-small">
-                    <div class="task-contact-icon flex-center">HM</div>
-                    <div class="task-contact-name">Hans Müller</div>
-                </div>
-            </div>
+            ${renderTaskOwners(task)}
             <div class="task-subtasks-area flex-column">
                 <div class="task-prio-key task-font-regular">Subtasks</div>
                 <div class="flex">
