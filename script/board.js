@@ -2,17 +2,6 @@ let tasksArray = [];
 let filteredTasks = [];
 let currentDraggedElement;
 
-// let taskData = {
-//     "title": "",
-//     "description": "",
-//     "assigned_to": [],
-//     "due_date": "",
-//     "priority": "",
-//     "category": "",
-//     "subtasks": [],
-//     "status": ""
-// };
-
 setTimeout(() => {
     console.log("Alle Tasks:")
     console.log(tasksArray)
@@ -20,6 +9,9 @@ setTimeout(() => {
 
 async function getTasks() {
     tasksArray = await loadData(TASKS_URL);
+    if (tasksArray.length > 0) {
+        initBoard();
+    }
 }
 
 function initBoard() {
@@ -30,15 +22,15 @@ function initBoard() {
 }
 
 async function updateTasksByStatus(status, containerId) {
-    if (tasksArray.length > 0) {
-        if (tasksArray.length === 0) {
-            await getTasks();
-        }
-        let tasks = tasksArray.filter(t => t['status'] === status);
-        console.log("Category: " + status);
-        console.log(tasks);
-        document.getElementById(containerId).innerHTML = '';
+    if (tasksArray.length === 0) {
+        await getTasks();
+    }
+    let tasks = tasksArray.filter(t => t['status'] === status);
+    console.log("Category: " + status);
+    console.log(tasks);
+    document.getElementById(containerId).innerHTML = '';
 
+    if (tasks.length < 1) {
         for (let i = 0; i < tasks.length; i++) {
             const element = tasks[i];
             let categoryBG = element['category'].replace(/\s+/g, '-').toLowerCase();
