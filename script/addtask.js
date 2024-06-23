@@ -347,11 +347,10 @@ function deleteSubtask(i) {
     renderSubtasks();
 };
 
-function saveSubtask() {
+function saveSubtask(i) {
     let subtask = document.getElementById("editedValue").value
     let subtaskArray = { text: subtask, status: "unchecked" };
-    console.log(subtaskArray);
-    taskData.subtasks.push(subtaskArray)
+    taskData.subtasks[i] = subtaskArray;
     renderSubtasks();
 };
 
