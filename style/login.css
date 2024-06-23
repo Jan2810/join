@@ -93,7 +93,9 @@
 }
 
 .login-guest-login-button {
-    width: 180px;
+    width: 185px;
+    height: 56px;
+    outline-offset: -10px;
     border-radius: 8px;
     color: #2A3647;
     background-color: white;
