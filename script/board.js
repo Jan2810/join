@@ -121,8 +121,11 @@ function allowDrop(ev) {
 }
 
 function moveTo(status) {
-    tasksArray[currentDraggedElement]['status'] = status;
-    updateTasksByStatus(status, containerId);
+    const currentTask = tasksArray.find((ct) => ct['id'] == currentDraggedElement);
+    currentTask['status'] = status;
+    console.log("current task:", currentTask);
+    putData(TASKS_URL, tasksArray);
+    initBoard();
 }
 
 function generateTicketHTML(element, categoryBG) {

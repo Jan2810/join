@@ -60,6 +60,17 @@ async function postData(url, data = {}) {
     return response;
 };
 
+async function putData(url, data = {}) {
+    let response = await fetch(url + ".json", {
+        method: "PUT",
+        header: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(data)
+    });
+    return response;
+};
+
 function getNameSign(name) {
     let splittetName = name.split(" ");
     let firstLetter = splittetName[0].charAt(0).toUpperCase();
