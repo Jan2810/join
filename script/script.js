@@ -121,21 +121,21 @@ function saveUser() {
     localStorage.setItem('user', userString);
 };
 
-// function loadUser() {
-//     const retrievedUserString = localStorage.getItem('user');
-//     if (retrievedUserString) {
-//         user = JSON.parse(retrievedUserString);
-//         console.log("Nutzer gefunden");
-//         console.log(user);
-//     }
-//     else {
-//         window.location.href = "../index.html";
-//     }
-// };
+function loadUser() {
+    const retrievedUserString = localStorage.getItem('user');
+    if (retrievedUserString) {
+        user = JSON.parse(retrievedUserString);
+        console.log("Nutzer gefunden");
+        console.log(user);
+    }
+    else {
+        window.location.href = "../index.html";
+    }
+};
 
-// if (!window.location.pathname.includes('index.html')) {
-//     loadUser();
-// }
+if (window.location.pathname.includes('/html/')) {
+    loadUser();
+}
 
 
 
