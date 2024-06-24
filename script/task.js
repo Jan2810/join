@@ -12,10 +12,13 @@ function prepareTask() {
 }
 
 function showTask(id) {
+    taskContainer.classList.remove("d-none");
     taskContainer.innerHTML = renderTask(id);
+    taskContainer.classList.remove("task-container-hidden");
+    taskContainer.classList.add("flex-column");
     bg.classList.toggle("task-bg-active");
     bg.classList.toggle("task-bg-low-index");
-    taskContainer.classList.remove("task-container-hidden");
+    
     body.classList.toggle("overflow-hidden");
 
 
@@ -82,6 +85,8 @@ function renderTodos(task) {
 };
 
 
+
+
 function findIndex(id) {
     let index = tasksArray.findIndex(element => element.id === id);
     deleteTask(index);
@@ -90,7 +95,135 @@ function findIndex(id) {
 
 function deleteTask(index) {
     tasksArray.splice(index, 1);
+
+    bg.classList.toggle("task-bg-active");
+    bg.classList.toggle("task-bg-low-index");
+    taskContainer.classList.remove("flex-column");
+    taskContainer.classList.toggle("d-none");
+    initBoard()
 }
+
+
+function renderEdit(id) {
+    taskContainer.innerHTML= `
+    <form class="task-edit-form" onsubmit="addNewTask(); return false;">
+            <div class="flex-column task-content">
+                
+                    <div class="task-width">
+                        <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
+                        <input id="taskTitle" class="task-width task-form-font task-input" type="text" placeholder="Enter a title" required="">
+                            <span id="requiredTitle" class="required-text" style="display: none;">This field is required</span>
+                    </div>
+                    <div>
+                        <h3 class="task-form-font">Description</h3>
+                        <textarea id="taskDescription" class="task-width task-form-font task-textarea task-input" type="text" placeholder="Enter a Description"></textarea>
+                    </div>
+                    <div>
+                        <h3 class="task-form-font">Assigned to</h3>
+                        <div onclick="openContacts(); stopProp(event);" class="dropdown task-width">
+                            <div class="dropdown-toggle" id="dropdownToggle">
+                                <span id="selectedItem">Select contacts to assign</span>
+                                <img src="../assets/icons/dropdown.png">
+                            </div>
+                            <div class="dropdown-menu" id="dropdownMenuContainer" style="display: none;">
+                                <div onclick="closeContacts(event)" class="upper-dropdown-item bg-white">
+                                    <span>Select contacts to assign</span>
+                                    <img src="../assets/icons/dropup.png" alt="">
+                                </div>
+                                <div id="dropdownMenu">
+                                    <!-- rendered with openContacts()  -->
+                                </div>
+                            </div>
+                            <div id="signParentContainer" class="flex-center" style="width: 100%;">
+                                <div id="signContainer" class="task-sign-cont task-width flex-center" style="display: none;">
+                                    <!-- rendered signs -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                    <div class="task-width">
+                        <h3 class="task-form-font">Due date<span class="task-star">*</span></h3>
+                        <div class="task-date-input task-width">
+                            <input onclick="openCalender()" id="taskDate" class="task-date-input task-form-font color-lightgrey bg-white task-input" type="date" required="">
+                                <span id="requiredDate" class="required-text" style="display: none;">This field is required</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="task-form-font">Prio</h3>
+                        <div class="flex-row task-btn-cont">
+                            <div onclick="changeUrgency('high')" onmouseover="hoverBtn(true, 'img-high')" onmouseout="hoverBtn(false, 'img-high')" class="task-urgent-btn bg-white" id="high">
+                                <span>Urgent</span>
+                                <img id="img-high" src="../assets/icons-addtask/prio-high-color.png" alt="">
+                            </div>
+                            <div onclick="changeUrgency('mid')" onmouseover="hoverBtn(true, 'img-mid')" onmouseout="hoverBtn(false, 'img-mid')" class="task-urgent-btn bg-white mid-focus" id="mid">
+                                <span>Medium</span>
+                                <img id="img-mid" src="../assets/icons-addtask/prio-mid-white.png" alt="">
+                            </div>
+                            <div onclick="changeUrgency('low')" onmouseover="hoverBtn(true, 'img-low')" onmouseout="hoverBtn(false, 'img-low')" class="task-urgent-btn bg-white" id="low">
+                                <span>Low</span>
+                                <img id="img-low" src="../assets/icons-addtask/prio-low-color.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="task-form-font">Category<span class="task-star">*</span></h3>
+                        <div onclick="openCategorys(); stopProp(event);" class="dropdown task-width">
+                            <div class="dropdown-toggle ctg-input-cnt" id="dropdownCategoryToggle">
+                                <input onclick="openCategorys(); preventDf(event); stopProp(event);" id="categoryInput" type="text" placeholder="Select task category" class="category-dd-upper-item-input task-width bg-white" required="">
+                                <img src="../assets/icons/dropdown.png">
+                            </div>
+                            <div class="dropdownmenu-ctg" id="dropdownCategoryContainer" style="display: none;">
+                                <div onclick="closeCategorys(event)" class="category-dd-upper-item bg-white">
+                                    <span>Select task category</span>
+                                    <img src="../assets/icons/dropup.png" alt="">
+                                </div>
+                                <div id="dropdownCategorys" class="dropdown-ctg">
+                                    <!-- rendered Categorys  -->
+                                </div>
+                            </div>
+                            <span id="requiredCategorys" class="required-text" style="display: none;">This field is required</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="task-form-font">Subtasks</h3>
+                        <div>
+                            <div onkeydown="checkKey(event)" onclick="openSubtasks(); stopProp(event);" id="subtaskInputCont" class="task-width task-form-font subtask-input-cont">
+                                <input id="subtasksInput" class="subtasks-input task-input" type="text" placeholder="Add new subtask">
+                                <div id="subtaskImgCont" class="subtask-img-cont flex-center">
+                                    <div class="img-cont-subtask">
+                                        <img src="../assets/icons/add.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <span id="requiredSubtext" class="required-text" style="display: none;">Cannot set empty subtask</span>
+                            <div class="rendered-subtasks" id="addedSubtasks">
+                                <!-- rendered subtasks -->
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+            <div class="task-bottom-line-cont flex-center">
+                <div class="flex-row flex-center task-bottom-line">
+                  
+                    <div class="flex-center task-form-btn-cont">
+                        <div class="task-clear-btn" onclick="clearAll()" onmouseover="enterIcon()" onmouseout="outIcon()">
+                            <span>Clear</span>
+                            <img id="task-x" src="../assets/icons/x-black.png" alt="">
+                        </div>
+                        <button onclick="formValidationFeedbackOn()" type="submit" id="createButton" class="task-send-form-btn">
+                            <span>Create Task</span>
+                            <img src="../assets/icons/hook-white.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    `;
+}
+
 
 function renderTask(id) {
     let task = getActualTask(id);
@@ -121,7 +254,7 @@ function renderTask(id) {
                             d="M3 18C2.45 18 1.97917 17.8042 1.5875 17.4125C1.19583 17.0208 1 16.55 1 16V3C0.716667 3 0.479167 2.90417 0.2875 2.7125C0.0958333 2.52083 0 2.28333 0 2C0 1.71667 0.0958333 1.47917 0.2875 1.2875C0.479167 1.09583 0.716667 1 1 1H5C5 0.716667 5.09583 0.479167 5.2875 0.2875C5.47917 0.0958333 5.71667 0 6 0H10C10.2833 0 10.5208 0.0958333 10.7125 0.2875C10.9042 0.479167 11 0.716667 11 1H15C15.2833 1 15.5208 1.09583 15.7125 1.2875C15.9042 1.47917 16 1.71667 16 2C16 2.28333 15.9042 2.52083 15.7125 2.7125C15.5208 2.90417 15.2833 3 15 3V16C15 16.55 14.8042 17.0208 14.4125 17.4125C14.0208 17.8042 13.55 18 13 18H3ZM3 3V16H13V3H3ZM5 13C5 13.2833 5.09583 13.5208 5.2875 13.7125C5.47917 13.9042 5.71667 14 6 14C6.28333 14 6.52083 13.9042 6.7125 13.7125C6.90417 13.5208 7 13.2833 7 13V6C7 5.71667 6.90417 5.47917 6.7125 5.2875C6.52083 5.09583 6.28333 5 6 5C5.71667 5 5.47917 5.09583 5.2875 5.2875C5.09583 5.47917 5 5.71667 5 6V13ZM9 13C9 13.2833 9.09583 13.5208 9.2875 13.7125C9.47917 13.9042 9.71667 14 10 14C10.2833 14 10.5208 13.9042 10.7125 13.7125C10.9042 13.5208 11 13.2833 11 13V6C11 5.71667 10.9042 5.47917 10.7125 5.2875C10.5208 5.09583 10.2833 5 10 5C9.71667 5 9.47917 5.09583 9.2875 5.2875C9.09583 5.47917 9 5.71667 9 6V13Z"
                             fill="#2A3647" />
                     </svg>
-                    Delete
+                    <span onclick="findIndex('${id}')">Delete</span>
                 </div>
                 <div class="task-footer-divider"></div>
                 <div class="task-edit-container flex">
@@ -130,7 +263,7 @@ function renderTask(id) {
                             d="M3.16667 22.3332H5.03333L16.5333 10.8332L14.6667 8.9665L3.16667 20.4665V22.3332ZM22.2333 8.89984L16.5667 3.29984L18.4333 1.43317C18.9444 0.922059 19.5722 0.666504 20.3167 0.666504C21.0611 0.666504 21.6889 0.922059 22.2 1.43317L24.0667 3.29984C24.5778 3.81095 24.8444 4.42761 24.8667 5.14984C24.8889 5.87206 24.6444 6.48873 24.1333 6.99984L22.2333 8.89984ZM20.3 10.8665L6.16667 24.9998H0.5V19.3332L14.6333 5.19984L20.3 10.8665Z"
                             fill="rgb(42, 54, 71)" />
                     </svg>
-                    Edit
+                    <span onclick="renderEdit('${id}')">Edit</span>
                 </div>
             </div>`
 }
