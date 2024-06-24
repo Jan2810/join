@@ -61,6 +61,10 @@
     font-size: 20px;
 }
 
+#login-input-email {
+    background: url('../assets/icons/mail.svg')  no-repeat right 21px center;
+}
+
 .login-checkbox-field {
     width: 422px;
     height: 48px;
