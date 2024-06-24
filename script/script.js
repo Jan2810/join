@@ -66,13 +66,6 @@ async function putData(url, data = {}) {
     return response;
 };
 
-function getNameSign(name) {
-    let splittetName = name.split(" ");
-    let firstLetter = splittetName[0].charAt(0).toUpperCase();
-    let secondLetter = splittetName[1].charAt(0).toUpperCase();
-    return `${firstLetter}${secondLetter}`;
-};
-
 let backgroundColors = [
     "background: rgba(255, 122, 0, 1)",
     "background: rgba(255, 94, 179, 1)",
@@ -159,6 +152,13 @@ function getInitials(username) {
     const initials = nameParts.map(part => part[0].toUpperCase()).join('');
     return initials;
 }
+
+// function getNameSign(name) {
+//     let splittetName = name.split(" ");
+//     let firstLetter = splittetName[0].charAt(0).toUpperCase();
+//     let secondLetter = splittetName[1].charAt(0).toUpperCase();
+//     return `${firstLetter}${secondLetter}`;
+// };
 
 
 function goToBoard() {
