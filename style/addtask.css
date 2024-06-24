@@ -462,12 +462,12 @@
     margin: 0!important;
     border: 0;
     padding-right: 0;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 400;
 }
 
 .subtask-img-cont{
-    margin-right: 21px;
+    padding-right: 12px;
     gap: 5px;
 }
 
@@ -479,7 +479,6 @@
 }
 
 .img-cont-subtask img{
-    width: 28px;
     height: auto;
     padding: 5px;
     cursor: pointer;
@@ -499,6 +498,12 @@
     padding-right: 5px;
 }
 
+.img-cont-subtask-last {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .required-text {
     color: red;
     font-size: 16px;
@@ -513,7 +518,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 21px;
+    padding: 0px 12px;
     border-radius: 10px;
     transition: all 100ms ease-in-out;
     margin: 5px 0px;
@@ -623,6 +628,14 @@
     }
     .task-bottom-line-cont {
         margin-bottom: 20px;
+    }
+
+    .subtasks-input {
+        font-size: 16px;
+    }
+
+    .category-dd-upper-item-input {
+        font-size: 16px;
     }
 }
 
