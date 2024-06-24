@@ -1,3 +1,16 @@
+/* Edit contact overlay / Add contact overlay */
+
+.edit-contacts-overlay-bg,
+.add-contacts-overlay-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.20);
+    transition: transform 200ms ease-in-out;
+    z-index: 10;
+}
 .contacts-bg {
     position: fixed;
     top: 0;
@@ -9,30 +22,34 @@
     z-index: 200;
 }
 
+
+
 .overlay-edit-contact {
-    transition: transform 100ms ease-in-out;
+    transition: transform 200ms ease-in-out;
     transform: translateX(0%); 
     width: 100%;
     border-radius: 12px;
+    z-index: 15;
 }
 
-.add-contact {
-    transition: transform 100ms ease-in-out;
+.overlay-add-contact {
+    transition: transform 200ms ease-in-out;
     transform: translateY(0%); 
     width: 100%;
     border-radius: 12px;
+    z-index: 15;
 }
 
 .hide-add-contact-overlay {
-    position: absolute;
-    top: 0;
+    transition: transform 200ms ease-in-out;
     transform: translateY(-100%);
+    /* z-index: -5; */
 }
 
 .hide-edit-contact-overlay {
-    position: absolute;
-    right: 0;
+    transition: transform 200ms ease-in-out;
     transform: translateX(100%);
+    /* z-index: -5; */
 }
 
 .add-contact-top {
@@ -123,6 +140,8 @@
 
 }
 
+/* Add contact overlay */
+
 .add-contact-form {
     width: 364px;
     display: flex;
@@ -189,7 +208,7 @@
         background: #091931;
 }
 
-.add-new-contact-button {
+/* .add-new-contact-button {
         width: 352px;
         height: 56px;
         background: #2A3647;
@@ -205,8 +224,8 @@
         align-items: center;
         justify-content: center;
         gap: 16px;
-        /* transition: all 100ms ease-in-out; */
-    }
+        transition: all 100ms ease-in-out;
+    } */
     
 
 
@@ -230,6 +249,7 @@
     align-items: center;
     justify-content: center;
     gap: 16px;
+    display: none;
 
 }
 
@@ -261,5 +281,8 @@
 }
     
 @media only screen and (min-width: 800px) {
+    .contact-created-popup {
+        display: none;
+    }
     
 }
