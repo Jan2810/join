@@ -168,13 +168,11 @@ function renderSubtasks() {
     container.innerHTML = "";
     for (let i = 0; i < taskData.subtasks.length; i++) {
         const subtask = taskData.subtasks[i];
-        console.log(subtask);
         container.innerHTML += returnSubtasksList(subtask, i);
     }
 };
 
 function editSubtask(i) {
-    console.log(taskData.subtasks);
     document.getElementById(`subtask${i}`).innerHTML = returnEditSubtaskHTML(i);
     document.getElementById("editedValue").focus()
     document.getElementById("editedValue").select()

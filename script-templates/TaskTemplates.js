@@ -128,7 +128,7 @@ function displayContacts(ev) {
 function returnContactList(cnt, i) {
     return `
         <div onclick="assignContact(${i})" class="dropdown-item" id="cntnum${i}" data-value="${i}">
-            <div class="task-cnt-sign flex-center" id="contactsign${i}" style='${backgroundColors[i]}'>${getNameSign(cnt.name)}</div>
+            <div class="task-cnt-sign flex-center" id="contactsign${i}" style='${backgroundColors[i]}'>${getInitials(cnt.name)}</div>
             <div class="task-cnt-name">${cnt.name}</div>
             <img id="cntimg${i}" src="../assets/icons/rb-unchecked.png" alt="check">
         </div>
@@ -153,7 +153,7 @@ function returnSignList(cnt, i) {
     return `
            <div class="task-cnt-assigned-sign">
                 <div class="task-cnt-sign flex-center" id="contactsign${i}" style='${backgroundColors[i]}'>
-                ${getNameSign(cnt.name)}
+                ${getInitials(cnt.name)}
                 </div>
            </div>`;
 };

@@ -153,14 +153,6 @@ function getInitials(username) {
     return initials;
 }
 
-// function getNameSign(name) {
-//     let splittetName = name.split(" ");
-//     let firstLetter = splittetName[0].charAt(0).toUpperCase();
-//     let secondLetter = splittetName[1].charAt(0).toUpperCase();
-//     return `${firstLetter}${secondLetter}`;
-// };
-
-
 function goToBoard() {
     window.location.href = "./html/summary.html"
 }
