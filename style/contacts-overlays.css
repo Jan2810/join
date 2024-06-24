@@ -129,9 +129,41 @@
     background: #fff;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+
+/* Add contact overlay */
+
+.edit-contact-buttons {
+    display: flex;
+    gap: 20px;
 
 }
 
+.edit-contact-delete-button {
+    width: 82px;
+    height: 51px;
+    color: #2A3647;
+    background-color: white;
+    border: 1px solid #2A3647;
+}
+
+.edit-contact-delete-button:active {
+    color: #29ABE2;
+    border: 1px solid #29ABE2;
+}
+
+.edit-contact-save-button {
+    width: 99px;
+    height: 51px;
+    background-color: #2A3647;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+
+}
 /* Add contact overlay */
 
 .add-contact-form {
@@ -180,11 +212,6 @@
 }
 
 .add-contact-form button {
-    width: 202px;
-    height: 51px;
-    background-color: #2A3647;
-    color: white;
-    border: none;
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
@@ -192,12 +219,17 @@
     margin-top: 16px;
 }
 
-.add-contact-form button:hover {
-    background: #29ABE2;
+.create-contact-button {
+    width: 202px;
+    height: 51px;
+    background-color: #2A3647;
+    color: white;
 }
 
-.add-contact-form button:active {
-        background: #091931;
+.create-contact-button:active,
+.edit-contact-save-button:active {
+    background: #29ABE2;
+    border-color: #29ABE2;
 }
 
 /* .add-new-contact-button {
@@ -277,5 +309,26 @@
     .contact-created-popup {
         display: none;
     }
+
+    .edit-contact-delete-button:hover {
+        color: #29ABE2;
+        border: 1px solid #29ABE2;
+    }
+
+    .edit-contact-delete-button:active {
+        color: #091931; 
+        border: 1px solid #091931;
+    }
     
+    .create-contact-button:hover,
+    .edit-contact-save-button:hover {
+        background: #29ABE2;
+        border-color: #29ABE2;
+    }
+
+    .create-contact-button:active,
+    .edit-contact-save-button:active {
+        background: #091931;
+        border-color: #091931;
+    }
 }
