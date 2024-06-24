@@ -10,19 +10,6 @@ function changeBgBtn() {
     }
 };
 
-function clearTaskDataArray() {
-    taskData = {
-        "title": "",
-        "description": "",
-        "assigned_to": [],
-        "due_date": "",
-        "priority": "",
-        "category": "",
-        "subtasks": [],
-        "status": ""
-    };
-};
-
 function highlightButton(urg) {
     if (urg === "high") {
         document.getElementById("high").classList.add("high-focus");

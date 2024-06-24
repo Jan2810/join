@@ -53,6 +53,19 @@ function changeUrgency(urg) {
     changeBgBtn()
 };
 
+function clearTaskDataArray() {
+    taskData = {
+        "title": "",
+        "description": "",
+        "assigned_to": [],
+        "due_date": "",
+        "priority": "",
+        "category": "",
+        "subtasks": [],
+        "status": ""
+    };
+};
+
 function renderTaskList() {
     let content = document.getElementById("dropdownCategorys");
     content.innerHTML = "";
