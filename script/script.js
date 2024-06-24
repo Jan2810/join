@@ -133,7 +133,7 @@ function loadUser() {
     }
 };
 
-if (!window.location.pathname.includes('index.html') && window.location.pathname !== '/') {
+if (!window.location.pathname.includes('index.html')) {
     loadUser();
 }
 
