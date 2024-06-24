@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.contacts-main-container {
+    display: flex;
+}
+
 .contacts-container {
     max-width: 1208px;
     height: calc(100vh - 160px);
@@ -134,13 +138,6 @@
     font-size: 12px;
 }
 
-
-/* Single contact desktop view */
-
-.contact-desktop-details {
-        width: 0;
-        display: none;
-    } 
 
 /* Single contact mobile view */
 

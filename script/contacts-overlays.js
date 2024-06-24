@@ -45,5 +45,41 @@ function displayContactCreatedPopup(event) {
     setTimeout(function () {
         contactCreatedPopupBg.classList.add('hide-contact-created-popup');
     }, 800);
-
 }
+
+let manuallyRemoved = false;
+
+/**
+ * Handles the window resize event to toggle the visibility of the contactContainer.
+ * Removes 'd-none' if window width is 1120px or greater.
+ * Adds 'd-none' if window width is less than 1120px, unless manually removed.
+ */
+function handleResize() {
+    const contactContainer = document.getElementById('contactContainer');
+    if (window.innerWidth >= 1120) {
+        contactContainer.classList.remove('d-none');
+    } else if (!manuallyRemoved) {
+        contactContainer.classList.add('d-none');
+    }
+}
+
+/**
+* Handles the click event on the contact-arrow-left element.
+ * Shows the contactsContainer and hides the contactContainer if the window width is less than 1120px.
+ */
+function returnToContactsList() {
+    const contactsContainer = document.getElementById('contactsContainer');
+    const contactContainer = document.getElementById('contactContainer');
+
+    contactsContainer.classList.add('d-flex');
+    contactsContainer.classList.remove('d-none');
+
+    if (window.innerWidth < 1120) {
+        contactContainer.classList.add('d-none');
+        manuallyRemoved = false; // Reset the flag
+    }
+}
+
+// Add event listener for window resize
+window.addEventListener('resize', handleResize);
+
