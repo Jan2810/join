@@ -16,6 +16,7 @@
     background: #fff;
     overflow-y: scroll;
     box-shadow: inset 0px 4px 6px 0px #00000014; 
+    position: relative;
 }
 
 .contacts-list::-webkit-scrollbar {

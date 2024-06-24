@@ -11,6 +11,7 @@
     transition: transform 200ms ease-in-out;
     z-index: 10;
 }
+
 .contacts-bg {
     position: fixed;
     top: 0;
@@ -21,8 +22,6 @@
     transition: transform 200ms ease-in-out;
     z-index: 200;
 }
-
-
 
 .overlay-edit-contact {
     transition: transform 200ms ease-in-out;
@@ -43,13 +42,11 @@
 .hide-add-contact-overlay {
     transition: transform 200ms ease-in-out;
     transform: translateY(-100%);
-    /* z-index: -5; */
 }
 
 .hide-edit-contact-overlay {
     transition: transform 200ms ease-in-out;
     transform: translateX(100%);
-    /* z-index: -5; */
 }
 
 .add-contact-top {
@@ -62,10 +59,6 @@
     align-items: center;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-
-    
-
-
 }
 
 .close-svg {
@@ -75,7 +68,6 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
-
 }
 
 .add-contact-top-header h3{
@@ -234,9 +226,9 @@
 /* Contact successfully created pop-up */
 
 .contact-created-popup {
-    transition: transform 100ms ease-in-out;
+    transition: transform 200ms ease-in-out;
     transform: translateX(0%); 
-    width: 326px;
+    width: 90vw;
     height: 74px;
     border-radius: 20px;    
     background: #2A3647;
@@ -248,25 +240,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    display: none;
-
+    text-align: center;
+    padding: 16px;
+   
 }
 
 .hide-contact-created-popup {
-    position: absolute;
-    right: 0;
-    transform: translateX(100%);
+    transition: transform 200ms ease-in-out;
+    transform: translateY(100%);
 }
 
 
 
 @media only screen and (min-width: 352px) {
-    
+    .contact-created-popup {
+    width: 326px;
+    }
 }
 
 @media only screen and (min-width: 396px) {
-    .add-contact, 
+    .overlay-add-contact, 
     .overlay-edit-contact {
     width: 396px;
 }

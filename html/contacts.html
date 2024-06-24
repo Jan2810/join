@@ -273,7 +273,7 @@
                     <input class="add-contact-form-name" type="text" placeholder="Name" required minlength="2">
                     <input class="add-contact-form-email" type="email" placeholder="Email" required>
                     <input class="add-contact-form-phone" type="tel" placeholder="Phone" required minlength="10">
-                    <button type="submit">Create contact</button>
+                    <button type="submit" onclick="displayContactCreatedPopup(event)">Create contact</button>
                 </form>
 
             </div>
@@ -320,14 +320,17 @@
                     <input class="add-contact-form-name" type="text" placeholder="Name" required minlength="2">
                     <input class="add-contact-form-email" type="email" placeholder="Email" required>
                     <input class="add-contact-form-phone" type="tel" placeholder="Phone" required minlength="10">
-                    <button type="submit">Create contact</button>
+                    <button type="submit" onclick="displayContactCreatedPopup(event)">Create contact</button>
                 </form>
 
             </div>
 
         </div>
     </div>
-    <div class="contact-created-popup">Contact successfully created</div>
+    <div class="add-contacts-overlay-bg flex-center hide-contact-created-popup" id="contact-created-popup-bg">
+        <div class="contact-created-popup">Contact successfully created</div>
+    </div>
+
 
 
     <script src="../script/contacts-overlays.js"></script>
