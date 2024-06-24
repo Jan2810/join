@@ -114,6 +114,7 @@ function updateFilteredDone() {
 
 function startDragging(id) {
     currentDraggedElement = id;
+    document.getElementById(`board-ticket${id}`).classList.add('board-ticket-tend');
 }
 
 function allowDrop(ev) {
@@ -121,7 +122,7 @@ function allowDrop(ev) {
 }
 
 function moveTo(status) {
-    const currentTask = tasksArray.find((ct) => ct['id'] == currentDraggedElement);
+    const currentTask = tasksArray.find((ct) => ct['id'] === currentDraggedElement);
     currentTask['status'] = status;
     console.log("current task:", currentTask);
     putData(TASKS_URL, tasksArray);
@@ -131,7 +132,7 @@ function moveTo(status) {
 function generateTicketHTML(element, categoryBG) {
     let assignedHTML = '';
     for (let j = 0; j < element['assigned_to'].length; j++) {
-        let initials = getNameSign(element['assigned_to'][j]);
+        let initials = getInitials(element['assigned_to'][j]);
         assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div>`;
     }
     return `

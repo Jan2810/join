@@ -134,6 +134,10 @@ main {
     align-items: center;
 }
 
+.board-ticket-container:hover {
+    background-color: rgba(95, 158, 160, 0.1);
+}
+
 .board-ticket {
     width: 252px;
     height: fit-content;
@@ -146,7 +150,16 @@ main {
 }
 
 .board-ticket:hover {
-    cursor: pointer;
+    cursor: grab;
+}
+
+.board-ticket-tend {
+    -moz-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+    -o-transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+
+    transform: rotate(15deg);
 }
 
 .board-ticket-content {
@@ -285,16 +298,16 @@ main {
         width: 8px;
         height: 8px;
     }
-    
+
     .board-ticket-container::-webkit-scrollbar-track {
         background: transparent;
     }
-    
+
     .board-ticket-container::-webkit-scrollbar-thumb {
         background: rgba(0, 0, 0, 0.1);
         border-radius: 4px;
     }
-    
+
     .board-ticket-container::-webkit-scrollbar-thumb:hover {
         background: rgba(0, 0, 0, 0.2);
     }
@@ -307,7 +320,7 @@ main {
         margin-right: 64px;
     }
 
-    .board-no-tasks-placeholder{
+    .board-no-tasks-placeholder {
         margin-left: 64px;
         margin-right: 64px;
     }
@@ -398,7 +411,7 @@ main {
         width: 100%;
     }
 
-    .board-no-tasks-placeholder{
+    .board-no-tasks-placeholder {
         width: 100%;
         max-width: 364px;
     }
