@@ -176,13 +176,14 @@ function editSubtask(i) {
     document.getElementById(`subtask${i}`).innerHTML = returnEditSubtaskHTML(i);
     document.getElementById("editedValue").focus()
     document.getElementById("editedValue").select()
-}
+};
+
 function checkEditKey(ev, i) {
     if (ev.key === "Enter") {
         ev.preventDefault();
         saveSubtask(i);
     }
-}
+};
 
 function deleteSubtask(i) {
     taskData.subtasks.splice(i, 1);

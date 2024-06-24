@@ -107,7 +107,6 @@ async function includeHTML() {
     }
 };
 
-
 function saveUser() {
     const userString = JSON.stringify(user);
     console.log(userString);
