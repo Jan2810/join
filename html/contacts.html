@@ -14,8 +14,8 @@
 
 <body onload="includeHTML()">
     <div w3-include-html="../assets/templates/navigation.html"></div>
-    <div class="contacts-container">
-        <div class="contacts-list">
+    <div class="contacts-container d-flex" id="contacts-container">
+        <div class="contacts-list d-grid" id="contacts-list">
 
             <button class="add-new-contact-button" onclick="openAddContactOverlay()"><span>Add new contact</span> <img
                     class="" src="../assets/icons/add-person.svg" alt=""></button>
@@ -160,7 +160,7 @@
 
 
 
-        <div class="contact-desktop-details">
+        <div class="contact-desktop-details" id="contact-desktop-details">
             <div class="contact-desktop-container">
                 <div class="contact-desktop flex">
                     <h1>Contacts</h1>
@@ -206,8 +206,9 @@
             </div>
         </div>
 
+
     </div>
-    <div class="contact-mobile-container d-none">
+    <div class="contact-mobile-container d-none" id="contact-container">
         <img class="contact-mobile-triple-dots bg-darkblue" src="../assets/icons/contact-mobile-triple-dots.svg" alt="">
         <div class="contact-mobile flex">
             <h1>Contacts</h1>
@@ -231,6 +232,11 @@
             <p>+49 2222 222 22 2</p>
         </div>
     </div>
+
+
+
+
+
 
 
 
@@ -273,7 +279,14 @@
                     <input class="add-contact-form-name" type="text" placeholder="Name" required minlength="2">
                     <input class="add-contact-form-email" type="email" placeholder="Email" required>
                     <input class="add-contact-form-phone" type="tel" placeholder="Phone" required minlength="10">
-                    <button type="submit" onclick="displayContactCreatedPopup(event)">Create contact</button>
+                    <div class="edit-contact-buttons">
+                        <button type="submit" class="edit-contact-delete-button">Delete</button>
+                        <button type="submit" class="edit-contact-save-button">
+                            <span>Save</span>
+                            <img src="../assets/icons-addtask/check.png" alt="">
+                        </button>
+                    </div>
+
                 </form>
 
             </div>
@@ -320,7 +333,8 @@
                     <input class="add-contact-form-name" type="text" placeholder="Name" required minlength="2">
                     <input class="add-contact-form-email" type="email" placeholder="Email" required>
                     <input class="add-contact-form-phone" type="tel" placeholder="Phone" required minlength="10">
-                    <button type="submit" onclick="displayContactCreatedPopup(event)">Create contact</button>
+                    <button type="submit" class="create-contact-button"
+                        onclick="displayContactCreatedPopup(event)">Create contact</button>
                 </form>
 
             </div>

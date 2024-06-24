@@ -1,3 +1,6 @@
+let contactsList = document.getElementById('contacts-list');
+let contactsContainer = document.getElementById('contacts-container');
+let contactContainer = document.getElementById('contact-container');
 let editContactsOverlayBg = document.getElementById('edit-contacts-overlay-bg');
 let addContactsOverlayBg = document.getElementById('add-contacts-overlay-bg');
 let editContactOverlay = document.getElementById('overlay-edit-contact');
@@ -36,7 +39,11 @@ function displayContactCreatedPopup(event) {
     event.preventDefault();
     closeAddContactOverlay()
     contactCreatedPopupBg.classList.remove('hide-contact-created-popup');
+    contactsContainer.classList.remove('d-flex');
+    contactsContainer.classList.add('d-none');
+    contactContainer.classList.remove('d-none');
     setTimeout(function () {
         contactCreatedPopupBg.classList.add('hide-contact-created-popup');
-    }, 1500);
+    }, 800);
+
 }
