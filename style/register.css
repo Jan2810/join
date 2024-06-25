@@ -56,6 +56,22 @@
     margin-bottom: 20px;
 }
 
+#register-input-name {
+    background: url('../assets/icons/person.svg') no-repeat right 21px center;
+}
+
+#register-input-email {
+    background: url('../assets/icons/mail.svg') no-repeat right 21px center;
+}
+
+#register-input-password {
+    background: url('../assets/icons/lock.svg') no-repeat right 21px center;
+}
+
+#register-input-confirm-password {
+    background: url('../assets/icons/lock.svg') no-repeat right 21px center;
+}
+
 .register-signup-button {
     width: 126px;
     height: 55px;
