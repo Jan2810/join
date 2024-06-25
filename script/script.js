@@ -114,9 +114,9 @@ function saveUser() {
 };
 
 function loadUser() {
-   if(!window.location.pathname.includes('register')){
-   
+
     const retrievedUserString = localStorage.getItem('user');
+
     if (retrievedUserString) {
         user = JSON.parse(retrievedUserString);
         console.log("Nutzer gefunden");
@@ -127,10 +127,10 @@ function loadUser() {
     }
 };
 
-if (window.location.pathname.includes('/html/')) {
+if (window.location.pathname.includes('/html/') && !window.location.pathname.includes('register')) {
     loadUser();
 }
-}
+
 
 
 
