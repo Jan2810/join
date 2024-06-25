@@ -207,7 +207,7 @@ main {
 
 .board-ticket-task {
     color: rgba(168, 168, 168, 1);
-    height: 40px;
+    max-height: 40px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -292,6 +292,7 @@ main {
         height: fit-content;
         flex-direction: row;
         overflow-x: scroll;
+        align-items: flex-start;
     }
 
     .board-ticket-container::-webkit-scrollbar {
@@ -362,7 +363,7 @@ main {
         margin-top: 32px;
     }
 
-    .board-ticket-container {
+    /* .board-ticket-container {
         margin-left: -64px;
         margin-right: -64px;
     }
@@ -373,7 +374,7 @@ main {
 
     .board-ticket-container .board-ticket:last-child {
         margin-right: 64px;
-    }
+    } */
 }
 
 @media (max-width: 800px) {
