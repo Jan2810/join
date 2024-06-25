@@ -18,7 +18,7 @@ function showTask(id) {
     taskContainer.classList.add("flex-column");
     bg.classList.toggle("task-bg-active");
     bg.classList.toggle("task-bg-low-index");
-    
+
     body.classList.toggle("overflow-hidden");
 
 
@@ -39,9 +39,9 @@ function closeTask() {
 }
 
 function getActualTask(id) {
-    let task = tasksArray.find((e) => e['id'] == id);
-    console.log(task)
-    return task;
+    let index = tasksArray.findIndex((e) => e['id'] == id);
+    let task = tasksArray[index];
+    return { element: task, index: index };
 }
 
 
@@ -67,22 +67,45 @@ function renderTaskOwners(task) {
 
 function renderTodos(task) {
     let taskTodoHtml = "";
-    if (task.subtasks.length > 0) {
-        task.subtasks.forEach(element => {
-            getInitials(element.text);
+    let todoArray = task.subtasks;
+    if (todoArray.length > 0) {
+        for (let i = 0; i < todoArray.length; i++) {
+            const todo = todoArray[i];
+
             taskTodoHtml += /*html*/ `
-        <div class="flex">
-                    <div class="task-subtask-container flex" onlcick>
-                        <input type="checkbox" ${element.status}>
-                        <div class="task-todo-value">${element.text}</div>
-                    </div>
-                </div>`
-        });
+            <div class="flex">
+            <div class="task-subtask-container flex">
+                <input id="todo${i}" type="checkbox" ${todo.status} onclick="updateTodoStatus('${task.id}',${i})">
+                <div class="task-todo-value">${todo.text}</div>
+            </div>
+        </div>`
+        }
         return `  <div class="task-subtasks-area flex-column">
                 <div class="task-prio-key task-font-regular">Subtasks</div>
                 ${taskTodoHtml} </div></div>`
     }
 };
+
+function updateTodoStatus(id, index) {
+    taskIndex = tasksArray.findIndex(element => element.id === id);
+    let task = tasksArray[taskIndex];
+    let todo = task.subtasks[index];
+    let todoInDom = document.getElementById(`todo${index}`);
+    todoInDom.addEventListener("change", () => {
+        if (todo.status == "checked") {
+            todo.status = "unchecked"
+        }
+        else { todo.status = "checked" }
+       
+    }
+    )
+// console.log(tasksArray[taskIndex].status);
+putData(TASKS_URL, tasksArray);
+
+}
+
+
+
 
 
 
@@ -105,7 +128,7 @@ function deleteTask(index) {
 
 
 function renderEdit(id) {
-    taskContainer.innerHTML= `
+    taskContainer.innerHTML = `
     <form class="task-edit-form" onsubmit="addNewTask(); return false;">
             <div class="flex-column task-content">
                 
@@ -226,7 +249,16 @@ function renderEdit(id) {
 
 
 function renderTask(id) {
-    let task = getActualTask(id);
+    console.clear();
+    console.log("Alle Tasks:");
+    console.log(tasksArray);
+    let task = (getActualTask(id)).element;
+    let taskId = (getActualTask(id)).index;
+    console.log("Aktuelle TaskID:");
+    console.log(taskId);
+    console.log("Aktueller Task also Objekt:");
+    console.log(task);
+
     renderTaskOwners(task);
     return /*html*/`<div class="task-eyebrow-container">
                 <div class="board-ticket-gategory technical-task-bg">${task.category}</div>
