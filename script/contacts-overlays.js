@@ -6,6 +6,7 @@ let addContactsOverlayBg = document.getElementById('add-contacts-overlay-bg');
 let editContactOverlay = document.getElementById('overlay-edit-contact');
 let addContactOverlay = document.getElementById('overlay-add-contact');
 let contactCreatedPopupBg = document.getElementById('contact-created-popup-bg');
+let manuallyRemoved = false;
 
 function closeEditContactOverlay() {
     editContactsOverlayBg.classList.add('hide-edit-contact-overlay');
@@ -42,12 +43,11 @@ function displayContactCreatedPopup(event) {
     contactsContainer.classList.remove('d-flex');
     contactsContainer.classList.add('d-none');
     contactContainer.classList.remove('d-none');
+    manuallyRemoved = true;
     setTimeout(function () {
         contactCreatedPopupBg.classList.add('hide-contact-created-popup');
     }, 800);
 }
-
-let manuallyRemoved = false;
 
 /**
  * Handles the window resize event to toggle the visibility of the contactContainer.
@@ -57,6 +57,9 @@ let manuallyRemoved = false;
 function handleResize() {
     if (window.innerWidth >= 1120) {
         contactContainer.classList.remove('d-none');
+        contactsContainer.classList.remove('d-none');
+        contactsContainer.classList.add('d-flex');
+        manuallyRemoved = false;
     } else if (!manuallyRemoved) {
         contactContainer.classList.add('d-none');
     }
@@ -67,9 +70,6 @@ function handleResize() {
  * Shows the contactsContainer and hides the contactContainer if the window width is less than 1120px.
  */
 function returnToContactsList() {
-    const contactsContainer = document.getElementById('contactsContainer');
-    const contactContainer = document.getElementById('contactContainer');
-
     contactsContainer.classList.add('d-flex');
     contactsContainer.classList.remove('d-none');
 

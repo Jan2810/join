@@ -5,7 +5,7 @@
 }
 
 .contacts-main-container {
-    display: flex;
+    display: block;
 }
 
 .contacts-container {
@@ -54,8 +54,7 @@
     display: none;
 }
 
-.add-person-icon,
-.single-contact-triple-dots {
+.add-person-icon {
     width: 56px;
     height: 56px;
     padding: 12px;
@@ -66,12 +65,32 @@
     position: fixed;
     bottom: calc(88px - 56px + 80px);
     right: calc(70px - 56px);
+    transition: fill 100ms ease-in;
 }
  
-.add-person-icon:active,
-.single-contact-triple-dots:active {
-    box-shadow: 0px 4px 4px 0px #00000040;
+.add-person-icon:active {
     background: #29ABE2; 
+}
+
+.single-contact-triple-dots {
+    cursor: pointer;
+    position: fixed;
+    bottom: calc(88px - 56px + 80px);
+    right: calc(70px - 56px);
+}
+
+.single-contact-triple-dots-svg {
+    border-radius: 50%;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.single-contact-triple-dots-svg rect {
+  fill: #2A3647; 
+  transition: fill 100ms ease-in;
+}
+
+.single-contact-triple-dots-svg:active rect {
+  fill: #29ABE2; 
 }
 
 .contacts-list h3,
@@ -81,7 +100,7 @@
 }
 
 .contacts-list h3 {
-    margin-left: 36px;
+    margin-left: 28px;
     align-self: center;
 }
 
@@ -100,12 +119,12 @@
     padding: 15px 0;
 }
 
-.contacts-list-box:hover {
+.contacts-list-box-entry:hover {
     background: rgb(246, 247, 248);
     cursor: pointer;
 }
 
-.contacts-list-box:active {
+.contacts-list-box-entry:active {
     background: #2A3647;
     color: #fff;
 }
@@ -122,7 +141,7 @@
     color: #fff;
     border-radius: 50%;
     border: 2px solid #fff;
-    margin-left: 24px;
+    margin-left: 16px;
 }
 
 .contacts-link {
@@ -150,14 +169,15 @@
 }
 
 .single-contact h1 {
-    font-size: 47px;
+    font-size: 40px;
     font-weight: 700;
     color: #000;
-    padding-bottom: 12px;
+    padding-bottom: 6px;
 }
 
 .single-contact p,
-.single-contact-information p {
+.single-contact-information p,
+.mobile-view-padding-16 {
     padding-bottom: 16px;
 }
 
@@ -185,9 +205,9 @@
 }
 
 .single-contact-profile-badge {
-    width: 80px;
-    height: 80px;
-    font-size: 27px;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
     color: #fff;
     border-radius: 50%;
     border: 2px solid #fff;
@@ -201,7 +221,7 @@
 }
 
 .single-contact-name {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 700;
 }
 
@@ -240,6 +260,24 @@
         font-size: 16px;
     }
 
+    .single-contact-profile-badge {
+        width: 80px;
+        height: 80px;
+        font-size: 27px;
+    }
+
+    .single-contact h1 {
+        font-size: 47px;
+    }
+
+    .single-contact-name {
+    font-size: 36px;
+    }
+
+    .contacts-list h3 {
+        margin-left: 30px;
+    }
+
     .contacts-list h3,
     .contacts-list p {
         font-size: 16px;
@@ -251,7 +289,7 @@
     }
 
     .contacts-line {
-    width: 352px;
+        width: 352px;
     }
 }
 
@@ -263,6 +301,14 @@
 }
 
 @media only screen and (min-width: 440px) {
+    .contacts-profile-badge {
+        margin-left: 24px;
+    }
+
+    .contacts-list h3 {
+        margin-left: 38px;;
+    }
+
     .contacts-list h3,
     .contacts-list p {
         font-size: 20px;
@@ -329,11 +375,12 @@
         background: #091931;
     }
 
+    
     /* Single contact - desktop view */
 
     .single-contact-container {
         padding-top: 32px;
-        margin-left: 55px;
+        margin-left: 290px;
         height: calc(100vh - 96px);
     }
     
@@ -346,16 +393,27 @@
     
     .single-contact h1 {
         font-size: 61px;
+        padding: 0;
     }
     
     .single-contact-header {
         display: flex;
+        align-items: center;
+        gap: 30px;
     }
 
     .single-contact-subheader {
+        display: flex;
         flex-direction: row;
+        align-items: center;
         font-size: 27px;
+        gap: 30px;
     }
+
+    .mobile-view-padding-16 {
+        padding: 0;
+    }
+
     .padding-bottom-16 {
         padding-bottom: 16px;
     }
@@ -382,7 +440,6 @@
         width: 120px;
         height: 120px;
         font-size: 47px;
-
     }
 
     .single-contact-badge-and-name {
@@ -445,6 +502,15 @@
 }
 
 @media only screen and (min-width: 1120px) {
+    .contacts-main-container {
+        display: flex;
+    }
+
+    .single-contact-container {
+        padding-top: 110px;
+        margin-left: 55px;
+    }
+
     .contacts-list {
         width: 428px;
         align-items: center;

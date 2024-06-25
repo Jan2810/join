@@ -136,6 +136,8 @@
 .edit-contact-buttons {
     display: flex;
     gap: 20px;
+    font-size: 21px;
+    font-weight: 700;
 
 }
 
@@ -164,7 +166,6 @@
 
 
 }
-/* Add contact overlay */
 
 .add-contact-form {
     width: 364px;
@@ -178,8 +179,7 @@
 
 .add-contact-form input {
     width: 100%;
-     padding: 13px 21px;
-    /*margin-bottom: 15px; */
+    padding: 13px 21px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     font-size: 16px;
@@ -187,6 +187,7 @@
     background-position: right 10px center;
     background-repeat: no-repeat;
 }
+
 .add-contact-form input::placeholder {
     color: #D1D1D1;
 }
@@ -203,17 +204,16 @@
 
 .add-contact-form-email {
     background-image: url(../assets/icons/mail.svg);
-
 }
 
 .add-contact-form-phone {
     background-image: url(../assets/icons/call.svg);
-
 }
 
 .add-contact-form button {
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 21px;
+    font-weight: 700;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 16px;
@@ -224,6 +224,10 @@
     height: 51px;
     background-color: #2A3647;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
 .create-contact-button:active,
