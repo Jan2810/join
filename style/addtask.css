@@ -676,6 +676,21 @@
     .category-dd-upper-item-input {
         font-size: 16px;
     }
+
+    .sum-in-board-html {
+        height: 90vh;
+        max-width: 600px;
+        overflow-y: scroll;
+        align-items: center;
+        padding-bottom: 80px;
+    }
+    .task-board-h1 {
+        width: 100%;
+    }
+
+    .add-task-bottom-line-board {
+        margin: 0;
+    }
 }
 
 @media (max-width: 800px) {
