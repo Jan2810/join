@@ -280,6 +280,9 @@ function getUrgency() {
 };
 
 function setTaskData(contacts) {
+    if (taskData.subtasks.length === 0) {
+        taskData.subtasks = "";
+    }
     getAssignedContacts(contacts);
     getUrgency();
     taskData.title = title
@@ -290,9 +293,6 @@ function setTaskData(contacts) {
 
 async function addNewTask() {
     let contacts = await loadData(CONTACTS_URL);
-    if (taskData.subtasks.length === 0) {
-        taskData.subtasks = "";
-    }
     setInputValuesIntoData();
     if (title.length > 1 && due_date.length > 1 && category.length > 1) {
         setTaskData(contacts);
