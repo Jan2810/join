@@ -42,6 +42,10 @@ main {
     border: 1px solid rgba(168, 168, 168, 1);
     font-size: 20px;
     font-weight: 400;
+    background:
+        url('../assets/img/bar-grey.png') no-repeat right 56px center,
+        url('../assets/icons/search.png') no-repeat right 18px center;
+    background-size: 1px 40px, auto;
 }
 
 #board-find-input-responsive {
@@ -53,6 +57,10 @@ main {
     border: 1px solid rgba(168, 168, 168, 1);
     font-size: 20px;
     font-weight: 400;
+    background:
+        url('../assets/img/bar-grey.png') no-repeat right 56px center,
+        url('../assets/icons/search.png') no-repeat right 18px center;
+    background-size: 1px 40px, auto;
 }
 
 #board-add-task-button {
@@ -132,10 +140,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.board-ticket-container:hover {
-    background-color: rgba(95, 158, 160, 0.1);
 }
 
 .board-ticket {
@@ -291,7 +295,6 @@ main {
         height: fit-content;
         flex-direction: row;
         overflow-x: scroll;
-        margin: 0 -64px;
     }
 
     .board-ticket-container::-webkit-scrollbar {
@@ -310,14 +313,6 @@ main {
 
     .board-ticket-container::-webkit-scrollbar-thumb:hover {
         background: rgba(0, 0, 0, 0.2);
-    }
-
-    .board-ticket-container .board-ticket:first-child {
-        margin-left: 64px;
-    }
-
-    .board-ticket-container .board-ticket:last-child {
-        margin-right: 64px;
     }
 
     .board-no-tasks-placeholder {
