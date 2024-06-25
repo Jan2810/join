@@ -94,14 +94,13 @@ function updateTodoStatus(id, index) {
     todoInDom.addEventListener("change", () => {
         if (todo.status == "checked") {
             todo.status = "unchecked"
+            putData(TASKS_URL, tasksArray);
         }
         else { todo.status = "checked" }
-       
+        putData(TASKS_URL, tasksArray);
+
     }
     )
-// console.log(tasksArray[taskIndex].status);
-putData(TASKS_URL, tasksArray);
-
 }
 
 
