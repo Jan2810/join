@@ -6,6 +6,9 @@ let addContactsOverlayBg = document.getElementById('add-contacts-overlay-bg');
 let editContactOverlay = document.getElementById('overlay-edit-contact');
 let addContactOverlay = document.getElementById('overlay-add-contact');
 let contactCreatedPopupBg = document.getElementById('contact-created-popup-bg');
+let editDeletePopup = document.getElementById('edit-delete-popup');
+let singleContactTripleDots = document.getElementById('single-contact-triple-dots');
+let addPersonIcon = document.getElementById('add-person-icon');
 let manuallyRemoved = false;
 
 function closeEditContactOverlay() {
@@ -16,6 +19,9 @@ function closeEditContactOverlay() {
 function openEditContactOverlay() {
     editContactsOverlayBg.classList.remove('hide-edit-contact-overlay');
     editContactOverlay.classList.remove('hide-edit-contact-overlay');
+    editDeletePopup.classList.add('hide-edit-delete-popup');
+    singleContactTripleDots.classList.remove('d-none');
+    addPersonIcon.classList.remove('d-none');
 }
 
 function closeAddContactOverlay() {
@@ -82,3 +88,22 @@ function returnToContactsList() {
 // Add event listener for window resize
 window.addEventListener('resize', handleResize);
 
+function displayEditDeletePopup() {
+    editDeletePopup.classList.remove('hide-edit-delete-popup');
+    setTimeout(function () {
+        singleContactTripleDots.classList.add('d-none');
+        addPersonIcon.classList.add('d-none');
+    }, 100);
+}
+
+function doNotClose(event) {
+    event.stopPropagation();
+}
+
+function hideEditDeletePopup() {
+    editDeletePopup.classList.add('hide-edit-delete-popup');
+    setTimeout(function () {
+        singleContactTripleDots.classList.remove('d-none');
+        addPersonIcon.classList.remove('d-none');
+    }, 125);
+}

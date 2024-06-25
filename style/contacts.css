@@ -77,6 +77,7 @@
     position: fixed;
     bottom: calc(88px - 56px + 80px);
     right: calc(70px - 56px);
+    z-index: 5;
 }
 
 .single-contact-triple-dots-svg {
@@ -253,6 +254,62 @@
     padding-bottom: 16px;
 }
 
+/* Edit and delete pop-up */
+
+.edit-delete-popup {
+    color: #2A3647;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    width: 116px;
+    height: 100px;
+    padding: 10px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 20px 20px 0 20px;
+    position: fixed;
+    bottom: calc(88px - 56px + 80px);
+    right: calc(70px - 56px);
+    z-index: 25;
+    transform: translateX(0%);
+    transition: transform 300ms ease-out;
+}
+
+.hide-edit-delete-popup {
+    transform: translateX(120%);
+}
+
+
+
+
+
+.mobile-view-padding-8 {
+    padding: 8px;
+}
+
+.edit-contact,
+.delete-contact {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.edit-contact:active,
+.delete-contact:active {
+    font-weight: 700;
+    color:#29ABE2;
+}
+
+.edit-contact:active .edit-icon path,
+.delete-contact:active .delete-icon path {
+    fill: #29ABE2;
+}
+
+.edit-and-delete-contact img {
+    width: 20px;
+    height: 20px;
+}
+
 @media only screen and (min-width: 352px) {
     .contacts-profile-badge {
         width: 42px;
@@ -340,7 +397,8 @@
 
     .add-person-icon,
     .single-contact-triple-dots,
-    .single-contact-arrow-left {
+    .single-contact-arrow-left, 
+    .edit-delete-popup {
         display: none;
     }
 
@@ -463,29 +521,8 @@
         display: flex;
         gap: 18px;
     }
-
-    .edit-contact,
-    .delete-contact {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-    .edit-contact:active,
-    .delete-contact:active {
-        font-weight: 700;
-        color:#29ABE2;
-    }
-
-    .edit-contact:active .edit-icon path,
-    .delete-contact:active .delete-icon path {
-        fill: #29ABE2;
-    }
-
-    .edit-and-delete-contact img {
-        width: 20px;
-        height: 20px;
-    }
+    
+    
 
     .single-contact-information {
         margin: 0;
