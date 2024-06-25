@@ -1,13 +1,23 @@
 function openAddTaskInBoard() {
-    let container = document.getElementById("addTaskContainer");
-    container = "";
-    container = returnAddTaskInBoardHTML();
+    let bg = document.getElementById("addTaskBg");
+    bg.style.display = "";
+    let container = document.getElementById("newTaskContainer")
+    container.style.transform = "translateX(0px)"
+    container.innerHTML = "";
+    container.innerHTML += returnAddTaskInBoardHTML();
+    changeUrgency("mid");
+};
+
+function closeNewTaskInBoard() {
+    let bg = document.getElementById("addTaskBg");
+    bg.style.display = "none";
 }
 
 function returnAddTaskInBoardHTML() {
     return `
-        <div class="task-h1">
+        <div class="task-h1 flex-row task-board-h1">
             <h1>Add Task</h1>
+            <img onclick="closeNewTaskInBoard()" src="../assets/icons/x-black.png" alt="x">
         </div>
         <form onsubmit="addNewTask(); return false;">
             <div class="flex-row task-content">
@@ -118,7 +128,7 @@ function returnAddTaskInBoardHTML() {
                     </div>
                 </div>
             </div>
-            <div class="task-bottom-line-cont flex-center">
+            <div class="task-bottom-line-cont add-task-bottom-line-board flex-center">
                 <div class="flex-row flex-center task-bottom-line">
                     <p><span class="task-star">*</span>This field is required</p>
                     <div class="flex-center task-form-btn-cont">
