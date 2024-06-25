@@ -29,7 +29,7 @@
             <div class="board-header flex-row">
                 <div class="board-header-responsive flex-row">
                     <h1>Board</h1>
-                    <button id="board-add-task-button-responsive" class="bg-darkblue flex-center" type="button"><img
+                    <button id="board-add-task-button-responsive" class="bg-darkblue flex-center" type="button" onclick="openAddTaskInBoard('todo')"><img
                             src="../assets/icons/add.svg" alt="+"></button>
                 </div>
                 <div class="board-header-lower-section-responsive">
@@ -38,7 +38,7 @@
                     <input id="board-find-input-responsive" onkeydown="startFilterTasks('board-find-input-responsive')"
                         type="text" placeholder="Find Task">
                     <button id="board-add-task-button" class="bg-darkblue flex-center" type="button"
-                        onclick="openAddTaskInBoard()">Add task<img src="../assets/icons/add.svg" alt="+"></button>
+                        onclick="openAddTaskInBoard('todo')">Add task<img src="../assets/icons/add.svg" alt="+"></button>
                 </div>
             </div>
         </div>
