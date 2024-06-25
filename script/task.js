@@ -71,36 +71,57 @@ function renderTodos(task) {
     if (todoArray.length > 0) {
         for (let i = 0; i < todoArray.length; i++) {
             const todo = todoArray[i];
+            let strikeClass;
+            todo.status == "checked" ? strikeClass = "line-through" : strikeClass = "";
+        
 
-            taskTodoHtml += /*html*/ `
+        taskTodoHtml += /*html*/ `
             <div class="flex">
             <div class="task-subtask-container flex">
                 <input id="todo${i}" type="checkbox" ${todo.status} onclick="updateTodoStatus('${task.id}',${i})">
-                <div class="task-todo-value">${todo.text}</div>
+                <div id="todovalue${i}" class="task-todo-value ${strikeClass}">${todo.text}</div>
             </div>
         </div>`
-        }
-        return `  <div class="task-subtasks-area flex-column">
+    }
+    return `  <div class="task-subtasks-area flex-column">
                 <div class="task-prio-key task-font-regular">Subtasks</div>
                 ${taskTodoHtml} </div></div>`
-    }
+}
 };
+
+function strike(index) {
+    let todoInDom = document.getElementById(`todo${index}`);
+    let todoValue = document.getElementById(`todovalue${index}`);
+    if (todoInDom.checked) {
+
+        todoValue.classList.add("line-through");
+    }
+    else {
+        todoValue.classList.remove("line-through")
+    }
+}
 
 function updateTodoStatus(id, index) {
     taskIndex = tasksArray.findIndex(element => element.id === id);
     let task = tasksArray[taskIndex];
     let todo = task.subtasks[index];
     let todoInDom = document.getElementById(`todo${index}`);
+
     todoInDom.addEventListener("change", () => {
         if (todo.status == "checked") {
-            todo.status = "unchecked"
+            todo.status = "unchecked";
+
             putData(TASKS_URL, tasksArray);
         }
-        else { todo.status = "checked" }
+        else {
+            todo.status = "checked";
+            // todoValue.classList.add("line-through")
+        }
         putData(TASKS_URL, tasksArray);
 
     }
     )
+    strike(index);
 }
 
 
@@ -244,6 +265,7 @@ function renderEdit(id) {
             </div>
         </form>
     `;
+
 }
 
 
