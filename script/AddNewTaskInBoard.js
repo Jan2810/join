@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+function openAddTaskInBoard() {
+    let container = document.getElementById("addTaskContainer");
+    container = "";
+    container = returnAddTaskInBoardHTML();
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="../style/navigation.css">
-    <link rel="stylesheet" href="../style/addtask.css">
-    <title>New Task - Join</title>
-    <script src="../script/script.js" defer></script>
-    <script src="../script/addtask.js" defer></script>
-    <script src="../script/AddTaskDesign&Templates.js" defer></script>
-</head>
-
-<body onload="initAddTask()" onclick="closeContacts(event); closeCategorys(event); closeSubtasks(event);">
-    <div w3-include-html="../assets/templates/navigation.html"></div>
-    <main class="task-body mgn-l-328">
+function returnAddTaskInBoardHTML() {
+    return `
         <div class="task-h1">
             <h1>Add Task</h1>
         </div>
@@ -144,7 +134,5 @@
                 </div>
             </div>
         </form>
-    </main>
-</body>
-
-</html>
+    `;
+}
