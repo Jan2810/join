@@ -124,52 +124,56 @@ function allowDrop(ev) {
 function moveTo(status) {
     const currentTask = tasksArray.find((ct) => ct['id'] === currentDraggedElement);
     currentTask['status'] = status;
-    console.log("current task:", currentTask);
     putData(TASKS_URL, tasksArray);
     initBoard();
 }
 
 function generateTicketHTML(element, categoryBG) {
-    let assignedHTML = '';
     let subtaskProgressHTML = getSubtasksProgress(element);
+    let assignedHTML = '';
+
     for (let j = 0; j < element['assigned_to'].length; j++) {
         let initials = getInitials(element['assigned_to'][j]);
         assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div>`;
     }
+
     return `
-<div id="board-ticket${element['id']}" draggable="true" ondragstart="startDragging('${element['id']}')" class="board-ticket" onclick="showTask('${element['id']}')">
-    <div class="board-ticket-content flex-column">
-        <div class="board-ticket-gategory ${categoryBG}-bg">${element['category']}</div>
-        <div class="board-ticket-description">
-            <div class="board-ticket-headline">${element['title']}</div>
-            <div class="board-ticket-task">${element['description']}</div>
-        </div>
-        <div class="board-ticket-statusbar flex-row">
-            ${subtaskProgressHTML}
-        </div>
-        <div class="flex-row flex-sb flex-center">
-            <div class="board-ticket-assigned-container flex-row">
-                ${assignedHTML}
+        <div id="board-ticket${element['id']}" draggable="true" ondragstart="startDragging('${element['id']}')" class="board-ticket" onclick="showTask('${element['id']}')">
+            <div class="board-ticket-content flex-column">
+                <div class="board-ticket-gategory ${categoryBG}-bg">${element['category']}</div>
+                <div class="board-ticket-description">
+                    <div class="board-ticket-headline">${element['title']}</div>
+                    <div class="board-ticket-task">${element['description']}</div>
+                </div>
+                ${subtaskProgressHTML}
+                <div class="flex-row flex-sb flex-center">
+                    <div class="board-ticket-assigned-container flex-row">
+                        ${assignedHTML}
+                    </div>
+                    <div class="board-ticket-priority">
+                        <img src="../assets/icons-addtask/prio-${element['priority']}-color.png" alt="priority">
+                     </div>
+                </div>
             </div>
-            <div class="board-ticket-priority">
-                <img src="../assets/icons-addtask/prio-${element['priority']}-color.png" alt="priority">
-            </div>
-        </div>
-    </div>
-</div>`;
+        </div>`;
 }
 
 function getSubtasksProgress(element) {
+    let subtasks = element['subtasks'];
     let subtasksLength = element['subtasks'].length;
-    console.log('länge', subtasksLength);
+
     if (subtasksLength > 0) {
-        let checkedSubtasks = element['subtasks'].filter(cs => cs['status'] === 'checked');
+        let checkedSubtasks = subtasks.filter(cs => cs['status'] === 'checked');
         let checkedSubtasksLength = checkedSubtasks.length;
         let subtaskProgress = (checkedSubtasksLength / subtasksLength) * 100;
-        return `<div class="board-ticket-bar">
+        return `
+            <div id="board-ticket-statusbar class="board-ticket-statusbar flex-row">
+                <div class="board-ticket-bar">
                     <div id="board-ticket-bar-progress" style="width: ${subtaskProgress}%"></div>
                 </div>
-                <div class="board-ticket-progress">${checkedSubtasksLength}/${subtasksLength} Subtasks</div>`;
+                <div class="board-ticket-progress">${checkedSubtasksLength}/${subtasksLength} Subtasks</div>
+            </div>`
+                ;
         } else {
             return '';
         }
