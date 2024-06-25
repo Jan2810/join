@@ -1,6 +1,6 @@
 let contactsList = document.getElementById('contacts-list');
 let contactsContainer = document.getElementById('contacts-container');
-let contactContainer = document.getElementById('contact-container');
+let contactContainer = document.getElementById('single-contact-container');
 let editContactsOverlayBg = document.getElementById('edit-contacts-overlay-bg');
 let addContactsOverlayBg = document.getElementById('add-contacts-overlay-bg');
 let editContactOverlay = document.getElementById('overlay-edit-contact');
@@ -55,7 +55,6 @@ let manuallyRemoved = false;
  * Adds 'd-none' if window width is less than 1120px, unless manually removed.
  */
 function handleResize() {
-    const contactContainer = document.getElementById('contactContainer');
     if (window.innerWidth >= 1120) {
         contactContainer.classList.remove('d-none');
     } else if (!manuallyRemoved) {
