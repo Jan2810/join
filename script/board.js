@@ -10,15 +10,15 @@ setTimeout(() => {
 async function getTasks() {
     tasksArray = await loadData(TASKS_URL);
     if (tasksArray.length > 0) {
-    initBoard();
+        initBoard();
     }
 }
 
 async function initBoard() {
-   await updateTodos();
-   await updateInProgress();
-   await updateAwaitFeedback();
-   await updateDone();
+    await updateTodos();
+    await updateInProgress();
+    await updateAwaitFeedback();
+    await updateDone();
 }
 
 async function updateTasksByStatus(status, containerId) {
@@ -131,6 +131,7 @@ function moveTo(status) {
 
 function generateTicketHTML(element, categoryBG) {
     let assignedHTML = '';
+    let subtaskProgress = getSubtasksProgress(element);
     for (let j = 0; j < element['assigned_to'].length; j++) {
         let initials = getInitials(element['assigned_to'][j]);
         assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div>`;
@@ -145,7 +146,7 @@ function generateTicketHTML(element, categoryBG) {
         </div>
         <div class="board-ticket-statusbar flex-row">
             <div class="board-ticket-bar">
-                <div class="board-ticket-bar-progress"></div>
+                <div id="board-ticket-bar-progress" style="width: ${subtaskProgress}%"></div>
             </div>
             <div class="board-ticket-progress">${element['subtasks'].length}/${element['subtasks'].length} Subtasks</div>
         </div>
@@ -159,6 +160,19 @@ function generateTicketHTML(element, categoryBG) {
         </div>
     </div>
 </div>`;
+}
+
+function getSubtasksProgress(element) {
+    let subtasksLength = element['subtasks'].length;
+    console.log('länge', subtasksLength);
+    if (subtasksLength > 0) {
+        let checkedSubtasks = element['subtasks'].filter(cs => cs['status'] === 'checked');
+        let checkedSubtasksLength = checkedSubtasks.length;
+        let subtaskProgress = (checkedSubtasksLength / subtasksLength) * 100;
+        return subtaskProgress;
+    } else {
+        return 0;
+    }
 }
 
 
