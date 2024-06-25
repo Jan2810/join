@@ -63,6 +63,7 @@ function renderTaskOwners(task) {
                 <div class="task-prio-key task-font-regular">Assigned To:</div>
                 ${taskOwnerHtml} </div></div>`
     }
+    else { return "" }
 };
 
 function renderTodos(task) {
@@ -73,20 +74,21 @@ function renderTodos(task) {
             const todo = todoArray[i];
             let strikeClass;
             todo.status == "checked" ? strikeClass = "line-through" : strikeClass = "";
-        
 
-        taskTodoHtml += /*html*/ `
+
+            taskTodoHtml += /*html*/ `
             <div class="flex">
             <div class="task-subtask-container flex">
                 <input id="todo${i}" type="checkbox" ${todo.status} onclick="updateTodoStatus('${task.id}',${i})">
                 <div id="todovalue${i}" class="task-todo-value ${strikeClass}">${todo.text}</div>
             </div>
         </div>`
-    }
-    return `  <div class="task-subtasks-area flex-column">
+        }
+        return `  <div class="task-subtasks-area flex-column">
                 <div class="task-prio-key task-font-regular">Subtasks</div>
                 ${taskTodoHtml} </div></div>`
-}
+    }
+    else { return "" }
 };
 
 function strike(index) {
