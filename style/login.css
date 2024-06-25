@@ -62,7 +62,11 @@
 }
 
 #login-input-email {
-    background: url('../assets/icons/mail.svg')  no-repeat right 21px center;
+    background: url('../assets/icons/mail.svg') no-repeat right 21px center;
+}
+
+#login-input-password {
+    background: url('../assets/icons/visibility_off.svg') no-repeat right 21px center;
 }
 
 .login-checkbox-field {
