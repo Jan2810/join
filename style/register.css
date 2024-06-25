@@ -93,9 +93,9 @@
     color: rgba(168, 168, 168, 1);
 }
 
-/* .register-imprint-links:hover {
+.register-imprint-links:hover {
     transform: scale(1.1);
-} */
+}
 
 .register-imprint-container {
     margin-bottom: 48px;
