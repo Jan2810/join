@@ -114,6 +114,8 @@ function saveUser() {
 };
 
 function loadUser() {
+   if(!window.location.pathname.includes('register')){
+   
     const retrievedUserString = localStorage.getItem('user');
     if (retrievedUserString) {
         user = JSON.parse(retrievedUserString);
@@ -127,6 +129,7 @@ function loadUser() {
 
 if (window.location.pathname.includes('/html/')) {
     loadUser();
+}
 }
 
 
