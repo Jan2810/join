@@ -162,7 +162,6 @@ main {
     -ms-transform: rotate(15deg);
     -o-transform: rotate(15deg);
     -webkit-transform: rotate(15deg);
-
     transform: rotate(15deg);
 }
 
@@ -233,13 +232,11 @@ main {
     position: relative;
 }
 
-.board-ticket-bar-progress {
+#board-ticket-bar-progress {
     height: 100%;
     background-color: rgba(0, 56, 255, 1);
     border-radius: 16px;
     transition: width 0.3s ease-in-out;
-    width: 50%;
-    /* bar zu soviel % aufefüllt */
 }
 
 .board-ticket-progress {
