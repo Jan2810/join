@@ -295,6 +295,7 @@ main {
         flex-direction: row;
         overflow-x: scroll;
         align-items: flex-start;
+        overflow: visible;
     }
 
     .board-ticket-container::-webkit-scrollbar {

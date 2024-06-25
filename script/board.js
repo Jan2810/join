@@ -81,8 +81,6 @@ function filterTasks(search) {
 
 function updateFilteredTasks(status, containerId) {
     let tasks = filteredTasks.filter(t => t['status'] === status);
-    // console.log(status);
-    // console.log(tasks);
     document.getElementById(containerId).innerHTML = '';
 
     for (let i = 0; i < tasks.length; i++) {
@@ -117,6 +115,10 @@ function startDragging(id) {
     document.getElementById(`board-ticket${id}`).classList.add('board-ticket-tend');
 }
 
+function endDragging(id) {
+    document.getElementById(`board-ticket${id}`).classList.remove('board-ticket-tend');
+}
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -128,6 +130,62 @@ function moveTo(status) {
     initBoard();
 }
 
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const draggables = document.querySelectorAll('.board-ticket');
+    let isDragging = false;
+    let scrollInterval;
+
+    // Höhe des Headers, um den Scrollbereich anzupassen
+    const headerHeight = 96;
+
+    draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', (e) => {
+            isDragging = true;
+            e.dataTransfer.setData('text/plain', null); // Für Firefox
+        });
+
+        draggable.addEventListener('dragend', () => {
+            isDragging = false;
+            clearInterval(scrollInterval); // Stoppe das Scrollen, wenn das Dragging beendet ist
+        });
+    });
+
+    document.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        if (!isDragging) return;
+
+        const mouseY = e.clientY;
+        const scrollStep = 10; // Scroll-Geschwindigkeit
+        const topScrollThreshold = headerHeight + 50; // Abstand zum oberen Rand, ab dem gescrollt wird (inklusive Header)
+        const bottomScrollThreshold = 50; // Abstand zum unteren Rand, ab dem gescrollt wird
+
+        console.log(`MouseY: ${mouseY}, Window Height: ${window.innerHeight}`); // Debug-Ausgabe der Mausposition und Fensterhöhe
+        clearInterval(scrollInterval); // Verhindert mehrfaches Starten des Intervalls
+
+        if (mouseY < topScrollThreshold) {
+            console.log('Attempting to scroll up'); // Debug-Ausgabe für Versuch des Scrollens nach oben
+            scrollInterval = setInterval(() => {
+                window.scrollBy(0, -scrollStep);
+            }, 50);
+        } else if (window.innerHeight - mouseY < bottomScrollThreshold) {
+            console.log('Scrolling down'); // Debug-Ausgabe für Scrollen nach unten
+            scrollInterval = setInterval(() => {
+                window.scrollBy(0, scrollStep);
+            }, 50);
+        } else {
+            console.log('Not scrolling'); // Debug-Ausgabe für kein Scrollen
+            clearInterval(scrollInterval); // Stoppe das Scrollen, wenn die Maus nicht am Rand ist
+        }
+    });
+});
+
+
+
+
 function generateTicketHTML(element, categoryBG) {
     let subtaskProgressHTML = getSubtasksProgress(element);
     let assignedHTML = '';
@@ -138,7 +196,7 @@ function generateTicketHTML(element, categoryBG) {
     }
 
     return `
-        <div id="board-ticket${element['id']}" draggable="true" ondragstart="startDragging('${element['id']}')" class="board-ticket" onclick="showTask('${element['id']}')">
+        <div id="board-ticket${element['id']}" class="board-ticket" draggable="true" ondragstart="startDragging('${element['id']}')" ondragend="endDragging('${element['id']}')" onclick="showTask('${element['id']}')">
             <div class="board-ticket-content flex-column">
                 <div class="board-ticket-gategory ${categoryBG}-bg">${element['category']}</div>
                 <div class="board-ticket-description">
