@@ -24,7 +24,7 @@ let taskData = {
     "priority": "",
     "category": "",
     "subtasks": [],
-    "status": ""
+    "status": "todo"
 };
 
 let availableCategorys = [
@@ -279,8 +279,16 @@ function getUrgency() {
     }
 };
 
+function setTaskData(contacts) {
+    getAssignedContacts(contacts);
+    getUrgency();
+    taskData.title = title
+    taskData.description = description
+    taskData.due_date = due_date
+    taskData.category = category
+};
+
 async function addNewTask() {
-    formValidationFeedbackOn();
     let contacts = await loadData(CONTACTS_URL);
     if (taskData.subtasks.length === 0) {
         taskData.subtasks = "";
@@ -288,9 +296,19 @@ async function addNewTask() {
     setInputValuesIntoData();
     if (title.length > 1 && due_date.length > 1 && category.length > 1) {
         setTaskData(contacts);
-        postData(TASKS_URL, taskData);
+        await postData(TASKS_URL, taskData);
         clearAll();
         formValidationFeedbackOff();
+    } else {
+        formValidationFeedbackOn();
     }
-    window.location = "../html/board.html";
+    getLocationAndMove();
+};
+
+function getLocationAndMove() {
+    if (window.location = "../html/board.html") {
+        closeNewTaskInBoard();
+    } else {
+        window.location = "../html/board.html";
+    }
 };

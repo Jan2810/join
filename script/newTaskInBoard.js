@@ -1,17 +1,37 @@
-function openAddTaskInBoard() {
+function openAddTaskInBoard(status) {
+    setStatus(status);
     let bg = document.getElementById("addTaskBg");
     bg.style.display = "";
     let container = document.getElementById("newTaskContainer")
-    container.style.transform = "translateX(0px)"
     container.innerHTML = "";
     container.innerHTML += returnAddTaskInBoardHTML();
-    changeUrgency("mid");
+    setTimeout(() => {
+        container.style.transform = "translateX(0px)"
+        changeUrgency("mid");
+    }, 100)
 };
 
 function closeNewTaskInBoard() {
     let bg = document.getElementById("addTaskBg");
-    bg.style.display = "none";
-}
+    let container = document.getElementById("newTaskContainer")
+    container.style.transform = "translateX(1500px)"
+    setTimeout(() => {
+        bg.style.display = "none";
+    }, 100)
+};
+
+function setStatus(status) {
+    taskData = {
+        "title": "",
+        "description": "",
+        "assigned_to": [],
+        "due_date": "",
+        "priority": "",
+        "category": "",
+        "subtasks": [],
+        "status": status
+    };
+};
 
 function returnAddTaskInBoardHTML() {
     return `
@@ -19,7 +39,7 @@ function returnAddTaskInBoardHTML() {
             <h1>Add Task</h1>
             <img onclick="closeNewTaskInBoard()" src="../assets/icons/x-black.png" alt="x">
         </div>
-        <form onsubmit="addNewTask(); return false;">
+        <form>
             <div class="flex-row task-content">
                 <div class="task-left-cont">
                     <div class="task-width">
@@ -136,7 +156,7 @@ function returnAddTaskInBoardHTML() {
                             <span>Clear</span>
                             <img id="task-x" src="../assets/icons/x-black.png" alt="">
                         </div>
-                        <button onclick="formValidationFeedbackOn()" type="submit" id="createButton" class="task-send-form-btn">
+                        <button onclick="addNewTask(); return false" type="submit" id="createButton" class="task-send-form-btn">
                             <span>Create Task</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
                         </button>

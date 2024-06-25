@@ -49,7 +49,7 @@
                 <div class="board-category">
                     <div class="board-category-header">
                         <span>To do</span>
-                        <div class="board-categories-add-task-button">
+                        <div onclick="openAddTaskInBoard('todo')" class="board-categories-add-task-button">
                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
@@ -68,7 +68,7 @@
                 <div class="board-category">
                     <div class="board-category-header">
                         <span>In progress</span>
-                        <div class="board-categories-add-task-button">
+                        <div onclick="openAddTaskInBoard('inprogress')" class="board-categories-add-task-button">
                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
@@ -87,7 +87,7 @@
                 <div class="board-category">
                     <div class="board-category-header">
                         <span>Await feedback</span>
-                        <div class="board-categories-add-task-button">
+                        <div onclick="openAddTaskInBoard('awaitfeedback')" class="board-categories-add-task-button">
                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
@@ -106,7 +106,7 @@
                 <div class="board-category">
                     <div class="board-category-header">
                         <span>Done</span>
-                        <div class="board-categories-add-task-button">
+                        <div onclick="openAddTaskInBoard('done')" class="board-categories-add-task-button">
                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2" />
@@ -129,7 +129,7 @@
 
     </main>
     <div id="addTaskBg" class="add-task-dialog-bg flex-center" style="display: none;" onclick="closeNewTaskInBoard();">
-        <div onclick="stopProp(event);" id="newTaskContainer" class="sum-in-board-html flex-column">
+        <div onclick="stopProp(event);" id="newTaskContainer" class="sum-in-board-html flex-column" style="transform: translateX(1500px);">
         </div>
     </div>
 </body>

@@ -207,19 +207,9 @@ function formValidationFeedbackOff() {
     document.getElementById("requiredCategorys").style.display = "none";
 };
 
-function setTaskData(contacts) {
-    getAssignedContacts(contacts);
-    getUrgency();
-    taskData.title = title
-    taskData.description = description
-    taskData.due_date = due_date
-    taskData.category = category
-    taskData.status = "todo";
-};
-
 function setInputValuesIntoData() {
     title = document.getElementById("taskTitle").value;
     description = document.getElementById("taskDescription").value;
     due_date = document.getElementById("taskDate").value;
     category = document.getElementById("categoryInput").value;
-}
+};
