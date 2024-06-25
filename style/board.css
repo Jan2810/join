@@ -219,7 +219,7 @@ main {
     text-overflow: ellipsis;
 }
 
-.board-ticket-statusbar {
+#board-ticket-statusbar {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -243,7 +243,7 @@ main {
 
 .board-ticket-progress {
     font-size: 12px;
-    color: (0, 0, 0, 1);
+    /* color: (0, 0, 0, 1); */
 }
 
 .board-no-tasks-placeholder {

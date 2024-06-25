@@ -167,7 +167,7 @@ function getSubtasksProgress(element) {
         let checkedSubtasksLength = checkedSubtasks.length;
         let subtaskProgress = (checkedSubtasksLength / subtasksLength) * 100;
         return `
-            <div id="board-ticket-statusbar class="board-ticket-statusbar flex-row">
+            <div id="board-ticket-statusbar" class="board-ticket-statusbar flex-row flex-center">
                 <div class="board-ticket-bar">
                     <div id="board-ticket-bar-progress" style="width: ${subtaskProgress}%"></div>
                 </div>
