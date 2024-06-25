@@ -131,7 +131,7 @@ function moveTo(status) {
 
 function generateTicketHTML(element, categoryBG) {
     let assignedHTML = '';
-    let subtaskProgress = getSubtasksProgress(element);
+    let subtaskProgressHTML = getSubtasksProgress(element);
     for (let j = 0; j < element['assigned_to'].length; j++) {
         let initials = getInitials(element['assigned_to'][j]);
         assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div>`;
@@ -145,10 +145,7 @@ function generateTicketHTML(element, categoryBG) {
             <div class="board-ticket-task">${element['description']}</div>
         </div>
         <div class="board-ticket-statusbar flex-row">
-            <div class="board-ticket-bar">
-                <div id="board-ticket-bar-progress" style="width: ${subtaskProgress}%"></div>
-            </div>
-            <div class="board-ticket-progress">${element['subtasks'].length}/${element['subtasks'].length} Subtasks</div>
+            ${subtaskProgressHTML}
         </div>
         <div class="flex-row flex-sb flex-center">
             <div class="board-ticket-assigned-container flex-row">
@@ -169,10 +166,13 @@ function getSubtasksProgress(element) {
         let checkedSubtasks = element['subtasks'].filter(cs => cs['status'] === 'checked');
         let checkedSubtasksLength = checkedSubtasks.length;
         let subtaskProgress = (checkedSubtasksLength / subtasksLength) * 100;
-        return subtaskProgress;
-    } else {
-        return 0;
-    }
+        return `<div class="board-ticket-bar">
+                    <div id="board-ticket-bar-progress" style="width: ${subtaskProgress}%"></div>
+                </div>
+                <div class="board-ticket-progress">${checkedSubtasksLength}/${subtasksLength} Subtasks</div>`;
+        } else {
+            return '';
+        }
 }
 
 
