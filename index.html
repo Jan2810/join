@@ -28,8 +28,11 @@
             <form onsubmit="login();return false">
                 <div class="flex-column flex-center gap-20">
                     <input id="login-input-email" class="login-input-fields" type="email" placeholder="Email" required>
-                    <input id="login-input-password" class="login-input-fields" type="password" placeholder="Password"
-                        required>
+                    <div class="login-password-container flex-center">
+                        <input id="login-input-password" class="login-input-fields" type="password"
+                            placeholder="Password" required>
+                            <img onclick="toggleVisibility()" id="login-visibility-toggle-img" src="./assets/icons/visibility_off.svg" alt="">
+                    </div>
                     <label class="login-checkbox-field">
                         <input id="login-remember-me-checkbox" type="checkbox"> Remember me
                     </label>
