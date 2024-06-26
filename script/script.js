@@ -169,7 +169,7 @@ function logout() {
 
 function guestUserActive() {
     user.name = "Gast Nutzer";
-    saveUser();
+    saveUser(user.name);
     goToBoard();
 }
 
