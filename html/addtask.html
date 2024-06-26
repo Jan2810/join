@@ -14,7 +14,7 @@
     <script src="../script/newTaskInBoard.js" defer></script>
 </head>
 
-<body onload="initAddTask()" onclick="closeContacts(event); closeCategorys(event); closeSubtasks(event);">
+<body onload="initAddTask()" onclick="closeContacts(event); closeCategorys(event); closeSubtasks(event); formValidationFeedbackOff();" onkeydown="formValidationFeedbackOff()">
     <div w3-include-html="../assets/templates/navigation.html"></div>
     <main class="task-body mgn-l-328">
         <div class="task-h1">
@@ -144,7 +144,7 @@
                             <span>Clear</span>
                             <img id="task-x" src="../assets/icons/x-black.png" alt="">
                         </div>
-                        <button onclick="formValidationFeedbackOn();" type="submit" id="createButton"
+                        <button onclick="formValidationFeedbackOn(); stopProp(event);" type="submit" id="createButton"
                             class="task-send-form-btn">
                             <span>Create Task</span>
                             <img src="../assets/icons/hook-white.svg" alt="">

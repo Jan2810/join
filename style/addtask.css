@@ -636,7 +636,7 @@
 
 .in-edit-task-cnt {
     flex-direction: column;
-    height: 100%;
+    height: auto !important;
 }
 
 .task-right-cont-edit {

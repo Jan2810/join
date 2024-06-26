@@ -3,6 +3,7 @@ let statusArray = [];
 async function sumStart() {
     await includeHTML();
     await filterTaskStatus()
+
     document.getElementById("firstRowCont1").classList.add("bg-darkblue");
     document.getElementById("firstRowCont2").classList.add("bg-darkblue");
 };
@@ -62,10 +63,9 @@ function getActualGreet() {
 };
 
 function getUser() {
-    
-        let userAsText = localStorage.getItem('user');
-        let user = JSON.parse(userAsText);
-        if (user.name !== undefined) {
+    let userAsText = localStorage.getItem('user');
+    let user = JSON.parse(userAsText);
+    if (user.name !== undefined) {
         return user.name
     } else {
         return "guest";
@@ -164,7 +164,7 @@ function returnSummaryHTML(tasks) {
             </div>
             <div class="sum-greet-cont flex-center flex-column">
                 <h2 class="color-darkblue">${getActualGreet()}</h2>
-                <h1 class="color-lightblue">${getUser()}</h1>
+                <h1 class="color-lightblue">${user}</h1>
             </div>
         </div>
     `;
