@@ -88,8 +88,11 @@ function closeCategorys(ev) {
 };
 
 function openCalender() {
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById("taskDate").setAttribute('min', today);
     document.getElementById("taskDate").showPicker();
     document.getElementById("taskDate").style.color = "black";
+
 };
 
 function returnTaskListHTML(category, i) {

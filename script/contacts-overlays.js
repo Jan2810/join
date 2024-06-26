@@ -18,6 +18,10 @@ function openEditContactOverlay() {
     editContactsOverlayBg.classList.add('show-edit-contact-overlay');
     editContactOverlay.classList.add('show-edit-contact-overlay');
 
+    hideEditDeletePopup();
+}
+
+function hideEditDeletePopup() {
     editDeletePopup.classList.add('hide-edit-delete-popup');
     singleContactTripleDots.classList.remove('d-none');
     addPersonIcon.classList.remove('d-none');
@@ -31,6 +35,8 @@ function closeEditContactOverlay() {
 }
 
 function closeAddContactOverlay() {
+    addContactsOverlayBg.classList.remove('show-edit-contact-overlay');
+    addContactOverlay.classList.remove('show-edit-contact-overlay');
     addContactsOverlayBg.classList.add('hide-add-contact-overlay');
     addContactOverlay.classList.add('hide-add-contact-overlay');
 }
@@ -38,6 +44,9 @@ function closeAddContactOverlay() {
 function openAddContactOverlay() {
     addContactsOverlayBg.classList.remove('hide-add-contact-overlay');
     addContactOverlay.classList.remove('hide-add-contact-overlay');
+    addContactsOverlayBg.classList.add('show-edit-contact-overlay');
+    addContactOverlay.classList.add('show-edit-contact-overlay');
+
 }
 
 /**
@@ -112,4 +121,9 @@ function hideEditDeletePopup() {
         singleContactTripleDots.classList.remove('d-none');
         addPersonIcon.classList.remove('d-none');
     }, 125);
+}
+
+function popupDeleteContact() {
+    hideEditDeletePopup();
+    returnToContactsList();
 }

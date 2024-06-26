@@ -45,7 +45,7 @@ function goToAddTask() {
 }
 
 function returnAddTaskInBoardHTML() {
-    return `
+    return /*html*/`
         <div class="task-h1 flex-row task-board-h1">
             <h1>Add Task</h1>
             <img onclick="closeNewTaskInBoard()" src="../assets/icons/x-black.png" alt="x">

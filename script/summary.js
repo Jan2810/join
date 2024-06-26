@@ -42,14 +42,50 @@ async function filterTaskStatus() {
     statusArray.push({ "category": inProgress, "length": inProgress.length });
     statusArray.push({ "category": awaitFeedback, "length": awaitFeedback.length });
     statusArray.push({ "category": done, "length": done.length });
-    statusArray.push({ "category": urgent, "length": urgent.length, "due_date": urgent[0]["due_date"]});
-    console.log(tasks);
-    console.log(statusArray);
+    statusArray.push({ "category": urgent, "length": urgent.length, "due_date": urgent[0]["due_date"] });
     document.getElementById("sumBody").innerHTML = "";
     document.getElementById("sumBody").innerHTML = returnSummaryHTML(tasks);
 };
 
+function getActualGreet() {
+    let today = new Date();
+    let hourNow = today.getHours();
+    if (hourNow < 12 && hourNow > 0) {
+        return "Good Morning";
+    }
+    if (hourNow > 12 && hourNow < 18) {
+        return "Good Afternoon";
+    }
+    if (hourNow > 18 && hourNow < 24) {
+        return "Good Morning";
+    }
+};
+
+function getUser() {
+    
+        let userAsText = localStorage.getItem('user');
+        let user = JSON.parse(userAsText);
+        if (user.name !== undefined) {
+        return user.name
+    } else {
+        return "guest";
+    }
+};
+
+function getUpcomingTask(prioTasks) {
+    let prioDates = [];
+    prioTasks.forEach(task => {
+        prioDates.push(task.due_date)
+    });
+    let sortedDates = prioDates.sort(function (a, b) {
+        return new Date(a) - new Date(b);
+    });
+    return sortedDates[0];
+}
+
 function returnSummaryHTML(tasks) {
+    let firstUrgentDate = getUpcomingTask(statusArray[4].category);
+    let date = formatDate(firstUrgentDate);
     return `
         <div class="flex-center summary-headline mgn-l-328">
             <h1>Join 360</h1>
@@ -100,7 +136,7 @@ function returnSummaryHTML(tasks) {
                         </div>
                         <img class="sum-grey-bar" src="../assets/img/bar-grey.png" alt="">
                         <div class="sum-date flex-center flex-column">
-                            <p><b>${statusArray[4].due_date}</b></p>
+                            <p><b>${date}</b></p>
                             <p class="sum-dateline">Upcoming Deadline</p>
                         </div>
                     </div>
@@ -127,9 +163,9 @@ function returnSummaryHTML(tasks) {
                 </div>
             </div>
             <div class="sum-greet-cont flex-center flex-column">
-                <h2 class="color-darkblue">Good morning,</h2>
-                <h1 class="color-lightblue">Sofia Müller</h1>
+                <h2 class="color-darkblue">${getActualGreet()}</h2>
+                <h1 class="color-lightblue">${getUser()}</h1>
             </div>
         </div>
     `;
-}
+};

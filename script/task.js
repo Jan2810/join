@@ -150,12 +150,12 @@ function deleteTask(index) {
 
 
 function renderEdit(id) {
-    taskContainer.innerHTML = `
+    taskContainer.innerHTML = /*html*/`
     <div class="task-h1 flex-row task-board-h1">
             <h1></h1>
             <img onclick="closeTask()" src="../assets/icons/x-black.png" alt="x">
         </div>
-        <form class="form-edit>
+        <form class="form-edit">
             <div class="flex-row task-content in-edit-task-cnt">
                 <div class="task-left-cont">
                     <div class="task-width">
@@ -265,12 +265,8 @@ function renderEdit(id) {
                 </div>
             </div>
             <div class="task-bottom-line-cont flex-center">
-                <div class="flex-row flex-center bottom-line-edit task-bottom-line">
+                <div class="flex-row flex-center task-bottom-line bottom-line-edit">
                     <div class="flex-center task-form-btn-cont">
-                        <div class="task-clear-btn" onclick="clearAll()" onmouseover="enterIcon()" onmouseout="outIcon()">
-                            <span>Clear</span>
-                            <img id="task-x" src="../assets/icons/x-black.png" alt="">
-                        </div>
                         <button onclick="addNewTask(); return false" type="submit" id="createButton" class="task-send-form-btn">
                             <span>Ok</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
@@ -305,7 +301,7 @@ function renderTask(id) {
             <div class="task-description task-font-regular">${task.description}</div>
             <div class="task-date-container task-font-regular flex">
                 <div class="task-date-key">Due date:</div>
-                <div class="task-date-value">${task.due_date}</div>
+                <div class="task-date-value">${formatDate(task.due_date)}</div>
             </div>
             <div class="task-prio-container flex task-font-regular ">
                 <div class="task-prio-key">Priority:</div>
