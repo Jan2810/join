@@ -1,4 +1,9 @@
+body {
+    height: 100vh;
+}
+
 main {
+    height: 100vh;
     margin-top: 96px;
     margin-left: 232px;
 }
@@ -100,6 +105,7 @@ main {
 }
 
 .board-ticket-section {
+    height: 100vh;
     width: 100%;
     max-width: 1208px;
     margin-top: 55.5px;
@@ -137,7 +143,7 @@ main {
 }
 
 .board-ticket-container {
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

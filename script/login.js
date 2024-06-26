@@ -1,26 +1,25 @@
 
 
 async function login() {
-        let users = await loadData(USERS_URL);
-        console.log(users);
+    let users = await loadData(USERS_URL);
+    console.log(users);
 
-        let email = document.getElementById("login-input-email");
-        let password = document.getElementById("login-input-password");
+    let email = document.getElementById("login-input-email");
+    let password = document.getElementById("login-input-password");
 
-        let user = users.find(user => user.email === email.value);
-        console.log(user);
+    let account = users.find(user => user.email === email.value);
+    console.log(account);
 
-        if (!user) {
-            userError();
-        } else if (user.password === password.value) {
-            activeUser = users.find(u => u.email === email.value && u.password === password.value);
-            saveUser(activeUser);
-            window.location.href = "./html/summary.html";
-        } else {
-            passwordError();
-        }
+    if (!user) {
+        userError();
+    } else if (account.password === password.value) {
+        activeUser = users.find(u => u.email === email.value && u.password === password.value);
+        saveUser(account);
+        window.location.href = "./html/summary.html";
+    } else {
+        passwordError();
+    }
 }
-
 
 function toggleVisibility() {
     const passwordField = document.getElementById('login-input-password');
