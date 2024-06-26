@@ -32,8 +32,11 @@
                         required>
                     <input id="register-input-password" class="register-input-fields" type="password"
                         placeholder="Password" required>
-                    <input id="register-input-confirm-password" class="register-input-fields" type="password"
-                        placeholder="Confirm Password" required>
+                    <div class="register-password-container flex-center flex-column">
+                        <input id="register-input-confirm-password" class="register-input-fields" onkeydown="removeConfirmPasswordError()" type="password"
+                            placeholder="Confirm Password" required>
+                        <span id="register-input-password-error" class="d-none">Ups! Your password don't match</span>
+                    </div>
                     <label>
                         <input id="register-privacy-policy-checkbox" type="checkbox" required> I accept the <a
                             class="register-checkbox-link color-lightblue" href="#">Privacy policy</a>
