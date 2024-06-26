@@ -37,7 +37,6 @@ async function initAddTask() {
     changeUrgency("mid");
     let status = localStorage.getItem("status");
     setStatus(status);
-    console.log(taskData.status);
 };
 function changeUrgency(urg) {
     if (urg === "high") {
@@ -282,7 +281,47 @@ function getUrgency() {
     }
 };
 
-function setTaskData(contacts) {
+function succesfullAdded() {
+    document.getElementById("succesImgCnt").style.display = "flex";
+    void document.getElementById("succesImg").offsetWidth;
+    document.getElementById("succesImg").style.transform = "translateY(0px)";
+};
+
+async function addNewTask() {
+    document.getElementById("createButton").onclick = "";
+    document.getElementById("createButton").disabled = true;
+    let contacts = await loadData(CONTACTS_URL);
+    saveInputValues(contacts);
+};
+
+async function saveInputValues(contacts) {
+    let title = document.getElementById("taskTitle").value;
+    let description = document.getElementById("taskDescription").value;
+    let due_date = document.getElementById("taskDate").value;
+    let category = document.getElementById("categoryInput").value;
+    await postNewTask(title, due_date, description, category, contacts)
+};
+
+async function postNewTask(title, due_date, description, category, contacts) {
+    if (title.length > 1 && due_date.length > 1 && category.length > 1) {
+        await postingTask(title, due_date, description, category, contacts);
+        formValidationFeedbackOff();
+        succesfullAdded();
+        setTimeout(() => {
+            getLocationAndMove();
+        }, 1500);
+    } else if (title.length === 0 && due_date.length === 0 && category.length === 0) {
+        formValidationFeedbackOn();
+    }
+};
+
+async function postingTask(title, due_date, description, category, contacts) {
+    setTaskData(title, due_date, description, category, contacts);
+    await postData(TASKS_URL, taskData);
+    clearAll();
+};
+
+function setTaskData(title, due_date, description, category, contacts) {
     if (taskData.subtasks.length === 0) {
         taskData.subtasks = "";
     }
@@ -292,20 +331,6 @@ function setTaskData(contacts) {
     taskData.description = description
     taskData.due_date = due_date
     taskData.category = category
-};
-
-async function addNewTask() {
-    let contacts = await loadData(CONTACTS_URL);
-    setInputValuesIntoData();
-    if (title.length > 1 && due_date.length > 1 && category.length > 1) {
-        setTaskData(contacts);
-        await postData(TASKS_URL, taskData);
-        clearAll();
-        formValidationFeedbackOff();
-    } else {
-        formValidationFeedbackOn();
-    }
-    getLocationAndMove();
 };
 
 function getLocationAndMove() {

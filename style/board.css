@@ -158,6 +158,10 @@ main {
     cursor: grab;
 }
 
+.board-ticket:active {
+    cursor:grabbing;
+}
+
 .board-ticket-tend {
     -moz-transform: rotate(15deg);
     -ms-transform: rotate(15deg);

@@ -206,10 +206,3 @@ function formValidationFeedbackOff() {
     document.getElementById("dropdownCategoryToggle").style.borderColor = "";
     document.getElementById("requiredCategorys").style.display = "none";
 };
-
-function setInputValuesIntoData() {
-    title = document.getElementById("taskTitle").value;
-    description = document.getElementById("taskDescription").value;
-    due_date = document.getElementById("taskDate").value;
-    category = document.getElementById("categoryInput").value;
-};

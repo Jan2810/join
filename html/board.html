@@ -29,8 +29,8 @@
             <div class="board-header flex-row">
                 <div class="board-header-responsive flex-row">
                     <h1>Board</h1>
-                    <button id="board-add-task-button-responsive" class="bg-darkblue flex-center" type="button" onclick="openAddTaskInBoard('todo')"><img
-                            src="../assets/icons/add.svg" alt="+"></button>
+                    <button id="board-add-task-button-responsive" class="bg-darkblue flex-center" type="button"
+                        onclick="openAddTaskInBoard('todo')"><img src="../assets/icons/add.svg" alt="+"></button>
                 </div>
                 <div class="board-header-lower-section-responsive">
                     <input id="board-find-input" onkeydown="startFilterTasks('board-find-input')" type="text"
@@ -38,7 +38,8 @@
                     <input id="board-find-input-responsive" onkeydown="startFilterTasks('board-find-input-responsive')"
                         type="text" placeholder="Find Task">
                     <button id="board-add-task-button" class="bg-darkblue flex-center" type="button"
-                        onclick="openAddTaskInBoard('todo')">Add task<img src="../assets/icons/add.svg" alt="+"></button>
+                        onclick="openAddTaskInBoard('todo')">Add task<img src="../assets/icons/add.svg"
+                            alt="+"></button>
                 </div>
             </div>
         </div>
@@ -124,13 +125,17 @@
             </div>
         </div>
 
- </main>
+    </main>
 
     <div id="addTaskBg" class="add-task-dialog-bg flex-center" style="display: none;" onclick="closeNewTaskInBoard();">
-        <div onclick="stopProp(event);" id="newTaskContainer" class="sum-in-board-html flex-column" style="transform: translateX(1500px);">
+        <div onclick="stopProp(event);" id="newTaskContainer" class="sum-in-board-html flex-column"
+            style="transform: translateX(1500px);">
         </div>
     </div>
-    
+    <div id="succesImgCnt" class="addedsuccesfully" style="display: none;">
+        <img id="succesImg" src="../assets/img/Added-to-board.png" alt="succes" style="transform: translateY(500px);">
+    </div>
+
 </body>
 
 </html>
