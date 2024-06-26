@@ -134,23 +134,24 @@ function moveTo(status) {
 
 
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const draggables = document.querySelectorAll('.board-ticket');
     let isDragging = false;
     let scrollInterval;
 
-    // Höhe des Headers, um den Scrollbereich anzupassen
     const headerHeight = 96;
 
     draggables.forEach(draggable => {
         draggable.addEventListener('dragstart', (e) => {
             isDragging = true;
-            e.dataTransfer.setData('text/plain', null); // Für Firefox
+            e.dataTransfer.setData('text/plain', null); //firefox... nicht beachten
         });
 
         draggable.addEventListener('dragend', () => {
             isDragging = false;
-            clearInterval(scrollInterval); // Stoppe das Scrollen, wenn das Dragging beendet ist
+            clearInterval(scrollInterval);
         });
     });
 
@@ -159,29 +160,28 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isDragging) return;
 
         const mouseY = e.clientY;
-        const scrollStep = 10; // Scroll-Geschwindigkeit
-        const topScrollThreshold = headerHeight + 50; // Abstand zum oberen Rand, ab dem gescrollt wird (inklusive Header)
-        const bottomScrollThreshold = 50; // Abstand zum unteren Rand, ab dem gescrollt wird
+        const scrollStep = 10; // scroll-Geschwindigkeit
+        const topScrollThreshold = headerHeight + 100; //scrollabstand nach oben
+        const bottomScrollThreshold = 100; // scrollabstand nach unten
 
-        console.log(`MouseY: ${mouseY}, Window Height: ${window.innerHeight}`); // Debug-Ausgabe der Mausposition und Fensterhöhe
-        clearInterval(scrollInterval); // Verhindert mehrfaches Starten des Intervalls
+        clearInterval(scrollInterval);
 
         if (mouseY < topScrollThreshold) {
-            console.log('Attempting to scroll up'); // Debug-Ausgabe für Versuch des Scrollens nach oben
             scrollInterval = setInterval(() => {
                 window.scrollBy(0, -scrollStep);
             }, 50);
         } else if (window.innerHeight - mouseY < bottomScrollThreshold) {
-            console.log('Scrolling down'); // Debug-Ausgabe für Scrollen nach unten
             scrollInterval = setInterval(() => {
                 window.scrollBy(0, scrollStep);
             }, 50);
         } else {
-            console.log('Not scrolling'); // Debug-Ausgabe für kein Scrollen
-            clearInterval(scrollInterval); // Stoppe das Scrollen, wenn die Maus nicht am Rand ist
+            clearInterval(scrollInterval);
         }
     });
 });
+
+
+
 
 
 

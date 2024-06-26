@@ -1,10 +1,9 @@
 main {
-    height: calc(100vh - 96px);
+    margin-top: 96px;
     margin-left: 232px;
 }
 
 .board-upper-content {
-    margin-top: 96px;
     width: 100%;
     max-width: 1208px;
     display: flex;
