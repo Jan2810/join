@@ -3,6 +3,7 @@
     width: 100vw;
     position: fixed;
     top: 0;
+    padding: 10px 0px;
 }
 
 .task-bg-active {
@@ -17,6 +18,8 @@
 
 
 .task-container {
+    height: 100%;
+    overflow-y: scroll;
     width: 525px;
     background-color: white;
     border-radius: 30px;
