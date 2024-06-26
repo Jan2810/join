@@ -38,5 +38,15 @@ function checkPassword() {
         showOverlay();
         addUser();
     }
-    else { alert("fehler") }
+    else {confirmPasswordError()}
+}
+
+function confirmPasswordError() {
+    document.getElementById('register-input-confirm-password').classList.add('register-error-border');
+    document.getElementById('register-input-password-error').classList.remove('d-none');
+}
+
+function removeConfirmPasswordError() {
+    document.getElementById('register-input-confirm-password').classList.remove('register-error-border');
+    document.getElementById('register-input-password-error').classList.add('d-none');
 }

@@ -70,6 +70,20 @@
 
 #register-input-confirm-password {
     background: url('../assets/icons/lock.svg') no-repeat right 21px center;
+    margin-bottom: 0px;
+}
+
+.register-password-container {
+    align-items: flex-start;
+}
+
+.register-error-border {
+    border-color: red;
+}
+
+#register-input-password-error {
+    color: red;
+    font-size: 12px;
 }
 
 .register-signup-button {
