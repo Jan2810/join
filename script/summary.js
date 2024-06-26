@@ -62,9 +62,14 @@ function getActualGreet() {
 };
 
 function getUser() {
-    let userAsText = localStorage.getItem('user');
-    let user = JSON.parse(userAsText);
-    return user.name
+    
+        let userAsText = localStorage.getItem('user');
+        let user = JSON.parse(userAsText);
+        if (user.name !== undefined) {
+        return user.name
+    } else {
+        return "guest";
+    }
 };
 
 function getUpcomingTask(prioTasks) {
