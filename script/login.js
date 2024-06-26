@@ -40,9 +40,19 @@ function userError() {
     document.getElementById('login-input-email').classList.add('login-error-border')
 }
 
+function removeUserError() {
+    document.getElementById('login-input-user-error').classList.add('d-none');
+    document.getElementById('login-input-email').classList.remove('login-error-border')
+}
+
 function passwordError() {
     document.getElementById('login-input-password-error').classList.remove('d-none');
     document.getElementById('login-input-password').classList.add('login-error-border')
+}
+
+function removePasswordError() {
+    document.getElementById('login-input-password-error').classList.add('d-none');
+    document.getElementById('login-input-password').classList.remove('login-error-border')
 }
 
 
