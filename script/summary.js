@@ -67,9 +67,20 @@ function getUser() {
     return user.name
 };
 
+function getUpcomingTask(prioTasks) {
+    let prioDates = [];
+    prioTasks.forEach(task => {
+        prioDates.push(task.due_date)
+    });
+    let sortedDates = prioDates.sort(function (a, b) {
+        return new Date(a) - new Date(b);
+    });
+    return sortedDates[0];
+}
+
 function returnSummaryHTML(tasks) {
-    getUpcomingTask(statusArray[4].category)
-    let date = formatDate(statusArray[4].due_date);
+    let firstUrgentDate = getUpcomingTask(statusArray[4].category);
+    let date = formatDate(firstUrgentDate);
     return `
         <div class="flex-center summary-headline mgn-l-328">
             <h1>Join 360</h1>
