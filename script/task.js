@@ -150,12 +150,12 @@ function deleteTask(index) {
 
 
 function renderEdit(id) {
-    taskContainer.innerHTML = `
+    taskContainer.innerHTML = /*html*/`
     <div class="task-h1 flex-row task-board-h1">
             <h1></h1>
             <img onclick="closeTask()" src="../assets/icons/x-black.png" alt="x">
         </div>
-        <form class="form-edit>
+        <form class="form-edit">
             <div class="flex-row task-content in-edit-task-cnt">
                 <div class="task-left-cont">
                     <div class="task-width">
@@ -305,7 +305,7 @@ function renderTask(id) {
             <div class="task-description task-font-regular">${task.description}</div>
             <div class="task-date-container task-font-regular flex">
                 <div class="task-date-key">Due date:</div>
-                <div class="task-date-value">${task.due_date}</div>
+                <div class="task-date-value">${formatDate(task.due_date)}</div>
             </div>
             <div class="task-prio-container flex task-font-regular ">
                 <div class="task-prio-key">Priority:</div>

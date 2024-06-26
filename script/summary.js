@@ -50,6 +50,9 @@ async function filterTaskStatus() {
 };
 
 function returnSummaryHTML(tasks) {
+    let date = formatDate(statusArray[4].due_date);
+    
+    console.log(date);
     return `
         <div class="flex-center summary-headline mgn-l-328">
             <h1>Join 360</h1>
@@ -100,7 +103,7 @@ function returnSummaryHTML(tasks) {
                         </div>
                         <img class="sum-grey-bar" src="../assets/img/bar-grey.png" alt="">
                         <div class="sum-date flex-center flex-column">
-                            <p><b>${statusArray[4].due_date}</b></p>
+                            <p><b>${date}</b></p>
                             <p class="sum-dateline">Upcoming Deadline</p>
                         </div>
                     </div>
