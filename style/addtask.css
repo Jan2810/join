@@ -138,6 +138,13 @@
     justify-content: space-between;
 }
 
+.bottom-line-edit {
+    width: 100%;
+    justify-content: flex-end!important;
+    position: relative;
+    top: -25px;
+}
+
 .task-btn-cont {
     gap: 16px;
     margin: 12px 0px;
@@ -744,7 +751,6 @@
         justify-content: center;
         align-items: center;
         height: 100%;
-        margin-bottom: 90px;
     }
 
     .task-h1 {
@@ -782,21 +788,6 @@
     }
 
     .task-body form {
-        width: 100%;
-        max-width: 880px;
-        margin-top: 36px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 80px;
-    }
-
-    .bottom-line-edit {
-        width: 100%;
-        justify-content: flex-end;
-    }
-
-    .task-body form {
-        margin-bottom: 50px;
+        margin-bottom: 60px;
     }
 }

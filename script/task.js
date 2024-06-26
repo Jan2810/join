@@ -265,12 +265,8 @@ function renderEdit(id) {
                 </div>
             </div>
             <div class="task-bottom-line-cont flex-center">
-                <div class="flex-row flex-center bottom-line-edit task-bottom-line">
+                <div class="flex-row flex-center task-bottom-line bottom-line-edit">
                     <div class="flex-center task-form-btn-cont">
-                        <div class="task-clear-btn" onclick="clearAll()" onmouseover="enterIcon()" onmouseout="outIcon()">
-                            <span>Clear</span>
-                            <img id="task-x" src="../assets/icons/x-black.png" alt="">
-                        </div>
                         <button onclick="addNewTask(); return false" type="submit" id="createButton" class="task-send-form-btn">
                             <span>Ok</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
