@@ -8,11 +8,10 @@
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.20);
-    transition: transform 200ms ease-in-out;
     z-index: 10;
 }
 
-.contacts-bg {
+/* .contacts-bg {
     position: fixed;
     top: 0;
     left: 0;
@@ -21,11 +20,9 @@
     background-color: rgba(0, 0, 0, 0.20);
     transition: transform 200ms ease-in-out;
     z-index: 200;
-}
+} */
 
 .overlay-edit-contact {
-    transition: transform 200ms ease-in-out;
-    transform: translateX(0%); 
     width: 100%;
     border-radius: 12px;
     z-index: 15;
@@ -44,10 +41,31 @@
     transform: translateY(-100%);
 }
 
-.hide-edit-contact-overlay {
+/* .show-add-contact-overlay {
     transition: transform 200ms ease-in-out;
-    transform: translateX(100%);
+    transform: translateY(0);
+} */
+
+
+.hide-edit-contact-overlay {
+    transition: transform 300ms ease-out;
+    transform: translateY(100%);
 }
+
+.show-edit-contact-overlay {
+    transition: transform 300ms ease-out;
+    transform: translateY(0);
+    /* animation: move-in-bottom 300ms ease-out; */
+}
+
+/* @keyframes move-in-Bottom {
+  from {
+    transform: translateY(1000px);
+  }
+  to {
+    transform: translateY(0);
+  }
+} */
 
 .add-contact-top {
     height: 352px;
@@ -334,5 +352,15 @@
     .edit-contact-save-button:active {
         background: #091931;
         border-color: #091931;
+    }
+
+    .hide-edit-contact-overlay {
+        transition: transform 200ms ease-in-out;
+        transform: translateX(100%);
+    }
+
+    .show-edit-contact-overlay {
+        transition: transform 200ms ease-in-out;
+        transform: translateX(0);
     }
 }

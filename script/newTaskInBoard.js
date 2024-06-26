@@ -1,14 +1,17 @@
 function openAddTaskInBoard(status) {
     setStatus(status);
-    let bg = document.getElementById("addTaskBg");
-    bg.style.display = "";
-    let container = document.getElementById("newTaskContainer")
-    container.innerHTML = "";
-    container.innerHTML += returnAddTaskInBoardHTML();
-    setTimeout(() => {
-        container.style.transform = "translateX(0px)"
-        changeUrgency("mid");
-    }, 100)
+    if (window.innerWidth > 800) {
+        document.getElementById("addTaskBg").style.display = "";
+        document.getElementById("newTaskContainer").innerHTML = "";
+        document.getElementById("newTaskContainer").innerHTML += returnAddTaskInBoardHTML();
+        setTimeout(() => {
+            document.getElementById("newTaskContainer").style.transform = "translateX(0px)"
+            changeUrgency("mid");
+        }, 100)
+    } else {
+        statusReset(status)
+        goToAddTask();
+    }
 };
 
 function closeNewTaskInBoard() {
@@ -33,6 +36,14 @@ function setStatus(status) {
     };
 };
 
+function statusReset(status) {
+    localStorage.setItem('status', status);
+}
+
+function goToAddTask() {
+    window.location = "../html/addtask.html";
+}
+
 function returnAddTaskInBoardHTML() {
     return `
         <div class="task-h1 flex-row task-board-h1">
@@ -40,7 +51,7 @@ function returnAddTaskInBoardHTML() {
             <img onclick="closeNewTaskInBoard()" src="../assets/icons/x-black.png" alt="x">
         </div>
         <form>
-            <div class="flex-row task-content">
+            <div class="flex-row task-content in-board-task-cnt">
                 <div class="task-left-cont">
                     <div class="task-width">
                         <h3 class="task-form-font">Title<span class="task-star">*</span></h3>

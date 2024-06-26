@@ -35,6 +35,9 @@ let availableCategorys = [
 async function initAddTask() {
     await includeHTML();
     changeUrgency("mid");
+    let status = localStorage.getItem("status");
+    setStatus(status);
+    console.log(taskData.status);
 };
 function changeUrgency(urg) {
     if (urg === "high") {
@@ -62,7 +65,7 @@ function clearTaskDataArray() {
         "priority": "",
         "category": "",
         "subtasks": [],
-        "status": ""
+        "status": "todo"
     };
 };
 
