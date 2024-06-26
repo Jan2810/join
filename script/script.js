@@ -107,7 +107,7 @@ async function includeHTML() {
     }
 };
 
-function saveUser() {
+function saveUser(user) {
     const userString = JSON.stringify(user);
     console.log(userString);
     localStorage.setItem('user', userString);

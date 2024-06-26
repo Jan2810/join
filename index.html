@@ -27,11 +27,19 @@
             <div class="login-underline"></div>
             <form onsubmit="login();return false">
                 <div class="flex-column flex-center gap-20">
-                    <input id="login-input-email" class="login-input-fields" type="email" placeholder="Email" required>
-                    <div class="login-password-container flex-center">
+                    <div class="flex-column">
+                        <input id="login-input-email" class="login-input-fields" type="email" placeholder="Email"
+                            required>
+                        <span id="login-input-user-error" class="d-none">User not found! Try again.</span>
+                    </div>
+                    <div class="login-password-container flex-center flex-column">
                         <input id="login-input-password" class="login-input-fields" type="password"
                             placeholder="Password" required>
-                            <img onclick="toggleVisibility()" id="login-visibility-toggle-img" src="./assets/icons/visibility_off.svg" alt="">
+                        <img onclick="toggleVisibility()" id="login-visibility-toggle-img"
+                            src="./assets/icons/visibility_off.svg" alt="">
+                        <div>
+                            <span id="login-input-password-error" class="d-none">Wrong password Ups! Try again.</span>
+                        </div>
                     </div>
                     <label class="login-checkbox-field">
                         <input id="login-remember-me-checkbox" type="checkbox"> Remember me
