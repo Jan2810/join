@@ -65,8 +65,18 @@
     background: url('../assets/icons/mail.svg') no-repeat right 21px center;
 }
 
-#login-input-password {
-    background: url('../assets/icons/visibility_off.svg') no-repeat right 21px center;
+.login-password-container {
+    position: relative;
+}
+
+.login-password-container img:hover {
+    cursor: pointer;
+}
+
+#login-visibility-toggle-img {
+    position: absolute;
+    right: 22px;
+    top: 12px;
 }
 
 .login-checkbox-field {
@@ -207,5 +217,11 @@
     .login-checkbox-field {
         width: 90%;
         padding-left: 16px;
+    }
+
+    #login-visibility-toggle-img {
+        position: absolute;
+        right: 36px;
+        top: 12px;
     }
 }

@@ -20,3 +20,15 @@ async function login() {
 }
 
 
+function toggleVisibility() {
+    const passwordField = document.getElementById('login-input-password');
+    const toggleImg = document.getElementById('login-visibility-toggle-img');
+
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        toggleImg.src = './assets/icons/visibility.svg';
+    } else {
+        passwordField.type = 'password';
+        toggleImg.src = './assets/icons/visibility_off.svg';
+    }
+}

@@ -11,17 +11,23 @@ let singleContactTripleDots = document.getElementById('single-contact-triple-dot
 let addPersonIcon = document.getElementById('add-person-icon');
 let manuallyRemoved = false;
 
-function closeEditContactOverlay() {
-    editContactsOverlayBg.classList.add('hide-edit-contact-overlay');
-    editContactOverlay.classList.add('hide-edit-contact-overlay');
-}
 
 function openEditContactOverlay() {
     editContactsOverlayBg.classList.remove('hide-edit-contact-overlay');
     editContactOverlay.classList.remove('hide-edit-contact-overlay');
+    editContactsOverlayBg.classList.add('show-edit-contact-overlay');
+    editContactOverlay.classList.add('show-edit-contact-overlay');
+
     editDeletePopup.classList.add('hide-edit-delete-popup');
     singleContactTripleDots.classList.remove('d-none');
     addPersonIcon.classList.remove('d-none');
+}
+
+function closeEditContactOverlay() {
+    editContactsOverlayBg.classList.remove('show-edit-contact-overlay');
+    editContactOverlay.classList.remove('show-edit-contact-overlay');
+    editContactsOverlayBg.classList.add('hide-edit-contact-overlay');
+    editContactOverlay.classList.add('hide-edit-contact-overlay');
 }
 
 function closeAddContactOverlay() {
