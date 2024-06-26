@@ -46,20 +46,20 @@ async function updateTasksByStatus(status, containerId) {
 }
 
 
-function updateTodos() {
-    updateTasksByStatus('todo', 'board-ticket-container-todo');
+async function updateTodos() {
+    await updateTasksByStatus('todo', 'board-ticket-container-todo');
 }
 
-function updateInProgress() {
-    updateTasksByStatus('inprogress', 'board-ticket-container-in-progress');
+async function updateInProgress() {
+    await updateTasksByStatus('inprogress', 'board-ticket-container-in-progress');
 }
 
-function updateAwaitFeedback() {
-    updateTasksByStatus('awaitfeedback', 'board-ticket-container-await-feedback');
+async function updateAwaitFeedback() {
+    await updateTasksByStatus('awaitfeedback', 'board-ticket-container-await-feedback');
 }
 
-function updateDone() {
-    updateTasksByStatus('done', 'board-ticket-container-done');
+async function updateDone() {
+    await updateTasksByStatus('done', 'board-ticket-container-done');
 }
 
 function startFilterTasks(inputId) {
