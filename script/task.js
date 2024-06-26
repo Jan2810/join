@@ -153,13 +153,13 @@ function renderEdit(id) {
     taskContainer.innerHTML = `
     <div class="task-h1 flex-row task-board-h1">
             <h1></h1>
-            <img onclick="closeNewTaskInBoard()" src="../assets/icons/x-black.png" alt="x">
+            <img onclick="closeTask()" src="../assets/icons/x-black.png" alt="x">
         </div>
         <form class="form-edit>
             <div class="flex-row task-content in-edit-task-cnt">
                 <div class="task-left-cont">
                     <div class="task-width">
-                        <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
+                        <h3 class="task-form-font">Title</h3>
                         <input id="taskTitle" class="task-width task-form-font task-input" type="text" placeholder="Enter a title"
                             required>
                             <span id="requiredTitle" class="required-text" style="display: none;">This field is required</span>
@@ -196,7 +196,7 @@ function renderEdit(id) {
                 </div>
                 <div class="task-right-cont task-right-cont-edit" id="taskRightCont">
                     <div class="task-width">
-                        <h3 class="task-form-font">Due date<span class="task-star">*</span></h3>
+                        <h3 class="task-form-font">Due date</h3>
                         <div class="task-date-input task-width">
                             <input onclick="openCalender()" id="taskDate"
                                 class="task-date-input task-form-font color-lightgrey bg-white task-input" type="date"
@@ -225,7 +225,7 @@ function renderEdit(id) {
                         </div>
                     </div>
                     <div>
-                        <h3 class="task-form-font">Category<span class="task-star">*</span></h3>
+                        <h3 class="task-form-font">Category</h3>
                         <div onclick="openCategorys(); stopProp(event);" class="dropdown task-width">
                             <div class="dropdown-toggle ctg-input-cnt" id="dropdownCategoryToggle">
                                 <input onclick="openCategorys(); preventDf(event); stopProp(event);" id="categoryInput" type="text" placeholder="Select task category" 
@@ -264,16 +264,15 @@ function renderEdit(id) {
                     </div>
                 </div>
             </div>
-            <div class="task-bottom-line-cont add-task-bottom-line-board flex-center">
-                <div class="flex-row flex-center task-bottom-line">
-                    <p><span class="task-star">*</span>This field is required</p>
+            <div class="task-bottom-line-cont flex-center">
+                <div class="flex-row flex-center bottom-line-edit task-bottom-line">
                     <div class="flex-center task-form-btn-cont">
                         <div class="task-clear-btn" onclick="clearAll()" onmouseover="enterIcon()" onmouseout="outIcon()">
                             <span>Clear</span>
                             <img id="task-x" src="../assets/icons/x-black.png" alt="">
                         </div>
                         <button onclick="addNewTask(); return false" type="submit" id="createButton" class="task-send-form-btn">
-                            <span>Create Task</span>
+                            <span>Ok</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
                         </button>
                     </div>

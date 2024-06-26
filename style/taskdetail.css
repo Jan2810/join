@@ -3,7 +3,7 @@
     width: 100vw;
     position: fixed;
     top: 0;
-    padding: 10px 0px;
+    padding: 10px;
 }
 
 .task-bg-active {
@@ -14,8 +14,6 @@
 .task-bg-low-index {
     z-index: -10;
 }
-
-
 
 .task-container {
     height: 100%;

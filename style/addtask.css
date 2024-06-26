@@ -627,10 +627,6 @@
     transition: all 500ms ease-in-out;
 }
 
-.form-edit {
-    
-}
-
 .in-edit-task-cnt {
     flex-direction: column;
     height: 100%;
@@ -776,16 +772,31 @@
 
     .task-bottom-line-cont {
         justify-content: center;
-        position: sticky;
-        bottom: 80px;
-        left: 0;
         padding: 16px;
         font-size: 14px;
-        background-color: rgb(246, 247, 248);
     }
     .task-send-form-btn {
         font-size: 21px;
         font-weight: 700;
         padding: 0px;
+    }
+
+    .task-body form {
+        width: 100%;
+        max-width: 880px;
+        margin-top: 36px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 80px;
+    }
+
+    .bottom-line-edit {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .task-body form {
+        margin-bottom: 50px;
     }
 }
