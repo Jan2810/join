@@ -46,7 +46,7 @@ async function loadData(url) {
 async function postData(url, data = {}) {
     let response = await fetch(url + ".json", {
         method: "POST",
-        header: {
+        headers: {
             "Content-type": "application/json",
         },
         body: JSON.stringify(data)
@@ -58,7 +58,18 @@ async function postData(url, data = {}) {
 async function putData(url, data = {}) {
     let response = await fetch(url + ".json", {
         method: "PUT",
-        header: {
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(data)
+    });
+    return response;
+};
+
+async function deleteData(url, data = {}) {
+    let response = await fetch(url + ".json", {
+        method: "DELETE",
+        headers: {
             "Content-type": "application/json",
         },
         body: JSON.stringify(data)
