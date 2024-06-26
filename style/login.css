@@ -69,6 +69,10 @@
     position: relative;
 }
 
+.login-password-container img:hover {
+    cursor: pointer;
+}
+
 #login-visibility-toggle-img {
     position: absolute;
     right: 22px;
