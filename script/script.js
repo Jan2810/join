@@ -131,8 +131,8 @@ async function includeHTML() {
     }
 };
 
-function saveUser(user) {
-    const userString = JSON.stringify(user);
+function saveUser(account) {
+    const userString = JSON.stringify(account);
     console.log(userString);
     localStorage.setItem('user', userString);
 };
@@ -164,13 +164,13 @@ if (window.location.pathname.includes('/html/') && !window.location.pathname.inc
 function logout() {
     localStorage.removeItem('user');
     user = "";
-    setTimeout(goTologin, 1000)
+    goTologin();
 }
 
 function guestUserActive() {
     user.name = "Gast Nutzer";
     saveUser();
-    goToBoard()
+    goToBoard();
 }
 
 function getInitials(username) {
