@@ -15,7 +15,6 @@ async function login() {
         } else if (user.password === password.value) {
             activeUser = users.find(u => u.email === email.value && u.password === password.value);
             saveUser(activeUser);
-            console.log("done");
             window.location.href = "./html/summary.html";
         } else {
             passwordError();
