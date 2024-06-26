@@ -7,7 +7,7 @@ async function login() {
     let email = document.getElementById("login-input-email");
     let password = document.getElementById("login-input-password");
 
-    let account = users.find(user => user.email === email.value);
+    let account = users.find(account => account.email === email.value);
     console.log(account);
 
     if (!user) {
