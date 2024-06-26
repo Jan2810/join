@@ -67,7 +67,23 @@
 
 .login-password-container {
     position: relative;
+    align-items: flex-start;
 }
+
+.login-error-border {
+    border-color: red;
+}
+
+#login-input-password-error {
+    color: red;
+    font-size: 12px;
+}
+
+#login-input-user-error {
+    color: red;
+    font-size: 12px;
+}
+
 
 .login-password-container img:hover {
     cursor: pointer;
