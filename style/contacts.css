@@ -190,7 +190,15 @@
     height: 48px;
     width: 48px;
     cursor: pointer;
+    transition: transform 10ms linear;   
 }
+
+.single-contact-arrow-left:active {
+    transform: scale(1.15); 
+}
+
+
+
 
 .single-contact-subheader {
     display: flex;
@@ -294,14 +302,14 @@
     gap: 12px;
 }
 
-.edit-contact:active,
-.delete-contact:active {
+.edit-contact:hover,
+.delete-contact:hover {
     font-weight: 700;
     color:#29ABE2;
 }
 
-.edit-contact:active .edit-icon path,
-.delete-contact:active .delete-icon path {
+.edit-contact:hover .edit-icon path,
+.delete-contact:hover .delete-icon path {
     fill: #29ABE2;
 }
 
@@ -516,14 +524,20 @@
         font-weight: 500;
     }
 
-    .edit-and-delete-contact {
+    /* .edit-and-delete-contact {
         color: #2A3647;
         display: flex;
         gap: 18px;
-    }
-    
-    
+    } */
 
+    .edit-and-delete-contact {
+        color: #2A3647;
+        display: grid;
+        grid-template-columns: 62px 81px; /* Two columns: 62px and 81px */
+        gap: 18px; /* Gap between grid items */
+    }
+
+    
     .single-contact-information {
         margin: 0;
     }
@@ -544,6 +558,7 @@
     }
 
     .single-contact-container {
+        display: block;
         padding-top: 110px;
         margin-left: 55px;
     }

@@ -1,5 +1,35 @@
+let addContactFormName = document.getElementById('add-contact-form-name');
+let addContactFormEmail = document.getElementById('add-contact-form-email');
+let addContactFormPhone = document.getElementById('add-contact-form-phone');
+// let addContactFormName = document.getElementById('add-contact-form-name');
+// let addContactFormName = document.getElementById('add-contact-form-name');
+// let addContactFormName = document.getElementById('add-contact-form-name');
+// let addContactFormName = document.getElementById('add-contact-form-name');
+// let addContactFormName = document.getElementById('add-contact-form-name');
+// let addContactFormName = document.getElementById('add-contact-form-name');
+
+
+
+async function addNewContact() {
+    let color = getRandomContactColor();
+    await postContact('', {
+        "email": addContactFormEmail.value,
+        "name": addContactFormName.value,
+        "phone": addContactFormPhone.value,
+        "color": color
+    });
+}
+
+let colorValues = backgroundColors.map(bg => bg.replace("background: ", ""));
+
+function getRandomContactColor() {
+    let colorIndex = Math.floor(Math.random() * colorValues.length);
+    return colorValues[colorIndex];
+}
+
+
 async function loadContacts(path = "") {
-    let response = await fetch(CONTACTS_URL + "/users.json");
+    let response = await fetch(CONTACTS_URL + ".json");
     let responseAsJson = await response.json();
     let entriesArray = [];
     if (responseAsJson) {
@@ -13,15 +43,14 @@ async function loadContacts(path = "") {
 loadContacts();
 
 
-async function saveContact() {
-    await postContact('', {
-        "name": "Harry White",
-        "email": "harry_white@outlook.com",
-        "password": "secretpassword"
-    });
-}
 
-saveContact();
+
+
+// initContacts();
+
+async function initContacts() {
+    await saveNewContact();
+}
 
 async function postContact(path = '', contact = {}) {
     let response = await fetch(CONTACTS_URL + path + ".json", {

@@ -51,6 +51,11 @@
     height: 32px;
     width: 32px;
     cursor: pointer;
+    transition: transform 10ms linear;   
+}
+
+.privacy-arrow-left:active {
+    transform: scale(1.15); 
 }
 
 .privacy-text {
@@ -151,7 +156,11 @@
     .privacy-arrow-left {
         height: 37px;
         width: 37px;
-}
+    }
+
+    .privacy-arrow-left:hover {
+        transform: scale(1.15); 
+    }
 }
 /* Centers text for larger screen widths */
 
