@@ -12,6 +12,137 @@ let addContactFormPhone = document.getElementById('add-contact-form-phone');
 //     'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 // ];
 
+let hardCodedContacts = [
+    {
+        "email": "anna.mueller@example.com",
+        "name": "Anna Müller",
+        "phone": "+49 151 23456701"
+    },
+    {
+        "email": "markus.schneider@example.com",
+        "name": "Markus Schneider",
+        "phone": "+49 151 23456702"
+    },
+    {
+        "email": "laura.fischer@example.com",
+        "name": "Laura Fischer",
+        "phone": "+49 151 23456703"
+    },
+    {
+        "email": "johannes.becker@example.com",
+        "name": "Johannes Becker",
+        "phone": "+49 151 23456704"
+    },
+    {
+        "email": "sophie.wagner@example.com",
+        "name": "Sophie Wagner",
+        "phone": "+49 151 23456705"
+    },
+    {
+        "email": "david.schmidt@example.com",
+        "name": "David Schmidt",
+        "phone": "+49 151 23456706"
+    },
+    {
+        "email": "lea.krause@example.com",
+        "name": "Lea Krause",
+        "phone": "+49 151 23456707"
+    },
+    {
+        "email": "benjamin.meyer@example.com",
+        "name": "Benjamin Meyer",
+        "phone": "+49 151 23456708"
+    },
+    {
+        "email": "julia.bauer@example.com",
+        "name": "Julia Bauer",
+        "phone": "+49 151 23456709"
+    },
+    {
+        "email": "sebastian.weber@example.com",
+        "name": "Sebastian Weber",
+        "phone": "+49 151 23456710"
+    }
+]
+
+let colorValues = backgroundColors.map(bg => bg.replace("background: ", ""));
+
+function getRandomContactColor() {
+    let colorIndex = Math.floor(Math.random() * colorValues.length);
+    return colorValues[colorIndex];
+}
+
+async function fetchFixContacts() {
+    for (let fixContact of hardCodedContacts) {
+        let color = getRandomContactColor();
+        let initials = getInitials(fixContact.name);
+        try {
+            await postData(CONTACTS_URL, {
+                "email": fixContact.email,
+                "name": fixContact.name,
+                "phone": fixContact.phone,
+                "color": color,
+                "initials": initials
+            });
+        } catch (error) {
+            console.error('Error adding contact:', error);
+        }
+    }
+}
+
+// fetchFixContacts();
+//let contacts = [
+// {
+//     name: "Anton Müller",
+//     email: "anton@example.com",
+//     phone: "+491234567890",
+//     color: "rgba(255, 116, 94, 1)",
+//     initials: "AM"
+// },
+// {
+//     name: "Anna Schmidt",
+//     email: "anna@example.com",
+//     phone: "+491234567891",
+//     color: "rgba(31, 215, 193, 1)",
+//     initials: "AS"
+// },
+// {
+//     name: "Hanni Weber",
+//     email: "hanni@example.com",
+//     phone: "+491234567892",
+//     color: "rgba(195, 255, 43, 1)",
+//     initials: "HW"
+// },
+// {
+//     name: "Hannelore Maier",
+//     email: "hannelore@example.com",
+//     phone: "+491234567893",
+//     color: "rgba(110, 82, 255, 1)",
+//     initials: "HM"
+// },
+// {
+//     name: "Martin Fischer",
+//     email: "martin@example.com",
+//     phone: "+491234567894",
+//     color: "rgba(0, 190, 232, 1)",
+//     initials: "MF"
+// },
+// {
+//     name: "Martina Becker",
+//     email: "martina@example.com",
+//     phone: "+491234567895",
+//     color: "rgba(255, 94, 179, 1)",
+//     initials: "MB"
+// },
+// {
+//     name: "Anna Meier",
+//     email: "anna.meier@example.com",
+//     phone: "+491234567896",
+//     color: "rgba(147, 39, 255, 1)",
+//     initials: "AM"
+// }
+//];
+
 
 async function addNewContact() {
     let color = getRandomContactColor();
@@ -25,12 +156,7 @@ async function addNewContact() {
     });
 }
 
-let colorValues = backgroundColors.map(bg => bg.replace("background: ", ""));
 
-function getRandomContactColor() {
-    let colorIndex = Math.floor(Math.random() * colorValues.length);
-    return colorValues[colorIndex];
-}
 
 
 // async function loadContacts(path = "") {
@@ -60,19 +186,29 @@ async function loadContactsData() {
 
 }
 
+// Process data into a contacts array
+async function processContactsData() {
+    const data = await loadContactsData();
+    let contacts = [];
+
+    for (let key in data) {
+        contacts.push({
+            name: data[key].name,
+            email: data[key].email,
+            phone: data[key].phone,
+            color: data[key].color,
+            initials: data[key].initials,
+            id: key
+        });
+    }
+
+    return contacts;
+}
 // loadContactsData();
 
-async function loadSingleContact() {
-    const data = await loadContactsData();
-    for (let key in data) {
-        console.log(data[key].name);
-        console.log(data[key].email);
-        console.log(data[key].phone);
-        console.log(data[key].color);
-        console.log(key);
-    }
-}
-loadSingleContact();
+
+
+
 // initContacts();
 
 // async function initContacts() {
@@ -98,58 +234,6 @@ loadSingleContact();
 
 
 
-
-let contacts = [
-    {
-        name: "Anton Müller",
-        email: "anton@example.com",
-        phone: "+491234567890",
-        color: "rgba(255, 116, 94, 1)",
-        initials: "AM"
-    },
-    {
-        name: "Anna Schmidt",
-        email: "anna@example.com",
-        phone: "+491234567891",
-        color: "rgba(31, 215, 193, 1)",
-        initials: "AS"
-    },
-    {
-        name: "Hanni Weber",
-        email: "hanni@example.com",
-        phone: "+491234567892",
-        color: "rgba(195, 255, 43, 1)",
-        initials: "HW"
-    },
-    {
-        name: "Hannelore Maier",
-        email: "hannelore@example.com",
-        phone: "+491234567893",
-        color: "rgba(110, 82, 255, 1)",
-        initials: "HM"
-    },
-    {
-        name: "Martin Fischer",
-        email: "martin@example.com",
-        phone: "+491234567894",
-        color: "rgba(0, 190, 232, 1)",
-        initials: "MF"
-    },
-    {
-        name: "Martina Becker",
-        email: "martina@example.com",
-        phone: "+491234567895",
-        color: "rgba(255, 94, 179, 1)",
-        initials: "MB"
-    },
-    {
-        name: "Anna Meier",
-        email: "anna.meier@example.com",
-        phone: "+491234567896",
-        color: "rgba(147, 39, 255, 1)",
-        initials: "AM"
-    }
-];
 
 function getFirstName(fullName) {
     return fullName.split(' ')[0];
@@ -184,25 +268,85 @@ function sortContacts(contacts) {
     });
 }
 
-sortContacts(contacts);
+// Organize contacts by first letter
+function organizeContactsByLetter(contacts) {
+    let contactsByLetter = {};
 
-// Initialize an object to hold subarrays for each letter of the alphabet
-let contactsByLetter = {};
+    contacts.forEach(contact => {
+        let firstLetter = getFirstName(contact.name)[0].toUpperCase();
+        if (!contactsByLetter[firstLetter]) {
+            contactsByLetter[firstLetter] = [];
+        }
+        contactsByLetter[firstLetter].push(contact);
+    });
 
-// Iterate over each contact and organize them into subarrays by first letter of name
-contacts.forEach(contact => {
-    let firstLetter = getFirstName(contact.name)[0].toUpperCase();
-    if (!contactsByLetter[firstLetter]) {
-        contactsByLetter[firstLetter] = [];
-    }
-    contactsByLetter[firstLetter].push(contact);
-});
+    return contactsByLetter;
+}
 
-console.log(contactsByLetter);
 
-console.log(Object.keys(contactsByLetter));
-console.log(contactsByLetter);
-console.log(contactsByLetter);
+function renderContactsListHtml(contactsByLetter) {
+    contactsList.innerHTML = '';
+    contactsList.innerHTML = renderNewContactButton();
+    Object.entries(contactsByLetter).forEach(([capitalLetter, contacts]) => {
+        contactsList.innerHTML += renderCapitalLetter(capitalLetter);
+        contacts.forEach(contact => {
+            contactsList.innerHTML += renderContact(contact);
+        });
+    });
+}
+
+
+async function renderContactsList() {
+    let contacts = await processContactsData();
+    sortContacts(contacts);
+
+    let contactsByLetter = organizeContactsByLetter(contacts);
+
+    renderContactsListHtml(contactsByLetter);
+
+};
+
+
+renderContactsList();
+
+// /**
+//  * Iterates over each capital letter key and corresponding contacts array in the contactsByLetter object,
+//  * rendering each capital letter followed by its contacts using specified rendering functions.
+//  *
+//  * @param {Object.<string, Array>} contactsByLetter - Object where keys are capital letters and values are arrays of contacts.
+//  * @param {Function} renderCapitalLetter - Function to render each capital letter.
+//  * @param {Function} renderContact - Function to render each contact.
+//  */
+
+// /**
+//  * Renders contacts grouped by capital letters.
+//  * For each capital letter, it calls renderCapitalLetter() to render the letter,
+//  * and iterates over the contacts associated with that letter to call renderContact()
+//  * for each contact.
+//  *
+//  * @param {Object} contactsByLetter - An object where keys are capital letters (A-Z)
+//  *                                   and values are arrays of contacts starting with that letter.
+//  *                                   Example:
+//  *                                   {
+//  *                                     A: [{ name: 'Alice', ... }, { name: 'Anna', ... }],
+//  *                                     B: [{ name: 'Bob', ... }],
+//  *                                     ...
+//  *                                   }
+//  * @returns {void}
+//  */
+// Object.entries(contactsByLetter).forEach(([capitalLetter, contacts]) => {
+//     contactsList.innerHTML += renderCapitalLetter(capitalLetter);
+//     contacts.forEach(contact => {
+//         contactsList.innerHTML += renderContact(contact);
+//     });
+// });
+
+
+// console.log(contactsByLetter);
+
+// console.log(Object.keys(contactsByLetter));
+// console.log(contactsByLetter);
+// console.log(contactsByLetter);
 
 // function renderContactsList() {
 //     let contactsByLetterKeys = Object.keys(contactsByLetter)
@@ -251,37 +395,6 @@ console.log(contactsByLetter);
 
 // document.getElementById('renderContactsButton').addEventListener('click', function () {
 
-/**
- * Iterates over each capital letter key and corresponding contacts array in the contactsByLetter object,
- * rendering each capital letter followed by its contacts using specified rendering functions.
- *
- * @param {Object.<string, Array>} contactsByLetter - Object where keys are capital letters and values are arrays of contacts.
- * @param {Function} renderCapitalLetter - Function to render each capital letter.
- * @param {Function} renderContact - Function to render each contact.
- */
-
-/**
- * Renders contacts grouped by capital letters.
- * For each capital letter, it calls renderCapitalLetter() to render the letter,
- * and iterates over the contacts associated with that letter to call renderContact()
- * for each contact.
- *
- * @param {Object} contactsByLetter - An object where keys are capital letters (A-Z)
- *                                   and values are arrays of contacts starting with that letter.
- *                                   Example:
- *                                   {
- *                                     A: [{ name: 'Alice', ... }, { name: 'Anna', ... }],
- *                                     B: [{ name: 'Bob', ... }],
- *                                     ...
- *                                   }
- * @returns {void}
- */
-Object.entries(contactsByLetter).forEach(([capitalLetter, contacts]) => {
-    contactsList.innerHTML += renderCapitalLetter(capitalLetter);
-    contacts.forEach(contact => {
-        contactsList.innerHTML += renderContact(contact);
-    });
-});
 
 
 
