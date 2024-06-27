@@ -196,5 +196,5 @@ function setBackground(i) {
 
 function changeBackground(i) {
     console.log(i);
-    document.getElementById(`navLink${i}`).style.backgroundColor = "#263957"
+    document.getElementById(`navLink${i}`).style.backgroundColor = "#12223f"
 };
