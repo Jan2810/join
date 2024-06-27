@@ -26,8 +26,6 @@ async function updateTasksByStatus(status, containerId) {
         await getTasks();
     }
     let tasks = tasksArray.filter(t => t['status'] === status);
-    console.log("Category: " + status);
-    console.log(tasks);
 
     let container = document.getElementById(containerId);
     container.innerHTML = '';
@@ -124,7 +122,7 @@ function endDragging(id) {
     const ticketContainer = document.querySelector('.board-ticket-container');
     ticketContainer.classList.remove('overflow-visible')
     ticketContainer.classList.add('overflow-x-scroll');
-    
+
     document.getElementById(`board-ticket${id}`).classList.remove('board-ticket-tend');
 };
 
@@ -156,12 +154,7 @@ function moveTo(status) {
 
 function generateTicketHTML(element, categoryBG) {
     let subtaskProgressHTML = getSubtasksProgress(element);
-    let assignedHTML = '';
-
-    for (let j = 0; j < element['assigned_to'].length; j++) {
-        let initials = getInitials(element['assigned_to'][j]);
-        assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div>`;
-    }
+    let assignedHTML = getContacts(element);
 
     return `
         <div id="board-ticket${element['id']}" class="board-ticket" draggable="true" ondragstart="startDragging('${element['id']}')" ondragend="endDragging('${element['id']}')" onclick="showTask('${element['id']}')">
@@ -184,6 +177,20 @@ function generateTicketHTML(element, categoryBG) {
         </div>`;
 };
 
+function getContacts(element) {
+    let assignedHTML = '';
+    if (element['assigned_to'].length > 3) {
+        let initials = getInitials(element['assigned_to'][0]);
+        assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div><div class="board-ticket-assigned flex-center">+${element['assigned_to'].length -=1}</div>`;
+    } else {
+        for (let j = 0; j < element['assigned_to'].length; j++) {
+            let initials = getInitials(element['assigned_to'][j]);
+            assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div>`;
+        }
+    }
+    return assignedHTML;
+}
+
 function getSubtasksProgress(element) {
     let subtasks = element['subtasks'];
     let subtasksLength = element['subtasks'].length;
@@ -199,10 +206,10 @@ function getSubtasksProgress(element) {
                 </div>
                 <div class="board-ticket-progress">${checkedSubtasksLength}/${subtasksLength} Subtasks</div>
             </div>`
-                ;
-        } else {
-            return '';
-        }
+            ;
+    } else {
+        return '';
+    }
 };
 
 
