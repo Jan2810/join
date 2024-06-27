@@ -286,6 +286,14 @@ main {
     width: 100%;
 }
 
+.overflow-x-scroll {
+    overflow-x: scroll;
+}
+
+.overflow-visible {
+    overflow: visible;
+}
+
 @media (max-width: 1400px) {
     .board-categories {
         flex-direction: column;
@@ -308,9 +316,7 @@ main {
     .board-ticket-container {
         height: fit-content;
         flex-direction: row;
-        overflow-x: scroll;
         align-items: flex-start;
-        overflow: visible;
     }
 
     .board-ticket-container::-webkit-scrollbar {

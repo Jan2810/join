@@ -38,6 +38,7 @@ async function initAddTask() {
     let status = localStorage.getItem("status");
     setStatus(status);
     setRandomNumber();
+    
 };
 function changeUrgency(urg) {
     if (urg === "high") {
