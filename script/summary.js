@@ -51,24 +51,24 @@ async function filterTaskStatus() {
 function getActualGreet() {
     let today = new Date();
     let hourNow = today.getHours();
-    if (hourNow < 12 && hourNow > 0) {
+    if (hourNow <= 12 && hourNow >= 0) {
         return "Good Morning";
-    }
-    if (hourNow > 12 && hourNow < 18) {
+    } else if (hourNow >= 12 && hourNow <= 18) {
         return "Good Afternoon";
-    }
-    if (hourNow > 18 && hourNow < 24) {
+    } else if (hourNow >= 18 && hourNow <= 24) {
         return "Good Morning";
+    } else {
+        return "Welcome";
     }
 };
 
 function getUser() {
     let userAsText = localStorage.getItem('user');
     let user = JSON.parse(userAsText);
-    if (user.name !== undefined) {
-        return user.name
+    if (user !== "Gast Nutzer") {
+        return user
     } else {
-        return "guest";
+        return "";
     }
 };
 
@@ -164,7 +164,7 @@ function returnSummaryHTML(tasks) {
             </div>
             <div class="sum-greet-cont flex-center flex-column">
                 <h2 class="color-darkblue">${getActualGreet()}</h2>
-                <h1 class="color-lightblue">${user}</h1>
+                <h1 class="color-lightblue">${getUser()}</h1>
             </div>
         </div>
     `;
