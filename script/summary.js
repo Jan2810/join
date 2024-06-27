@@ -63,10 +63,10 @@ function getActualGreet() {
 };
 
 function getUser() {
-    let userAsText = localStorage.getItem('user');
-    let user = JSON.parse(userAsText);
-    if (user !== "Gast Nutzer") {
-        return user
+    // let userAsText = localStorage.getItem('user');
+    // let user = JSON.parse(userAsText);
+    if (user.name !== "Gast Nutzer") {
+        return user.name
     } else {
         return "";
     }

@@ -7,14 +7,15 @@ async function login() {
     let email = document.getElementById("login-input-email");
     let password = document.getElementById("login-input-password");
 
-    let account = users.find(account => account.email === email.value);
-    console.log(account);
+    user = users.find(user => user.email === email.value);
+    console.log(user);
 
     if (!user) {
         userError();
-    } else if (account.password === password.value) {
+    } else if (user.password === password.value) {
         activeUser = users.find(u => u.email === email.value && u.password === password.value);
-        saveUser(account);
+        user.password ="***";
+        saveUser(user);
         window.location.href = "./html/summary.html";
     } else {
         passwordError();

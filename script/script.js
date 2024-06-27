@@ -122,15 +122,15 @@ async function includeHTML() {
         let resp = await fetch(file);
         if (resp.ok) {
             element.innerHTML = await resp.text();
-            document.getElementById("userInitials").innerHTML = getInitials(user);
+            document.getElementById("userInitials").innerHTML = getInitials(user.name);
         } else {
             element.innerHTML = 'Page not found';
         }
     }
 };
 
-function saveUser(account) {
-    const userString = JSON.stringify(account);
+function saveUser() {
+    const userString = JSON.stringify(user);
     console.log(userString);
     localStorage.setItem('user', userString);
 };
@@ -142,7 +142,7 @@ function loadUser() {
     if (retrievedUserString) {
         user = JSON.parse(retrievedUserString);
         console.log("Nutzer gefunden");
-        console.log(user);
+        console.log(user.name);
     }
     else {
         window.location.href = "../index.html";
@@ -161,7 +161,7 @@ function logout() {
 
 function guestUserActive() {
     user.name = "Gast Nutzer";
-    saveUser(user.name);
+    saveUser(user);
     goToBoard();
 };
 
