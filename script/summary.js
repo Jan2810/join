@@ -1,9 +1,9 @@
 let statusArray = [];
 
 async function sumStart() {
+    checkForPreviousPage();
     await includeHTML();
     await filterTaskStatus();
-    checkForPreviousPage();
     document.getElementById("firstRowCont1").classList.add("bg-darkblue");
     document.getElementById("firstRowCont2").classList.add("bg-darkblue");
     setBackground(0);
