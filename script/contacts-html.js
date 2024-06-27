@@ -8,7 +8,6 @@ function renderNewContactButton() {
     `;
 }
 
-
 /**
  * Renders HTML for a capital letter section.
  * @param {string} capitalLetter - The capital letter to render.
@@ -23,16 +22,16 @@ function renderCapitalLetter(capitalLetter) {
     `;
 };
 
-
 /**
  * Renders HTML for displaying contact information with a profile badge showing initials and background color based on contact.color.
  * @param { Object } contact - The contact object containing name, email, phone, color, and initials properties.
  * @returns { string } HTML markup for displaying contact information.
  */
-
 function renderContact(contact) {
+    let contactClass = contact.status === 'new' ? 'contacts-view-contact' : '';
+
     return /*html*/ `
-        <div class="contacts-list-box contacts-list-box-entry">
+        <div class="contacts-list-box contacts-list-box-entry ${contactClass}">
             <div class="contacts-profile-badge flex-center" style="background-color: ${contact.color};">${contact.initials}</div>
             <div>
                 <p>${contact.name}</p>
@@ -42,7 +41,38 @@ function renderContact(contact) {
     `;
 };
 
+document.addEventListener('click', function (event) {
+    if (!event.target.closest('.contacts-view-contact')) {
+        document.querySelectorAll('.contacts-view-contact').forEach(element => {
+            element.classList.remove('contacts-view-contact');
+        });
+    }
+});
 
+
+
+
+
+
+
+// if (contact.status === 'new') {
+// console.log(contact.id);
+// console.log(contact.color);
+// console.log(contact.email);
+// console.log(contact.initials);
+// console.log(contact.name);
+// console.log(contact.phone);
+// console.log(contact.status);
+// await putData(url = CONTACTS_URL + contact.id + ".json", {
+//     "color": contact.color,
+//     "email": contact.email,
+//     "initials": contact.initials,
+//     "name": contact.name,
+//     "phone": contact.phone,
+//     "status": 'normal'
+// }
+// );
+// }
 
 /* <div class="contacts-list-box">
                     <h3>A</h3>

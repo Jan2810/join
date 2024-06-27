@@ -219,7 +219,7 @@
 
 .single-contact-badge-and-name {
     margin: 20px 16px;
-    display: flex;
+    display: none;
     align-items: center;
     gap: 16px;
 }

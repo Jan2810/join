@@ -11,6 +11,17 @@
     z-index: 10;
 }
 
+.contact-created-popup-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+}
+
+
+
 /* .contacts-bg {
     position: fixed;
     top: 0;
@@ -338,8 +349,16 @@
     
 @media only screen and (min-width: 800px) {
     .contact-created-popup {
-        display: none;
-    }
+    transition: transform 200ms ease-in-out;
+    transform: translateX(0%); 
+    width: 326px;  
+}
+
+.hide-contact-created-popup {
+    transition: transform 200ms ease-in-out;
+    transform: translateX(100%);
+}
+
 
     .edit-contact-delete-button:hover {
         color: #29ABE2;
