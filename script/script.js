@@ -6,6 +6,24 @@ let activeUser = {};
 
 let navOpen = false;
 
+let backgroundColors = [
+    "background: rgba(255, 122, 0, 1)",
+    "background: rgba(255, 94, 179, 1)",
+    "background: rgba(110, 82, 255, 1)",
+    "background: rgba(147, 39, 255, 1)",
+    "background: rgba(0, 190, 232, 1)",
+    "background: rgba(31, 215, 193, 1)",
+    "background: rgba(255, 116, 94, 1)",
+    "background: rgba(255, 163, 94, 1)",
+    "background: rgba(252, 113, 255, 1)",
+    "background: rgba(255, 199, 1, 1)",
+    "background: rgba(0, 56, 255, 1)",
+    "background: rgba(195, 255, 43, 1)",
+    "background: rgba(255, 230, 43, 1)",
+    "background: rgba(255, 70, 70, 1)",
+    "background: rgba(255, 187, 43, 1)"
+];
+
 function toggleNav() {
     let subMenu = document.querySelector(".submenu");
     subMenu.classList.toggle("d-none");
@@ -40,7 +58,6 @@ async function loadData(url) {
     }
 };
 
-
 async function postData(url, data = {}) {
     let response = await fetch(url + ".json", {
         method: "POST",
@@ -51,7 +68,6 @@ async function postData(url, data = {}) {
     });
     return response;
 };
-
 
 async function putData(url, data = {}) {
     let response = await fetch(url + ".json", {
@@ -74,24 +90,6 @@ async function deleteData(url, data = {}) {
     });
     return response;
 };
-
-let backgroundColors = [
-    "background: rgba(255, 122, 0, 1)",
-    "background: rgba(255, 94, 179, 1)",
-    "background: rgba(110, 82, 255, 1)",
-    "background: rgba(147, 39, 255, 1)",
-    "background: rgba(0, 190, 232, 1)",
-    "background: rgba(31, 215, 193, 1)",
-    "background: rgba(255, 116, 94, 1)",
-    "background: rgba(255, 163, 94, 1)",
-    "background: rgba(252, 113, 255, 1)",
-    "background: rgba(255, 199, 1, 1)",
-    "background: rgba(0, 56, 255, 1)",
-    "background: rgba(195, 255, 43, 1)",
-    "background: rgba(255, 230, 43, 1)",
-    "background: rgba(255, 70, 70, 1)",
-    "background: rgba(255, 187, 43, 1)"
-];
 
 function getMonthName(monthNumber) {
     const monthNames = [
@@ -178,5 +176,12 @@ function goToBoard() {
 function goTologin() {
     window.location.href = "../index.html"
 };
+
+function setBackground(i) {
+    
+};
+
+
+// document.getElementById(`navLink${i}`).style.backgroundColor = "#263957"
 
 
