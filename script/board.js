@@ -112,10 +112,19 @@ function updateFilteredDone() {
 
 function startDragging(id) {
     currentDraggedElement = id;
+
+    const ticketContainer = document.querySelector('.board-ticket-container');
+    ticketContainer.classList.remove('overflow-x-scroll')
+    ticketContainer.classList.add('overflow-visible');
+
     document.getElementById(`board-ticket${id}`).classList.add('board-ticket-tend');
 };
 
 function endDragging(id) {
+    const ticketContainer = document.querySelector('.board-ticket-container');
+    ticketContainer.classList.remove('overflow-visible')
+    ticketContainer.classList.add('overflow-x-scroll');
+    
     document.getElementById(`board-ticket${id}`).classList.remove('board-ticket-tend');
 };
 
@@ -130,20 +139,20 @@ function moveTo(status) {
     initBoard();
 };
 
-document.addEventListener("DOMContentLoaded", function() {
-    const ticket = document.querySelector('.board-ticket');
-    const ticketContainer = document.querySelector('.board-ticket-container');
+// document.addEventListener("DOMContentLoaded", function() {
+//     const ticket = document.querySelector('.board-ticket');
+//     const ticketContainer = document.querySelector('.board-ticket-container');
 
-    ticket.addEventListener('dragstart', function() {
-        ticketContainer.classList.remove('overflow-x-scroll')
-        ticketContainer.classList.add('overflow-visible');
-    });
+//     ticket.addEventListener('dragstart', function() {
+//         ticketContainer.classList.remove('overflow-x-scroll')
+//         ticketContainer.classList.add('overflow-visible');
+//     });
 
-    ticket.addEventListener('dragend', function() {
-        ticketContainer.classList.remove('overflow-visible');
-        ticketContainer.classList.add('overflow-x-scroll')
-    });
-});
+//     ticket.addEventListener('dragend', function() {
+//         ticketContainer.classList.remove('overflow-visible');
+//         ticketContainer.classList.add('overflow-x-scroll')
+//     });
+// });
 
 function generateTicketHTML(element, categoryBG) {
     let subtaskProgressHTML = getSubtasksProgress(element);
