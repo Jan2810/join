@@ -130,50 +130,6 @@ function moveTo(status) {
     initBoard();
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    const draggables = document.querySelectorAll('.board-ticket');
-    let isDragging = false;
-    let scrollInterval;
-
-    const headerHeight = 96;
-
-    draggables.forEach(draggable => {
-        draggable.addEventListener('dragstart', (e) => {
-            isDragging = true;
-            e.dataTransfer.setData('text/plain', null); //firefox... nicht beachten
-        });
-
-        draggable.addEventListener('dragend', () => {
-            isDragging = false;
-            clearInterval(scrollInterval);
-        });
-    });
-
-    document.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        if (!isDragging) return;
-
-        const mouseY = e.clientY;
-        const scrollStep = 10; // scroll-Geschwindigkeit
-        const topScrollThreshold = headerHeight + 100; //scrollabstand nach oben
-        const bottomScrollThreshold = 100; // scrollabstand nach unten
-
-        clearInterval(scrollInterval);
-
-        if (mouseY < topScrollThreshold) {
-            scrollInterval = setInterval(() => {
-                window.scrollBy(0, -scrollStep);
-            }, 50);
-        } else if (window.innerHeight - mouseY < bottomScrollThreshold) {
-            scrollInterval = setInterval(() => {
-                window.scrollBy(0, scrollStep);
-            }, 50);
-        } else {
-            clearInterval(scrollInterval);
-        }
-    });
-});
-
 function generateTicketHTML(element, categoryBG) {
     let subtaskProgressHTML = getSubtasksProgress(element);
     let assignedHTML = '';
