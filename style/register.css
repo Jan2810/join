@@ -121,6 +121,7 @@
     text-decoration: none;
     padding: 8px;
     color: rgba(168, 168, 168, 1);
+    transition: all 100ms ease-in-out;
 }
 
 .register-imprint-links:hover {
