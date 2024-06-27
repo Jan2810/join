@@ -1,9 +1,15 @@
 body {
     height: 100vh;
+    overflow-y: hidden;
+}
+
+.board-scrollable-content {
+    overflow: scroll;
+    height: 100%;
 }
 
 main {
-    height: 100vh;
+    height: calc(100vh - 96px);
     margin-top: 96px;
     margin-left: 232px;
 }
