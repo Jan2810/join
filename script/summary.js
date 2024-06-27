@@ -2,10 +2,11 @@ let statusArray = [];
 
 async function sumStart() {
     await includeHTML();
-    await filterTaskStatus()
+    await filterTaskStatus();
     checkForPreviousPage();
     document.getElementById("firstRowCont1").classList.add("bg-darkblue");
     document.getElementById("firstRowCont2").classList.add("bg-darkblue");
+    setBackground(0);
 };
 
 function checkForPreviousPage() {
@@ -77,7 +78,7 @@ function getActualGreet() {
     } else if (hourNow >= 12 && hourNow <= 18) {
         return "Good Afternoon";
     } else if (hourNow >= 18 && hourNow <= 24) {
-        return "Good Morning";
+        return "Good Evening";
     } else {
         return "Welcome";
     }

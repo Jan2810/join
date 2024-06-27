@@ -3,6 +3,12 @@ const TASKS_URL = "https://join-tasks-default-rtdb.europe-west1.firebasedatabase
 const CONTACTS_URL = "https://join---contacts-default-rtdb.europe-west1.firebasedatabase.app/";
 let users = [];
 let activeUser = {};
+let activePage = [
+    false,
+    false,
+    false, 
+    false
+];
 
 let navOpen = false;
 
@@ -178,10 +184,17 @@ function goTologin() {
 };
 
 function setBackground(i) {
-    
+    activePage = [
+        false,
+        false, 
+        false, 
+        false,
+    ];
+    activePage[i] = true;
+    changeBackground(i);
 };
 
-
-// document.getElementById(`navLink${i}`).style.backgroundColor = "#263957"
-
-
+function changeBackground(i) {
+    console.log(i);
+    document.getElementById(`navLink${i}`).style.backgroundColor = "#263957"
+};

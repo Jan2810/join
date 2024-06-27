@@ -4,10 +4,15 @@ let addContactFormPhone = document.getElementById('add-contact-form-phone');
 
 let colorValues = backgroundColors.map(bg => bg.replace("background: ", ""));
 
+async function initContacts() {
+    await includeHTML();
+    setBackground(3);
+};
+
 function getRandomContactColor() {
     let colorIndex = Math.floor(Math.random() * colorValues.length);
     return colorValues[colorIndex];
-}
+};
 
 async function fetchFixContacts() {
     for (let fixContact of hardCodedContacts) {
@@ -26,19 +31,12 @@ async function fetchFixContacts() {
             console.error('Error adding contact:', error);
         }
     }
-}
-
-function setRandomNumber() {
-    let number = Math.random();
-    number = number.toFixed(2) * 14;
-    number = Math.floor(number);
-    return number;
 };
 
 function getRandomContactColor() {
     let colorIndex = Math.floor(Math.random() * colorValues.length);
     return colorValues[colorIndex];
-}
+};
 
 function displayContactCreatedPopup(event) {
     event.preventDefault();
@@ -56,7 +54,7 @@ function displayContactCreatedPopup(event) {
     setTimeout(function () {
         contactCreatedPopupBg.classList.add('hide-contact-created-popup');
     }, 800);
-}
+};
 
 function updateNewContactDetails(contact) {
     document.querySelector('.single-contact-badge-and-name').style.display = 'flex';
@@ -67,7 +65,7 @@ function updateNewContactDetails(contact) {
     document.querySelector('.single-contact-link').textContent = contact.email;
     document.querySelector('.single-contact-information').classList.remove('d-none');
     document.querySelector('.single-contact-phone').textContent = contact.phone;
-}
+};
 
 async function addNewContact() {
     let color = getRandomContactColor();
@@ -91,7 +89,7 @@ function clearInput() {
     addContactFormName.value = '';
     addContactFormPhone.value = ''
         ;
-}
+};
 
 async function loadContactsData() {
     let response = await fetch(CONTACTS_URL + ".json");
@@ -115,15 +113,15 @@ async function processContactsData() {
         });
     }
     return contacts;
-}
+};
 
 function getFirstName(fullName) {
     return fullName.split(' ')[0];
-}
+};
 
 function getSurname(fullName) {
     return fullName.split(' ')[1];
-}
+};
 
 function sortContacts(contacts) {
     contacts.sort((a, b) => {
@@ -148,7 +146,7 @@ function sortContacts(contacts) {
         }
         return 0;
     });
-}
+};
 
 // Organize contacts by first letter
 function organizeContactsByLetter(contacts) {
@@ -162,7 +160,7 @@ function organizeContactsByLetter(contacts) {
         contactsByLetter[firstLetter].push(contact);
     });
     return contactsByLetter;
-}
+};
 
 async function renderContactsListHtml(contactsByLetter) {
     let html = renderNewContactButton();
@@ -174,7 +172,7 @@ async function renderContactsListHtml(contactsByLetter) {
         }
     }
     contactsList.innerHTML = html;
-}
+};
 
 
 
@@ -188,4 +186,5 @@ async function renderContactsList() {
 };
 
 renderContactsList();
+
 
