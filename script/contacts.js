@@ -143,6 +143,30 @@ async function fetchFixContacts() {
 // }
 //];
 
+let backgroundColors = [
+    "background: rgba(255, 122, 0, 1)",
+    "background: rgba(255, 94, 179, 1)",
+    "background: rgba(110, 82, 255, 1)",
+    "background: rgba(147, 39, 255, 1)",
+    "background: rgba(0, 190, 232, 1)",
+    "background: rgba(31, 215, 193, 1)",
+    "background: rgba(255, 116, 94, 1)",
+    "background: rgba(255, 163, 94, 1)",
+    "background: rgba(252, 113, 255, 1)",
+    "background: rgba(255, 199, 1, 1)",
+    "background: rgba(0, 56, 255, 1)",
+    "background: rgba(195, 255, 43, 1)",
+    "background: rgba(255, 230, 43, 1)",
+    "background: rgba(255, 70, 70, 1)",
+    "background: rgba(255, 187, 43, 1)"
+];
+
+function setRandomNumber() {
+    let number = Math.random();
+    number = number.toFixed(2) * 14;
+    number = Math.floor(number);
+    return number;
+};
 
 async function addNewContact() {
     let color = getRandomContactColor();
@@ -154,9 +178,13 @@ async function addNewContact() {
         "color": color,
         "initials": initials
     });
+};
+
+
+function getRandomContactColor() {
+    let colorIndex = Math.floor(Math.random() * colorValues.length);
+    return colorValues[colorIndex];
 }
-
-
 
 
 // async function loadContacts(path = "") {
@@ -174,7 +202,7 @@ async function addNewContact() {
 
 //     return entriesArray;
 
-// }
+// };
 
 // loadContacts();
 
@@ -184,7 +212,7 @@ async function loadContactsData() {
     // console.log(responseAsJson);
     return responseAsJson;
 
-}
+};
 
 // Process data into a contacts array
 async function processContactsData() {
@@ -201,14 +229,8 @@ async function processContactsData() {
             id: key
         });
     }
-
-    return contacts;
 }
-// loadContactsData();
-
-
-
-
+loadSingleContact();
 // initContacts();
 
 // async function initContacts() {
@@ -224,7 +246,7 @@ async function processContactsData() {
 //         body: JSON.stringify(contact),
 //     });
 //     return await response.json();
-// }
+// };
 
 
 

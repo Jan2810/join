@@ -38,11 +38,11 @@ function setStatus(status) {
 
 function statusReset(status) {
     localStorage.setItem('status', status);
-}
+};
 
 function goToAddTask() {
     window.location = "../html/addtask.html";
-}
+};
 
 function returnAddTaskInBoardHTML() {
     return /*html*/`
@@ -176,4 +176,4 @@ function returnAddTaskInBoardHTML() {
             </div>
         </form>
     `;
-}
+};;
