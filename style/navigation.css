@@ -37,19 +37,17 @@ header {
     color: #CDCDCD;
 }
 
-
 .nav-link-item {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 8px 56px 8px 56px;
+    transition: all 100ms ease-in-out;
 }
 
 .nav-link-item:hover {
     background-color: #263957;
 }
-
-
 
 .header-right {
     display: flex;
@@ -77,6 +75,7 @@ header {
 .terms-container a {
     color: #919191;
     text-decoration: none;
+    transition: all 100ms ease-in-out;
 }
 
 .terms-container a:hover {
@@ -120,13 +119,13 @@ header {
 }
 
 .header-user {
-
     border-radius: 50%;
     border: 2px solid black;
     font-size: 20px;
     font-weight: bold;
     color: #29ABE2;
     cursor: pointer;
+    transition: all 100ms ease-in-out;
 }
 
 .header-user:hover{
@@ -156,6 +155,7 @@ background-color: #ebebeb;
 
     .header-help {
         height: 20px;
+        transition: all 100ms ease-in-out;
     }
     .header-help:hover {
         transform: scale(1.1);

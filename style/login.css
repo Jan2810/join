@@ -151,14 +151,17 @@
 }
 
 .login-imprint-container a {
+    height: 20px;
+    width: 100%;
     padding: 8px;
-    gap: 8px;
     text-decoration: none;
     color: rgba(168, 168, 168, 1);
+    transition: all 100ms ease-in-out;
 }
 
 .login-imprint-container a:hover {
-    transform: scale(1.1);
+    font-weight: 700;
+    color:rgba(41, 171, 226, 1);
 }
 
 .login-responsive-signup-container {
