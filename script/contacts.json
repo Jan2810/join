@@ -1,0 +1,76 @@
+{
+  "0": {
+    "email": "anna.mueller@example.com",
+    "name": "Anna Müller",
+    "phone": "+49 151 23456701"
+  },
+  "1": {
+    "email": "markus.schneider@example.com",
+    "name": "Markus Schneider",
+    "phone": "+49 151 23456702"
+  },
+  "2": {
+    "email": "laura.fischer@example.com",
+    "name": "Laura Fischer",
+    "phone": "+49 151 23456703"
+  },
+  "3": {
+    "email": "johannes.becker@example.com",
+    "name": "Johannes Becker",
+    "phone": "+49 151 23456704"
+  },
+  "4": {
+    "email": "sophie.wagner@example.com",
+    "name": "Sophie Wagner",
+    "phone": "+49 151 23456705"
+  },
+  "5": {
+    "email": "david.schmidt@example.com",
+    "name": "David Schmidt",
+    "phone": "+49 151 23456706"
+  },
+  "6": {
+    "email": "lea.krause@example.com",
+    "name": "Lea Krause",
+    "phone": "+49 151 23456707"
+  },
+  "7": {
+    "email": "benjamin.meyer@example.com",
+    "name": "Benjamin Meyer",
+    "phone": "+49 151 23456708"
+  },
+  "8": {
+    "email": "julia.bauer@example.com",
+    "name": "Julia Bauer",
+    "phone": "+49 151 23456709"
+  },
+  "9": {
+    "email": "sebastian.weber@example.com",
+    "name": "Sebastian Weber",
+    "phone": "+49 151 23456710"
+  },
+  "-O0KVV6EtRcX6JhAXLHA": {
+    "color": "rgba(110, 82, 255, 1)",
+    "email": "j.winter@gmail.com",
+    "name": "Joe Winter",
+    "phone": "+49 151 27465738"
+  },
+  "-O0KVlrK4x96kI9tR9xM": {
+    "color": "rgba(255, 122, 0, 1)",
+    "email": "jack_harvey@outlook.com",
+    "name": "Jack Harvey",
+    "phone": "+49 151 38725478"
+  },
+  "-O0L-q4o0LSDy6onO0Cy": {
+    "color": "rgba(0, 190, 232, 1)",
+    "email": "",
+    "name": "",
+    "phone": ""
+  },
+  "-O0L45J3coM2nceOFuYp": {
+    "color": "rgba(0, 190, 232, 1)",
+    "email": "",
+    "name": "",
+    "phone": ""
+  }
+}

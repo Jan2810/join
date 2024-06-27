@@ -2,8 +2,7 @@ function register(event) {
     event.preventDefault();
     checkPassword();
     console.log("test");
-
-}
+};
 
 function addUser() {
     let user = {};
@@ -16,8 +15,7 @@ function addUser() {
 
     postData(path = "", user, USERS_URL)
     //weiterleitung zu login seite
-
-}
+};
 
 function showOverlay() {
     document.getElementById('register-success-overlay').style.display = 'block';
@@ -29,7 +27,7 @@ function showOverlay() {
         document.getElementById('register-success-overlay').style.display = 'none';
     }, 1000);
     setTimeout(function () { window.location.href = "../index.html" }, 1000);
-}
+};
 
 function checkPassword() {
     let password = document.getElementById("register-input-password");
@@ -39,14 +37,14 @@ function checkPassword() {
         addUser();
     }
     else {confirmPasswordError()}
-}
+};
 
 function confirmPasswordError() {
     document.getElementById('register-input-confirm-password').classList.add('register-error-border');
     document.getElementById('register-input-password-error').classList.remove('d-none');
-}
+};
 
 function removeConfirmPasswordError() {
     document.getElementById('register-input-confirm-password').classList.remove('register-error-border');
     document.getElementById('register-input-password-error').classList.add('d-none');
-}
+};

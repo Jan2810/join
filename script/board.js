@@ -12,14 +12,14 @@ async function getTasks() {
     if (tasksArray.length > 0) {
         initBoard();
     }
-}
+};
 
 async function initBoard() {
     await updateTodos();
     await updateInProgress();
     await updateAwaitFeedback();
     await updateDone();
-}
+};
 
 async function updateTasksByStatus(status, containerId) {
     if (tasksArray.length === 0) {
@@ -43,24 +43,24 @@ async function updateTasksByStatus(status, containerId) {
     } else {
         container.innerHTML = generatePlaceholderHTML();
     }
-}
+};
 
 
 async function updateTodos() {
     await updateTasksByStatus('todo', 'board-ticket-container-todo');
-}
+};
 
 async function updateInProgress() {
     await updateTasksByStatus('inprogress', 'board-ticket-container-in-progress');
-}
+};
 
 async function updateAwaitFeedback() {
     await updateTasksByStatus('awaitfeedback', 'board-ticket-container-await-feedback');
-}
+};
 
 async function updateDone() {
     await updateTasksByStatus('done', 'board-ticket-container-done');
-}
+};
 
 function startFilterTasks(inputId) {
     const search = document.getElementById(inputId).value.toLowerCase();
@@ -69,7 +69,7 @@ function startFilterTasks(inputId) {
     } else {
         initBoard();
     }
-}
+};
 
 function filterTasks(search) {
     filteredTasks = tasksArray.filter(task => task.title.toLowerCase().includes(search));
@@ -77,7 +77,7 @@ function filterTasks(search) {
     updateFilteredInProgress();
     updateFilteredAwaitFeedback()
     updateFilteredDone();
-}
+};
 
 function updateFilteredTasks(status, containerId) {
     let tasks = filteredTasks.filter(t => t['status'] === status);
@@ -92,43 +92,87 @@ function updateFilteredTasks(status, containerId) {
     if (document.getElementById(containerId).innerHTML === '') {
         document.getElementById(containerId).innerHTML = generatePlaceholderHTML();
     }
-}
+};
 
 function updateFilteredTodos() {
     updateFilteredTasks('todo', 'board-ticket-container-todo');
-}
+};
 
 function updateFilteredInProgress() {
     updateFilteredTasks('inprogress', 'board-ticket-container-in-progress');
-}
+};
 
 function updateFilteredAwaitFeedback() {
     updateFilteredTasks('awaitfeedback', 'board-ticket-container-await-feedback');
-}
+};
 
 function updateFilteredDone() {
     updateFilteredTasks('done', 'board-ticket-container-done');
-}
+};
 
 function startDragging(id) {
     currentDraggedElement = id;
     document.getElementById(`board-ticket${id}`).classList.add('board-ticket-tend');
-}
+};
 
 function endDragging(id) {
     document.getElementById(`board-ticket${id}`).classList.remove('board-ticket-tend');
-}
+};
 
 function allowDrop(ev) {
     ev.preventDefault();
-}
+};
 
 function moveTo(status) {
     const currentTask = tasksArray.find((ct) => ct['id'] === currentDraggedElement);
     currentTask['status'] = status;
     putData(TASKS_URL, tasksArray);
     initBoard();
-}
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const draggables = document.querySelectorAll('.board-ticket');
+    let isDragging = false;
+    let scrollInterval;
+
+    const headerHeight = 96;
+
+    draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', (e) => {
+            isDragging = true;
+            e.dataTransfer.setData('text/plain', null); //firefox... nicht beachten
+        });
+
+        draggable.addEventListener('dragend', () => {
+            isDragging = false;
+            clearInterval(scrollInterval);
+        });
+    });
+
+    document.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        if (!isDragging) return;
+
+        const mouseY = e.clientY;
+        const scrollStep = 10; // scroll-Geschwindigkeit
+        const topScrollThreshold = headerHeight + 100; //scrollabstand nach oben
+        const bottomScrollThreshold = 100; // scrollabstand nach unten
+
+        clearInterval(scrollInterval);
+
+        if (mouseY < topScrollThreshold) {
+            scrollInterval = setInterval(() => {
+                window.scrollBy(0, -scrollStep);
+            }, 50);
+        } else if (window.innerHeight - mouseY < bottomScrollThreshold) {
+            scrollInterval = setInterval(() => {
+                window.scrollBy(0, scrollStep);
+            }, 50);
+        } else {
+            clearInterval(scrollInterval);
+        }
+    });
+});
 
 function generateTicketHTML(element, categoryBG) {
     let subtaskProgressHTML = getSubtasksProgress(element);
@@ -158,7 +202,7 @@ function generateTicketHTML(element, categoryBG) {
                 </div>
             </div>
         </div>`;
-}
+};
 
 function getSubtasksProgress(element) {
     let subtasks = element['subtasks'];
@@ -179,10 +223,10 @@ function getSubtasksProgress(element) {
         } else {
             return '';
         }
-}
+};
 
 
 function generatePlaceholderHTML() {
     return `<div class="board-no-tasks-placeholder flex-center">No tasks to do</div>`
-}
+};
 
