@@ -1,69 +1,6 @@
 let addContactFormName = document.getElementById('add-contact-form-name');
 let addContactFormEmail = document.getElementById('add-contact-form-email');
 let addContactFormPhone = document.getElementById('add-contact-form-phone');
-// let addContactFormName = document.getElementById('add-contact-form-name');
-// let addContactFormName = document.getElementById('add-contact-form-name');
-// let addContactFormName = document.getElementById('add-contact-form-name');
-// let addContactFormName = document.getElementById('add-contact-form-name');
-// let addContactFormName = document.getElementById('add-contact-form-name');
-// let addContactFormName = document.getElementById('add-contact-form-name');
-
-// const alphabetArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-//     'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-// ];
-
-let hardCodedContacts = [
-    {
-        "email": "anna.mueller@example.com",
-        "name": "Anna Müller",
-        "phone": "+49 151 23456701"
-    },
-    {
-        "email": "markus.schneider@example.com",
-        "name": "Markus Schneider",
-        "phone": "+49 151 23456702"
-    },
-    {
-        "email": "laura.fischer@example.com",
-        "name": "Laura Fischer",
-        "phone": "+49 151 23456703"
-    },
-    {
-        "email": "johannes.becker@example.com",
-        "name": "Johannes Becker",
-        "phone": "+49 151 23456704"
-    },
-    {
-        "email": "sophie.wagner@example.com",
-        "name": "Sophie Wagner",
-        "phone": "+49 151 23456705"
-    },
-    {
-        "email": "david.schmidt@example.com",
-        "name": "David Schmidt",
-        "phone": "+49 151 23456706"
-    },
-    {
-        "email": "lea.krause@example.com",
-        "name": "Lea Krause",
-        "phone": "+49 151 23456707"
-    },
-    {
-        "email": "benjamin.meyer@example.com",
-        "name": "Benjamin Meyer",
-        "phone": "+49 151 23456708"
-    },
-    {
-        "email": "julia.bauer@example.com",
-        "name": "Julia Bauer",
-        "phone": "+49 151 23456709"
-    },
-    {
-        "email": "sebastian.weber@example.com",
-        "name": "Sebastian Weber",
-        "phone": "+49 151 23456710"
-    }
-]
 
 let colorValues = backgroundColors.map(bg => bg.replace("background: ", ""));
 
@@ -90,76 +27,7 @@ async function fetchFixContacts() {
     }
 }
 
-// fetchFixContacts();
-//let contacts = [
-// {
-//     name: "Anton Müller",
-//     email: "anton@example.com",
-//     phone: "+491234567890",
-//     color: "rgba(255, 116, 94, 1)",
-//     initials: "AM"
-// },
-// {
-//     name: "Anna Schmidt",
-//     email: "anna@example.com",
-//     phone: "+491234567891",
-//     color: "rgba(31, 215, 193, 1)",
-//     initials: "AS"
-// },
-// {
-//     name: "Hanni Weber",
-//     email: "hanni@example.com",
-//     phone: "+491234567892",
-//     color: "rgba(195, 255, 43, 1)",
-//     initials: "HW"
-// },
-// {
-//     name: "Hannelore Maier",
-//     email: "hannelore@example.com",
-//     phone: "+491234567893",
-//     color: "rgba(110, 82, 255, 1)",
-//     initials: "HM"
-// },
-// {
-//     name: "Martin Fischer",
-//     email: "martin@example.com",
-//     phone: "+491234567894",
-//     color: "rgba(0, 190, 232, 1)",
-//     initials: "MF"
-// },
-// {
-//     name: "Martina Becker",
-//     email: "martina@example.com",
-//     phone: "+491234567895",
-//     color: "rgba(255, 94, 179, 1)",
-//     initials: "MB"
-// },
-// {
-//     name: "Anna Meier",
-//     email: "anna.meier@example.com",
-//     phone: "+491234567896",
-//     color: "rgba(147, 39, 255, 1)",
-//     initials: "AM"
-// }
-//];
 
-let backgroundColors = [
-    "background: rgba(255, 122, 0, 1)",
-    "background: rgba(255, 94, 179, 1)",
-    "background: rgba(110, 82, 255, 1)",
-    "background: rgba(147, 39, 255, 1)",
-    "background: rgba(0, 190, 232, 1)",
-    "background: rgba(31, 215, 193, 1)",
-    "background: rgba(255, 116, 94, 1)",
-    "background: rgba(255, 163, 94, 1)",
-    "background: rgba(252, 113, 255, 1)",
-    "background: rgba(255, 199, 1, 1)",
-    "background: rgba(0, 56, 255, 1)",
-    "background: rgba(195, 255, 43, 1)",
-    "background: rgba(255, 230, 43, 1)",
-    "background: rgba(255, 70, 70, 1)",
-    "background: rgba(255, 187, 43, 1)"
-];
 
 function setRandomNumber() {
     let number = Math.random();
@@ -229,8 +97,9 @@ async function processContactsData() {
             id: key
         });
     }
+    return contacts;
 }
-loadSingleContact();
+// loadSingleContact();
 // initContacts();
 
 // async function initContacts() {
