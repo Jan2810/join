@@ -1,20 +1,19 @@
 
 
 async function login() {
-    let users = await loadData(USERS_URL);
+    users = await loadData(USERS_URL);
     console.log(users);
-
     let email = document.getElementById("login-input-email");
     let password = document.getElementById("login-input-password");
-
-    let account = users.find(account => account.email === email.value);
-    console.log(account);
-
-    if (!user) {
+    activeUser = users.find(user => user.email === email.value);
+    
+    console.log(activeUser);
+    if (!activeUser) {
         userError();
-    } else if (account.password === password.value) {
+    } else if (activeUser.password === password.value) {
         activeUser = users.find(u => u.email === email.value && u.password === password.value);
-        saveUser(account);
+        delete activeUser.password;
+        saveUser(activeUser);
         window.location.href = "./html/summary.html";
     } else {
         passwordError();

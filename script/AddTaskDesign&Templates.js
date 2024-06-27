@@ -142,7 +142,7 @@ function displayAssignments(check, i) {
 function returnSignList(cnt, i) {
     return `
            <div class="task-cnt-assigned-sign">
-                <div class="task-cnt-sign flex-center" id="contactsign${i}" style='${backgroundColors[i]}'>
+                <div class="task-cnt-sign flex-center" id="contactsign${i}" style='background-color:${cnt.color}'>
                 ${getInitials(cnt.name)}
                 </div>
            </div>`;
