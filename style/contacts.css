@@ -120,14 +120,9 @@
     padding: 15px 0;
 }
 
-.contacts-list-box-entry:hover {
-    background: linear-gradient(180deg, hsl(210, 12%, 95%) 0%, hsl(210, 12%, 97%) 100%);
-    cursor: pointer;
-}
-
 .contacts-list-box-entry:active {
-    background: #2A3647;
-    color: #fff;
+    background: linear-gradient(180deg, hsl(210, 12%, 98%) 0%, hsl(210, 12%, 95%) 100%);
+    cursor: pointer;
 }
 
 .contacts-view-contact {
@@ -401,6 +396,16 @@
         margin-left: 232px;
         height: calc(100vh - 96px);
         margin-top: 96px;
+    }
+
+    .contacts-list-box-entry:hover {
+        background: linear-gradient(180deg, hsl(210, 12%, 98%) 0%, hsl(210, 12%, 95%) 100%);
+        cursor: pointer;
+    }
+
+    .contacts-list-box-entry:active {
+        background: #2A3647;
+        color: #fff;
     }
 
     .add-person-icon,

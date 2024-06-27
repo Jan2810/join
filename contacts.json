@@ -48,29 +48,5 @@
     "email": "sebastian.weber@example.com",
     "name": "Sebastian Weber",
     "phone": "+49 151 23456710"
-  },
-  "-O0KVV6EtRcX6JhAXLHA": {
-    "color": "rgba(110, 82, 255, 1)",
-    "email": "j.winter@gmail.com",
-    "name": "Joe Winter",
-    "phone": "+49 151 27465738"
-  },
-  "-O0KVlrK4x96kI9tR9xM": {
-    "color": "rgba(255, 122, 0, 1)",
-    "email": "jack_harvey@outlook.com",
-    "name": "Jack Harvey",
-    "phone": "+49 151 38725478"
-  },
-  "-O0L-q4o0LSDy6onO0Cy": {
-    "color": "rgba(0, 190, 232, 1)",
-    "email": "",
-    "name": "",
-    "phone": ""
-  },
-  "-O0L45J3coM2nceOFuYp": {
-    "color": "rgba(0, 190, 232, 1)",
-    "email": "",
-    "name": "",
-    "phone": ""
   }
-}
+  }

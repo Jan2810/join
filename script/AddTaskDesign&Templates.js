@@ -118,7 +118,7 @@ function displayContacts(ev) {
 function returnContactList(cnt, i) {
     return `
         <div onclick="assignContact(${i})" class="dropdown-item" id="cntnum${i}" data-value="${i}">
-            <div class="task-cnt-sign flex-center" id="contactsign${i}" style='${backgroundColors[i]}'>${getInitials(cnt.name)}</div>
+            <div class="task-cnt-sign flex-center" id="contactsign${i}" style="background-color: ${cnt.color};">${getInitials(cnt.name)}</div>
             <div class="task-cnt-name">${cnt.name}</div>
             <img id="cntimg${i}" src="../assets/icons/rb-unchecked.png" alt="check">
         </div>

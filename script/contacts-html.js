@@ -1,4 +1,19 @@
+function renderNewContactButton() {
+    return /*html*/ `
+        <button class="add-new-contact-button" onclick="openAddContactOverlay();">
+            <span>Add new contact</span>
+            <img class="" src="../assets/icons/add-person.svg" alt="">
+        </button>
+        <img class="add-person-icon bg-darkblue" id="add-person-icon" onclick="openAddContactOverlay()" src="../assets/icons/add-person.svg" alt="">
+    `;
+}
 
+
+/**
+ * Renders HTML for a capital letter section.
+ * @param {string} capitalLetter - The capital letter to render.
+ * @returns {string} - HTML markup for the capital letter section.
+ */
 function renderCapitalLetter(capitalLetter) {
     return /*html*/ `
         <div class="contacts-list-box">
