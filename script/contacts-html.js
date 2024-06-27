@@ -6,7 +6,7 @@ function renderCapitalLetter(capitalLetter) {
         </div>
         <div class="contacts-line"></div>
     `;
-}
+};
 
 
 /**
@@ -25,7 +25,7 @@ function renderContact(contact) {
             </div>
         </div>                
     `;
-}
+};
 
 
 

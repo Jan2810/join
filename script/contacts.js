@@ -23,14 +23,14 @@ async function addNewContact() {
         "color": color,
         "initials": initials
     });
-}
+};
 
 let colorValues = backgroundColors.map(bg => bg.replace("background: ", ""));
 
 function getRandomContactColor() {
     let colorIndex = Math.floor(Math.random() * colorValues.length);
     return colorValues[colorIndex];
-}
+};
 
 
 // async function loadContacts(path = "") {
@@ -48,7 +48,7 @@ function getRandomContactColor() {
 
 //     return entriesArray;
 
-// }
+// };
 
 // loadContacts();
 
@@ -58,7 +58,7 @@ async function loadContactsData() {
     // console.log(responseAsJson);
     return responseAsJson;
 
-}
+};
 
 // loadContactsData();
 
@@ -71,7 +71,7 @@ async function loadSingleContact() {
         console.log(data[key].color);
         console.log(key);
     }
-}
+};
 loadSingleContact();
 // initContacts();
 
@@ -88,7 +88,7 @@ loadSingleContact();
 //         body: JSON.stringify(contact),
 //     });
 //     return await response.json();
-// }
+// };
 
 
 

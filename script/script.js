@@ -4,8 +4,6 @@ const CONTACTS_URL = "https://join---contacts-default-rtdb.europe-west1.firebase
 let users = [];
 let user = {};
 
-console
-
 let navOpen = false;
 
 function toggleNav() {
@@ -101,12 +99,12 @@ function getMonthName(monthNumber) {
         "Juli", "August", "September", "Oktober", "November", "Dezember"
     ];
     return monthNames[monthNumber - 1];
-}
+};
 
 function formatDate(dateString) {
     let parts = dateString.split("-");
     return `${parts[2]} ${getMonthName(parts[1])} ${parts[0]}`;
-}
+};
 
 function stopProp(ev) {
     ev.stopPropagation();
@@ -114,7 +112,7 @@ function stopProp(ev) {
 
 function preventDf(ev) {
     ev.preventDefault();
-}
+};
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -153,38 +151,32 @@ function loadUser() {
 
 if (window.location.pathname.includes('/html/') && !window.location.pathname.includes('register')) {
     loadUser();
-}
-
-
-
-
-
-
+};
 
 function logout() {
     localStorage.removeItem('user');
     user = "";
     goTologin();
-}
+};
 
 function guestUserActive() {
     user.name = "Gast Nutzer";
     saveUser(user.name);
     goToBoard();
-}
+};
 
 function getInitials(username) {
     const nameParts = username.trim().split(/\s+/);
     const initials = nameParts.map(part => part[0].toUpperCase()).join('');
     return initials;
-}
+};
 
 function goToBoard() {
     window.location.href = "./html/summary.html"
-}
+};
 
 function goTologin() {
     window.location.href = "../index.html"
-}
+};
 
 
