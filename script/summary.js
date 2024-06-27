@@ -63,8 +63,6 @@ function getActualGreet() {
 };
 
 function getUser() {
-    // let userAsText = localStorage.getItem('user');
-    // let user = JSON.parse(userAsText);
     if (activeUser.name !== "Gast Nutzer") {
         return activeUser.name
     } else {
