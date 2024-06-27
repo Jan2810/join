@@ -17,8 +17,9 @@ function openEditContactOverlay() {
     editContactOverlay.classList.remove('hide-edit-contact-overlay');
     editContactsOverlayBg.classList.add('show-edit-contact-overlay');
     editContactOverlay.classList.add('show-edit-contact-overlay');
-
-    hideEditDeletePopup();
+    if (window.innerWidth < 800) {
+        hideEditDeletePopup();
+    }
 }
 
 function hideEditDeletePopup() {
@@ -57,18 +58,7 @@ function openAddContactOverlay() {
  * 
  * @param { Event } event - The form submission event.
  */
-function displayContactCreatedPopup(event) {
-    event.preventDefault();
-    closeAddContactOverlay()
-    contactCreatedPopupBg.classList.remove('hide-contact-created-popup');
-    contactsContainer.classList.remove('d-flex');
-    contactsContainer.classList.add('d-none');
-    contactContainer.classList.remove('d-none');
-    manuallyRemoved = true;
-    setTimeout(function () {
-        contactCreatedPopupBg.classList.add('hide-contact-created-popup');
-    }, 800);
-}
+
 
 /**
  * Handles the window resize event to toggle the visibility of the contactContainer.
@@ -116,11 +106,14 @@ function doNotClose(event) {
 }
 
 function hideEditDeletePopup() {
-    editDeletePopup.classList.add('hide-edit-delete-popup');
-    setTimeout(function () {
-        singleContactTripleDots.classList.remove('d-none');
-        addPersonIcon.classList.remove('d-none');
-    }, 125);
+    if (window.innerWidth < 800) {
+        editDeletePopup.classList.add('hide-edit-delete-popup');
+        setTimeout(function () {
+            singleContactTripleDots.classList.remove('d-none');
+            addPersonIcon.classList.remove('d-none');
+        }, 125);
+    }
+
 }
 
 function popupDeleteContact() {
