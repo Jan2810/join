@@ -3,10 +3,16 @@ let statusArray = [];
 async function sumStart() {
     await includeHTML();
     await filterTaskStatus()
-
+    checkForLoginGreet();
     document.getElementById("firstRowCont1").classList.add("bg-darkblue");
     document.getElementById("firstRowCont2").classList.add("bg-darkblue");
 };
+
+function checkForLoginGreet() {
+    if (document.referrer == "../index.html") {
+        console.log("Welcome")
+    }
+}
 
 function changeColor1() {
     document.getElementById("firstRowCont1").classList.remove("bg-darkblue");
