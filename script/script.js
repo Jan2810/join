@@ -6,7 +6,9 @@ let activeUser = {};
 let activePage = [
     false,
     false,
-    false, 
+    false,
+    false,
+    false,
     false
 ];
 
@@ -29,6 +31,16 @@ let backgroundColors = [
     "background: rgba(255, 70, 70, 1)",
     "background: rgba(255, 187, 43, 1)"
 ];
+
+async function initPrivate() {
+    await includeHTML();
+    setBackground(4)
+}
+
+async function initLegal() {
+    await includeHTML();
+    setBackground(5);
+}
 
 function toggleNav() {
     let subMenu = document.querySelector(".submenu");
@@ -186,9 +198,11 @@ function goTologin() {
 function setBackground(i) {
     activePage = [
         false,
-        false, 
-        false, 
         false,
+        false,
+        false,
+        false,
+        false
     ];
     activePage[i] = true;
     changeBackground(i);
@@ -196,5 +210,10 @@ function setBackground(i) {
 
 function changeBackground(i) {
     console.log(i);
-    document.getElementById(`navLink${i}`).style.backgroundColor = "#12223f"
+    if (i <= 3) {
+        document.getElementById(`navLink${i}`).style.backgroundColor = "#12223f"
+    } else if (i >= 4) {
+        document.getElementById(`navLink${i}`).style.color = "#29ABE2"
+        document.getElementById(`navLink${i}`).style.fontWeight = "bold"
+    }
 };
