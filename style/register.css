@@ -124,7 +124,8 @@
 }
 
 .register-imprint-links:hover {
-    transform: scale(1.1);
+    font-weight: 700;
+    color: rgba(41, 171, 226, 1);
 }
 
 .register-imprint-container {
