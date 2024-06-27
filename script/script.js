@@ -2,7 +2,7 @@ const USERS_URL = "https://join-14fdc-default-rtdb.europe-west1.firebasedatabase
 const TASKS_URL = "https://join-tasks-default-rtdb.europe-west1.firebasedatabase.app/";
 const CONTACTS_URL = "https://join---contacts-default-rtdb.europe-west1.firebasedatabase.app/";
 let users = [];
-let user = {};
+let activeUser = {};
 
 let navOpen = false;
 
@@ -122,7 +122,7 @@ async function includeHTML() {
         let resp = await fetch(file);
         if (resp.ok) {
             element.innerHTML = await resp.text();
-            document.getElementById("userInitials").innerHTML = getInitials(user.name);
+            document.getElementById("userInitials").innerHTML = getInitials(activeUser.name);
         } else {
             element.innerHTML = 'Page not found';
         }
@@ -130,7 +130,7 @@ async function includeHTML() {
 };
 
 function saveUser() {
-    const userString = JSON.stringify(user);
+    const userString = JSON.stringify(activeUser);
     console.log(userString);
     localStorage.setItem('user', userString);
 };
@@ -140,9 +140,9 @@ function loadUser() {
     const retrievedUserString = localStorage.getItem('user');
 
     if (retrievedUserString) {
-        user = JSON.parse(retrievedUserString);
+        activeUser = JSON.parse(retrievedUserString);
         console.log("Nutzer gefunden");
-        console.log(user.name);
+        console.log(activeUser.name);
     }
     else {
         window.location.href = "../index.html";
@@ -155,18 +155,18 @@ if (window.location.pathname.includes('/html/') && !window.location.pathname.inc
 
 function logout() {
     localStorage.removeItem('user');
-    user = "";
+    activeUser = "";
     goTologin();
 };
 
 function guestUserActive() {
-    user.name = "Gast Nutzer";
-    saveUser(user);
+    activeUser.name = "Gast Nutzer";
+    saveUser(activeUser);
     goToBoard();
 };
 
-function getInitials(username) {
-    const nameParts = username.trim().split(/\s+/);
+function getInitials(name) {
+    const nameParts = name.trim().split(/\s+/);
     const initials = nameParts.map(part => part[0].toUpperCase()).join('');
     return initials;
 };
