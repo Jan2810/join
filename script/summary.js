@@ -3,16 +3,31 @@ let statusArray = [];
 async function sumStart() {
     await includeHTML();
     await filterTaskStatus()
-    checkForLoginGreet();
+    checkForPreviousPage();
     document.getElementById("firstRowCont1").classList.add("bg-darkblue");
     document.getElementById("firstRowCont2").classList.add("bg-darkblue");
 };
 
-function checkForLoginGreet() {
-    if (document.referrer == "../index.html") {
-        console.log("Welcome")
+function checkForPreviousPage() {
+    let previousPage = document.referrer;
+    if (previousPage.includes("index.html")) {
+        greetingAnimation();
     }
-}
+};
+
+function greetingAnimation() {
+    let container = document.getElementById("greetingBg");
+    container.style.display = "";
+    let content = document.getElementById("greetingContent");
+    content.innerHTML = "";
+    content.innerHTML = returnGreetingHTML();
+    setTimeout(() => {
+        container.style.opacity = "0%";
+        setTimeout(() => {
+            container.style.display = "none";
+        }, 600)
+    }, 1500)
+};
 
 function changeColor1() {
     document.getElementById("firstRowCont1").classList.remove("bg-darkblue");
@@ -173,3 +188,12 @@ function returnSummaryHTML(tasks) {
         </div>
     `;
 };
+
+function returnGreetingHTML() {
+    return `
+        <div class="login-greet-cont flex-center flex-column">
+            <h2 class="color-darkblue">${getActualGreet()}</h2>
+            <h1 class="color-lightblue">${getUser()}</h1>
+        </div>
+    `;
+}
