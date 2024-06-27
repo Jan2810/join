@@ -121,7 +121,7 @@
 }
 
 .contacts-list-box-entry:hover {
-    background: rgb(246, 247, 248);
+    background: linear-gradient(180deg, hsl(210, 12%, 95%) 0%, hsl(210, 12%, 97%) 100%);
     cursor: pointer;
 }
 

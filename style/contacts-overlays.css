@@ -51,7 +51,7 @@
 
 @keyframes move-in-bottom {
   from {
-    transform: translateY(100%);
+    transform: translateY(200%);
   }
   to {
     transform: translateY(0);
@@ -63,7 +63,7 @@
     transform: translateY(0);
   }
   to {
-    transform: translateY(100%);
+    transform: translateY(200%);
   }
 }
 
@@ -401,7 +401,7 @@
 
     @keyframes move-in-right {
       from {
-        transform: translateX(100%);
+        transform: translateX(200%);
       }
       to {
         transform: translateX(0);
@@ -413,7 +413,7 @@
         transform: translateX(0);
       }
       to {
-        transform: translateX(100%);
+        transform: translateX(200%);
       }
     }
 

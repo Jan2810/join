@@ -1,10 +1,35 @@
 
+function renderCapitalLetter(capitalLetter) {
+    return /*html*/ `
+        <div class="contacts-list-box">
+            <h3>${capitalLetter}</h3>
+        </div>
+        <div class="contacts-line"></div>
+    `;
+}
+
+
+/**
+ * Renders HTML for displaying contact information with a profile badge showing initials and background color based on contact.color.
+ * @param { Object } contact - The contact object containing name, email, phone, color, and initials properties.
+ * @returns { string } HTML markup for displaying contact information.
+ */
+
+function renderContact(contact) {
+    return /*html*/ `
+        <div class="contacts-list-box contacts-list-box-entry">
+            <div class="contacts-profile-badge flex-center" style="background-color: ${contact.color};">${contact.initials}</div>
+            <div>
+                <p>${contact.name}</p>
+                <div class="contacts-email color-lightblue">${contact.email}</div>
+            </div>
+        </div>                
+    `;
+}
 
 
 
-
-
-{/* <div class="contacts-list-box">
+/* <div class="contacts-list-box">
                     <h3>A</h3>
                 </div>
                 <div class="contacts-line"></div>
@@ -135,4 +160,4 @@
                         <p>Anton Mayer</p>
                         <div class="contacts-email color-lightblue">antonaloisbrunnmayer&#8203;@gmail.com</div>
                     </div>
-                </div> */}
+                </div> */
