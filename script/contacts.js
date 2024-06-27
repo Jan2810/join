@@ -34,7 +34,7 @@ function setRandomNumber() {
     let number = Math.random();
     number = number.toFixed(2) * 14;
     number = Math.floor(number);
-    console.log(number)
+    return number;
 };
 
 async function addNewContact() {
