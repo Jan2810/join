@@ -137,21 +137,6 @@ function moveTo(status) {
     initBoard();
 };
 
-// document.addEventListener("DOMContentLoaded", function() {
-//     const ticket = document.querySelector('.board-ticket');
-//     const ticketContainer = document.querySelector('.board-ticket-container');
-
-//     ticket.addEventListener('dragstart', function() {
-//         ticketContainer.classList.remove('overflow-x-scroll')
-//         ticketContainer.classList.add('overflow-visible');
-//     });
-
-//     ticket.addEventListener('dragend', function() {
-//         ticketContainer.classList.remove('overflow-visible');
-//         ticketContainer.classList.add('overflow-x-scroll')
-//     });
-// });
-
 function generateTicketHTML(element, categoryBG) {
     let subtaskProgressHTML = getSubtasksProgress(element);
     let assignedHTML = getContacts(element);
