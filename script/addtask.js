@@ -24,7 +24,8 @@ let taskData = {
     "priority": "",
     "category": "",
     "subtasks": [],
-    "status": "todo"
+    "status": "todo",
+    "id": "",
 };
 
 let availableCategorys = [
@@ -309,7 +310,6 @@ async function saveInputValues() {
     let description = document.getElementById("taskDescription").value;
     let due_date = document.getElementById("taskDate").value;
     let category = document.getElementById("categoryInput").value;
-    console.log(title)
     if (title.length >= 1 && due_date.length >= 1 && category.length >= 1) {
         formValidationFeedbackOff();
         await postNewTask(title, due_date, description, category)
@@ -323,11 +323,12 @@ async function postNewTask(title, due_date, description, category) {
     succesfullAdded();
     setTimeout(() => {
         getLocationAndMove();
-    }, 1500);
+    }, 100500);
 };
 
 async function postingTask(title, due_date, description, category) {
     await setTaskData(title, due_date, description, category);
+    console.log(taskData);
     await postData(TASKS_URL, taskData);
     clearAll();
 };
@@ -343,6 +344,7 @@ async function setTaskData(title, due_date, description, category) {
     taskData.description = description
     taskData.due_date = due_date
     taskData.category = category
+    taskData.id = "";
 };
 
 function getLocationAndMove() {
