@@ -16,7 +16,6 @@
 }
 
 .task-container {
-    height: 100%;
     overflow-y: scroll;
     width: 525px;
     background-color: white;
@@ -73,6 +72,7 @@
     font-weight: 700;
     font-size: 61px;
     line-height: 73.2px;
+    /* overflow: hidden; */
 }
 
 .task-date-container,
@@ -181,4 +181,11 @@ input[type="checkbox"]:checked {
 
 .line-through {
     text-decoration: line-through;
+}
+
+
+@media (max-width: 800px) {
+    .task-container {
+        width: 396px
+    }
 }
