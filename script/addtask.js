@@ -323,7 +323,7 @@ async function postNewTask(title, due_date, description, category) {
     succesfullAdded();
     setTimeout(() => {
         getLocationAndMove();
-    }, 100500);
+    }, 1500);
 };
 
 async function postingTask(title, due_date, description, category) {
