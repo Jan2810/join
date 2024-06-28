@@ -32,6 +32,17 @@ let backgroundColors = [
     "background: rgba(255, 187, 43, 1)"
 ];
 
+// async function putData(url, data = {}) {
+//     let response = await fetch(url + ".json", {
+//         method: "PUT",
+//         headers: {
+//             "Content-type": "application/json",
+//         },
+//         body: JSON.stringify(data)
+//     });
+//     return response;
+// };
+
 async function initPrivate() {
     await includeHTML();
     setBackground(4)
@@ -84,17 +95,6 @@ async function postData(url, data = {}) {
     });
     return response;
 };
-
-// async function putData(url, data = {}) {
-//     let response = await fetch(url + ".json", {
-//         method: "PUT",
-//         headers: {
-//             "Content-type": "application/json",
-//         },
-//         body: JSON.stringify(data)
-//     });
-//     return response;
-// };
 
 async function putData(url, dataArray = []) {
     let data = dataArray.reduce((acc, item) => {
