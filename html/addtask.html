@@ -16,7 +16,7 @@
     <script src="../script/newTaskInBoard.js" defer></script>
 </head>
 
-<body onload="initAddTask()" onclick="handleClickEvent()" onkeydown="formValidationFeedbackOff()">
+<body onload="initAddTask()" onclick="handleClickEvent(event)" onkeydown="formValidationFeedbackOff()">
     <div w3-include-html="../assets/templates/navigation.html"></div>
     <main class="task-body mgn-l-328">
         <div class="task-h1">
@@ -53,7 +53,7 @@
                                     <!-- rendered with openContacts()  -->
                                 </div>
                             </div>
-                            <div id="signParentContainer" class="flex-center" style="width: 100%;">
+                            <div id="signParentContainer" class="flex-center signParentContainer" style="width: 100%;">
                                 <div id="signContainer" class="task-sign-cont task-width flex-center"
                                     style="display: none;">
                                     <!-- rendered signs -->

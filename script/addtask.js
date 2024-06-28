@@ -101,10 +101,9 @@ async function openContacts() {
         displayContacts("open")
         renderContactList();
         let contacts = await loadData(CONTACTS_URL);
-        console.log(contacts);
         for (let i = 0; i < contacts.length; i++) {
             if (contacts.length > checkedContacts.length) {
-                const count = checkedContacts.push(false);
+                checkedContacts.push(false);
             }
         }
         contactsTaskOpen = true;
@@ -309,7 +308,6 @@ async function saveInputValues() {
     let description = document.getElementById("taskDescription").value;
     let due_date = document.getElementById("taskDate").value;
     let category = document.getElementById("categoryInput").value;
-    console.log(title)
     if (title.length >= 1 && due_date.length >= 1 && category.length >= 1) {
         formValidationFeedbackOff();
         await postNewTask(title, due_date, description, category)

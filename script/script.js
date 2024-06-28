@@ -47,7 +47,6 @@ function toggleNav() {
     subMenu.classList.toggle("d-none");
     subMenu.classList.toggle("display-column");
     navOpen = !navOpen;
-    console.log(navOpen);
     document.removeEventListener("click", toggleNav);
     if (navOpen) {
         setTimeout(() => {
@@ -69,7 +68,6 @@ async function loadData(url) {
                 ...data[key]  // Und fügen alle anderen Daten hinzu
             };
         });
-        // console.log(dataArray);
         return dataArray;
     } catch (error) {
         console.error('Fehler beim Laden der Daten:', error);
@@ -166,7 +164,6 @@ async function includeHTML() {
 
 function saveUser() {
     const userString = JSON.stringify(activeUser);
-    console.log(userString);
     localStorage.setItem('user', userString);
 };
 
@@ -176,8 +173,6 @@ function loadUser() {
 
     if (retrievedUserString) {
         activeUser = JSON.parse(retrievedUserString);
-        console.log("Nutzer gefunden");
-        console.log(activeUser.name);
     }
     else {
         window.location.href = "../index.html";
@@ -228,7 +223,6 @@ function setBackground(i) {
 };
 
 function changeBackground(i) {
-    console.log(i);
     if (i <= 3) {
         document.getElementById(`navLink${i}`).style.backgroundColor = "#12223f"
     } else if (i >= 4) {
