@@ -19,7 +19,7 @@ async function initBoard() {
     await updateInProgress();
     await updateAwaitFeedback();
     await updateDone();
-    setBackground(2)
+    setBackground(2);
 };
 
 async function updateTasksByStatus(status, containerId) {
@@ -164,6 +164,7 @@ function generateTicketHTML(element, categoryBG) {
 };
 
 function getContacts(element) {
+    console.log(element);
     let assignedHTML = '';
     if (element['assigned_to'].length > 3) {
         let initials = getInitials(element['assigned_to'][0]);

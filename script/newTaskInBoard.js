@@ -50,7 +50,7 @@ function returnAddTaskInBoardHTML() {
             <h1>Add Task</h1>
             <img onclick="closeNewTaskInBoard()" src="../assets/icons/x-black.png" alt="x">
         </div>
-        <form>
+        <form onsubmit="addNewTask(); return false;">
             <div class="flex-row task-content in-board-task-cnt">
                 <div class="task-left-cont">
                     <div class="task-width">
@@ -167,7 +167,7 @@ function returnAddTaskInBoardHTML() {
                             <span>Clear</span>
                             <img id="task-x" src="../assets/icons/x-black.png" alt="">
                         </div>
-                        <button onclick="addNewTask(); return false" type="submit" id="createButton" class="task-send-form-btn">
+                        <button onclick="stopProp(event);" type="submit" id="createButton" class="task-send-form-btn">
                             <span>Create Task</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
                         </button>
