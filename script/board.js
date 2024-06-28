@@ -63,7 +63,7 @@ async function updateDone() {
 
 function startFilterTasks(inputId) {
     const search = document.getElementById(inputId).value.toLowerCase();
-    if (document.getElementById(inputId).value.length >= 2) {
+    if (search.length >= 2) {
         filterTasks(search)
     } else {
         initBoard();

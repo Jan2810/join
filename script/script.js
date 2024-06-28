@@ -87,7 +87,26 @@ async function postData(url, data = {}) {
     return response;
 };
 
-async function putData(url, data = {}) {
+// async function putData(url, data = {}) {
+//     let response = await fetch(url + ".json", {
+//         method: "PUT",
+//         headers: {
+//             "Content-type": "application/json",
+//         },
+//         body: JSON.stringify(data)
+//     });
+//     return response;
+// };
+
+async function putData(url, dataArray = []) {
+    // Umkehren des Arrays in das ursprüngliche Objekt
+    let data = dataArray.reduce((acc, item) => {
+        let { id, ...rest } = item;  // Extrahiere die ID und den Rest der Daten
+        acc[id] = rest;  // Füge die Daten wieder dem ursprünglichen Objekt hinzu
+        return acc;
+    }, {});
+
+    // PUT-Vorgang
     let response = await fetch(url + ".json", {
         method: "PUT",
         headers: {
@@ -95,8 +114,10 @@ async function putData(url, data = {}) {
         },
         body: JSON.stringify(data)
     });
+
     return response;
-};
+}
+
 
 async function deleteData(url, data = {}) {
     let response = await fetch(url + ".json", {
