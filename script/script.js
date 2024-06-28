@@ -99,14 +99,12 @@ async function postData(url, data = {}) {
 // };
 
 async function putData(url, dataArray = []) {
-    // Umkehren des Arrays in das ursprüngliche Objekt
     let data = dataArray.reduce((acc, item) => {
-        let { id, ...rest } = item;  // Extrahiere die ID und den Rest der Daten
-        acc[id] = rest;  // Füge die Daten wieder dem ursprünglichen Objekt hinzu
+        let { id, ...rest } = item;
+        acc[id] = rest;
         return acc;
     }, {});
 
-    // PUT-Vorgang
     let response = await fetch(url + ".json", {
         method: "PUT",
         headers: {
