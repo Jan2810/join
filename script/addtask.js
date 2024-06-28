@@ -328,10 +328,11 @@ async function postNewTask(title, due_date, description, category) {
 
 async function postingTask(title, due_date, description, category) {
     await setTaskData(title, due_date, description, category);
-    console.log(taskData);
-    await postData(TASKS_URL, taskData);
+    console.log('Before postData:', taskData);
+    let updatedData = await postData(TASKS_URL, taskData);
+    console.log('After postData:', updatedData);
     clearAll();
-};
+}
 
 async function setTaskData(title, due_date, description, category) {
     let contacts = await loadData(CONTACTS_URL);

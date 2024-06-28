@@ -527,9 +527,7 @@ function highlightButtonEdit(urg) {
 };
 
 function hoverBtnEdit(boolean, id) {
-    console.log(boolean);
     let newId = id + "Edit";
-    // console.log(newId);
     if (boolean === true && newId === "img-highEdit") {
         document.getElementById(newId).src = "../assets/icons-addtask/prio-high-white.png";
     } else if (boolean === false && newId === "img-highEdit" && activeUrg[0].active === false) {

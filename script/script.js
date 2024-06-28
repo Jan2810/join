@@ -84,8 +84,18 @@ async function postData(url, data = {}) {
         },
         body: JSON.stringify(data)
     });
-    return response;
-};
+    let responseData = await response.json();
+    let id = responseData.name; 
+    data.id = id; 
+    await fetch(`${url}/${id}.json`, {
+        method: "PUT",
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(data)
+    });
+    return data;
+}
 
 // async function putData(url, data = {}) {
 //     let response = await fetch(url + ".json", {
