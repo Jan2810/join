@@ -331,6 +331,7 @@
     background-color: white;
     border-top-right-radius: 0;
     border-top-left-radius: 0;
+    border: 1px solid #ccc;
     border-top: 0;
     z-index: 1;
 }
@@ -392,7 +393,6 @@
 .category-dd-upper-item {
     position: sticky;
     top: 0px;
-    height: 45px;
     margin: 0 !important;
     padding: 12px 21px 12px 21px;
     display: flex;

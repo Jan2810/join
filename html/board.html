@@ -19,13 +19,15 @@
     <script src="../script/addTaskDesign&Templates.js" defer></script>
     <script src="../script/newTaskInBoard.js" defer></script>
     <script src="../script/DragDropTouch.js" defer></script>
-    <script src="../script/taskEdit.js" defer></script>
 </head>
 
 <body onload="includeHTML(); initBoard(); prepareTask()">
     <div w3-include-html="../assets/templates/navigation.html"></div>
+
+
     <main>
         <div class="board-scrollable-content">
+
             <div class="board-upper-content">
                 <div class="board-header flex-row">
                     <div class="board-header-responsive flex-row">
@@ -45,8 +47,10 @@
                     </div>
                 </div>
             </div>
+
             <div class="board-ticket-section">
                 <div class="board-categories flex-row">
+
                     <div class="board-category">
                         <div class="board-category-header">
                             <span>To do</span>
@@ -61,11 +65,12 @@
                                 </svg>
                             </div>
                         </div>
-                        <div id="board-ticket-container-todo" class="board-ticket-container overflow-x-scroll"
-                            ondrop="moveTo('todo')" ondragover="allowDrop(event)">
+                        <div id="board-ticket-container-todo" class="board-ticket-container overflow-x-scroll" ondrop="moveTo('todo')"
+                            ondragover="allowDrop(event)">
                             <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
                         </div>
                     </div>
+
                     <div class="board-category">
                         <div class="board-category-header">
                             <span>In progress</span>
@@ -85,6 +90,7 @@
                             <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
                         </div>
                     </div>
+
                     <div class="board-category">
                         <div class="board-category-header">
                             <span>Await feedback</span>
@@ -104,6 +110,7 @@
                             <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
                         </div>
                     </div>
+
                     <div class="board-category">
                         <div class="board-category-header">
                             <span>Done</span>
@@ -118,8 +125,8 @@
                                 </svg>
                             </div>
                         </div>
-                        <div id="board-ticket-container-done" class="board-ticket-container overflow-x-scroll"
-                            ondrop="moveTo('done')" ondragover="allowDrop(event)">
+                        <div id="board-ticket-container-done" class="board-ticket-container overflow-x-scroll" ondrop="moveTo('done')"
+                            ondragover="allowDrop(event)">
                             <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
                         </div>
                     </div>
@@ -127,6 +134,7 @@
             </div>
         </div>
     </main>
+
     <div id="addTaskBg" class="add-task-dialog-bg flex-center" style="display: none;" onclick="closeNewTaskInBoard();">
         <div onclick="stopProp(event);" id="newTaskContainer" class="sum-in-board-html flex-column"
             style="transform: translateX(1500px);">
@@ -135,6 +143,7 @@
     <div id="succesImgCnt" class="addedsuccesfully" style="display: none;">
         <img id="succesImg" src="../assets/img/Added-to-board.png" alt="succes" style="transform: translateY(500px);">
     </div>
+
 </body>
 
 </html>
