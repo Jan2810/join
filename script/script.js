@@ -127,16 +127,15 @@ async function putData(url, dataArray = []) {
 };
 
 
-async function deleteData(url, data = {}) {
-    let response = await fetch(url + ".json", {
+async function deleteData(url, id) {
+    let response = await fetch(`${url}/${id}.json`, {
         method: "DELETE",
         headers: {
             "Content-type": "application/json",
-        },
-        body: JSON.stringify(data)
+        }
     });
     return response;
-};
+}
 
 function getMonthName(monthNumber) {
     const monthNames = [
