@@ -126,20 +126,6 @@ function deleteTask(index) {
     initBoard()
 };
 
-function renderEdit(id) {
-    // console.clear();
-    // console.log("Alle Tasks:");
-    // console.log(tasksArray);
-    let task = (getActualTask(id)).element;
-    let taskId = (getActualTask(id)).index;
-    // console.log("Aktuelle TaskID:");
-    // console.log(taskId);
-    // console.log("Aktueller Task als Objekt:");
-    // console.log(task);
-    taskContainer.innerHTML = returnTaskHTML(task)
-    changeUrgencyEdit(task.priority);
-};
-
 function renderTask(id) {
     // console.clear();
     // console.log("Alle Tasks:");
@@ -151,7 +137,7 @@ function renderTask(id) {
     // console.log("Aktueller Task als Objekt:");
     // console.log(task);
     renderTaskOwners(task);
-    return `<div class="task-eyebrow-container">
+    return /*html*/`<div class="task-eyebrow-container">
                 <div class="board-ticket-gategory technical-task-bg">${task.category}</div>
                 <div onclick="closeTask()" class="task-close-container flex-center"><img src="../assets/icons/close.svg" alt=""
                         class="task-close"></div>
@@ -191,8 +177,23 @@ function renderTask(id) {
             </div>`
 };
 
+function renderEdit(id) {
+    // console.clear();
+    // console.log("Alle Tasks:");
+    // console.log(tasksArray);
+    let task = (getActualTask(id)).element;
+    let taskId = (getActualTask(id)).index;
+    // console.log("Aktuelle TaskID:");
+    // console.log(taskId);
+    // console.log("Aktueller Task als Objekt:");
+    // console.log(task);
+    taskContainer.innerHTML = returnTaskHTML(task)
+    changeUrgencyEdit(task.priority);
+    checkContactsEdit(task);
+};
+
 function returnTaskHTML(task) {
-    return `
+    return /*html*/`
     <div class="task-h1 flex-row task-board-h1">
             <h1></h1>
             <img onclick="closeTask()" src="../assets/icons/x-black.png" alt="x">

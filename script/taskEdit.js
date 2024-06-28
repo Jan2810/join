@@ -40,32 +40,6 @@ async function renderContactListEdit() {
     }
 };
 
-function displayContactsEdit(ev) {
-    if (ev === "open") {
-        document.getElementById("dropdownToggleEdit").style.display = "none";
-        document.getElementById("dropdownMenuContainerEdit").style.display = "";
-        document.getElementById("dropdownMenuEdit").style.display = "block";
-    } else if (ev === "close") {
-        document.getElementById("dropdownToggleEdit").style.display = "flex";
-        document.getElementById("dropdownMenuContainerEdit").style.display = "none";
-        document.getElementById("dropdownMenuEdit").style.display = "none";
-    }
-};
-
-function displayAssignmentsEdit(check, i) {
-    if (check === "checked") {
-        document.getElementById(`cntimgEdit${i}`).src = "../assets/icons/rb-checked.png";
-        document.getElementById(`cntnumEdit${i}`).classList.add("bg-darkblue");
-        document.getElementById(`cntnumEdit${i}`).classList.add("task-hover-dark");
-        document.getElementById(`cntnumEdit${i}`).classList.add("color-white");
-    } else if (check === "unchecked") {
-        document.getElementById(`cntimgEdit${i}`).src = "../assets/icons/rb-unchecked.png";
-        document.getElementById(`cntnumEdit${i}`).classList.remove("bg-darkblue");
-        document.getElementById(`cntnumEdit${i}`).classList.remove("color-white");
-        document.getElementById(`cntnumEdit${i}`).classList.remove("task-hover-dark");
-    }
-};
-
 function returnContactListEdit(cnt, i) {
     return `
         <div onclick="assignContactEdit(${i})" class="dropdown-item" id="cntnumEdit${i}" data-value="${i}">
@@ -114,6 +88,32 @@ function controlCheckedLengthEdit() {
         container.style.display = "";
     } else if (trueCount < 1) {
         container.style.display = "none";
+    }
+};
+
+function displayContactsEdit(ev) {
+    if (ev === "open") {
+        document.getElementById("dropdownToggleEdit").style.display = "none";
+        document.getElementById("dropdownMenuContainerEdit").style.display = "";
+        document.getElementById("dropdownMenuEdit").style.display = "block";
+    } else if (ev === "close") {
+        document.getElementById("dropdownToggleEdit").style.display = "flex";
+        document.getElementById("dropdownMenuContainerEdit").style.display = "none";
+        document.getElementById("dropdownMenuEdit").style.display = "none";
+    }
+};
+
+function displayAssignmentsEdit(check, i) {
+    if (check === "checked") {
+        document.getElementById(`cntimgEdit${i}`).src = "../assets/icons/rb-checked.png";
+        document.getElementById(`cntnumEdit${i}`).classList.add("bg-darkblue");
+        document.getElementById(`cntnumEdit${i}`).classList.add("task-hover-dark");
+        document.getElementById(`cntnumEdit${i}`).classList.add("color-white");
+    } else if (check === "unchecked") {
+        document.getElementById(`cntimgEdit${i}`).src = "../assets/icons/rb-unchecked.png";
+        document.getElementById(`cntnumEdit${i}`).classList.remove("bg-darkblue");
+        document.getElementById(`cntnumEdit${i}`).classList.remove("color-white");
+        document.getElementById(`cntnumEdit${i}`).classList.remove("task-hover-dark");
     }
 };
 

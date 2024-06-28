@@ -327,6 +327,7 @@ async function postNewTask(title, due_date, description, category) {
 async function postingTask(title, due_date, description, category) {
     await setTaskData(title, due_date, description, category);
     await postData(TASKS_URL, taskData);
+    await loadData(TASKS_URL);
     clearAll();
 };
 
