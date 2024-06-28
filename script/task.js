@@ -150,6 +150,18 @@ function deleteTask(index) {
 
 
 function renderEdit(id) {
+    console.clear();
+    console.log("Alle Tasks:");
+    console.log(tasksArray);
+    let task = (getActualTask(id)).element;
+    let taskId = (getActualTask(id)).index;
+    console.log("Aktuelle TaskID:");
+    console.log(taskId);
+    console.log("Aktueller Task als Objekt:");
+    console.log(task);
+
+
+
     taskContainer.innerHTML = /*html*/`
     <div class="task-h1 flex-row task-board-h1">
             <h1></h1>
@@ -160,14 +172,14 @@ function renderEdit(id) {
                 <div class="task-left-cont">
                     <div class="task-width">
                         <h3 class="task-form-font">Title</h3>
-                        <input id="taskTitle" class="task-width task-form-font task-input" type="text" placeholder="Enter a title"
+                        <input value="${task.title}" id="taskTitle" class="task-width task-form-font task-input" type="text" placeholder="Enter a title"
                             required>
                             <span id="requiredTitle" class="required-text" style="display: none;">This field is required</span>
                     </div>
                     <div>
                         <h3 class="task-form-font">Description</h3>
                         <textarea id="taskDescription" class="task-width task-form-font task-textarea task-input" type="text"
-                            placeholder="Enter a Description"></textarea>
+                            placeholder="Enter a Description">${task.description}</textarea>
                     </div>
                     <div>
                         <h3 class="task-form-font">Assigned to</h3>
@@ -198,7 +210,7 @@ function renderEdit(id) {
                     <div class="task-width">
                         <h3 class="task-form-font">Due date</h3>
                         <div class="task-date-input task-width">
-                            <input onclick="openCalender()" id="taskDate"
+                            <input onclick="openCalender()" value="${task.due_date}" id="taskDate"
                                 class="task-date-input task-form-font color-lightgrey bg-white task-input" type="date"
                                 required>
                                 <span id="requiredDate" class="required-text" style="display: none;">This field is required</span>
@@ -288,7 +300,7 @@ function renderTask(id) {
     let taskId = (getActualTask(id)).index;
     console.log("Aktuelle TaskID:");
     console.log(taskId);
-    console.log("Aktueller Task also Objekt:");
+    console.log("Aktueller Task als Objekt:");
     console.log(task);
 
     renderTaskOwners(task);
