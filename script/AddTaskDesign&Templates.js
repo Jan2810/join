@@ -92,7 +92,6 @@ function openCalender() {
     document.getElementById("taskDate").setAttribute('min', today);
     document.getElementById("taskDate").showPicker();
     document.getElementById("taskDate").style.color = "black";
-
 };
 
 function returnTaskListHTML(category, i) {

@@ -87,6 +87,10 @@ body {
     color: rgba(209, 209, 209, 1);
 }
 
+.color-black {
+    color: black;
+}
+
 .color-white {
     color: white;
 }

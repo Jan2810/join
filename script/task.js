@@ -6,7 +6,7 @@ let taskContainer = document.createElement("div")
 function prepareTask() {
     bg.classList.add("task-bg", "task-bg-low-index", "flex-center");
     body.appendChild(bg);
-    taskContainer.classList.add("task-container", "flex-column", "task-container-hidden",);
+    taskContainer.classList.add("task-container", "flex-column", "task-container-hidden");
     bg.appendChild(taskContainer);
 
 }
@@ -172,33 +172,33 @@ function renderEdit(id) {
                 <div class="task-left-cont">
                     <div class="task-width">
                         <h3 class="task-form-font">Title</h3>
-                        <input value="${task.title}" id="taskTitle" class="task-width task-form-font task-input" type="text" placeholder="Enter a title"
+                        <input value="${task.title}" id="taskTitleEdit" class="task-width task-form-font task-input" type="text" placeholder="Enter a title"
                             required>
-                            <span id="requiredTitle" class="required-text" style="display: none;">This field is required</span>
+                            <span id="requiredTitleEdit" class="required-text" style="display: none;">This field is required</span>
                     </div>
                     <div>
                         <h3 class="task-form-font">Description</h3>
-                        <textarea id="taskDescription" class="task-width task-form-font task-textarea task-input" type="text"
+                        <textarea id="taskDescriptionEdit" class="task-width task-form-font task-textarea task-input" type="text"
                             placeholder="Enter a Description">${task.description}</textarea>
                     </div>
                     <div>
                         <h3 class="task-form-font">Assigned to</h3>
-                        <div onclick="openContacts(); stopProp(event);" class="dropdown task-width">
-                            <div class="dropdown-toggle" id="dropdownToggle">
-                                <span id="selectedItem">Select contacts to assign</span>
+                        <div onclick="openContactsEdit(); stopProp(event);" class="dropdown task-width">
+                            <div class="dropdown-toggle" id="dropdownToggleEdit">
+                                <span id="selectedItemEdit">Select contacts to assign</span>
                                 <img src="../assets/icons/dropdown.png">
                             </div>
-                            <div class="dropdown-menu" id="dropdownMenuContainer" style="display: none;">
-                                <div onclick="closeContacts(event)" class="upper-dropdown-item bg-white">
+                            <div class="dropdown-menu" id="dropdownMenuContainerEdit" style="display: none;">
+                                <div onclick="closeContactsEdit(event)" class="upper-dropdown-item bg-white">
                                     <span>Select contacts to assign</span>
                                     <img src="../assets/icons/dropup.png" alt="">
                                 </div>
-                                <div id="dropdownMenu">
+                                <div id="dropdownMenuEdit">
                                     <!-- rendered with openContacts()  -->
                                 </div>
                             </div>
-                            <div id="signParentContainer" class="flex-center" style="width: 100%;">
-                                <div id="signContainer" class="task-sign-cont task-width flex-center"
+                            <div id="signParentContainerEdit" class="flex-center signParentContainer" style="width: 100%;">
+                                <div id="signContainerEdit" class="task-sign-cont task-width flex-center"
                                     style="display: none;">
                                     <!-- rendered signs -->
                                 </div>
@@ -206,70 +206,70 @@ function renderEdit(id) {
                         </div>
                     </div>
                 </div>
-                <div class="task-right-cont task-right-cont-edit" id="taskRightCont">
+                <div class="task-right-cont task-right-cont-edit" id="taskRightContEdit">
                     <div class="task-width">
                         <h3 class="task-form-font">Due date</h3>
                         <div class="task-date-input task-width">
-                            <input onclick="openCalender()" value="${task.due_date}" id="taskDate"
-                                class="task-date-input task-form-font color-lightgrey bg-white task-input" type="date"
+                            <input onclick="openCalenderEdit()" value="${task.due_date}" id="taskDateEdit"
+                                class="task-date-input task-form-font color-lightgrey bg-white task-input color-black" type="date"
                                 required>
-                                <span id="requiredDate" class="required-text" style="display: none;">This field is required</span>
+                                <span id="requiredDateEdit" class="required-text" style="display: none;">This field is required</span>
                         </div>
                     </div>
                     <div>
                         <h3 class="task-form-font">Prio</h3>
                         <div class="flex-row task-btn-cont">
-                            <div onclick="changeUrgency('high')" onmouseover="hoverBtn(true, 'img-high')"
-                                onmouseout="hoverBtn(false, 'img-high')" class="task-urgent-btn bg-white" id="high">
+                            <div onclick="changeUrgencyEdit('high')" onmouseover="hoverBtnEdit(true, 'img-high')"
+                                onmouseout="hoverBtnEdit(false, 'img-high')" class="task-urgent-btn bg-white" id="high">
                                 <span>Urgent</span>
-                                <img id="img-high" src="../assets/icons-addtask/prio-high-color.png" alt="">
+                                <img id="img-highEdit" src="../assets/icons-addtask/prio-high-color.png" alt="">
                             </div>
-                            <div onclick="changeUrgency('mid')" onmouseover="hoverBtn(true, 'img-mid')"
-                                onmouseout="hoverBtn(false, 'img-mid')" class="task-urgent-btn bg-white" id="mid">
+                            <div onclick="changeUrgencyEdit('mid')" onmouseover="hoverBtnEdit(true, 'img-mid')"
+                                onmouseout="hoverBtnEdit(false, 'img-mid')" class="task-urgent-btn bg-white" id="mid">
                                 <span>Medium</span>
-                                <img id="img-mid" src="../assets/icons-addtask/prio-mid-white.png" alt="">
+                                <img id="img-midEdit" src="../assets/icons-addtask/prio-mid-white.png" alt="">
                             </div>
-                            <div onclick="changeUrgency('low')" onmouseover="hoverBtn(true, 'img-low')"
-                                onmouseout="hoverBtn(false, 'img-low')" class="task-urgent-btn bg-white" id="low">
+                            <div onclick="changeUrgencyEdit('low')" onmouseover="hoverBtnEdit(true, 'img-low')"
+                                onmouseout="hoverBtnEdit(false, 'img-low')" class="task-urgent-btn bg-white" id="low">
                                 <span>Low</span>
-                                <img id="img-low" src="../assets/icons-addtask/prio-low-color.png" alt="">
+                                <img id="img-lowEdit" src="../assets/icons-addtask/prio-low-color.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div>
                         <h3 class="task-form-font">Category</h3>
                         <div onclick="openCategorys(); stopProp(event);" class="dropdown task-width">
-                            <div class="dropdown-toggle ctg-input-cnt" id="dropdownCategoryToggle">
-                                <input onclick="openCategorys(); preventDf(event); stopProp(event);" id="categoryInput" type="text" placeholder="Select task category" 
+                            <div class="dropdown-toggle ctg-input-cnt" id="dropdownCategoryToggleEdit">
+                                <input onclick="openCategorys(); preventDf(event); stopProp(event);" id="categoryInput" type="text" value="${task.category}" placeholder="Select task category" 
                                 class="category-dd-upper-item-input task-width bg-white" required>
                                 <img src="../assets/icons/dropdown.png">
                             </div>
-                            <div class="dropdownmenu-ctg" id="dropdownCategoryContainer" style="display: none;">
+                            <div class="dropdownmenu-ctg" id="dropdownCategoryContainerEdit" style="display: none;">
                                 <div onclick="closeCategorys(event)" class="category-dd-upper-item bg-white">
                                     <span>Select task category</span>
                                     <img src="../assets/icons/dropup.png" alt="">
                                 </div>
-                                <div id="dropdownCategorys" class="dropdown-ctg">
+                                <div id="dropdownCategorysEdit" class="dropdown-ctg">
                                     <!-- rendered Categorys  -->
                                 </div>
                             </div>
-                            <span id="requiredCategorys" class="required-text" style="display: none;">This field is required</span>
+                            <span id="requiredCategorysEdit" class="required-text" style="display: none;">This field is required</span>
                         </div>
                     </div>
                     <div>
                         <h3 class="task-form-font">Subtasks</h3>
                         <div >
                             <div onkeydown="checkKey(event)" onclick="openSubtasks(); stopProp(event);" id="subtaskInputCont" class="task-width task-form-font subtask-input-cont">
-                                <input id="subtasksInput" class="subtasks-input task-input" type="text"
+                                <input id="subtasksInputEdit" class="subtasks-input task-input" type="text"
                                     placeholder="Add new subtask">
-                                <div id="subtaskImgCont" class="subtask-img-cont flex-center">
+                                <div id="subtaskImgContEdit" class="subtask-img-cont flex-center">
                                     <div class="img-cont-subtask">
                                         <img src="../assets/icons/add.png" alt="">
                                     </div>
                                 </div>
                             </div>
-                            <span id="requiredSubtext" class="required-text" style="display: none;">Cannot set empty subtask</span>
-                            <div class="rendered-subtasks" id="addedSubtasks">
+                            <span id="requiredSubtextEdit" class="required-text" style="display: none;">Cannot set empty subtask</span>
+                            <div class="rendered-subtasks" id="addedSubtasksEdit">
                                 <!-- rendered subtasks -->
                             </div>
                         </div>
@@ -279,7 +279,7 @@ function renderEdit(id) {
             <div class="task-bottom-line-cont flex-center">
                 <div class="flex-row flex-center task-bottom-line bottom-line-edit">
                     <div class="flex-center task-form-btn-cont">
-                        <button onclick="addNewTask(); return false" type="submit" id="createButton" class="task-send-form-btn">
+                        <button onclick="addNewTask(); return false" type="submit" id="createButtonEdit" class="task-send-form-btn">
                             <span>Ok</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
                         </button>
@@ -288,8 +288,8 @@ function renderEdit(id) {
             </div>
         </form>
     `;
-
-}
+    changeUrgencyEdit(task.priority);
+};
 
 
 function renderTask(id) {
@@ -342,4 +342,207 @@ function renderTask(id) {
                     <span>Edit</span>
                 </div>
             </div>`
-}
+};
+
+function openCalenderEdit() {
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById("taskDateEdit").setAttribute('min', today);
+    document.getElementById("taskDateEdit").showPicker();
+    document.getElementById("taskDateEdit").style.color = "black";
+};
+
+
+async function openContactsEdit() {
+    if (contactsTaskOpen === false) {
+        displayContactsEdit("open")
+        renderContactListEdit();
+        let contacts = await loadData(CONTACTS_URL);
+        for (let i = 0; i < contacts.length; i++) {
+            if (contacts.length > checkedContacts.length) {
+                const count = checkedContacts.push(false);
+            }
+        }
+        contactsTaskOpen = true;
+    }
+};
+
+function closeContactsEdit(event) {
+    if (contactsTaskOpen === true) {
+        event.stopPropagation();
+        displayContactsEdit("close");
+        contactsTaskOpen = false;
+    }
+};
+
+async function renderContactListEdit() {
+    let content = document.getElementById("dropdownMenuEdit");
+    content.innerHTML = "";
+    let contacts = await loadData(CONTACTS_URL);
+    content.innerHTML = ``;
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        content.innerHTML += returnContactListEdit(contact, i)
+        checkAssignmentsEdit(i);
+    }
+};
+
+function displayContactsEdit(ev) {
+    if (ev === "open") {
+        document.getElementById("dropdownToggleEdit").style.display = "none";
+        document.getElementById("dropdownMenuContainerEdit").style.display = "";
+        document.getElementById("dropdownMenuEdit").style.display = "block";
+    } else if (ev === "close") {
+        document.getElementById("dropdownToggleEdit").style.display = "flex";
+        document.getElementById("dropdownMenuContainerEdit").style.display = "none";
+        document.getElementById("dropdownMenuEdit").style.display = "none";
+    }
+};
+
+function displayAssignmentsEdit(check, i) {
+    if (check === "checked") {
+        document.getElementById(`cntimgEdit${i}`).src = "../assets/icons/rb-checked.png";
+        document.getElementById(`cntnumEdit${i}`).classList.add("bg-darkblue");
+        document.getElementById(`cntnumEdit${i}`).classList.add("task-hover-dark");
+        document.getElementById(`cntnumEdit${i}`).classList.add("color-white");
+    } else if (check === "unchecked") {
+        document.getElementById(`cntimgEdit${i}`).src = "../assets/icons/rb-unchecked.png";
+        document.getElementById(`cntnumEdit${i}`).classList.remove("bg-darkblue");
+        document.getElementById(`cntnumEdit${i}`).classList.remove("color-white");
+        document.getElementById(`cntnumEdit${i}`).classList.remove("task-hover-dark");
+    }
+};
+
+function returnContactListEdit(cnt, i) {
+    return `
+        <div onclick="assignContactEdit(${i})" class="dropdown-item" id="cntnumEdit${i}" data-value="${i}">
+            <div class="task-cnt-sign flex-center" id="contactsignEdit${i}" style="background-color: ${cnt.color};">${getInitials(cnt.name)}</div>
+            <div class="task-cnt-name">${cnt.name}</div>
+            <img id="cntimgEdit${i}" src="../assets/icons/rb-unchecked.png" alt="check">
+        </div>
+    `;
+};
+
+function checkAssignmentsEdit(i) {
+    if (checkedContacts[i] === true) {
+        displayAssignmentsEdit("checked", i)
+    } else if (checkedContacts[i] === false) {
+        displayAssignmentsEdit("unchecked", i)
+    }
+};
+
+async function assignContactEdit(i) {
+    if (checkedContacts[i] === true) {
+        checkedContacts[i] = false;
+    } else if (checkedContacts[i] === false) {
+        checkedContacts[i] = true;
+    }
+    renderSignListEdit();
+    checkAssignmentsEdit(i);
+};
+
+async function renderSignListEdit() {
+    let content = document.getElementById("signContainerEdit");
+    controlCheckedLengthEdit();
+    content.innerHTML = "";
+    let contacts = await loadData(CONTACTS_URL);
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        if (checkedContacts[i] === true) {
+            content.innerHTML += returnSignListEdit(contact, i)
+        }
+    }
+};
+
+function controlCheckedLengthEdit() {
+    let container = document.getElementById("signContainerEdit");
+    let trueCount = checkedContacts.filter(value => value === true).length;
+    if (trueCount >= 1) {
+        container.style.display = "";
+    } else if (trueCount < 1) {
+        container.style.display = "none";
+    }
+};
+
+function returnSignListEdit(cnt, i) {
+    return `
+           <div class="task-cnt-assigned-sign">
+                <div class="task-cnt-sign flex-center" id="contactsignEdit${i}" style='background-color:${cnt.color}'>
+                ${getInitials(cnt.name)}
+                </div>
+           </div>`;
+};
+
+function changeUrgencyEdit(urg) {
+    if (urg === "high") {
+        activeUrg[0].active = true;
+        activeUrg[1].active = false;
+        activeUrg[2].active = false;
+    } else if (urg === "mid") {
+        activeUrg[0].active = false;
+        activeUrg[1].active = true;
+        activeUrg[2].active = false;
+    } else if (urg === "low") {
+        activeUrg[0].active = false;
+        activeUrg[1].active = false;
+        activeUrg[2].active = true;
+    }
+    changeBgBtnEdit()
+};
+
+function changeBgBtnEdit() {
+    if (activeUrg[0].active === true) {
+        highlightButtonEdit("high");
+    }
+    if (activeUrg[1].active === true) {
+        highlightButtonEdit("mid");
+    }
+    if (activeUrg[2].active === true) {
+        highlightButtonEdit("low");
+    }
+};
+
+function highlightButtonEdit(urg) {
+    if (urg === "high") {
+        document.getElementById("high").classList.add("high-focus");
+        document.getElementById("mid").classList.remove("mid-focus");
+        document.getElementById("low").classList.remove("low-focus");
+        document.getElementById("img-highEdit").src = `../assets/icons-addtask/prio-high-white.png`;
+        document.getElementById("img-midEdit").src = `../assets/icons-addtask/prio-mid-color.png`;
+        document.getElementById("img-lowEdit").src = `../assets/icons-addtask/prio-low-color.png`;
+    } else if (urg === "mid") {
+        document.getElementById("high").classList.remove("high-focus");
+        document.getElementById("mid").classList.add("mid-focus");
+        document.getElementById("low").classList.remove("low-focus");
+        document.getElementById("img-highEdit").src = `../assets/icons-addtask/prio-high-color.png`;
+        document.getElementById("img-midEdit").src = `../assets/icons-addtask/prio-mid-white.png`;
+        document.getElementById("img-lowEdit").src = `../assets/icons-addtask/prio-low-color.png`;
+    } else if (urg === "low") {
+        document.getElementById("high").classList.remove("high-focus");
+        document.getElementById("mid").classList.remove("mid-focus");
+        document.getElementById("low").classList.add("low-focus");
+        document.getElementById("img-highEdit").src = `../assets/icons-addtask/prio-high-color.png`;
+        document.getElementById("img-midEdit").src = `../assets/icons-addtask/prio-mid-color.png`;
+        document.getElementById("img-lowEdit").src = `../assets/icons-addtask/prio-low-white.png`;
+    }
+};
+
+function hoverBtnEdit(boolean, id) {
+    console.log(boolean);
+    let newId = id + "Edit";
+    // console.log(newId);
+    if (boolean === true && newId === "img-highEdit") {
+        document.getElementById(newId).src = "../assets/icons-addtask/prio-high-white.png";
+    } else if (boolean === false && newId === "img-highEdit" && activeUrg[0].active === false) {
+        document.getElementById(newId).src = "../assets/icons-addtask/prio-high-color.png";
+    }
+    if (boolean === true && newId === "img-midEdit") {
+        document.getElementById(newId).src = "../assets/icons-addtask/prio-mid-white.png";
+    } else if (boolean === false && newId === "img-midEdit" && activeUrg[1].active === false) {
+        document.getElementById(newId).src = "../assets/icons-addtask/prio-mid-color.png";
+    }
+    if (boolean === true && newId === "img-lowEdit") {
+        document.getElementById(newId).src = "../assets/icons-addtask/prio-low-white.png";
+    } else if (boolean === false && newId === "img-lowEdit" && activeUrg[2].active === false) {
+        document.getElementById(newId).src = "../assets/icons-addtask/prio-low-color.png";
+    }
+};

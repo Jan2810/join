@@ -114,7 +114,7 @@ async function putData(url, dataArray = []) {
     });
 
     return response;
-}
+};
 
 
 async function deleteData(url, data = {}) {
