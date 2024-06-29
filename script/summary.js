@@ -61,6 +61,7 @@ async function filterTaskStatus() {
     let awaitFeedback = tasks.filter(task => task.status === "awaitfeedback");
     let done = tasks.filter(task => task.status === "done");
     let urgent = tasks.filter(task => task.priority === "high");
+    console.log(todos);
     statusArray.push({ "category": todos, "length": todos.length });
     statusArray.push({ "category": inProgress, "length": inProgress.length });
     statusArray.push({ "category": awaitFeedback, "length": awaitFeedback.length });
