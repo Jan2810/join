@@ -66,7 +66,9 @@ async function filterTaskStatus() {
     statusArray.push({ "category": inProgress, "length": inProgress.length });
     statusArray.push({ "category": awaitFeedback, "length": awaitFeedback.length });
     statusArray.push({ "category": done, "length": done.length });
-    statusArray.push({ "category": urgent, "length": urgent.length, "due_date": urgent[0]["due_date"] });
+    if (urgent.length > 0) {
+        statusArray.push({ "category": urgent, "length": urgent.length, "due_date": urgent[0]["due_date"] });
+    }
     document.getElementById("sumBody").innerHTML = "";
     document.getElementById("sumBody").innerHTML = returnSummaryHTML(tasks);
 };

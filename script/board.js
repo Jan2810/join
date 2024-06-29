@@ -1,14 +1,13 @@
+function bgClickTracker() { bg.addEventListener("click", () => { console.log("TaskBackground clicked!!!") }) };
+
 let tasksArray = [];
 let filteredTasks = [];
 let currentDraggedElement;
 
-setTimeout(() => {
-    console.log("Alle Tasks:")
-    console.log(tasksArray)
-}, 500);
-
 async function getTasks() {
     tasksArray = await loadData(TASKS_URL);
+    console.log("Alle Tasks");
+    console.log(tasksArray);
     if (tasksArray.length > 0) {
         initBoard();
     }
@@ -164,11 +163,11 @@ function generateTicketHTML(element, categoryBG) {
 };
 
 function getContacts(element) {
-    console.log(element);
+    // console.log(element);
     let assignedHTML = '';
     if (element['assigned_to'].length > 3) {
         let initials = getInitials(element['assigned_to'][0]);
-        assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div><div class="board-ticket-assigned flex-center">+${element['assigned_to'].length -=1}</div>`;
+        assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div><div class="board-ticket-assigned flex-center">+${element['assigned_to'].length -= 1}</div>`;
     } else {
         for (let j = 0; j < element['assigned_to'].length; j++) {
             let initials = getInitials(element['assigned_to'][j]);
