@@ -63,6 +63,9 @@ async function loadData(url) {
             throw new Error('Netzwerkantwort war nicht ok');
         }
         let data = await response.json();
+        if (!data) {
+            return []
+        }
         let dataArray = Object.keys(data).map(key => {
             return {
                 id: key,   // Hier fügen wir den Firebase-Schlüssel als ID hinzu
@@ -85,8 +88,8 @@ async function postData(url, data = {}) {
         body: JSON.stringify(data)
     });
     let responseData = await response.json();
-    let id = responseData.name; 
-    data.id = id; 
+    let id = responseData.name;
+    data.id = id;
     await fetch(`${url}/${id}.json`, {
         method: "PUT",
         headers: {
