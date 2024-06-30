@@ -276,7 +276,7 @@ async function getAssignedContacts(contacts) {
             const assignedContact = checkedContacts[i];
             if (assignedContact == true) {
                 if (taskData.assigned_to.length <= 11)
-                taskData.assigned_to.push(contacts[i].name);
+                taskData.assigned_to.push(contacts[i]);
             }
         }
     } else {
