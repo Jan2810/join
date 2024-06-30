@@ -1,19 +1,56 @@
-let checkedContactsEdit = [];
+let controlContacts = [];
+
+let taskDataEdit = {
+    "title": "",
+    "description": "",
+    "assigned_to": [],
+    "due_date": "",
+    "priority": "",
+    "category": "",
+    "subtasks": [],
+    "status": "todo",
+    "id": "",
+};
+
+let taskId = "";
+
+async function initDataEditTask(task, id) {
+    taskDataEdit = task;
+    taskId = id
+    changeUrgencyEdit(task.priority);
+    renderSubtasksEdit()
+    let contacts = await loadData(CONTACTS_URL);
+    let assignedContacts = task.assigned_to;
+    settingControlContacts(contacts, assignedContacts);
+    renderSignListEdit();
+};
+
+function settingControlContacts(contacts, assignedContacts) {
+    console.log(contacts.length);
+    if (assignedContacts.length > 0) {
+        for (let i = 0; i < contacts.length; i++) {
+            const contact = contacts[i];
+            let isAssigned = false;
+            for (let j = 0; j < assignedContacts.length; j++) {
+                const assignedContact = assignedContacts[j];
+                if (contact.id === assignedContact.id) {
+                    isAssigned = true;
+                }
+            }
+            controlContacts.push(isAssigned);
+        }
+    } else if (assignedContacts.length === 0){
+        for (let i = 0; i < contacts.length; i++) {
+            controlContacts.push(false);
+        }
+    }
+};
 
 function openCalenderEdit() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById("taskDateEdit").setAttribute('min', today);
     document.getElementById("taskDateEdit").showPicker();
     document.getElementById("taskDateEdit").style.color = "black";
-};
-
-async function setAssignedContactsEdit() {
-    let contacts = await loadData(CONTACTS_URL);
-    for (let i = 0; i < contacts.length; i++) {
-        if (contacts.length > checkedContacts.length) {
-            checkedContactsEdit.push(false);
-        }
-    }
 };
 
 async function openContactsEdit() {
@@ -55,39 +92,41 @@ function returnContactListEdit(cnt, i) {
 };
 
 function checkAssignmentsEdit(i) {
-    if (checkedContacts[i] === true) {
+    if (controlContacts[i] === true) {
         displayAssignmentsEdit("checked", i)
-    } else if (checkedContacts[i] === false) {
+    } else if (controlContacts[i] === false) {
         displayAssignmentsEdit("unchecked", i)
     }
 };
 
 async function assignContactEdit(i) {
-    if (checkedContacts[i] === true) {
-        checkedContacts[i] = false;
-    } else if (checkedContacts[i] === false) {
-        checkedContacts[i] = true;
+    if (controlContacts[i] === true) {
+        controlContacts[i] = false;
+    } else if (controlContacts[i] === false) {
+        controlContacts[i] = true;
     }
     renderSignListEdit();
     checkAssignmentsEdit(i);
 };
 
 async function renderSignListEdit() {
-    let content = document.getElementById("signContainerEdit");
-    controlCheckedLengthEdit();
-    content.innerHTML = "";
-    let contacts = await loadData(CONTACTS_URL);
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        if (checkedContacts[i] === true) {
-            content.innerHTML += returnSignListEdit(contact, i)
+    if (controlContacts.includes(true)) {
+        let content = document.getElementById("signContainerEdit");
+        controlCheckedLengthEdit();
+        content.innerHTML = "";
+        let contacts = await loadData(CONTACTS_URL);
+        for (let i = 0; i < contacts.length; i++) {
+            const contact = contacts[i];
+            if (controlContacts[i] === true) {
+                content.innerHTML += returnSignListEdit(contact, i)
+            }
         }
     }
 };
 
 function controlCheckedLengthEdit() {
     let container = document.getElementById("signContainerEdit");
-    let trueCount = checkedContacts.filter(value => value === true).length;
+    let trueCount = controlContacts.filter(value => value === true).length;
     if (trueCount >= 1) {
         container.style.display = "";
     } else if (trueCount < 1) {
@@ -201,4 +240,204 @@ function hoverBtnEdit(boolean, id) {
     } else if (boolean === false && newId === "img-lowEdit" && activeUrg[2].active === false) {
         document.getElementById(newId).src = "../assets/icons-addtask/prio-low-color.png";
     }
+};
+
+function openCategorysEdit() {
+    document.getElementById("dropdownCategoryToggleEdit").style.display = "none";
+    document.getElementById("dropdownCategoryContainerEdit").style.display = "";
+    document.getElementById("dropdownCategorysEdit").style.display = "flex";
+    renderTaskListEdit();
+};
+
+function closeCategorysEdit(ev) {
+    ev.stopPropagation();
+    document.getElementById("dropdownCategoryToggleEdit").style.display = "";
+    document.getElementById("dropdownCategoryContainerEdit").style.display = "none";
+    document.getElementById("dropdownCategorysEdit").style.display = "none";
+};
+
+function renderTaskListEdit() {
+    let content = document.getElementById("dropdownCategorysEdit");
+    content.innerHTML = "";
+    for (let i = 0; i < availableCategorys.length; i++) {
+        const category = availableCategorys[i];
+        content.innerHTML += returnTaskListHTMLEdit(category, i);
+    }
+};
+
+function returnTaskListHTMLEdit(category, i) {
+    return `
+        <div onclick="addCategoryEdit(${i}); closeCategorysEdit(event);" class="category-dd-item task-form-font" id="ctg${i}">
+            <div class="task-cnt-name">${category}</div>
+        </div>
+        `;
+};
+
+function addCategoryEdit(i) {
+    if (taskDataEdit.category === "") {
+        taskDataEdit.category = availableCategorys[i];
+    } else {
+        taskDataEdit.category = "";
+        taskDataEdit.category = availableCategorys[i];
+    }
+    document.getElementById("categoryInputEdit").value = `${taskDataEdit.category}`
+};
+
+function openSubtasksEdit() {
+    let imgContainer = document.getElementById("subtaskImgContEdit");
+    document.getElementById("subtasksInputEdit").focus();
+    imgContainer.innerHTML = "";
+    imgContainer.innerHTML = returnSubtaskImgEdit()
+};
+
+function closeSubtasksEdit(ev) {
+    ev.stopPropagation();
+    document.getElementById("subtaskInputContEdit").style.borderColor = "";
+    document.getElementById("requiredSubtextEdit").style.display = "none";
+    let imgContainer = document.getElementById("subtaskImgContEdit");
+    imgContainer.innerHTML = "";
+    imgContainer.innerHTML = `
+    <div class="img-cont-subtask">
+        <img src="../assets/icons/add.png" alt="">
+    </div>
+    `;
+};
+
+function returnSubtaskImgEdit() {
+    return `
+    <div onclick="clearInputfieldEdit()" class=" img-cont-subtask-first-n img-cont-subtask">
+        <img src="../assets/icons/x-black.png" alt="">
+    </div>
+    <div onclick="addSubtaskEdit()" class="img-cont-subtask">
+        <img src="../assets/icons/hook-small-dark.png" alt="">
+    </div>
+    `;
+};
+
+function addSubtaskEdit() {
+    let input = document.getElementById("subtasksInputEdit").value;
+    if (input !== "" && taskDataEdit.subtasks.length < 4) {
+        let subtaskArray = { text: `${input}`, status: "unchecked" }
+        taskDataEdit.subtasks.push(subtaskArray);
+        showWarningEdit();
+        renderSubtasksEdit();
+    } else {
+        hideWarningEdit();
+    }
+    if (taskDataEdit.subtasks.length === 4) {
+        document.getElementById("requiredSubtextEdit").style.display = "block";
+        document.getElementById("requiredSubtextEdit").innerHTML = "You reached the maximum number of tasks"
+    }
+};
+
+function renderSubtasksEdit() {
+    container = document.getElementById("addedSubtasksEdit")
+    container.innerHTML = "";
+    for (let i = 0; i < taskDataEdit.subtasks.length; i++) {
+        const subtask = taskDataEdit.subtasks[i];
+        container.innerHTML += returnSubtasksListEdit(subtask, i);
+    }
+};
+
+function showWarningEdit() {
+    document.getElementById("subtasksInputEdit").value = "";
+    document.getElementById("subtaskInputContEdit").style.borderColor = "";
+    document.getElementById("requiredSubtextEdit").style.display = "none";
+};
+
+function hideWarningEdit() {
+    document.getElementById("subtaskInputContEdit").style.borderColor = "red";
+    document.getElementById("requiredSubtextEdit").style.display = "block";
+    document.getElementById("subtasksInputEdit").focus();
+};
+
+function editSubtaskEdit(i) {
+    document.getElementById(`subtaskEdit${i}`).innerHTML = returnEditSubtaskHTMLEdit(i);
+    document.getElementById("editedValueEdit").focus()
+    document.getElementById("editedValueEdit").select()
+};
+
+function checkEditKeyEdit(ev, i) {
+    if (ev.key === "Enter") {
+        ev.preventDefault();
+        saveSubtaskEdit(i);
+    }
+};
+
+function saveSubtaskEdit(i) {
+    let subtask = document.getElementById("editedValueEdit").value
+    let subtaskArray = { text: subtask, status: "unchecked" };
+    taskDataEdit.subtasks[i] = subtaskArray;
+    renderSubtasksEdit();
+};
+
+function clearInputfieldEdit() {
+    document.getElementById("subtasksInputEdit").value = "";
+};
+
+function deleteSubtaskEdit(i) {
+    taskDataEdit.subtasks.splice(i, 1);
+    renderSubtasksEdit();
+};
+
+async function putEditTask() {
+    if (taskDataEdit.title.length >= 1 && taskDataEdit.due_date.length >= 1 && taskDataEdit.category.length >= 1) {
+        formValidationFeedbackOffEdit();
+        console.log(taskDataEdit.id);
+        await putDataObject(TASKS_URL, taskDataEdit, taskDataEdit.id);
+    } else {
+        formValidationFeedbackOnEdit();
+    }
+};
+
+function formValidationFeedbackOnEdit() {
+    document.getElementById("taskTitleEdit").style.borderColor = "red";
+    document.getElementById("requiredTitleEdit").style.display = "";
+    document.getElementById("taskDateEdit").style.borderColor = "red";
+    document.getElementById("requiredDateEdit").style.display = "";
+    document.getElementById("dropdownCategoryToggleEdit").style.borderColor = "red";
+    document.getElementById("requiredCategorysEdit").style.display = "";
+};
+
+function formValidationFeedbackOffEdit() {
+    document.getElementById("taskTitleEdit").style.borderColor = "";
+    document.getElementById("requiredTitleEdit").style.display = "none";
+    document.getElementById("taskDateEdit").style.borderColor = "";
+    document.getElementById("requiredDateEdit").style.display = "none";
+    document.getElementById("dropdownCategoryToggleEdit").style.borderColor = "";
+    document.getElementById("requiredCategorysEdit").style.display = "none";
+};
+
+function returnSubtasksListEdit(subtask, i) {
+    return `
+        <div id="subtaskEdit${i}">
+            <div class="subtask-item">
+                <li>${subtask.text}</li>
+                <div class="img-cont-subtask flex-center">
+                    <div onclick="editSubtaskEdit(${i})" class="img-cont-subtask-first img-cont-subtask">
+                        <img src="../assets/icons/edit.png" alt="">
+                    </div>
+                    <div onclick="deleteSubtaskEdit(${i})" class="img-cont-subtask-last">
+                        <img src="../assets/icons/delete.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+       `;
+};
+
+function returnEditSubtaskHTMLEdit(i) {
+    return `
+            <div onkeydown="checkEditKeyEdit(event, ${i})" class="edit-subtask-item">
+                <input id="editedValueEdit" type="text" class="editable-input" value="${taskDataEdit.subtasks[i].text}">
+                <div class="img-cont-subtask flex-center">
+                    <div onclick="deleteSubtaskEdit(${i})" class="img-cont-subtask-first img-cont-subtask">
+                        <img src="../assets/icons/delete.png" alt="">
+                    </div>
+                    <div onclick="saveSubtaskEdit(${i})" class="img-cont-subtask-last">
+                        <img src="../assets/icons/hook-small-dark.png" alt="">
+                    </div>
+                </div>
+            </div>
+    `;
 };

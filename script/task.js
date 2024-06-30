@@ -40,6 +40,8 @@ function closeTask() {
         prepareTask();
     }, 100);
     initBoard();
+    controlContacts = [];
+    taskId = "";
 };
 
 function getTaskIndex(id) {
@@ -172,7 +174,7 @@ function renderTask(id) {
                     <span onclick="deleteTask('${taskIndex}')">Delete</span>
                 </div>
                 <div class="task-footer-divider"></div>
-                <div onclick="renderEdit('${taskIndex}')" class="task-edit-container flex">
+                <div onclick="renderEdit('${taskIndex}', '${task.id}')" class="task-edit-container flex">
                     <svg width="18" height="18" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M3.16667 22.3332H5.03333L16.5333 10.8332L14.6667 8.9665L3.16667 20.4665V22.3332ZM22.2333 8.89984L16.5667 3.29984L18.4333 1.43317C18.9444 0.922059 19.5722 0.666504 20.3167 0.666504C21.0611 0.666504 21.6889 0.922059 22.2 1.43317L24.0667 3.29984C24.5778 3.81095 24.8444 4.42761 24.8667 5.14984C24.8889 5.87206 24.6444 6.48873 24.1333 6.99984L22.2333 8.89984ZM20.3 10.8665L6.16667 24.9998H0.5V19.3332L14.6333 5.19984L20.3 10.8665Z"
@@ -183,7 +185,7 @@ function renderTask(id) {
             </div>`
 };
 
-function renderEdit(taskIndex) {
+function renderEdit(taskIndex, id) {
     console.clear();
     console.log("Alle Tasks:");
     console.log(tasksArray);
@@ -193,8 +195,7 @@ function renderEdit(taskIndex) {
     console.log("Aktueller Task als Objekt:");
     console.log(task);
     taskContainer.innerHTML = returnTaskHTML(task);
-    changeUrgencyEdit(task.priority);
-    setAssignedContactsEdit(task);
+    initDataEditTask(task, id);
 };
 
 function returnTaskHTML(task) {
@@ -203,7 +204,7 @@ function returnTaskHTML(task) {
             <h1></h1>
             <img onclick="closeTask()" src="../assets/icons/x-black.png" alt="x">
         </div>
-        <form class="form-edit">
+        <form  onclick="putEditTask(); return false" class="form-edit">
             <div class="flex-row task-content in-edit-task-cnt">
                 <div class="task-left-cont">
                     <div class="task-width">
@@ -230,7 +231,7 @@ function returnTaskHTML(task) {
                                     <img src="../assets/icons/dropup.png" alt="">
                                 </div>
                                 <div id="dropdownMenuEdit">
-                                    <!-- rendered with openContacts()  -->
+                                    <!-- rendered with openContacts() -->
                                 </div>
                             </div>
                             <div id="signParentContainerEdit" class="flex-center signParentContainer" style="width: 100%;">
@@ -274,14 +275,14 @@ function returnTaskHTML(task) {
                     </div>
                     <div>
                         <h3 class="task-form-font">Category<span class="task-star">*</span></h3>
-                        <div onclick="openCategorys(); stopProp(event);" class="dropdown task-width">
+                        <div onclick="openCategorysEdit(); stopProp(event);" class="dropdown task-width">
                             <div class="dropdown-toggle ctg-input-cnt" id="dropdownCategoryToggleEdit">
-                                <input onclick="openCategorys(); preventDf(event); stopProp(event);" id="categoryInput" type="text" value="${task.category}" placeholder="Select task category" 
+                                <input onclick="openCategorysEdit(); preventDf(event); stopProp(event);" id="categoryInputEdit" type="text" value="${task.category}" placeholder="Select task category" 
                                 class="category-dd-upper-item-input task-width bg-white" required>
                                 <img src="../assets/icons/dropdown.png">
                             </div>
                             <div class="dropdownmenu-ctg" id="dropdownCategoryContainerEdit" style="display: none;">
-                                <div onclick="closeCategorys(event)" class="category-dd-upper-item bg-white">
+                                <div onclick="closeCategorysEdit(event)" class="category-dd-upper-item bg-white task-form-font">
                                     <span>Select task category</span>
                                     <img src="../assets/icons/dropup.png" alt="">
                                 </div>
@@ -295,7 +296,7 @@ function returnTaskHTML(task) {
                     <div>
                         <h3 class="task-form-font">Subtasks</h3>
                         <div >
-                            <div onkeydown="checkKey(event)" onclick="openSubtasks(); stopProp(event);" id="subtaskInputCont" class="task-width task-form-font subtask-input-cont">
+                            <div onkeydown="checkKey(event)" onclick="openSubtasksEdit(); stopProp(event);" id="subtaskInputContEdit" class="task-width task-form-font subtask-input-cont">
                                 <input id="subtasksInputEdit" class="subtasks-input task-input" type="text"
                                     placeholder="Add new subtask">
                                 <div id="subtaskImgContEdit" class="subtask-img-cont flex-center">
@@ -315,7 +316,7 @@ function returnTaskHTML(task) {
             <div class="task-bottom-line-cont flex-center">
                 <div class="flex-row flex-center task-bottom-line bottom-line-edit">
                     <div class="flex-center task-form-btn-cont">
-                        <button onclick="saveTask(); return false" type="submit" id="createButtonEdit" class="task-send-form-btn">
+                        <button type="submit" id="createButtonEdit" class="task-send-form-btn">
                             <span>Ok</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
                         </button>

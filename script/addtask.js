@@ -185,7 +185,7 @@ function addSubtask() {
     }
     if (taskData.subtasks.length === 4) {
         document.getElementById("requiredSubtext").style.display = "block";
-        requiredSubtext.innerHTML = "You reached the maximum number of tasks"
+        document.getElementById("requiredSubtext").innerHTML = "You reached the maximum number of tasks"
     }
 };
 
@@ -328,9 +328,7 @@ async function postNewTask(title, due_date, description, category) {
 
 async function postingTask(title, due_date, description, category) {
     await setTaskData(title, due_date, description, category);
-    console.log('Before postData:', taskData);
-    let updatedData = await postData(TASKS_URL, taskData);
-    console.log('After postData:', updatedData);
+    await postData(TASKS_URL, taskData);
     clearAll();
 }
 
