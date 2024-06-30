@@ -39,6 +39,7 @@ function closeTask() {
     setTimeout(() => {
         prepareTask();
     }, 100);
+    initBoard();
 }
 
 function getTaskIndex(id) {
