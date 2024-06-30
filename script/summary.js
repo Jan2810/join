@@ -15,13 +15,19 @@ async function sumStart() {
 
 async function renderPage() {
     let tasks = await loadData(TASKS_URL);
-    document.getElementById("sumBody").innerHTML = "";
-    document.getElementById("sumBody").innerHTML = returnSummaryHTML(tasks);
+    if (tasks !== undefined) {
+        document.getElementById("sumBody").innerHTML = "";
+        document.getElementById("sumBody").innerHTML = returnSummaryHTML(tasks);
+    } else {
+        tasks = [];
+        document.getElementById("sumBody").innerHTML = "";
+        document.getElementById("sumBody").innerHTML = returnSummaryHTML(tasks);
+    }
 };
 
 function getTodos(t) {
-    let todos = t.filter(task => task.status === "todo");+
-    console.log(todos);
+    let todos = t.filter(task => task.status === "todo"); +
+        console.log(todos);
     if (todos.length !== 0) {
         return todos.length;
     } else {
@@ -50,7 +56,7 @@ function getUrgent(t) {
 function getUrgentDate(t) {
     let urgents = t.filter(task => task.priority === "high");
     if (urgents.length !== 0) {
-    getUpcomingUrgentDate(urgents);
+        getUpcomingUrgentDate(urgents);
     } else {
         return "--.--.----"
     }
