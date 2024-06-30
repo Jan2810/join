@@ -211,7 +211,7 @@ function returnTaskHTML(task) {
             <h1></h1>
             <img onclick="closeTask()" src="../assets/icons/x-black.png" alt="x">
         </div>
-        <form  onclick="putEditTask(); return false" class="form-edit">
+        <form onsubmit="putEditTask(); return false" class="form-edit">
             <div class="flex-row task-content in-edit-task-cnt">
                 <div class="task-left-cont">
                     <div class="task-width">

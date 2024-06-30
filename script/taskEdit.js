@@ -18,7 +18,7 @@ async function initDataEditTask(task, id) {
     taskDataEdit = task;
     taskId = id
     changeUrgencyEdit(task.priority);
-    renderSubtasksEdit()
+    renderSubtasksEdit();
     let contacts = await loadData(CONTACTS_URL);
     let assignedContacts = task.assigned_to;
     settingControlContacts(contacts, assignedContacts);
