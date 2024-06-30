@@ -317,6 +317,8 @@ main {
         height: fit-content;
         flex-direction: row;
         align-items: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
     }
 
     .board-ticket-container::-webkit-scrollbar {

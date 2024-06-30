@@ -158,8 +158,9 @@ function renderTask(id) {
             </div>
             <div class="task-prio-container flex task-font-regular ">
                 <div class="task-prio-key">Priority:</div>
-                <div class="task-prio-value flex-center">${task.priority}<img
-                        src="../assets/icons-addtask/prio-high-color.png" alt=""></div>
+                <div class="task-prio-value flex-center">${task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}<img
+                        src="../assets/icons-addtask/prio-${task.priority}-color.png
+" alt=""></div>
             </div>
             ${renderTaskOwners(task)}
             ${renderTodos(task)}
@@ -197,6 +198,12 @@ function renderEdit(taskIndex, id) {
     taskContainer.innerHTML = returnTaskHTML(task);
     initDataEditTask(task, id);
 };
+
+// setPrioIcon(task) {
+//     if (task.priority == "mid") {
+
+//     }
+// }
 
 function returnTaskHTML(task) {
     return `

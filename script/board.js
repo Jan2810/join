@@ -111,19 +111,10 @@ function updateFilteredDone() {
 
 function startDragging(id) {
     currentDraggedElement = id;
-
-    const ticketContainer = document.querySelector('.board-ticket-container');
-    ticketContainer.classList.remove('overflow-x-scroll')
-    ticketContainer.classList.add('overflow-visible');
-
     document.getElementById(`board-ticket${id}`).classList.add('board-ticket-tend');
 };
 
 function endDragging(id) {
-    const ticketContainer = document.querySelector('.board-ticket-container');
-    ticketContainer.classList.remove('overflow-visible')
-    ticketContainer.classList.add('overflow-x-scroll');
-
     document.getElementById(`board-ticket${id}`).classList.remove('board-ticket-tend');
 };
 
@@ -167,11 +158,11 @@ function getContacts(element) {
 
     let assignedHTML = '';
     if (element['assigned_to'].length > 3) {
-        let initials = getInitials(element['assigned_to'][0].name);
+        let initials = element['assigned_to'][0].initials;
         assignedHTML += `<div class="board-ticket-assigned flex-center" style="background-color:${element['assigned_to'][0].color}">${initials}</div><div class="board-ticket-assigned flex-center" style="background-color: rgba(255, 116, 94, 1)">+${element['assigned_to'].length -1}</div>`;
     } else {
         for (let j = 0; j < element['assigned_to'].length; j++) {
-            let initials = getInitials(element['assigned_to'][j].name);
+            let initials = element['assigned_to'][j].initials;
             assignedHTML += `<div class="board-ticket-assigned flex-center" style="background-color:${element['assigned_to'][j].color}">${initials}</div>`;
         }
     }
