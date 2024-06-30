@@ -51,7 +51,8 @@ function getUrgent(t) {
 function getUrgentDate(t) {
     let urgents = t.filter(task => task.priority === "high");
     if (urgents.length !== 0) {
-        getUpcomingUrgentDate(urgents);
+        let dateString = getUpcomingUrgentDate(urgents);
+        return formatDate(dateString);
     } else {
         return "--.--.----"
     }
@@ -92,7 +93,20 @@ function getUpcomingUrgentDate(urgents) {
         return new Date(a) - new Date(b);
     });
     return sortedDates[0];
-}
+};
+
+function formatDate(dateString) {
+    let parts = dateString.split("-");
+    return `${parts[2]} ${getMonthName(parts[1])} ${parts[0]}`;
+};
+
+function getMonthName(monthNumber) {
+    const monthNames = [
+        "Januar", "Februar", "März", "April", "Mai", "Juni",
+        "Juli", "August", "September", "Oktober", "November", "Dezember"
+    ];
+    return monthNames[monthNumber - 1];
+};
 
 function checkForPreviousPage() {
     let previousPage = document.referrer;
@@ -113,26 +127,6 @@ function greetingAnimation() {
             container.style.display = "none";
         }, 600)
     }, 1500)
-};
-
-async function filterTaskStatus() {
-    let tasks = await loadData(TASKS_URL);
-    if (tasks.length > 0) {
-        let todos = tasks.filter(task => task.status === "todo");
-        let inProgress = tasks.filter(task => task.status === "inprogress");
-        let awaitFeedback = tasks.filter(task => task.status === "awaitfeedback");
-        let done = tasks.filter(task => task.status === "done");
-        let urgent = tasks.filter(task => task.priority === "high");
-        statusArray.push({ "category": todos, "length": todos.length });
-        statusArray.push({ "category": inProgress, "length": inProgress.length });
-        statusArray.push({ "category": awaitFeedback, "length": awaitFeedback.length });
-        statusArray.push({ "category": done, "length": done.length });
-        statusArray.push({ "category": urgent, "length": urgent.length, "due_date": urgent[0]["due_date"] });
-        let firstUrgentDate = getUpcomingTask(statusArray[4].category);
-        let date = formatDate(firstUrgentDate);
-        document.getElementById("sumBody").innerHTML = "";
-        document.getElementById("sumBody").innerHTML = returnSummaryHTML(tasks);
-    }
 };
 
 function getActualGreet() {
