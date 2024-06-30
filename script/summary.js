@@ -18,16 +18,11 @@ async function renderPage() {
     if (tasks !== undefined) {
         document.getElementById("sumBody").innerHTML = "";
         document.getElementById("sumBody").innerHTML = returnSummaryHTML(tasks);
-    } else {
-        tasks = [];
-        document.getElementById("sumBody").innerHTML = "";
-        document.getElementById("sumBody").innerHTML = returnSummaryHTML(tasks);
     }
 };
 
 function getTodos(t) {
-    let todos = t.filter(task => task.status === "todo"); +
-        console.log(todos);
+    let todos = t.filter(task => task.status === "todo"); 
     if (todos.length !== 0) {
         return todos.length;
     } else {
