@@ -149,9 +149,6 @@ function renderEdit(taskIndex) {
     console.log(taskIndex);
     console.log("Aktueller Task als Objekt:");
     console.log(task);
-
-
-
     taskContainer.innerHTML = /*html*/`
     <div class="task-h1 flex-row task-board-h1">
             <h1></h1>
@@ -161,7 +158,7 @@ function renderEdit(taskIndex) {
             <div class="flex-row task-content in-edit-task-cnt">
                 <div class="task-left-cont">
                     <div class="task-width">
-                        <h3 class="task-form-font">Title</h3>
+                        <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
                         <input value="${task.title}" id="taskTitleEdit" class="task-width task-form-font task-input" type="text" placeholder="Enter a title"
                             required>
                             <span id="requiredTitleEdit" class="required-text" style="display: none;">This field is required</span>
@@ -179,7 +176,7 @@ function renderEdit(taskIndex) {
                                 <img src="../assets/icons/dropdown.png">
                             </div>
                             <div class="dropdown-menu" id="dropdownMenuContainerEdit" style="display: none;">
-                                <div onclick="closeContactsEdit(event)" class="upper-dropdown-item bg-white">
+                                <div onclick="closeContactsEdit(event)" class="upper-dropdown-item bg-white task-form-font">
                                     <span>Select contacts to assign</span>
                                     <img src="../assets/icons/dropup.png" alt="">
                                 </div>
@@ -198,7 +195,7 @@ function renderEdit(taskIndex) {
                 </div>
                 <div class="task-right-cont task-right-cont-edit" id="taskRightContEdit">
                     <div class="task-width">
-                        <h3 class="task-form-font">Due date</h3>
+                        <h3 class="task-form-font">Due date<span class="task-star">*</span></h3>
                         <div class="task-date-input task-width">
                             <input onclick="openCalenderEdit()" value="${task.due_date}" id="taskDateEdit"
                                 class="task-date-input task-form-font color-lightgrey bg-white task-input color-black" type="date"
@@ -227,7 +224,7 @@ function renderEdit(taskIndex) {
                         </div>
                     </div>
                     <div>
-                        <h3 class="task-form-font">Category</h3>
+                        <h3 class="task-form-font">Category<span class="task-star">*</span></h3>
                         <div onclick="openCategorys(); stopProp(event);" class="dropdown task-width">
                             <div class="dropdown-toggle ctg-input-cnt" id="dropdownCategoryToggleEdit">
                                 <input onclick="openCategorys(); preventDf(event); stopProp(event);" id="categoryInput" type="text" value="${task.category}" placeholder="Select task category" 

@@ -72,7 +72,7 @@ function returnAddTaskInBoardHTML() {
                                 <img src="../assets/icons/dropdown.png">
                             </div>
                             <div class="dropdown-menu" id="dropdownMenuContainer" style="display: none;">
-                                <div onclick="closeContacts(event)" class="upper-dropdown-item bg-white">
+                                <div onclick="closeContacts(event)" class="upper-dropdown-item bg-white task-form-font">
                                     <span>Select contacts to assign</span>
                                     <img src="../assets/icons/dropup.png" alt="">
                                 </div>
@@ -128,11 +128,11 @@ function returnAddTaskInBoardHTML() {
                                 <img src="../assets/icons/dropdown.png">
                             </div>
                             <div class="dropdownmenu-ctg" id="dropdownCategoryContainer" style="display: none;">
-                                <div onclick="closeCategorys(event)" class="category-dd-upper-item bg-white">
+                                <div onclick="closeCategorys(event)" class="category-dd-upper-item bg-white task-form-font">
                                     <span>Select task category</span>
                                     <img src="../assets/icons/dropup.png" alt="">
                                 </div>
-                                <div id="dropdownCategorys" class="dropdown-ctg">
+                                <div id="dropdownCategorys" class="dropdown-ctg task-form-font">
                                     <!-- rendered Categorys  -->
                                 </div>
                             </div>
