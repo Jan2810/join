@@ -26,6 +26,13 @@ function showTask(id) {
     });
 }
 
+function stopPropagation() {
+    document.querySelectorAll(".board-ticket-container").forEach(ticket => {
+        ticket.addEventListener("click", function (event) {
+            event.stopPropagation
+        })
+    })
+}
 
 function closeTask() {
     taskContainer.classList.add("task-container-hidden");
