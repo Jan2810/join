@@ -140,6 +140,19 @@ async function deleteData(url, id) {
     return response;
 };
 
+function formatDate(dateString) {
+    let parts = dateString.split("-");
+    return `${parts[2]} ${getMonthName(parts[1])} ${parts[0]}`;
+};
+
+function getMonthName(monthNumber) {
+    const monthNames = [
+        "Januar", "Februar", "März", "April", "Mai", "Juni",
+        "Juli", "August", "September", "Oktober", "November", "Dezember"
+    ];
+    return monthNames[monthNumber - 1];
+};
+
 function stopProp(ev) {
     ev.stopPropagation();
 };
