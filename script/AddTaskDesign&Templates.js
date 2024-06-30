@@ -35,13 +35,14 @@ function highlightButton(urg) {
     }
 };
 
-function showWarning() {
+function hideWarning() {
     document.getElementById("subtasksInput").value = "";
     document.getElementById("subtaskInputCont").style.borderColor = "";
+    document.getElementById("requiredSubtext").innerHTML = "Cannot set empty subtask";
     document.getElementById("requiredSubtext").style.display = "none";
 };
 
-function hideWarning() {
+function showWarning() {
     document.getElementById("subtaskInputCont").style.borderColor = "red";
     document.getElementById("requiredSubtext").style.display = "block";
     document.getElementById("subtasksInput").focus();

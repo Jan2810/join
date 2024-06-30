@@ -112,12 +112,12 @@ async function postData(url, data = {}) {
 // };
 
 async function putData(url, dataArray = []) {
+    console.log(dataArray);
     let data = dataArray.reduce((acc, item) => {
         let { id, ...rest } = item;
         acc[id] = rest;
         return acc;
     }, {});
-
     let response = await fetch(url + ".json", {
         method: "PUT",
         headers: {
@@ -125,26 +125,21 @@ async function putData(url, dataArray = []) {
         },
         body: JSON.stringify(data)
     });
-
     return response;
 };
 
 async function putDataObject(url, data, id) {
-    try {
-        const response = await fetch(`${url}/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-        const result = await response.json();
-        console.log('Daten erfolgreich aktualisiert:', result);
-        return result;
-    } catch (error) {
-        console.error('Fehler bei putData:', error);
-    }
+    let response = await fetch(`${url}/${id}.json`, {
+        method: "PUT",
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(data)
+    });
+    console.log(JSON.stringify(data));
+    return response;
 };
+
 
 async function deleteData(url, id) {
     let response = await fetch(`${url}/${id}.json`, {

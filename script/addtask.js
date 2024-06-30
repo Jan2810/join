@@ -178,10 +178,10 @@ function addSubtask() {
     if (input !== "" && taskData.subtasks.length < 4) {
         let subtaskArray = { text: `${input}`, status: "unchecked" }
         taskData.subtasks.push(subtaskArray);
-        showWarning();
+        hideWarning();
         renderSubtasks();
     } else {
-        hideWarning
+        showWarning();
     }
     if (taskData.subtasks.length === 4) {
         document.getElementById("requiredSubtext").style.display = "block";
@@ -252,6 +252,7 @@ function closeSubtasks(ev) {
 
 function clearInputfield() {
     document.getElementById("subtasksInput").value = "";
+    hideWarning();
 };
 
 function clearAll() {

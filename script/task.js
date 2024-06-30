@@ -207,7 +207,8 @@ function renderEdit(taskIndex, id) {
 
 function returnTaskHTML(task) {
     return `
-    <div class="task-h1 flex-row task-board-h1">
+    <div onclick="handleClickEventEdit(event)" onkeydown="formValidationFeedbackOffEdit()">
+        <div class="task-h1 flex-row task-board-h1">
             <h1></h1>
             <img onclick="closeTask()" src="../assets/icons/x-black.png" alt="x">
         </div>
@@ -331,6 +332,7 @@ function returnTaskHTML(task) {
                 </div>
             </div>
         </form>
-    `;
+        </div>
+        `;
 };
 

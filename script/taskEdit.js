@@ -1,18 +1,56 @@
 let controlContacts = [];
+let taskDataEdit = {};
+let taskId = "";
+let activeUrgEdit = [
+    {
+        "urgency": "high",
+        "active": false
+    },
+    {
+        "urgency": "mid",
+        "active": false
+    },
+    {
+        "urgency": "low",
+        "active": false
+    }
+];
 
-let taskDataEdit = {
-    "title": "",
-    "description": "",
-    "assigned_to": [],
-    "due_date": "",
-    "priority": "",
-    "category": "",
-    "subtasks": [],
-    "status": "todo",
-    "id": "",
+async function putEditTask() {
+    if (taskDataEdit.title.length >= 1 && taskDataEdit.due_date.length >= 1 && taskDataEdit.category.length >= 1) {
+        formValidationFeedbackOffEdit();
+        setInputValuesEdit();
+        await putDataObject(TASKS_URL, taskDataEdit, taskId);
+    } else {
+        formValidationFeedbackOnEdit();
+    }
 };
 
-let taskId = "";
+async function setInputValuesEdit() {
+    getUrgencyEdit();
+    taskDataEdit.title = document.getElementById("taskTitleEdit").value;
+    taskDataEdit.description = document.getElementById("taskDescriptionEdit").value;
+    taskDataEdit.due_date = document.getElementById("taskDateEdit").value;
+    taskDataEdit.category = document.getElementById("dropdownCategoryToggleEdit").value;
+};
+
+function getUrgencyEdit() {
+    for (let i = 0; i < activeUrgEdit.length; i++) {
+        const urg = activeUrgEdit[i];
+        if (urg.active === true) {
+            taskData.priority = urg.urgency;
+        }
+    }
+};
+
+
+function handleClickEventEdit(event) {
+    closeContactsEdit(event); 
+    closeCategorysEdit(event); 
+    closeSubtasksEdit(event); 
+    formValidationFeedbackOffEdit();
+};
+
 
 async function initDataEditTask(task, id) {
     taskDataEdit = task;
@@ -171,29 +209,29 @@ function returnSignListEdit(cnt, i) {
 
 function changeUrgencyEdit(urg) {
     if (urg === "high") {
-        activeUrg[0].active = true;
-        activeUrg[1].active = false;
-        activeUrg[2].active = false;
+        activeUrgEdit[0].active = true;
+        activeUrgEdit[1].active = false;
+        activeUrgEdit[2].active = false;
     } else if (urg === "mid") {
-        activeUrg[0].active = false;
-        activeUrg[1].active = true;
-        activeUrg[2].active = false;
+        activeUrgEdit[0].active = false;
+        activeUrgEdit[1].active = true;
+        activeUrgEdit[2].active = false;
     } else if (urg === "low") {
-        activeUrg[0].active = false;
-        activeUrg[1].active = false;
-        activeUrg[2].active = true;
+        activeUrgEdit[0].active = false;
+        activeUrgEdit[1].active = false;
+        activeUrgEdit[2].active = true;
     }
     changeBgBtnEdit()
 };
 
 function changeBgBtnEdit() {
-    if (activeUrg[0].active === true) {
+    if (activeUrgEdit[0].active === true) {
         highlightButtonEdit("high");
     }
-    if (activeUrg[1].active === true) {
+    if (activeUrgEdit[1].active === true) {
         highlightButtonEdit("mid");
     }
-    if (activeUrg[2].active === true) {
+    if (activeUrgEdit[2].active === true) {
         highlightButtonEdit("low");
     }
 };
@@ -227,17 +265,17 @@ function hoverBtnEdit(boolean, id) {
     let newId = id + "Edit";
     if (boolean === true && newId === "img-highEdit") {
         document.getElementById(newId).src = "../assets/icons-addtask/prio-high-white.png";
-    } else if (boolean === false && newId === "img-highEdit" && activeUrg[0].active === false) {
+    } else if (boolean === false && newId === "img-highEdit" && activeUrgEdit[0].active === false) {
         document.getElementById(newId).src = "../assets/icons-addtask/prio-high-color.png";
     }
     if (boolean === true && newId === "img-midEdit") {
         document.getElementById(newId).src = "../assets/icons-addtask/prio-mid-white.png";
-    } else if (boolean === false && newId === "img-midEdit" && activeUrg[1].active === false) {
+    } else if (boolean === false && newId === "img-midEdit" && activeUrgEdit[1].active === false) {
         document.getElementById(newId).src = "../assets/icons-addtask/prio-mid-color.png";
     }
     if (boolean === true && newId === "img-lowEdit") {
         document.getElementById(newId).src = "../assets/icons-addtask/prio-low-white.png";
-    } else if (boolean === false && newId === "img-lowEdit" && activeUrg[2].active === false) {
+    } else if (boolean === false && newId === "img-lowEdit" && activeUrgEdit[2].active === false) {
         document.getElementById(newId).src = "../assets/icons-addtask/prio-low-color.png";
     }
 };
@@ -315,14 +353,18 @@ function returnSubtaskImgEdit() {
 };
 
 function addSubtaskEdit() {
+    console.log(taskDataEdit);
     let input = document.getElementById("subtasksInputEdit").value;
+    if (taskDataEdit.subtasks === "") {
+        taskDataEdit.subtasks = [];
+    }
     if (input !== "" && taskDataEdit.subtasks.length < 4) {
         let subtaskArray = { text: `${input}`, status: "unchecked" }
         taskDataEdit.subtasks.push(subtaskArray);
-        showWarningEdit();
+        hideWarningEdit();
         renderSubtasksEdit();
     } else {
-        hideWarningEdit();
+        showWarningEdit();
     }
     if (taskDataEdit.subtasks.length === 4) {
         document.getElementById("requiredSubtextEdit").style.display = "block";
@@ -339,13 +381,13 @@ function renderSubtasksEdit() {
     }
 };
 
-function showWarningEdit() {
+function hideWarningEdit() {
     document.getElementById("subtasksInputEdit").value = "";
     document.getElementById("subtaskInputContEdit").style.borderColor = "";
     document.getElementById("requiredSubtextEdit").style.display = "none";
 };
 
-function hideWarningEdit() {
+function showWarningEdit() {
     document.getElementById("subtaskInputContEdit").style.borderColor = "red";
     document.getElementById("requiredSubtextEdit").style.display = "block";
     document.getElementById("subtasksInputEdit").focus();
@@ -373,21 +415,12 @@ function saveSubtaskEdit(i) {
 
 function clearInputfieldEdit() {
     document.getElementById("subtasksInputEdit").value = "";
+    hideWarningEdit();
 };
 
 function deleteSubtaskEdit(i) {
     taskDataEdit.subtasks.splice(i, 1);
     renderSubtasksEdit();
-};
-
-async function putEditTask() {
-    if (taskDataEdit.title.length >= 1 && taskDataEdit.due_date.length >= 1 && taskDataEdit.category.length >= 1) {
-        formValidationFeedbackOffEdit();
-        console.log(taskDataEdit.id);
-        await putDataObject(TASKS_URL, taskDataEdit, taskDataEdit.id);
-    } else {
-        formValidationFeedbackOnEdit();
-    }
 };
 
 function formValidationFeedbackOnEdit() {
