@@ -1,3 +1,5 @@
+let checkedContactsEdit = [];
+
 function openCalenderEdit() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById("taskDateEdit").setAttribute('min', today);
@@ -5,17 +7,19 @@ function openCalenderEdit() {
     document.getElementById("taskDateEdit").style.color = "black";
 };
 
+async function setAssignedContactsEdit() {
+    let contacts = await loadData(CONTACTS_URL);
+    for (let i = 0; i < contacts.length; i++) {
+        if (contacts.length > checkedContacts.length) {
+            checkedContactsEdit.push(false);
+        }
+    }
+};
 
 async function openContactsEdit() {
     if (contactsTaskOpen === false) {
         displayContactsEdit("open")
         renderContactListEdit();
-        let contacts = await loadData(CONTACTS_URL);
-        for (let i = 0; i < contacts.length; i++) {
-            if (contacts.length > checkedContacts.length) {
-                const count = checkedContacts.push(false);
-            }
-        }
         contactsTaskOpen = true;
     }
 };

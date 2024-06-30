@@ -194,7 +194,7 @@ function renderEdit(taskIndex) {
     console.log(task);
     taskContainer.innerHTML = returnTaskHTML(task);
     changeUrgencyEdit(task.priority);
-    setAssignedContacts();
+    setAssignedContactsEdit(task);
 };
 
 function returnTaskHTML(task) {
