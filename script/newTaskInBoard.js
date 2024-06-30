@@ -80,7 +80,7 @@ function returnAddTaskInBoardHTML() {
                                     <!-- rendered with openContacts()  -->
                                 </div>
                             </div>
-                            <div id="signParentContainer" class="flex-center" style="width: 100%;">
+                            <div id="signParentContainer" class="flex-center signParentContainer" style="width: 100%;">
                                 <div id="signContainer" class="task-sign-cont task-width flex-center"
                                     style="display: none;">
                                     <!-- rendered signs -->
