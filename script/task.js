@@ -54,12 +54,12 @@ function renderTaskOwners(task) {
     if (task.assigned_to) {
 
 
-        task.assigned_to.forEach(element => {
-            getInitials(element);
+        task.assigned_to.forEach(owner => {
+            getInitials(owner.name);
             taskOwnerHtml += /*html*/ `
         <div class="task-contact-container flex task-font-small">
-        <div class="task-contact-icon flex-center">${getInitials(element)}</div>
-        <div class="task-contact-name">${element}</div>
+        <div class="task-contact-icon flex-center" style="background-color:${owner.color}">${getInitials(owner.name)}</div>
+        <div class="task-contact-name">${owner.name}</div>
         </div>`
         });
         return ` <div class="task-assigned-area flex-column">
@@ -188,7 +188,7 @@ function renderEdit(taskIndex) {
                             </div>
                             <div id="signParentContainerEdit" class="flex-center signParentContainer" style="width: 100%;">
                                 <div id="signContainerEdit" class="task-sign-cont task-width flex-center"
-                                    style="display: none;">
+                                    style="">
                                     <!-- rendered signs -->
                                 </div>
                             </div>
@@ -278,6 +278,7 @@ function renderEdit(taskIndex) {
         </form>
     `;
     changeUrgencyEdit(task.priority);
+
 };
 
 
