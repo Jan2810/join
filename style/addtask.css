@@ -15,7 +15,6 @@
     justify-content: flex-start;
     z-index: 1;
     top: 190px;
-    font-size: 20px;
     font-weight: 400;
 }
 
@@ -283,7 +282,6 @@
     align-items: center;
     justify-content: space-between;
     height: 45px;
-
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: white;

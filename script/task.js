@@ -174,7 +174,7 @@ function renderEdit(taskIndex) {
                     <div>
                         <h3 class="task-form-font">Assigned to</h3>
                         <div onclick="openContactsEdit(); stopProp(event);" class="dropdown task-width">
-                            <div class="dropdown-toggle" id="dropdownToggleEdit">
+                            <div class="dropdown-toggle task-form-font" id="dropdownToggleEdit">
                                 <span id="selectedItemEdit">Select contacts to assign</span>
                                 <img src="../assets/icons/dropdown.png">
                             </div>
