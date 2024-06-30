@@ -111,19 +111,10 @@ function updateFilteredDone() {
 
 function startDragging(id) {
     currentDraggedElement = id;
-
-    const ticketContainer = document.querySelector('.board-ticket-container');
-    ticketContainer.classList.remove('overflow-x-scroll')
-    ticketContainer.classList.add('overflow-visible');
-
     document.getElementById(`board-ticket${id}`).classList.add('board-ticket-tend');
 };
 
 function endDragging(id) {
-    const ticketContainer = document.querySelector('.board-ticket-container');
-    ticketContainer.classList.remove('overflow-visible')
-    ticketContainer.classList.add('overflow-x-scroll');
-
     document.getElementById(`board-ticket${id}`).classList.remove('board-ticket-tend');
 };
 
