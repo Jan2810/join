@@ -167,7 +167,7 @@ function getContacts(element) {
     let assignedHTML = '';
     if (element['assigned_to'].length > 3) {
         let initials = getInitials(element['assigned_to'][0]);
-        assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div><div class="board-ticket-assigned flex-center">+${element['assigned_to'].length -= 1}</div>`;
+        assignedHTML += `<div class="board-ticket-assigned flex-center">${initials}</div><div class="board-ticket-assigned flex-center">+${element['assigned_to'].length -1}</div>`;
     } else {
         for (let j = 0; j < element['assigned_to'].length; j++) {
             let initials = getInitials(element['assigned_to'][j]);
