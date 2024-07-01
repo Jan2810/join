@@ -102,7 +102,6 @@ async function openContacts() {
         displayContacts("open")
         renderContactList();
         let contacts = await loadData(CONTACTS_URL);
-        console.log(contacts);
         for (let i = 0; i < contacts.length; i++) {
             if (contacts.length > checkedContacts.length) {
                 const count = checkedContacts.push(false);

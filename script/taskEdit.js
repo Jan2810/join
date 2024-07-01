@@ -17,8 +17,7 @@ let activeUrgEdit = [
 ];
 
 async function putEditTask() {
-    setInputValuesEdit();
-    console.log(taskDataEdit.title.length, taskDataEdit.due_date.length, taskDataEdit.category.length);
+    await setInputValuesEdit();
     if (taskDataEdit.title.length >= 1 && taskDataEdit.due_date.length >= 1 && taskDataEdit.category.length >= 1) {
         formValidationFeedbackOffEdit();
         await putDataObject(TASKS_URL, taskDataEdit, taskId);
@@ -39,7 +38,7 @@ async function initDataEditTask(task, id) {
 };
 
 async function setInputValuesEdit() {
-    getAssignedContactsEdit();
+    await getAssignedContactsEdit();
     getUrgencyEdit();
     taskDataEdit.title = document.getElementById("taskTitleEdit").value;
     taskDataEdit.description = document.getElementById("taskDescriptionEdit").value;
@@ -51,11 +50,10 @@ async function getAssignedContactsEdit() {
     let contacts = await loadData(CONTACTS_URL);
     taskDataEdit.assigned_to = [];
     if (contacts.length > 0) {
-        for (let i = 0; i < contacts.length; i++) {
+        for (let i = 0; i < controlContacts.length; i++) {
             const assignedContact = controlContacts[i];
             if (assignedContact === true) {
                 taskDataEdit.assigned_to.push(contacts[i]);
-                console.log(contacts[i]);
             }
         }
     }
