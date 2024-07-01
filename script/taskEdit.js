@@ -21,6 +21,9 @@ async function putEditTask() {
     console.log(taskDataEdit);
     if (taskDataEdit.title.length >= 1 && taskDataEdit.due_date.length >= 1 && taskDataEdit.category.length >= 1) {
         formValidationFeedbackOffEdit();
+        if (taskDataEdit.assigned_to.length == 0) {
+            taskDataEdit.assigned_to = "";
+        }
         await putDataObject(TASKS_URL, taskDataEdit, taskId);
         taskContainer.innerHTML = renderTask(taskId);
     } else {
