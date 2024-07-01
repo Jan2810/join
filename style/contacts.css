@@ -130,6 +130,11 @@
     color: #fff;
 }
 
+.contacts-view-contact:hover {
+    background: #2A3647;
+    color: #fff;
+}
+
 .contacts-profile-badge {
     width: 32px;
     height: 32px;
@@ -407,6 +412,11 @@
         background: #2A3647;
         color: #fff;
     }
+
+    .contacts-view-contact:hover {
+    background: #2A3647;
+    color: #fff;
+}
 
     .add-person-icon,
     .single-contact-triple-dots,

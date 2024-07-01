@@ -31,7 +31,7 @@ function renderContact(contact) {
     let contactClass = contact.status === 'new' ? 'contacts-view-contact' : '';
 
     return /*html*/ `
-        <div class="contacts-list-box contacts-list-box-entry ${contactClass}">
+        <div class="contacts-list-box contacts-list-box-entry ${contactClass}" onclick="showSingleContactView('${contact.color}', '${contact.initials}', '${contact.name}', '${contact.email}', '${contact.phone}')">
             <div class="contacts-profile-badge flex-center" style="background-color: ${contact.color};">${contact.initials}</div>
             <div>
                 <p>${contact.name}</p>
@@ -42,12 +42,12 @@ function renderContact(contact) {
 };
 
 document.addEventListener('click', function (event) {
-    if (!event.target.closest('.contacts-view-contact')) {
-        document.querySelectorAll('.contacts-view-contact').forEach(element => {
-            element.classList.remove('contacts-view-contact');
-        });
-    }
+    contactsList.querySelectorAll('.contacts-view-contact').forEach(element => {
+        element.classList.remove('contacts-view-contact');
+
+    });
 });
+
 
 
 

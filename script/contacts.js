@@ -172,9 +172,8 @@ async function renderContactsListHtml(contactsByLetter) {
         }
     }
     contactsList.innerHTML = html;
+    await updateStatusNew();
 };
-
-
 
 async function renderContactsList() {
     let contacts = await processContactsData();
@@ -187,4 +186,53 @@ async function renderContactsList() {
 
 renderContactsList();
 
+async function updateContactStatus(key, newStatus) {
+    const url = `${CONTACTS_URL}${key}/status.json`;
+    await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newStatus)
+    });
+}
 
+async function updateStatusNew() {
+    const contactsData = await loadContactsData();
+    for (let key in contactsData) {
+        if (contactsData[key].status) {
+            console.log(contactsData[key].status);
+        }
+
+
+        if (contactsData[key].status && contactsData[key].status === 'new') {
+            await updateContactStatus(key, 'normal');
+
+
+        }
+    }
+
+}
+
+
+// Edit contact:
+
+function showSingleContactView(color, initials, name, email, phone) {
+    // Cache the DOM elements to avoid querying the DOM multiple times
+    const badgeAndName = document.querySelector('.single-contact-badge-and-name');
+    const profileBadge = document.querySelector('.single-contact-profile-badge');
+    const contactName = document.querySelector('.single-contact-name');
+    const contactLink = document.querySelector('.single-contact-link');
+    const contactInformation = document.querySelector('.single-contact-information');
+    const contactPhone = document.querySelector('.single-contact-phone');
+
+    // Update the DOM elements with the contact details
+    badgeAndName.style.display = 'flex';
+    profileBadge.style.backgroundColor = color;
+    profileBadge.textContent = initials;
+    contactName.textContent = name;
+    contactLink.href = `mailto:${email}`;
+    contactLink.textContent = email;
+    contactInformation.classList.remove('d-none');
+    contactPhone.textContent = phone;
+}
