@@ -31,7 +31,6 @@ async function putEditTask() {
 
     initBoard();
     taskContainer.innerHTML = renderTask(taskDataEdit.id);
-    // closeTask();
 };
 
 async function initDataEditTask(task, id) {
