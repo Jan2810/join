@@ -384,6 +384,7 @@
     cursor: pointer;
     border-bottom: 1px solid #ccc;
     border-radius: 10px;
+    margin-top: 0 !important;
 }
 
 .category-dd-upper-item {
