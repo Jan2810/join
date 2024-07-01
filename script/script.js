@@ -129,15 +129,20 @@ async function putData(url, dataArray = []) {
 };
 
 async function putDataObject(url, data, id) {
-    let response = await fetch(`${url}/${id}.json`, {
-        method: "PUT",
-        headers: {
-            "Content-type": "application/json",
-        },
-        body: JSON.stringify(data)
-    });
-    console.log(JSON.stringify(data));
-    return response;
+    try {
+        const response = await fetch(`${url}${id}.json`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        console.log('Daten erfolgreich aktualisiert:', result);
+        return result;
+    } catch (error) {
+        console.error('Fehler bei putData:', error);
+    }
 };
 
 

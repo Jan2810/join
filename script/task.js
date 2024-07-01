@@ -127,9 +127,9 @@ function updateTodoStatus(id, indexOfTodo) {
 
 
 
-function deleteTask(index) {
+async function deleteTask(index) {
     tasksArray.splice(index, 1);
-    putData(TASKS_URL, tasksArray)
+    await putData(TASKS_URL, tasksArray)
     prepareTask();
     initBoard()
 };
