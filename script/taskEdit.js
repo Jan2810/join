@@ -24,6 +24,8 @@ async function putEditTask() {
     } else {
         formValidationFeedbackOnEdit();
     }
+    initBoard();
+    closeTask();
 };
 
 async function initDataEditTask(task, id) {
