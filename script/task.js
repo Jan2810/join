@@ -42,6 +42,7 @@ function closeTask() {
     initBoard();
     controlContacts = [];
     taskId = "";
+    contactsTaskOpen = false;
 };
 
 function getTaskIndex(id) {
@@ -212,7 +213,7 @@ function returnTaskHTML(task) {
             <h1></h1>
             <img onclick="closeTask()" src="../assets/icons/x-black.png" alt="x">
         </div>
-        <form onsubmit="putEditTask(); return false" class="form-edit">
+        <form onsubmit="return false" class="form-edit">
             <div class="flex-row task-content in-edit-task-cnt">
                 <div class="task-left-cont">
                     <div class="task-width">
@@ -304,7 +305,7 @@ function returnTaskHTML(task) {
                     <div>
                         <h3 class="task-form-font">Subtasks</h3>
                         <div >
-                            <div onkeydown="checkKey(event)" onclick="openSubtasksEdit(); stopProp(event);" id="subtaskInputContEdit" class="task-width task-form-font subtask-input-cont">
+                            <div onkeydown="checkKeyEdit(event)" onclick="openSubtasksEdit(); stopProp(event);" id="subtaskInputContEdit" class="task-width task-form-font subtask-input-cont">
                                 <input id="subtasksInputEdit" class="subtasks-input task-input" type="text"
                                     placeholder="Add new subtask">
                                 <div id="subtaskImgContEdit" class="subtask-img-cont flex-center">
@@ -324,7 +325,7 @@ function returnTaskHTML(task) {
             <div class="task-bottom-line-cont flex-center">
                 <div class="flex-row flex-center task-bottom-line bottom-line-edit">
                     <div class="flex-center task-form-btn-cont">
-                        <button type="submit" id="createButtonEdit" class="task-send-form-btn">
+                        <button onclick="putEditTask(); return false" type="submit" id="createButtonEdit" class="task-send-form-btn">
                             <span>Ok</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
                         </button>
