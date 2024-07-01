@@ -17,44 +17,22 @@ let activeUrgEdit = [
 ];
 
 async function putEditTask() {
+    setInputValuesEdit();
+    console.log(taskDataEdit);
     if (taskDataEdit.title.length >= 1 && taskDataEdit.due_date.length >= 1 && taskDataEdit.category.length >= 1) {
         formValidationFeedbackOffEdit();
-        setInputValuesEdit();
         await putDataObject(TASKS_URL, taskDataEdit, taskId);
     } else {
         formValidationFeedbackOnEdit();
     }
 };
 
-async function setInputValuesEdit() {
-    getUrgencyEdit();
-    taskDataEdit.title = document.getElementById("taskTitleEdit").value;
-    taskDataEdit.description = document.getElementById("taskDescriptionEdit").value;
-    taskDataEdit.due_date = document.getElementById("taskDateEdit").value;
-    taskDataEdit.category = document.getElementById("dropdownCategoryToggleEdit").value;
-};
-
-function getUrgencyEdit() {
-    for (let i = 0; i < activeUrgEdit.length; i++) {
-        const urg = activeUrgEdit[i];
-        if (urg.active === true) {
-            taskData.priority = urg.urgency;
-        }
-    }
-};
-
-
-function handleClickEventEdit(event) {
-    closeContactsEdit(event); 
-    closeCategorysEdit(event); 
-    closeSubtasksEdit(event); 
-    formValidationFeedbackOffEdit();
-};
-
-
 async function initDataEditTask(task, id) {
     taskDataEdit = task;
     taskId = id
+    if (taskDataEdit.assigned_to === "") {
+        taskDataEdit.assigned_to = [];
+    } 
     changeUrgencyEdit(task.priority);
     renderSubtasksEdit();
     let contacts = await loadData(CONTACTS_URL);
@@ -63,8 +41,44 @@ async function initDataEditTask(task, id) {
     renderSignListEdit();
 };
 
+async function setInputValuesEdit() {
+    getAssignedContactsEdit();
+    getUrgencyEdit();
+    taskDataEdit.title = document.getElementById("taskTitleEdit").value;
+    taskDataEdit.description = document.getElementById("taskDescriptionEdit").value;
+    taskDataEdit.due_date = document.getElementById("taskDateEdit").value;
+    taskDataEdit.category = document.getElementById("categoryInputEdit").value;
+};
+
+async function getAssignedContactsEdit() {
+    let contacts = await loadData(CONTACTS_URL);
+    if (contacts.length > 0) {
+        for (let i = 0; i < controlContacts.length; i++) {
+            const assignedContact = controlContacts[i];
+            if (assignedContact === true) {
+                taskDataEdit.assigned_to.push(contacts[i]);
+            }
+        }
+    }
+};
+
+function getUrgencyEdit() {
+    for (let i = 0; i < activeUrgEdit.length; i++) {
+        const urg = activeUrgEdit[i];
+        if (urg.active === true) {
+            taskDataEdit.priority = urg.urgency;
+        }
+    }
+};
+
+function handleClickEventEdit(event) {
+    closeContactsEdit(event);
+    closeCategorysEdit(event);
+    closeSubtasksEdit(event);
+    formValidationFeedbackOffEdit();
+};
+
 function settingControlContacts(contacts, assignedContacts) {
-    console.log(contacts.length);
     if (assignedContacts.length > 0) {
         for (let i = 0; i < contacts.length; i++) {
             const contact = contacts[i];
@@ -77,7 +91,7 @@ function settingControlContacts(contacts, assignedContacts) {
             }
             controlContacts.push(isAssigned);
         }
-    } else if (assignedContacts.length === 0){
+    } else if (assignedContacts.length === 0) {
         for (let i = 0; i < contacts.length; i++) {
             controlContacts.push(false);
         }
@@ -353,7 +367,6 @@ function returnSubtaskImgEdit() {
 };
 
 function addSubtaskEdit() {
-    console.log(taskDataEdit);
     let input = document.getElementById("subtasksInputEdit").value;
     if (taskDataEdit.subtasks === "") {
         taskDataEdit.subtasks = [];
