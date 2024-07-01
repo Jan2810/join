@@ -31,7 +31,7 @@ async function putEditTask() {
 async function initDataEditTask(task, id) {
     taskDataEdit = task;
     taskId = id
-    if (taskDataEdit.assigned_to === "") {
+    if (taskDataEdit.assigned_to === "" || taskDataEdit.assigned_to.length >= 1) {
         taskDataEdit.assigned_to = [];
     }
     changeUrgencyEdit(task.priority);
@@ -55,7 +55,7 @@ async function getAssignedContactsEdit() {
     let contacts = await loadData(CONTACTS_URL);
     taskDataEdit.assigned_to = [];
     if (contacts.length > 0) {
-        for (let i = 0; i < controlContacts.length; i++) {
+        for (let i = 0; i < contacts.length; i++) {
             const assignedContact = controlContacts[i];
             if (assignedContact === true) {
                 taskDataEdit.assigned_to.push(contacts[i]);
