@@ -50,6 +50,7 @@
     height: 24px;
     width: 24px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .task-contact-name {
@@ -62,7 +63,6 @@
 
 .task-close {
     height: 13px;
-    cursor: pointer;
 }
 
 .task-heading {
