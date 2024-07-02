@@ -19,7 +19,7 @@ async function initBoard() {
     await updateAwaitFeedback();
     await updateDone();
     setBackground(2);
-    stopPropagation()
+    // stopPropagation()
 };
 
 async function updateTasksByStatus(status, containerId) {

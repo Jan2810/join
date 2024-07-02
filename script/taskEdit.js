@@ -254,21 +254,20 @@ function changeBgBtnEdit() {
 };
 
 function hoverBtnEdit(boolean, id) {
-    let newId = id + "Edit";
-    if (boolean === true && newId === "img-highEdit") {
-        document.getElementById(newId).src = "../assets/icons-addtask/prio-high-white.png";
-    } else if (boolean === false && newId === "img-highEdit" && activeUrgEdit[0].active === false) {
-        document.getElementById(newId).src = "../assets/icons-addtask/prio-high-color.png";
+    if (boolean === true && id === "img-highEdit") {
+        document.getElementById(id).src = "../assets/icons-addtask/prio-high-white.png";
+    } else if (boolean === false && id === "img-highEdit" && activeUrgEdit[0].active === false) {
+        document.getElementById(id).src = "../assets/icons-addtask/prio-high-color.png";
     }
-    if (boolean === true && newId === "img-midEdit") {
-        document.getElementById(newId).src = "../assets/icons-addtask/prio-mid-white.png";
-    } else if (boolean === false && newId === "img-midEdit" && activeUrgEdit[1].active === false) {
-        document.getElementById(newId).src = "../assets/icons-addtask/prio-mid-color.png";
+    if (boolean === true && id === "img-midEdit") {
+        document.getElementById(id).src = "../assets/icons-addtask/prio-mid-white.png";
+    } else if (boolean === false && id === "img-midEdit" && activeUrgEdit[1].active === false) {
+        document.getElementById(id).src = "../assets/icons-addtask/prio-mid-color.png";
     }
-    if (boolean === true && newId === "img-lowEdit") {
-        document.getElementById(newId).src = "../assets/icons-addtask/prio-low-white.png";
-    } else if (boolean === false && newId === "img-lowEdit" && activeUrgEdit[2].active === false) {
-        document.getElementById(newId).src = "../assets/icons-addtask/prio-low-color.png";
+    if (boolean === true && id === "img-lowEdit") {
+        document.getElementById(id).src = "../assets/icons-addtask/prio-low-white.png";
+    } else if (boolean === false && id === "img-lowEdit" && activeUrgEdit[2].active === false) {
+        document.getElementById(id).src = "../assets/icons-addtask/prio-low-color.png";
     }
 };
 

@@ -55,23 +55,23 @@ function returnSubtaskImgEdit() {
 
 function highlightButtonEdit(urg) {
     if (urg === "high") {
-        document.getElementById("high").classList.add("high-focus");
-        document.getElementById("mid").classList.remove("mid-focus");
-        document.getElementById("low").classList.remove("low-focus");
+        document.getElementById("highEdit").classList.add("high-focus");
+        document.getElementById("midEdit").classList.remove("mid-focus");
+        document.getElementById("lowEdit").classList.remove("low-focus");
         document.getElementById("img-highEdit").src = `../assets/icons-addtask/prio-high-white.png`;
         document.getElementById("img-midEdit").src = `../assets/icons-addtask/prio-mid-color.png`;
         document.getElementById("img-lowEdit").src = `../assets/icons-addtask/prio-low-color.png`;
     } else if (urg === "mid") {
-        document.getElementById("high").classList.remove("high-focus");
-        document.getElementById("mid").classList.add("mid-focus");
-        document.getElementById("low").classList.remove("low-focus");
+        document.getElementById("highEdit").classList.remove("high-focus");
+        document.getElementById("midEdit").classList.add("mid-focus");
+        document.getElementById("lowEdit").classList.remove("low-focus");
         document.getElementById("img-highEdit").src = `../assets/icons-addtask/prio-high-color.png`;
         document.getElementById("img-midEdit").src = `../assets/icons-addtask/prio-mid-white.png`;
         document.getElementById("img-lowEdit").src = `../assets/icons-addtask/prio-low-color.png`;
     } else if (urg === "low") {
-        document.getElementById("high").classList.remove("high-focus");
-        document.getElementById("mid").classList.remove("mid-focus");
-        document.getElementById("low").classList.add("low-focus");
+        document.getElementById("highEdit").classList.remove("high-focus");
+        document.getElementById("midEdit").classList.remove("mid-focus");
+        document.getElementById("lowEdit").classList.add("low-focus");
         document.getElementById("img-highEdit").src = `../assets/icons-addtask/prio-high-color.png`;
         document.getElementById("img-midEdit").src = `../assets/icons-addtask/prio-mid-color.png`;
         document.getElementById("img-lowEdit").src = `../assets/icons-addtask/prio-low-white.png`;

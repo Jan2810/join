@@ -221,6 +221,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     gap: 8px;
     width: 100%;
     width: 136px;
@@ -229,7 +230,6 @@
     border-radius: 10px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
     transition: all 100ms ease-in-out;
-    ;
 }
 
 #high:hover {

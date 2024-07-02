@@ -299,6 +299,12 @@ function succesfullAdded() {
     document.getElementById("succesImg").style.transform = "translateY(0px)";
 };
 
+function succesfullAddedClose() {
+    document.getElementById("succesImgCnt").style.display = "none";
+    void document.getElementById("succesImg").offsetWidth;
+    document.getElementById("succesImg").style.transform = "translateY(500px)";
+}
+
 async function addNewTask() {
     document.getElementById("createButton").onclick = "";
     document.getElementById("createButton").disabled = true;
@@ -347,9 +353,12 @@ async function setTaskData(title, due_date, description, category) {
 };
 
 function getLocationAndMove() {
-    if (window.location = "../html/board.html") {
+    let location = window.location;
+    if (location.pathname == "/html/board.html") {
         closeNewTaskInBoard();
-    } else {
+        succesfullAddedClose();
+        initBoard()
+    } else if (location.pathname == "/html/addtask.html") {
         window.location = "../html/board.html";
     }
 };

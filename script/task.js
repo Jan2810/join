@@ -269,17 +269,17 @@ function returnTaskHTML(task) {
                         <h3 class="task-form-font">Prio</h3>
                         <div class="flex-row task-btn-cont">
                             <div onclick="changeUrgencyEdit('high')" onmouseover="hoverBtnEdit(true, 'img-high')"
-                                onmouseout="hoverBtnEdit(false, 'img-high')" class="task-urgent-btn bg-white" id="high">
+                                onmouseout="hoverBtnEdit(false, 'img-high')" class="task-urgent-btn bg-white" id="highEdit">
                                 <span>Urgent</span>
                                 <img id="img-highEdit" src="../assets/icons-addtask/prio-high-color.png" alt="">
                             </div>
                             <div onclick="changeUrgencyEdit('mid')" onmouseover="hoverBtnEdit(true, 'img-mid')"
-                                onmouseout="hoverBtnEdit(false, 'img-mid')" class="task-urgent-btn bg-white" id="mid">
+                                onmouseout="hoverBtnEdit(false, 'img-mid')" class="task-urgent-btn bg-white" id="midEdit">
                                 <span>Medium</span>
                                 <img id="img-midEdit" src="../assets/icons-addtask/prio-mid-white.png" alt="">
                             </div>
                             <div onclick="changeUrgencyEdit('low')" onmouseover="hoverBtnEdit(true, 'img-low')"
-                                onmouseout="hoverBtnEdit(false, 'img-low')" class="task-urgent-btn bg-white" id="low">
+                                onmouseout="hoverBtnEdit(false, 'img-low')" class="task-urgent-btn bg-white" id="lowEdit">
                                 <span>Low</span>
                                 <img id="img-lowEdit" src="../assets/icons-addtask/prio-low-color.png" alt="">
                             </div>
