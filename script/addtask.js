@@ -406,7 +406,7 @@ async function getAssignedContacts(contacts) {
     if (checkedContacts.length > 0) {
         for (let i = 0; i < checkedContacts.length; i++) {
             const assignedContact = checkedContacts[i];
-            if (assignedContact == true) {
+            if (assignedContact) {
                 taskData.assigned_to.push(contacts[i]);
             }
         }
