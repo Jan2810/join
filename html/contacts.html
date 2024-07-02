@@ -84,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="single-contact-badge-and-name">
+            <div class="single-contact-badge-and-name d-none">
                 <div class="single-contact-profile-badge flex-center">TW</div>
                 <div class="contact-name-edit-delete">
                     <div class="single-contact-name">Tatjana Wolf</div>
@@ -128,11 +128,10 @@
 
     <!-- Edit contact overlay -->
 
-    <div class="edit-contacts-overlay-bg hide-edit-contact-overlay flex-center" onclick="closeEditContactOverlay()"
-        id="edit-contacts-overlay-bg">
+    <div class="edit-contacts-overlay-bg hide-edit-contact-overlay edit-contacts-overlay-bg-transition flex-center"
+        onclick="closeEditContactOverlay()" id="edit-contacts-overlay-bg">
 
-        <div class="overlay-edit-contact hide-edit-contact-overlay" onclick="doNotClose(event)"
-            id="overlay-edit-contact">
+        <div class="overlay-edit-contact" onclick="doNotClose(event)" id="overlay-edit-contact">
             <div class="close-svg" onclick="closeEditContactOverlay()">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -189,10 +188,10 @@
 
     <!-- Add contact overlay -->
 
-    <div class="add-contacts-overlay-bg hide-add-contact-overlay flex-center" onclick="closeAddContactOverlay()"
-        id="add-contacts-overlay-bg">
+    <div class="add-contacts-overlay-bg hide-add-contact-overlay add-contacts-overlay-bg-transition flex-center"
+        onclick="closeAddContactOverlay()" id="add-contacts-overlay-bg">
 
-        <div class="overlay-add-contact hide-add-contact-overlay" onclick="doNotClose(event)" id="overlay-add-contact">
+        <div class="overlay-add-contact" onclick="doNotClose(event)" id="overlay-add-contact">
             <div class="close-svg" onclick="closeAddContactOverlay()"><svg width="14" height="14" viewBox="0 0 14 14"
                     fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path

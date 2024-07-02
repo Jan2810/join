@@ -11,6 +11,11 @@
     z-index: 10;
 }
 
+.edit-contacts-overlay-bg-transition, 
+.add-contacts-overlay-bg-transition {
+    transition: transform 300ms ease-out;
+}
+
 .contact-created-popup-bg {
     position: fixed;
     top: 0;
@@ -37,6 +42,7 @@
     width: 100%;
     border-radius: 12px;
     z-index: 15;
+    position: relative;
 }
 
 .overlay-add-contact {
@@ -48,19 +54,19 @@
 
 .hide-edit-contact-overlay,
 .hide-add-contact-overlay {
-    /* transition: transform 300ms ease-out;
-    transform: translateY(100%); */
-    animation: move-out-bottom 300ms ease-out forwards;
+    /* transition: transform 300ms ease-out; */
+    transform: translateY(100%);
+    /* animation: move-out-bottom 300ms ease-out forwards; */
 }
 
-.show-edit-contact-overlay,
+/* .show-edit-contact-overlay,
 .show-add-contact-overlay {
-    /* transition: transform 300ms ease-out;
+    transition: transform 300ms ease-out;
     transform: translateY(0); */
-    animation: move-in-bottom 300ms ease-out forwards;
-}
+    /* animation: move-in-bottom 300ms ease-out forwards; */
+/* } */
 
-@keyframes move-in-bottom {
+/* @keyframes move-in-bottom {
   from {
     transform: translateY(200%);
   }
@@ -75,8 +81,8 @@
   }
   to {
     transform: translateY(200%);
-  }
-}
+  } 
+}*/
 
 .add-contact-top {
     height: 352px;
@@ -349,16 +355,15 @@
     
 @media only screen and (min-width: 800px) {
     .contact-created-popup {
-    transition: transform 200ms ease-in-out;
-    transform: translateX(0%); 
-    width: 326px;  
-}
+        transition: transform 200ms ease-in-out;
+        transform: translateX(0%); 
+        width: 326px;  
+    }
 
-.hide-contact-created-popup {
-    transition: transform 200ms ease-in-out;
-    transform: translateX(100%);
-}
-
+    .hide-contact-created-popup {
+        transition: transform 200ms ease-in-out;
+        transform: translateX(100%);
+    }
 
     .edit-contact-delete-button:hover {
         color: #29ABE2;
@@ -382,27 +387,31 @@
         border-color: #091931;
     }
 
-    /* .hide-edit-contact-overlay {
-        transition: transform 200ms ease-in-out;
+     .hide-edit-contact-overlay {
+      /*  transition: transform 200ms ease-in-out; */
         transform: translateX(100%);
     }
 
-    .show-edit-contact-overlay {
+    /* .show-edit-contact-overlay {
         transition: transform 200ms ease-in-out;
         transform: translateX(0);
-    }
+    } */
 
     .hide-add-contact-overlay {
-        transition: transform 300ms ease-out;
+        /* transition: transform 300ms ease-out; */
         transform: translateX(100%);
     }
 
-    .show-add-contact-overlay {
+    /* .show-add-contact-overlay {
         transition: transform 300ms ease-out;
         transform: translateX(0);
     } */
 
-    .hide-edit-contact-overlay {
+    .edit-contacts-overlay-bg-transition {
+        transition: transform 200ms ease-in-out;
+    } 
+
+    /* .hide-edit-contact-overlay {
         animation: move-out-right 200ms ease-in-out forwards;
     }
 
@@ -434,7 +443,7 @@
       to {
         transform: translateX(200%);
       }
-    }
+    } */
 
     .overlay-add-contact,
     .overlay-edit-contact {
@@ -510,7 +519,5 @@
         max-width: 422px;
         gap: 32px;
         margin: 137px 40px 72px 0;
-
     }
-
 }

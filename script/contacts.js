@@ -40,7 +40,13 @@ function getRandomContactColor() {
 
 function displayContactCreatedPopup(event) {
     event.preventDefault();
+    addContactsOverlayBg.classList.remove('add-contacts-overlay-bg-transition');
+
     closeAddContactOverlay();
+
+    setTimeout(() => {
+        addContactsOverlayBg.classList.add('add-contacts-overlay-bg-transition');
+    }, 10);
 
     if (window.innerWidth >= 800) {
 
@@ -217,7 +223,7 @@ async function updateStatusNew() {
 
 // Edit contact:
 
-function showSingleContactView(color, initials, name, email, phone) {
+function showSingleContactView(selectedContact, color, initials, name, email, phone) {
     // Cache the DOM elements to avoid querying the DOM multiple times
     const badgeAndName = document.querySelector('.single-contact-badge-and-name');
     const profileBadge = document.querySelector('.single-contact-profile-badge');
@@ -235,4 +241,22 @@ function showSingleContactView(color, initials, name, email, phone) {
     contactLink.textContent = email;
     contactInformation.classList.remove('d-none');
     contactPhone.textContent = phone;
+
+    removeViewedContactClass();
+    selectedContact.classList.add('viewed-contact');
+
+    if (window.innerWidth < 1120) {
+        showSingleContactOnly();
+
+    }
+
 }
+
+
+// addContactsOverlayBg.classList.remove('add-contacts-overlay-bg-transition');
+
+// closeAddContactOverlay();
+
+// setTimeout(() => {
+//     addContactsOverlayBg.classList.add('add-contacts-overlay-bg-transition');
+// }, 10);
