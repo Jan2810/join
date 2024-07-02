@@ -160,9 +160,6 @@ function renderTask(id) {
     console.log("Aktueller Task als Objekt:");
     console.log(task);
     renderTaskOwners(task);
-
-    // Der Hintergrund für die task.category ist noch nicht dynamisch
-
     return /*html*/`<div class="task-eyebrow-container">
                 <div class="board-ticket-gategory ${returnCategoryBackground(task.category)}">${task.category}</div>
                 <div onclick="closeTask()" class="task-close-container flex-center"><img src="../assets/icons/close.svg" alt=""
