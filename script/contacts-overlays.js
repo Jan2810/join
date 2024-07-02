@@ -92,7 +92,6 @@ function removeViewedContactClass() {
  * Adds 'd-none' if window width is less than 1120px, unless manually removed.
  */
 function handleResize() {
-    console.log('Resize working');
     if (window.innerWidth >= 1120) {
         contactContainer.classList.remove('d-none');
         contactsContainer.classList.remove('d-none');
