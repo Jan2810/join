@@ -79,8 +79,8 @@ function renderTodos(task) {
             todo.status == "checked" ? strikeClass = "line-through" : strikeClass = "";
             taskTodoHtml += /*html*/ `
             <div class="flex">
-            <div class="task-subtask-container flex">
-                <input id="todo${i}" type="checkbox" ${todo.status} onclick="updateTodoStatus('${task.id}',${i})">
+            <div class="task-subtask-container flex" onclick="updateTodoStatus('${task.id}',${i})">
+                <img src="../assets/icons/checkbox_${todo.status}.svg" id="todo${i}" >
                 <div id="todovalue${i}" class="task-todo-value ${strikeClass}">${todo.text}</div>
             </div>
         </div>`
@@ -92,38 +92,44 @@ function renderTodos(task) {
     else { return "" }
 };
 
-function strikeThroughTodo(indexOfTodo) {
-    let todoInDom = document.getElementById(`todo${indexOfTodo}`);
-    let todoValue = document.getElementById(`todovalue${indexOfTodo}`);
-    if (todoInDom.checked) {
+// function strikeThroughTodo(indexOfTodo) {
+//     let todoInDom = document.getElementById(`todo${indexOfTodo}`);
+//     let todoValue = document.getElementById(`todovalue${indexOfTodo}`);
+//     if (todoInDom.checked) {
 
-        todoValue.classList.add("line-through");
-    }
-    else {
-        todoValue.classList.remove("line-through")
-    }
-};
+//         todoValue.classList.add("line-through");
+//     }
+//     else {
+//         todoValue.classList.remove("line-through")
+//     }
+// };
 
 function updateTodoStatus(id, indexOfTodo) {
+    let todoValue = document.getElementById(`todovalue${indexOfTodo}`);
+    console.log("updateTodoStatus");
     let taskIndex = (getTaskIndex(id));
     let task = tasksArray[taskIndex];
     let todo = task.subtasks[indexOfTodo];
     let todoInDom = document.getElementById(`todo${indexOfTodo}`);
-    todoInDom.addEventListener("change", () => {
-        if (todo.status == "checked") {
-            todo.status = "unchecked";
-
-            putData(TASKS_URL, tasksArray);
-        }
-        else {
-            todo.status = "checked";
-            // todoValue.classList.add("line-through")
-        }
+    // todoInDom.addEventListener("click", () => {
+    if (todo.status == "checked") {
+        todo.status = "unchecked";
+        todoInDom.setAttribute("src", "../assets/icons/checkbox_unchecked.svg");
+        todoValue.classList.remove("line-through");
         putData(TASKS_URL, tasksArray);
-
     }
-    )
-    strikeThroughTodo(indexOfTodo);
+    else {
+        todo.status = "checked";
+        todoInDom.setAttribute("src", "../assets/icons/checkbox_checked.svg")
+        // todoValue.classList.add("line-through")
+        todoValue.classList.add("line-through");
+       
+    }
+    putData(TASKS_URL, tasksArray);
+
+    // }
+    // )
+    // strikeThroughTodo(indexOfTodo);
 };
 
 
