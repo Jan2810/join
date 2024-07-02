@@ -755,7 +755,7 @@
 
     .task-body {
         top: 100px;
-        
+        padding: 0px 20px;
     }
 
     .task-content {
