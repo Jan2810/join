@@ -35,6 +35,15 @@ function highlightButton(urg) {
     }
 };
 
+function showMaxContacts() {
+    document.getElementById("maxContacts").style.display = "";
+    displayContacts("close");
+};
+
+function hideMaxContacts() {
+    document.getElementById("maxContacts").style.display = "none";
+};
+
 function hideWarning() {
     document.getElementById("subtasksInput").value = "";
     document.getElementById("subtaskInputCont").style.borderColor = "";

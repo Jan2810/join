@@ -53,6 +53,15 @@ function returnSubtaskImgEdit() {
     `;
 };
 
+function showMaxContactsEdit() {
+    document.getElementById("maxContactsEdit").style.display = "";
+    displayContactsEdit("close");
+};
+
+function hideMaxContactsEdit() {
+    document.getElementById("maxContactsEdit").style.display = "none";
+};
+
 function highlightButtonEdit(urg) {
     if (urg === "high") {
         document.getElementById("highEdit").classList.add("high-focus");
@@ -77,6 +86,19 @@ function highlightButtonEdit(urg) {
         document.getElementById("img-lowEdit").src = `../assets/icons-addtask/prio-low-white.png`;
     }
 };
+
+function hideWarningEdit() {
+    document.getElementById("subtasksInputEdit").value = "";
+    document.getElementById("subtaskInputContEdit").style.borderColor = "";
+    document.getElementById("requiredSubtextEdit").style.display = "none";
+};
+
+function showWarningEdit() {
+    document.getElementById("subtaskInputContEdit").style.borderColor = "red";
+    document.getElementById("requiredSubtextEdit").style.display = "block";
+    document.getElementById("subtasksInputEdit").focus();
+};
+
 
 function formValidationFeedbackOnEdit() {
     document.getElementById("taskTitleEdit").style.borderColor = "red";

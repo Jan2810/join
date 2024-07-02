@@ -42,9 +42,10 @@ async function initAddTask() {
 };
 
 function handleClickEvent(event) {
-    closeContacts(event); 
-    closeCategorys(event); 
-    closeSubtasks(event); 
+    closeContacts(event);
+    closeCategorys(event);
+    closeSubtasks(event);
+    hideMaxContacts(event)
     formValidationFeedbackOff();
 }
 
@@ -112,7 +113,7 @@ async function openContacts() {
 };
 
 function closeContacts(event) {
-    if (contactsTaskOpen === true) {
+    if (contactsTaskOpen === true && event) {
         event.stopPropagation();
         displayContacts("close");
         contactsTaskOpen = false;
@@ -140,13 +141,18 @@ function checkAssignments(i) {
 };
 
 async function assignContact(i) {
-    if (checkedContacts[i] === true) {
-        checkedContacts[i] = false;
-    } else if (checkedContacts[i] === false) {
-        checkedContacts[i] = true;
+    let trueContacts = checkedContacts.filter(checkedContact => checkedContact === true);
+    if (trueContacts.length < 12) {
+        if (checkedContacts[i] === true) {
+            checkedContacts[i] = false;
+        } else if (checkedContacts[i] === false) {
+            checkedContacts[i] = true;
+        }
+        renderSignList();
+        checkAssignments(i);
+    } else {
+        showMaxContacts();
     }
-    renderSignList();
-    checkAssignments(i);
 };
 
 async function renderSignList() {
@@ -276,7 +282,7 @@ async function getAssignedContacts(contacts) {
             const assignedContact = checkedContacts[i];
             if (assignedContact == true) {
                 if (taskData.assigned_to.length <= 11)
-                taskData.assigned_to.push(contacts[i]);
+                    taskData.assigned_to.push(contacts[i]);
             }
         }
     } else {

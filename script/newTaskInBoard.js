@@ -55,7 +55,7 @@ function returnAddTaskInBoardHTML() {
                 <div class="task-left-cont">
                     <div class="task-width">
                         <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
-                        <input id="taskTitle" class="task-width task-form-font task-input" type="text" placeholder="Enter a title"
+                        <input id="taskTitle" class="task-width task-form-font task-input" type="text" placeholder="Enter a title" maxlength="35"
                             required>
                             <span id="requiredTitle" class="required-text" style="display: none;">This field is required</span>
                     </div>
@@ -71,6 +71,7 @@ function returnAddTaskInBoardHTML() {
                                 <span id="selectedItem">Select contacts to assign</span>
                                 <img src="../assets/icons/dropdown.png">
                             </div>
+                            <span id="maxContacts" class="required-text" style="display: none;">All assignments have been allocated</span>
                             <div class="dropdown-menu" id="dropdownMenuContainer" style="display: none;">
                                 <div onclick="closeContacts(event)" class="upper-dropdown-item bg-white task-form-font">
                                     <span>Select contacts to assign</span>

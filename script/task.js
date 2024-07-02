@@ -213,7 +213,7 @@ function renderEdit(taskIndex, id) {
     console.log(taskIndex);
     console.log("Aktueller Task als Objekt:");
     console.log(task);
-    taskContainer.innerHTML = returnTaskHTML(task);
+    taskContainer.innerHTML = returnTaskEditHTML(task);
     initDataEditTask(task, id);
 };
 
@@ -223,7 +223,7 @@ function renderEdit(taskIndex, id) {
 //     }
 // }
 
-function returnTaskHTML(task) {
+function returnTaskEditHTML(task) {
     return `
     <div onclick="handleClickEventEdit(event)" onkeydown="formValidationFeedbackOffEdit()">
         <div class="task-h1 flex-row task-board-h1">
@@ -232,10 +232,10 @@ function returnTaskHTML(task) {
         </div>
         <form onsubmit="return false" class="form-edit">
             <div class="flex-row task-content in-edit-task-cnt">
-                <div class="task-left-cont">
+                <div class="task-left-cont task-left-cont-edit">
                     <div class="task-width">
                         <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
-                        <input value="${task.title}" id="taskTitleEdit" class="task-width task-form-font task-input" type="text" placeholder="Enter a title"
+                        <input value="${task.title}" id="taskTitleEdit" class="task-width task-form-font task-input" type="text" placeholder="Enter a title" maxlength="35"
                             required>
                             <span id="requiredTitleEdit" class="required-text" style="display: none;">This field is required</span>
                     </div>
@@ -251,6 +251,7 @@ function returnTaskHTML(task) {
                                 <span id="selectedItemEdit">Select contacts to assign</span>
                                 <img src="../assets/icons/dropdown.png">
                             </div>
+                            <span id="maxContactsEdit" class="required-text" style="display: none;">All assignments have been allocated</span>
                             <div class="dropdown-menu" id="dropdownMenuContainerEdit" style="display: none;">
                                 <div onclick="closeContactsEdit(event)" class="upper-dropdown-item bg-white task-form-font">
                                     <span>Select contacts to assign</span>
@@ -284,17 +285,17 @@ function returnTaskHTML(task) {
                         <div class="flex-row task-btn-cont">
                             <div onclick="changeUrgencyEdit('high')" onmouseover="hoverBtnEdit(true, 'img-high')"
                                 onmouseout="hoverBtnEdit(false, 'img-high')" class="task-urgent-btn bg-white" id="highEdit">
-                                <span>Urgent</span>
+                                <span class="d-none-low">Urgent</span>
                                 <img id="img-highEdit" src="../assets/icons-addtask/prio-high-color.png" alt="">
                             </div>
                             <div onclick="changeUrgencyEdit('mid')" onmouseover="hoverBtnEdit(true, 'img-mid')"
                                 onmouseout="hoverBtnEdit(false, 'img-mid')" class="task-urgent-btn bg-white" id="midEdit">
-                                <span>Medium</span>
+                                <span class="d-none-low">Medium</span>
                                 <img id="img-midEdit" src="../assets/icons-addtask/prio-mid-white.png" alt="">
                             </div>
                             <div onclick="changeUrgencyEdit('low')" onmouseover="hoverBtnEdit(true, 'img-low')"
                                 onmouseout="hoverBtnEdit(false, 'img-low')" class="task-urgent-btn bg-white" id="lowEdit">
-                                <span>Low</span>
+                                <span class="d-none-low">Low</span>
                                 <img id="img-lowEdit" src="../assets/icons-addtask/prio-low-color.png" alt="">
                             </div>
                         </div>
@@ -319,9 +320,9 @@ function returnTaskHTML(task) {
                             <span id="requiredCategorysEdit" class="required-text" style="display: none;">This field is required</span>
                         </div>
                     </div>
-                    <div>
+                    <div class="task-subtask-edit">
                         <h3 class="task-form-font">Subtasks</h3>
-                        <div >
+                        <div>
                             <div onkeydown="checkKeyEdit(event)" onclick="openSubtasksEdit(); stopProp(event);" id="subtaskInputContEdit" class="task-width task-form-font subtask-input-cont">
                                 <input id="subtasksInputEdit" class="subtasks-input task-input" type="text"
                                     placeholder="Add new subtask">
@@ -339,10 +340,10 @@ function returnTaskHTML(task) {
                     </div>
                 </div>
             </div>
-            <div class="task-bottom-line-cont flex-center">
+            <div class="task-bottom-line-cont-edit flex-center">
                 <div class="flex-row flex-center task-bottom-line bottom-line-edit">
                     <div class="flex-center task-form-btn-cont">
-                        <button onclick="putEditTask(); return false" type="submit" id="createButtonEdit" class="task-send-form-btn">
+                        <button onclick="putEditTask(); return false" type="submit" id="createButtonEdit" class="task-send-form-btn task-send-form-btn-edit">
                             <span>Ok</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
                         </button>

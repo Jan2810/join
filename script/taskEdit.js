@@ -154,14 +154,18 @@ function checkAssignmentsEdit(i) {
 };
 
 async function assignContactEdit(i) {
-    if (controlContacts[i] === true) {
-        controlContacts[i] = false;
-    } else if (controlContacts[i] === false) {
-        controlContacts[i] = true;
-    }
-    console.log(controlContacts);
+    let trueContacts = controlContacts.filter(controlContact => controlContact === true);
+    if (trueContacts.length < 12) {
+        if (controlContacts[i] === true) {
+            controlContacts[i] = false;
+        } else if (controlContacts[i] === false) {
+            controlContacts[i] = true;
+        }
     renderSignListEdit();
     checkAssignmentsEdit(i);
+    } else {
+        showMaxContactsEdit();
+    }
 };
 
 async function renderSignListEdit() {
@@ -358,18 +362,6 @@ function renderSubtasksEdit() {
         const subtask = taskDataEdit.subtasks[i];
         container.innerHTML += returnSubtasksListEdit(subtask, i);
     }
-};
-
-function hideWarningEdit() {
-    document.getElementById("subtasksInputEdit").value = "";
-    document.getElementById("subtaskInputContEdit").style.borderColor = "";
-    document.getElementById("requiredSubtextEdit").style.display = "none";
-};
-
-function showWarningEdit() {
-    document.getElementById("subtaskInputContEdit").style.borderColor = "red";
-    document.getElementById("requiredSubtextEdit").style.display = "block";
-    document.getElementById("subtasksInputEdit").focus();
 };
 
 function editSubtaskEdit(i) {
