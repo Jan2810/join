@@ -100,7 +100,7 @@ async function postData(url, data = {}) {
 };
 
 async function putData(url, dataArray = []) {
-    console.log("hello");
+    console.log(dataArray);
     let data = dataArray.reduce((acc, item) => {
         let { id, ...rest } = item;
         acc[id] = rest;
@@ -132,6 +132,7 @@ async function putDataObject(url, data, id) {
         console.error('Fehler bei putData:', error);
     }
 };
+
 
 async function deleteData(url, id) {
     let response = await fetch(`${url}/${id}.json`, {
