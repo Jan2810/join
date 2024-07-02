@@ -28,7 +28,7 @@ async function putEditTask() {
     } else {
         formValidationFeedbackOnEdit();
     }
-
+    controlContacts = [];
     initBoard();
     taskContainer.innerHTML = renderTask(taskDataEdit.id);
 };
@@ -80,6 +80,13 @@ function handleClickEventEdit(event) {
     closeCategorysEdit(event);
     closeSubtasksEdit(event);
     formValidationFeedbackOffEdit();
+};
+
+function checkKeyEdit(ev) {
+    if (ev.key === 'Enter') {
+        ev.preventDefault();
+        addSubtaskEdit();
+    }
 };
 
 function settingControlContacts(contacts, assignedContacts) {
@@ -152,6 +159,7 @@ async function assignContactEdit(i) {
     } else if (controlContacts[i] === false) {
         controlContacts[i] = true;
     }
+    console.log(controlContacts);
     renderSignListEdit();
     checkAssignmentsEdit(i);
 };

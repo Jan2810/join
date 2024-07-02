@@ -222,10 +222,10 @@ function saveSubtask(i) {
     renderSubtasks();
 };
 
-function checkKeyEdit(ev) {
+function checkKey(ev) {
     if (ev.key === 'Enter') {
         ev.preventDefault();
-        addSubtaskEdit();
+        addSubtask();
     }
 };
 

@@ -335,6 +335,7 @@
 
 .signParentContainer {
     margin: 10px 0px;
+    height: 40px;
 }
 
 .dropdown-menu::-webkit-scrollbar {
