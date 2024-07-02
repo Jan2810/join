@@ -224,15 +224,6 @@ async function updateStatusNew() {
 // Edit contact:
 
 function showSingleContactView(selectedContact, color, initials, name, email, phone) {
-    // Cache the DOM elements to avoid querying the DOM multiple times
-    const badgeAndName = document.querySelector('.single-contact-badge-and-name');
-    const profileBadge = document.querySelector('.single-contact-profile-badge');
-    const contactName = document.querySelector('.single-contact-name');
-    const contactLink = document.querySelector('.single-contact-link');
-    const contactInformation = document.querySelector('.single-contact-information');
-    const contactPhone = document.querySelector('.single-contact-phone');
-
-    // Update the DOM elements with the contact details
     badgeAndName.style.display = 'flex';
     profileBadge.style.backgroundColor = color;
     profileBadge.textContent = initials;
@@ -241,22 +232,75 @@ function showSingleContactView(selectedContact, color, initials, name, email, ph
     contactLink.textContent = email;
     contactInformation.classList.remove('d-none');
     contactPhone.textContent = phone;
-
-    removeViewedContactClass();
-    selectedContact.classList.add('viewed-contact');
-
-    if (window.innerWidth < 1120) {
-        showSingleContactOnly();
-
-    }
-
+    nameEmailPhoneForEdit = [color, initials, name, email, phone];
+    highlightContact(selectedContact);
 }
 
+function highlightContact(selectedContact) {
+    removeViewedContactClass();
+    selectedContact.classList.add('viewed-contact');
+    if (window.innerWidth < 1120) {
+        showSingleContactOnly();
+    }
+}
 
-// addContactsOverlayBg.classList.remove('add-contacts-overlay-bg-transition');
+function displayNameEmailPhoneForEdit() {
+    editName.value = nameEmailPhoneForEdit[2] || '';
+    editEmail.value = nameEmailPhoneForEdit[3] || '';
+    editPhone.value = nameEmailPhoneForEdit[4] || '';
+    editBadge.textContent = nameEmailPhoneForEdit[1] || 'GN';
+    editBadge.style.backgroundColor = nameEmailPhoneForEdit[0] || '#fff';
+}
 
-// closeAddContactOverlay();
+async function saveEditedContact(event) {
+    event.preventDefault();
+    let contact = [editEmail.value, editName.value, editPhone.value, editBadge.textContent, editBadge.style.backgroundColor]
+    console.log(contact);
+    if (editName.value.trim() && editEmail.value.trim() && editPhone.value.trim()) {
+        let contacts = await loadContactsData();
+        for (let key in contacts) {
+            if (contacts[key].name === nameEmailPhoneForEdit[2]) {
+                console.log(contacts[key].name, nameEmailPhoneForEdit[2]);
+                console.log(key);
+                updateContactInFirebase(key, contact);
+                break;
+            }
+        }
+    }
+    closeEditContactOverlayAfterEdit();
+    updateSingleContactViewAfterEdit(contact);
+}
 
-// setTimeout(() => {
-//     addContactsOverlayBg.classList.add('add-contacts-overlay-bg-transition');
-// }, 10);
+async function updateContactInFirebase(key, contact) {
+    const url = `${CONTACTS_URL}${key}/.json`;
+    await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "color": contact[4],
+            "email": contact[0],
+            "initials": contact[3],
+            "name": contact[1],
+            "phone": contact[2],
+            "status": 'normal'
+        })
+    });
+}
+
+function closeEditContactOverlayAfterEdit() {
+    editContactsOverlayBg.classList.remove('edit-contacts-overlay-bg-transition');
+    closeEditContactOverlay();
+    setTimeout(() => {
+        editContactsOverlayBg.classList.add('edit-contacts-overlay-bg-transition');
+    }, 10);
+}
+
+function updateSingleContactViewAfterEdit(contact) {
+    contactName.textContent = contact[1];
+    contactLink.href = `mailto:${contact[0]}`;
+    contactLink.textContent = contact[0];
+    contactPhone.textContent = contact[2];
+
+}

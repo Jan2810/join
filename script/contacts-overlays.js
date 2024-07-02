@@ -10,6 +10,13 @@ let editDeletePopup = document.getElementById('edit-delete-popup');
 let singleContactTripleDots = document.getElementById('single-contact-triple-dots');
 let addPersonIcon = document.getElementById('add-person-icon');
 let manuallyRemoved = false;
+let nameEmailPhoneForEdit = [];
+
+let editName = document.getElementById('add-contact-form-name');
+let editEmail = document.getElementById('add-contact-form-email');
+let editPhone = document.getElementById('add-contact-form-phone');
+let editBadge = document.getElementById('edit-contact-profile-badge');
+
 const badgeAndName = document.querySelector('.single-contact-badge-and-name');
 const profileBadge = document.querySelector('.single-contact-profile-badge');
 const contactName = document.querySelector('.single-contact-name');
@@ -21,12 +28,13 @@ const contactPhone = document.querySelector('.single-contact-phone');
 
 function openEditContactOverlay() {
     editContactsOverlayBg.classList.remove('hide-edit-contact-overlay');
-    editContactOverlay.classList.remove('hide-edit-contact-overlay');
-    editContactsOverlayBg.classList.add('show-edit-contact-overlay');
-    editContactOverlay.classList.add('show-edit-contact-overlay');
+    // editContactOverlay.classList.remove('hide-edit-contact-overlay');
+    // editContactsOverlayBg.classList.add('show-edit-contact-overlay');
+    // editContactOverlay.classList.add('show-edit-contact-overlay');
     if (window.innerWidth < 800) {
         hideEditDeletePopup();
     }
+    displayNameEmailPhoneForEdit();
 }
 
 function hideEditDeletePopup() {
@@ -133,8 +141,11 @@ function displayEditDeletePopup() {
     editDeletePopup.classList.remove('hide-edit-delete-popup');
     setTimeout(function () {
         singleContactTripleDots.classList.add('d-none');
-        addPersonIcon.classList.add('d-none');
+        if (addPersonIcon) {
+            addPersonIcon.classList.add('d-none');
+        }
     }, 100);
+
 }
 
 function doNotClose(event) {
@@ -146,7 +157,9 @@ function hideEditDeletePopup() {
         editDeletePopup.classList.add('hide-edit-delete-popup');
         setTimeout(function () {
             singleContactTripleDots.classList.remove('d-none');
-            addPersonIcon.classList.remove('d-none');
+            if (addPersonIcon) {
+                addPersonIcon.classList.remove('d-none');
+            }
         }, 125);
     }
 

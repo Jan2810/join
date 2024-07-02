@@ -134,36 +134,19 @@
     height: 3px;
 }
 
-/* .add-contact-person-svg {
-    width: 120px;
-    height: 120px;
-    font-size: 47px;
-    color: #fff;
-    border-radius: 50%;
-    border: 3px solid #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #D9D9D9;
-} */
-
 .add-contact-center {
     display: flex;
     justify-content: center;
     height: 0;
-    
 }
 
-.add-contact-person-svg {
+.edit-contact-profile-badge {
     width: 120px;
     height: 120px;
     font-size: 47px;
     color: #fff;
     border-radius: 50%;
     border: 2px solid #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: #D9D9D9;
     transform: translateY(-50%);
     z-index: 4;
