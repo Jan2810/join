@@ -141,6 +141,14 @@ async function deleteTask(index) {
     initBoard()
 };
 
+function returnCategoryBackground(category) {
+    if (category === "Technical Task") {
+        return "technical-task-bg"
+    } else if (category === "User Story") {
+        return "user-story-bg"
+    }
+};
+
 function renderTask(id) {
     console.clear();
     console.log("Alle Tasks:");
@@ -156,7 +164,7 @@ function renderTask(id) {
     // Der Hintergrund für die task.category ist noch nicht dynamisch
 
     return /*html*/`<div class="task-eyebrow-container">
-                <div class="board-ticket-gategory technical-task-bg">${task.category}</div>
+                <div class="board-ticket-gategory ${returnCategoryBackground(task.category)}">${task.category}</div>
                 <div onclick="closeTask()" class="task-close-container flex-center"><img src="../assets/icons/close.svg" alt=""
                         class="task-close"></div>
             </div>

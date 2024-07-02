@@ -13,7 +13,6 @@
     align-items: center;
 }
 
-
 .task-container {
     overflow-y: scroll;
     width: 525px;
@@ -111,11 +110,17 @@
     color: white;
 }
 
-.task-contact-container,
+.task-contact-container {
+    align-items: center;
+    gap: 16px;
+    padding: 7px 16px 7px 16px;
+}
+
 .task-subtask-container {
     align-items: center;
     gap: 16px;
     padding: 7px 16px 7px 16px;
+    cursor: pointer;
 }
 
 .task-subtask-container:hover {
