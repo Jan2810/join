@@ -19,7 +19,7 @@ function showTask(id) {
     }, 0);
     taskContainer.innerHTML = renderTask(id);
     body.classList.add("overflow-hidden");
-    bg.addEventListener('keydown', function (event) {
+    bg.addEventListener('click', function (event) {
         if (event.target == this) {
             closeTask();
         }
