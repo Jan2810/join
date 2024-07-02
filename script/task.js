@@ -116,7 +116,8 @@ function updateTodoStatus(id, indexOfTodo) {
         todo.status = "unchecked";
         todoInDom.setAttribute("src", "../assets/icons/checkbox_unchecked.svg");
         todoValue.classList.remove("line-through");
-        putData(TASKS_URL, tasksArray);
+        // putData(TASKS_URL, tasksArray);
+        putDataObject(TASKS_URL, tasksArray[taskIndex], id);
     }
     else {
         todo.status = "checked";
@@ -125,7 +126,8 @@ function updateTodoStatus(id, indexOfTodo) {
         todoValue.classList.add("line-through");
        
     }
-    putData(TASKS_URL, tasksArray);
+    // putData(TASKS_URL, tasksArray);
+    putDataObject(TASKS_URL, tasksArray[taskIndex], id);
 
     // }
     // )

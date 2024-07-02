@@ -126,7 +126,6 @@ async function putDataObject(url, data, id) {
             body: JSON.stringify(data)
         });
         const result = await response.json();
-        console.log('Daten erfolgreich aktualisiert:', result);
         return result;
     } catch (error) {
         console.error('Fehler bei putData:', error);
