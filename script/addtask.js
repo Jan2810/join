@@ -527,8 +527,8 @@ function getLocationAndMove() {
     if (location.pathname === "/html/board.html") {
         closeNewTaskInBoard();
         succesfullAddedClose();
-        initBoard();
-    } else if (location.pathname === "/html/addtask.html") {
+        initBoard()
+    } else if (location.pathname == "/html/addtask.html") {
         window.location = "../html/board.html";
     }
 }
