@@ -132,13 +132,11 @@ function updateTodoStatus(id, indexOfTodo) {
     // strikeThroughTodo(indexOfTodo);
 };
 
-
-
-async function deleteTask(index) {
-    await deleteData(TASKS_URL, index)
-    tasksArray.splice(index, 1);
+async function deleteTask(id) {
+    await deleteData(TASKS_URL, id);
+    // tasksArray.splice(index, 1);
     prepareTask();
-    initBoard();
+    getTasks();
 };
 
 function returnCategoryBackground(category) {
