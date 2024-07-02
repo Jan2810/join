@@ -189,6 +189,7 @@ async function renderContactList() {
     let content = document.getElementById("dropdownMenu");
     content.innerHTML = "";
     let contacts = await loadData(CONTACTS_URL);
+    console.log(contacts);
     content.innerHTML = ``;
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
@@ -523,11 +524,11 @@ async function setTaskData(title, due_date, description, category) {
  */
 function getLocationAndMove() {
     let location = window.location;
-    if (location.pathname == "/html/board.html") {
+    if (location.pathname === "/html/board.html") {
         closeNewTaskInBoard();
         succesfullAddedClose();
         initBoard();
-    } else if (location.pathname == "/html/addtask.html") {
+    } else if (location.pathname === "/html/addtask.html") {
         window.location = "../html/board.html";
     }
 }
