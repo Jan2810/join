@@ -135,7 +135,7 @@ async function putDataObject(url, data, id) {
 
 
 async function deleteData(url, id) {
-    let response = await fetch(`${url}/${id}.json`, {
+    let response = await fetch(`${url}${id}.json`, {
         method: "DELETE",
         headers: {
             "Content-type": "application/json",
