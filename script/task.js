@@ -79,8 +79,8 @@ function renderTodos(task) {
             todo.status == "checked" ? strikeClass = "line-through" : strikeClass = "";
             taskTodoHtml += /*html*/ `
             <div class="flex">
-            <div class="task-subtask-container flex">
-                <input id="todo${i}" type="checkbox" ${todo.status} onclick="updateTodoStatus('${task.id}',${i})">
+            <div class="task-subtask-container flex" onclick="updateTodoStatus('${task.id}',${i})">
+                <img src="../assets/icons/checkbox_${todo.status}.svg" id="todo${i}" >
                 <div id="todovalue${i}" class="task-todo-value ${strikeClass}">${todo.text}</div>
             </div>
         </div>`
@@ -92,38 +92,44 @@ function renderTodos(task) {
     else { return "" }
 };
 
-function strikeThroughTodo(indexOfTodo) {
-    let todoInDom = document.getElementById(`todo${indexOfTodo}`);
-    let todoValue = document.getElementById(`todovalue${indexOfTodo}`);
-    if (todoInDom.checked) {
+// function strikeThroughTodo(indexOfTodo) {
+//     let todoInDom = document.getElementById(`todo${indexOfTodo}`);
+//     let todoValue = document.getElementById(`todovalue${indexOfTodo}`);
+//     if (todoInDom.checked) {
 
-        todoValue.classList.add("line-through");
-    }
-    else {
-        todoValue.classList.remove("line-through")
-    }
-};
+//         todoValue.classList.add("line-through");
+//     }
+//     else {
+//         todoValue.classList.remove("line-through")
+//     }
+// };
 
 function updateTodoStatus(id, indexOfTodo) {
+    let todoValue = document.getElementById(`todovalue${indexOfTodo}`);
+    console.log("updateTodoStatus");
     let taskIndex = (getTaskIndex(id));
     let task = tasksArray[taskIndex];
     let todo = task.subtasks[indexOfTodo];
     let todoInDom = document.getElementById(`todo${indexOfTodo}`);
-    todoInDom.addEventListener("change", () => {
-        if (todo.status == "checked") {
-            todo.status = "unchecked";
-
-            putData(TASKS_URL, tasksArray);
-        }
-        else {
-            todo.status = "checked";
-            // todoValue.classList.add("line-through")
-        }
+    // todoInDom.addEventListener("click", () => {
+    if (todo.status == "checked") {
+        todo.status = "unchecked";
+        todoInDom.setAttribute("src", "../assets/icons/checkbox_unchecked.svg");
+        todoValue.classList.remove("line-through");
         putData(TASKS_URL, tasksArray);
-
     }
-    )
-    strikeThroughTodo(indexOfTodo);
+    else {
+        todo.status = "checked";
+        todoInDom.setAttribute("src", "../assets/icons/checkbox_checked.svg")
+        // todoValue.classList.add("line-through")
+        todoValue.classList.add("line-through");
+       
+    }
+    putData(TASKS_URL, tasksArray);
+
+    // }
+    // )
+    // strikeThroughTodo(indexOfTodo);
 };
 
 
@@ -133,6 +139,14 @@ async function deleteTask(index) {
     await deleteData(TASKS_URL, index)
     prepareTask();
     initBoard()
+};
+
+function returnCategoryBackground(category) {
+    if (category === "Technical Task") {
+        return "technical-task-bg"
+    } else if (category === "User Story") {
+        return "user-story-bg"
+    }
 };
 
 function renderTask(id) {
@@ -150,7 +164,7 @@ function renderTask(id) {
     // Der Hintergrund für die task.category ist noch nicht dynamisch
 
     return /*html*/`<div class="task-eyebrow-container">
-                <div class="board-ticket-gategory technical-task-bg">${task.category}</div>
+                <div class="board-ticket-gategory ${returnCategoryBackground(task.category)}">${task.category}</div>
                 <div onclick="closeTask()" class="task-close-container flex-center"><img src="../assets/icons/close.svg" alt=""
                         class="task-close"></div>
             </div>
@@ -199,7 +213,7 @@ function renderEdit(taskIndex, id) {
     console.log(taskIndex);
     console.log("Aktueller Task als Objekt:");
     console.log(task);
-    taskContainer.innerHTML = returnTaskHTML(task);
+    taskContainer.innerHTML = returnTaskEditHTML(task);
     initDataEditTask(task, id);
 };
 
@@ -209,7 +223,7 @@ function renderEdit(taskIndex, id) {
 //     }
 // }
 
-function returnTaskHTML(task) {
+function returnTaskEditHTML(task) {
     return `
     <div onclick="handleClickEventEdit(event)" onkeydown="formValidationFeedbackOffEdit()">
         <div class="task-h1 flex-row task-board-h1">
@@ -218,10 +232,10 @@ function returnTaskHTML(task) {
         </div>
         <form onsubmit="return false" class="form-edit">
             <div class="flex-row task-content in-edit-task-cnt">
-                <div class="task-left-cont">
+                <div class="task-left-cont task-left-cont-edit">
                     <div class="task-width">
                         <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
-                        <input value="${task.title}" id="taskTitleEdit" class="task-width task-form-font task-input" type="text" placeholder="Enter a title"
+                        <input value="${task.title}" id="taskTitleEdit" class="task-width task-form-font task-input" type="text" placeholder="Enter a title" maxlength="35"
                             required>
                             <span id="requiredTitleEdit" class="required-text" style="display: none;">This field is required</span>
                     </div>
@@ -237,6 +251,7 @@ function returnTaskHTML(task) {
                                 <span id="selectedItemEdit">Select contacts to assign</span>
                                 <img src="../assets/icons/dropdown.png">
                             </div>
+                            <span id="maxContactsEdit" class="required-text" style="display: none;">All assignments have been allocated</span>
                             <div class="dropdown-menu" id="dropdownMenuContainerEdit" style="display: none;">
                                 <div onclick="closeContactsEdit(event)" class="upper-dropdown-item bg-white task-form-font">
                                     <span>Select contacts to assign</span>
@@ -270,17 +285,17 @@ function returnTaskHTML(task) {
                         <div class="flex-row task-btn-cont">
                             <div onclick="changeUrgencyEdit('high')" onmouseover="hoverBtnEdit(true, 'img-high')"
                                 onmouseout="hoverBtnEdit(false, 'img-high')" class="task-urgent-btn bg-white" id="highEdit">
-                                <span>Urgent</span>
+                                <span class="d-none-low">Urgent</span>
                                 <img id="img-highEdit" src="../assets/icons-addtask/prio-high-color.png" alt="">
                             </div>
                             <div onclick="changeUrgencyEdit('mid')" onmouseover="hoverBtnEdit(true, 'img-mid')"
                                 onmouseout="hoverBtnEdit(false, 'img-mid')" class="task-urgent-btn bg-white" id="midEdit">
-                                <span>Medium</span>
+                                <span class="d-none-low">Medium</span>
                                 <img id="img-midEdit" src="../assets/icons-addtask/prio-mid-white.png" alt="">
                             </div>
                             <div onclick="changeUrgencyEdit('low')" onmouseover="hoverBtnEdit(true, 'img-low')"
                                 onmouseout="hoverBtnEdit(false, 'img-low')" class="task-urgent-btn bg-white" id="lowEdit">
-                                <span>Low</span>
+                                <span class="d-none-low">Low</span>
                                 <img id="img-lowEdit" src="../assets/icons-addtask/prio-low-color.png" alt="">
                             </div>
                         </div>
@@ -305,9 +320,9 @@ function returnTaskHTML(task) {
                             <span id="requiredCategorysEdit" class="required-text" style="display: none;">This field is required</span>
                         </div>
                     </div>
-                    <div>
+                    <div class="task-subtask-edit">
                         <h3 class="task-form-font">Subtasks</h3>
-                        <div >
+                        <div>
                             <div onkeydown="checkKeyEdit(event)" onclick="openSubtasksEdit(); stopProp(event);" id="subtaskInputContEdit" class="task-width task-form-font subtask-input-cont">
                                 <input id="subtasksInputEdit" class="subtasks-input task-input" type="text"
                                     placeholder="Add new subtask">
@@ -325,10 +340,10 @@ function returnTaskHTML(task) {
                     </div>
                 </div>
             </div>
-            <div class="task-bottom-line-cont flex-center">
+            <div class="task-bottom-line-cont-edit flex-center">
                 <div class="flex-row flex-center task-bottom-line bottom-line-edit">
                     <div class="flex-center task-form-btn-cont">
-                        <button onclick="putEditTask(); return false" type="submit" id="createButtonEdit" class="task-send-form-btn">
+                        <button onclick="putEditTask(); return false" type="submit" id="createButtonEdit" class="task-send-form-btn task-send-form-btn-edit">
                             <span>Ok</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
                         </button>

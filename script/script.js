@@ -100,17 +100,6 @@ async function postData(url, data = {}) {
     return data;
 }
 
-// async function putData(url, data = {}) {
-//     let response = await fetch(url + ".json", {
-//         method: "PUT",
-//         headers: {
-//             "Content-type": "application/json",
-//         },
-//         body: JSON.stringify(data)
-//     });
-//     return response;
-// };
-
 async function putData(url, dataArray = []) {
     console.log(dataArray);
     let data = dataArray.reduce((acc, item) => {
