@@ -68,11 +68,10 @@ async function loadData(url) {
         }
         let dataArray = Object.keys(data).map(key => {
             return {
-                id: key,   // Hier fügen wir den Firebase-Schlüssel als ID hinzu
-                ...data[key]  // Und fügen alle anderen Daten hinzu
+                id: key,
+                ...data[key] 
             };
         });
-        // console.log(dataArray);
         return dataArray;
     } catch (error) {
         console.error('Fehler beim Laden der Daten:', error);
@@ -98,7 +97,7 @@ async function postData(url, data = {}) {
         body: JSON.stringify(data)
     });
     return data;
-}
+};
 
 async function putData(url, dataArray = []) {
     console.log(dataArray);
