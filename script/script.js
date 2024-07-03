@@ -203,7 +203,7 @@ function logout() {
 };
 
 function guestUserActive() {
-    activeUser.name = "Gast Nutzer";
+    activeUser.name = "Guest";
     saveUser(activeUser);
     goToBoard();
 };
