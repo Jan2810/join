@@ -64,7 +64,7 @@ function renderTaskOwners(task) {
         });
         return ` <div class="task-assigned-area flex-column">
                 <div class="task-prio-key task-font-regular">Assigned To:</div>
-                ${taskOwnerHtml} </div></div>`
+                ${taskOwnerHtml} </div>`
     }
     else { return "" }
 };
@@ -87,7 +87,7 @@ function renderTodos(task) {
         }
         return `  <div class="task-subtasks-area flex-column">
                 <div class="task-prio-key task-font-regular">Subtasks</div>
-                ${taskTodoHtml} </div></div>`
+                ${taskTodoHtml} </div>`
     }
     else { return "" }
 };
@@ -166,6 +166,7 @@ function renderTask(id) {
                 <div onclick="closeTask()" class="task-close-container flex-center"><img src="../assets/icons/close.svg" alt=""
                         class="task-close"></div>
             </div>
+            <div class="flex-column task-scroll-container">
             <div class="task-heading">${task.title}</div>
             <div class="task-description task-font-regular">${task.description}</div>
             <div class="task-date-container task-font-regular flex">
@@ -180,7 +181,7 @@ function renderTask(id) {
             </div>
             ${renderTaskOwners(task)}
             ${renderTodos(task)}
-            
+            </div>
             <div class="task-footer flex">
                 <div class="task-delete-container flex"  onclick="deleteTask('${task.id}')">
                     <svg width="16" height="18" viewBox="0 0 16 18" fill="red" xmlns="http://www.w3.org/2000/svg">

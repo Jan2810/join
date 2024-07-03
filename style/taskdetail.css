@@ -12,7 +12,7 @@
 }
 
 .task-container {
-    overflow-y: scroll;
+    
     width: 100%;
     max-width: 525px;
     max-height: 90vh;
@@ -63,6 +63,11 @@
 
 .task-close {
     height: 13px;
+}
+
+.task-scroll-container {
+    gap: 24px;
+    overflow-y: scroll;
 }
 
 .task-heading {
