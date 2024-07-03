@@ -35,12 +35,12 @@ let backgroundColors = [
 async function initPrivate() {
     await includeHTML();
     setBackground(4)
-}
+};
 
 async function initLegal() {
     await includeHTML();
     setBackground(5);
-}
+};
 
 function toggleNav() {
     let subMenu = document.querySelector(".submenu");
@@ -129,7 +129,6 @@ async function putDataObject(url, data, id) {
         console.error('Fehler bei putData:', error);
     }
 };
-
 
 async function deleteData(url, id) {
     let response = await fetch(`${url}${id}.json`, {
