@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
             logoBackgroundContainer.style.zIndex = '-1';
         }
     };
-    // logoBackgroundContainer.addEventListener('animationend', addDNoneClass);
 });
 
 async function login() {
