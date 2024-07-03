@@ -52,13 +52,18 @@ function closeEditContactOverlay() {
     // editContactOverlay.classList.remove('show-edit-contact-overlay');
     editContactsOverlayBg.classList.add('hide-edit-contact-overlay');
     // editContactOverlay.classList.add('hide-edit-contact-overlay');
+
 }
+
+// Cancel Cancel Cancel Button
 
 function closeAddContactOverlay() {
     // addContactsOverlayBg.classList.remove('show-edit-contact-overlay');
     // addContactOverlay.classList.remove('show-edit-contact-overlay');
     addContactsOverlayBg.classList.add('hide-add-contact-overlay');
     // addContactOverlay.classList.add('hide-add-contact-overlay');
+    console.log('Close Window');
+    clearInput();
 }
 
 function openAddContactOverlay() {
