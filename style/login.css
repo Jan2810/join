@@ -1,10 +1,14 @@
+body{
+    overflow-x: hidden;
+}
+
 :root {
     --margin-top: 127px;
     --margin-left: 127px;
 }
 
 #login-start-animation-bg {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     background-color: rgb(255, 255, 255);
     z-index: 999;
