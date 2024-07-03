@@ -63,7 +63,7 @@ function renderTaskOwners(task) {
         </div>`
         });
         return ` <div class="task-assigned-area flex-column">
-                <div class="task-prio-key task-font-regular">Assigned To:</div>
+                <div class="task-key task-key-assigned-to task-font-regular">Assigned To:</div>
                 ${taskOwnerHtml} </div>`
     }
     else { return "" }
@@ -86,7 +86,7 @@ function renderTodos(task) {
         </div>`
         }
         return `  <div class="task-subtasks-area flex-column">
-                <div class="task-prio-key task-font-regular">Subtasks</div>
+                <div class="task-key task-font-regular">Subtasks</div>
                 ${taskTodoHtml} </div>`
     }
     else { return "" }
@@ -170,11 +170,11 @@ function renderTask(id) {
             <div class="task-heading">${task.title}</div>
             <div class="task-description task-font-regular">${task.description}</div>
             <div class="task-date-container task-font-regular flex">
-                <div class="task-date-key">Due date:</div>
+                <div class="task-key">Due date:</div>
                 <div class="task-date-value">${formatDate(task.due_date)}</div>
             </div>
             <div class="task-prio-container flex task-font-regular ">
-                <div class="task-prio-key">Priority:</div>
+                <div class="task-key">Priority:</div>
                 <div class="task-prio-value flex-center">${task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}<img
                         src="../assets/icons-addtask/prio-${task.priority}-color.png
 " alt=""></div>

@@ -12,7 +12,7 @@
 }
 
 .task-container {
-    
+
     width: 100%;
     max-width: 525px;
     max-height: 90vh;
@@ -53,9 +53,9 @@
     cursor: pointer;
 }
 
-.task-contact-name {
+/* .task-contact-name {
     font-family: 'Open Sans'
-}
+} */
 
 .task-close-container:hover {
     background-color: rgb(226, 226, 226);
@@ -104,6 +104,7 @@
 
 .task-todo-value {
     font-size: 16px;
+    color: #2A3647;
 }
 
 .task-contact-icon {
@@ -172,25 +173,19 @@
     border-left: 1px solid #D1D1D1;
 }
 
-input[type="checkbox"] {
-    /* appearance: none;  */
-    width: 20px;
-    height: 20px;
-    border: 2px solid #444;
-    border-radius: 4px;
-    outline: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    background-color: #0d6efd;
-}
 
-input[type="checkbox"]:checked {
-    background-color: black;
-}
 
 .line-through {
     text-decoration: line-through;
 }
+
+.task-key {
+    color: #42526E;
+}
+
+ .task-key-assigned-to {
+    margin-bottom: 8px;
+ }
 
 
 @media (max-width: 800px) {
@@ -200,13 +195,23 @@ input[type="checkbox"]:checked {
     }
 
     .task-font-small {
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 400;
     }
 
     .task-heading {
         max-height: 219px;
+        font-size: 36px;
         font-weight: 700;
-        font-size: 51px;
+        line-height: 43.2px;
+        text-align: left;
+
     }
+
+    .task-description {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.2px;
+    }
+
 }
