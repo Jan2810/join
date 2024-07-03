@@ -9,6 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 });
 
+function changeImageSource() {
+    document.getElementById('login-animation-logo').src = '../assets/img/logo.png';
+}
+
+setTimeout(changeImageSource, 300);
+
+
 async function login() {
     users = await loadData(USERS_URL);
     console.log(users);

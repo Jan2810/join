@@ -20,7 +20,7 @@
 <body class="login-body bg-lightgrey" onload="">
     <div id="login-start-animation-bg" class="d-none">
         <div class="login-logo-animation-container">
-            <img id="login-animation-logo" src="./assets/img/logo.png" alt="">
+            <img id="login-animation-logo" class="login-animation-logo-responsive" src="./assets/img/logo.png" alt="">
         </div>
     </div>
     <main class="flex-column flex-center">
@@ -35,13 +35,13 @@
             <div class="login-underline"></div>
             <form onsubmit="login();return false">
                 <div class="flex-column flex-center gap-20">
-                    <div class="flex-column">
-                        <input id="login-input-email" onkeydown="removeUserError()" class="login-input-fields"
+                    <div class="flex-column flex-center">
+                        <input id="login-input-email" autocomplete="username" onkeydown="removeUserError()" class="login-input-fields"
                             type="email" placeholder="Email" required>
                         <span id="login-input-user-error" class="d-none">User not found! Try again.</span>
                     </div>
                     <div class="login-password-container flex-center flex-column">
-                        <input id="login-input-password" onkeydown="removePasswordError()" class="login-input-fields"
+                        <input id="login-input-password" autocomplete="current-password" onkeydown="removePasswordError()" class="login-input-fields"
                             type="password" placeholder="Password" required>
                         <img onclick="toggleVisibility()" id="login-visibility-toggle-img"
                             src="./assets/icons/visibility_off.svg" alt="">

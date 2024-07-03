@@ -6,6 +6,7 @@
 #login-start-animation-bg {
     height: 100vh;
     width: 100vw;
+    background-color: rgb(255, 255, 255);
     z-index: 999;
     top: 0;
     bottom: 0;
@@ -15,11 +16,13 @@
     align-items: center;
     pointer-events: none;
     animation: colorFade 0.9s forwards;
+    animation-delay: 0.3s;
 }
 
 .login-logo-animation-container {
     height: fit-content;
     animation: moveAndShrink 0.9s forwards;
+    animation-delay: 0.3s;
 }
 
 #login-animation-logo {
@@ -37,7 +40,7 @@
 
 @keyframes colorFade {
     0% {
-        background-color: rgb(255, 255, 255, 1);
+        background-color: rgb(255, 255, 255);
     }
     100% {
         background-color: rgb(255, 255, 255, 0);
@@ -114,7 +117,6 @@
 
 .login-password-container {
     position: relative;
-    align-items: flex-start;
 }
 
 .login-error-border {
@@ -160,7 +162,7 @@
     width: 111px;
     border-radius: 8px;
     color: white;
-    background-color: #2A3647;
+    background-color: rgb(42, 54, 71);
     border: hidden;
     padding: 15px 24px;
     font-weight: 700;
@@ -174,7 +176,7 @@
 }
 
 .login-guest-login-button {
-    width: 185px;
+    width: 180px;
     height: 56px;
     outline-offset: -10px;
     border-radius: 8px;
@@ -226,6 +228,15 @@
 
 @media (max-width: 800px) {
 
+    #login-start-animation-bg {
+        background-color: rgba(42, 54, 71, 1);
+    }
+
+    .login-animation-logo-responsive {
+        content: url(../assets/img/logo_white.svg);
+        height: 339px;
+        width: 274px;
+    }
 
     :root {
         --margin-top: -14px;
@@ -243,10 +254,10 @@
     
     @keyframes colorFade {
         0% {
-            background-color: rgb(255, 255, 255, 1);
+            background-color: rgba(42, 54, 71, 1);
         }
         100% {
-            background-color: rgb(255, 255, 255, 0);
+            background-color: rgba(42, 54, 71, 0);
         }
     }
 
