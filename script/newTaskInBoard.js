@@ -45,7 +45,7 @@ function goToAddTask() {
 };
 
 function returnAddTaskInBoardHTML() {
-    return /*html*/`
+    return `
         <div class="task-h1 flex-row task-board-h1">
             <h1>Add Task</h1>
             <img onclick="closeNewTaskInBoard()" src="../assets/icons/x-black.png" alt="x">
@@ -55,7 +55,7 @@ function returnAddTaskInBoardHTML() {
                 <div class="task-left-cont">
                     <div class="task-width">
                         <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
-                        <input id="taskTitle" class="task-width task-form-font task-input" type="text" placeholder="Enter a title"
+                        <input id="taskTitle" class="task-width task-form-font task-input" type="text" placeholder="Enter a title" maxlength="35"
                             required>
                             <span id="requiredTitle" class="required-text" style="display: none;">This field is required</span>
                     </div>
@@ -71,6 +71,7 @@ function returnAddTaskInBoardHTML() {
                                 <span id="selectedItem">Select contacts to assign</span>
                                 <img src="../assets/icons/dropdown.png">
                             </div>
+                            <span id="maxContacts" class="required-text" style="display: none;">All assignments have been allocated</span>
                             <div class="dropdown-menu" id="dropdownMenuContainer" style="display: none;">
                                 <div onclick="closeContacts(event)" class="upper-dropdown-item bg-white task-form-font">
                                     <span>Select contacts to assign</span>
@@ -167,7 +168,7 @@ function returnAddTaskInBoardHTML() {
                             <span>Clear</span>
                             <img id="task-x" src="../assets/icons/x-black.png" alt="">
                         </div>
-                        <button onclick="stopProp(event);" type="submit" id="createButton" class="task-send-form-btn">
+                        <button onclick="handleFormValidation(); stopProp(event);" type="submit" id="createButton" class="task-send-form-btn">
                             <span>Create Task</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
                         </button>

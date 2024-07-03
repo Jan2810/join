@@ -21,6 +21,7 @@
 .task-body h1 {
     font-size: 61px;
     font-weight: 700;
+    margin-bottom: 31px;
 }
 
 .task-form-font {
@@ -31,7 +32,6 @@
 .task-body form {
     width: 100%;
     max-width: 880px;
-    margin-top: 36px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -52,6 +52,10 @@
     flex-direction: column;
     gap: 8px;
     margin-right: 48px;
+}
+
+.task-left-cont-edit {
+    gap: 0px;
 }
 
 .task-right-cont {
@@ -214,13 +218,18 @@
     cursor: pointer;
     background-color: rgba(41, 171, 226, 1);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
 
+.task-send-form-btn-edit {
+    width: 110px;
+    height: 60px;
 }
 
 .task-urgent-btn {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     gap: 8px;
     width: 100%;
     width: 136px;
@@ -229,7 +238,6 @@
     border-radius: 10px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
     transition: all 100ms ease-in-out;
-    ;
 }
 
 #high:hover {
@@ -335,6 +343,7 @@
 
 .signParentContainer {
     margin: 10px 0px;
+    height: 40px;
 }
 
 .dropdown-menu::-webkit-scrollbar {
@@ -384,6 +393,7 @@
     cursor: pointer;
     border-bottom: 1px solid #ccc;
     border-radius: 10px;
+    margin-top: 0 !important;
 }
 
 .category-dd-upper-item {
@@ -582,6 +592,7 @@
     width: 100%;
     max-width: 1000px;
     padding: 40px;
+    margin: 0px 20px;
     background-color: rgb(246, 247, 248);
     border-radius: 20px;
     gap: 30px;
@@ -642,6 +653,10 @@
     border: 0;
 }
 
+.task-subtask-edit {
+    margin-bottom: 40px;
+}
+
 @media (max-width: 1175px) {
     .task-body {
         top: 130px;
@@ -650,7 +665,6 @@
 
     .task-form-font {
         font-size: 16px;
-        margin-top: 10px;
     }
 
     .task-body h1 {
@@ -663,7 +677,6 @@
         justify-content: flex-start;
         align-items: flex-start;
         height: 100%;
-
     }
 
     .task-body form {
@@ -673,12 +686,14 @@
 
     .task-left-cont {
         margin: 0;
+        gap: 0;
     }
 
     .task-right-cont {
         border-left: 0;
         padding-left: 0;
-        margin-top: 60px;
+        margin: 0;
+        gap: 0;
     }
 
     .task-btn-cont {
@@ -740,7 +755,7 @@
 
     .task-body {
         top: 100px;
-        
+        padding: 0px 20px;
     }
 
     .task-content {
@@ -779,6 +794,12 @@
         padding: 16px;
         font-size: 14px;
     }
+
+    .task-bottom-line-cont-edit {
+        justify-content: center;
+        font-size: 14px;
+    }
+
     .task-send-form-btn {
         font-size: 21px;
         font-weight: 700;
@@ -787,5 +808,8 @@
 
     .task-body form {
         margin-bottom: 60px;
+    }
+    .d-none-low {
+        display: none;
     }
 }

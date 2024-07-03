@@ -47,6 +47,7 @@ header {
 
 .nav-link-item:hover {
     background-color: #263957;
+    color: white;
 }
 
 .header-right {
@@ -118,6 +119,11 @@ header {
 
 }
 
+.nav-link-item:hover svg path
+ {
+    fill: white;
+    color: white
+ }
 .header-user {
     border-radius: 50%;
     border: 2px solid black;

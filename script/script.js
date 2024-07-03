@@ -68,11 +68,10 @@ async function loadData(url) {
         }
         let dataArray = Object.keys(data).map(key => {
             return {
-                id: key,   // Hier fügen wir den Firebase-Schlüssel als ID hinzu
-                ...data[key]  // Und fügen alle anderen Daten hinzu
+                id: key,
+                ...data[key] 
             };
         });
-        // console.log(dataArray);
         return dataArray;
     } catch (error) {
         console.error('Fehler beim Laden der Daten:', error);
@@ -98,26 +97,15 @@ async function postData(url, data = {}) {
         body: JSON.stringify(data)
     });
     return data;
-}
-
-// async function putData(url, data = {}) {
-//     let response = await fetch(url + ".json", {
-//         method: "PUT",
-//         headers: {
-//             "Content-type": "application/json",
-//         },
-//         body: JSON.stringify(data)
-//     });
-//     return response;
-// };
+};
 
 async function putData(url, dataArray = []) {
+    console.log(dataArray);
     let data = dataArray.reduce((acc, item) => {
         let { id, ...rest } = item;
         acc[id] = rest;
         return acc;
     }, {});
-
     let response = await fetch(url + ".json", {
         method: "PUT",
         headers: {
@@ -125,13 +113,28 @@ async function putData(url, dataArray = []) {
         },
         body: JSON.stringify(data)
     });
-
     return response;
+};
+
+async function putDataObject(url, data, id) {
+    try {
+        const response = await fetch(`${url}${id}.json`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.error('Fehler bei putData:', error);
+    }
 };
 
 
 async function deleteData(url, id) {
-    let response = await fetch(`${url}/${id}.json`, {
+    let response = await fetch(`${url}${id}.json`, {
         method: "DELETE",
         headers: {
             "Content-type": "application/json",
@@ -183,9 +186,7 @@ function saveUser() {
 };
 
 function loadUser() {
-
     const retrievedUserString = localStorage.getItem('user');
-
     if (retrievedUserString) {
         activeUser = JSON.parse(retrievedUserString);
         console.log("Nutzer gefunden");

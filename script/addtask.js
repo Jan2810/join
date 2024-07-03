@@ -42,9 +42,10 @@ async function initAddTask() {
 };
 
 function handleClickEvent(event) {
-    closeContacts(event); 
-    closeCategorys(event); 
-    closeSubtasks(event); 
+    closeContacts(event);
+    closeCategorys(event);
+    closeSubtasks(event);
+    hideMaxContacts(event)
     formValidationFeedbackOff();
 }
 
@@ -102,7 +103,6 @@ async function openContacts() {
         displayContacts("open")
         renderContactList();
         let contacts = await loadData(CONTACTS_URL);
-        console.log(contacts);
         for (let i = 0; i < contacts.length; i++) {
             if (contacts.length > checkedContacts.length) {
                 const count = checkedContacts.push(false);
@@ -113,7 +113,7 @@ async function openContacts() {
 };
 
 function closeContacts(event) {
-    if (contactsTaskOpen === true) {
+    if (contactsTaskOpen === true && event) {
         event.stopPropagation();
         displayContacts("close");
         contactsTaskOpen = false;
@@ -141,13 +141,18 @@ function checkAssignments(i) {
 };
 
 async function assignContact(i) {
-    if (checkedContacts[i] === true) {
-        checkedContacts[i] = false;
-    } else if (checkedContacts[i] === false) {
-        checkedContacts[i] = true;
+    let trueContacts = checkedContacts.filter(checkedContact => checkedContact === true);
+    if (trueContacts.length < 12) {
+        if (checkedContacts[i] === true) {
+            checkedContacts[i] = false;
+        } else if (checkedContacts[i] === false) {
+            checkedContacts[i] = true;
+        }
+        renderSignList();
+        checkAssignments(i);
+    } else {
+        showMaxContacts();
     }
-    renderSignList();
-    checkAssignments(i);
 };
 
 async function renderSignList() {
@@ -178,14 +183,14 @@ function addSubtask() {
     if (input !== "" && taskData.subtasks.length < 4) {
         let subtaskArray = { text: `${input}`, status: "unchecked" }
         taskData.subtasks.push(subtaskArray);
-        showWarning();
+        hideWarning();
         renderSubtasks();
     } else {
-        hideWarning
+        showWarning();
     }
     if (taskData.subtasks.length === 4) {
         document.getElementById("requiredSubtext").style.display = "block";
-        requiredSubtext.innerHTML = "You reached the maximum number of tasks"
+        document.getElementById("requiredSubtext").innerHTML = "You reached the maximum number of tasks"
     }
 };
 
@@ -252,6 +257,7 @@ function closeSubtasks(ev) {
 
 function clearInputfield() {
     document.getElementById("subtasksInput").value = "";
+    hideWarning();
 };
 
 function clearAll() {
@@ -275,7 +281,6 @@ async function getAssignedContacts(contacts) {
         for (let i = 0; i < checkedContacts.length; i++) {
             const assignedContact = checkedContacts[i];
             if (assignedContact == true) {
-                if (taskData.assigned_to.length <= 11)
                 taskData.assigned_to.push(contacts[i]);
             }
         }
@@ -299,6 +304,12 @@ function succesfullAdded() {
     document.getElementById("succesImg").style.transform = "translateY(0px)";
 };
 
+function succesfullAddedClose() {
+    document.getElementById("succesImgCnt").style.display = "none";
+    void document.getElementById("succesImg").offsetWidth;
+    document.getElementById("succesImg").style.transform = "translateY(500px)";
+}
+
 async function addNewTask() {
     document.getElementById("createButton").onclick = "";
     document.getElementById("createButton").disabled = true;
@@ -313,6 +324,15 @@ async function saveInputValues() {
     if (title.length >= 1 && due_date.length >= 1 && category.length >= 1) {
         formValidationFeedbackOff();
         await postNewTask(title, due_date, description, category)
+    }
+};
+
+function handleFormValidation() {
+    let title = document.getElementById("taskTitle").value;
+    let due_date = document.getElementById("taskDate").value;
+    let category = document.getElementById("categoryInput").value;
+    if (title.length >= 1 || due_date.length >= 1 || category.length >= 1) {
+        formValidationFeedbackOff();
     } else {
         formValidationFeedbackOn();
     }
@@ -328,9 +348,7 @@ async function postNewTask(title, due_date, description, category) {
 
 async function postingTask(title, due_date, description, category) {
     await setTaskData(title, due_date, description, category);
-    console.log('Before postData:', taskData);
-    let updatedData = await postData(TASKS_URL, taskData);
-    console.log('After postData:', updatedData);
+    await postData(TASKS_URL, taskData);
     clearAll();
 }
 
@@ -349,9 +367,12 @@ async function setTaskData(title, due_date, description, category) {
 };
 
 function getLocationAndMove() {
-    if (window.location = "../html/board.html") {
+    let location = window.location;
+    if (location.pathname == "/html/board.html") {
         closeNewTaskInBoard();
-    } else {
+        succesfullAddedClose();
+        getTasks();
+    } else if (location.pathname == "/html/addtask.html") {
         window.location = "../html/board.html";
     }
 };

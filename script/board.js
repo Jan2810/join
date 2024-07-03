@@ -19,7 +19,7 @@ async function initBoard() {
     await updateAwaitFeedback();
     await updateDone();
     setBackground(2);
-    stopPropagation()
+    // stopPropagation()
 };
 
 async function updateTasksByStatus(status, containerId) {
@@ -159,7 +159,7 @@ function getContacts(element) {
     let assignedHTML = '';
     if (element['assigned_to'].length > 3) {
         let initials = element['assigned_to'][0].initials;
-        assignedHTML += `<div class="board-ticket-assigned flex-center" style="background-color:${element['assigned_to'][0].color}">${initials}</div><div class="board-ticket-assigned flex-center" style="background-color: rgba(255, 116, 94, 1)">+${element['assigned_to'].length -1}</div>`;
+        assignedHTML += `<div class="board-ticket-assigned flex-center" style="background-color:${element['assigned_to'][0].color}">${initials}</div><div class="board-ticket-assigned flex-center" style="background-color: rgba(255, 116, 94, 1)">+${element['assigned_to'].length - 1}</div>`;
     } else {
         for (let j = 0; j < element['assigned_to'].length; j++) {
             let initials = element['assigned_to'][j].initials;
@@ -171,21 +171,26 @@ function getContacts(element) {
 
 function getSubtasksProgress(element) {
     let subtasks = element['subtasks'];
-    let subtasksLength = element['subtasks'].length;
+    if (element['subtasks']) {
+        let subtasksLength = element['subtasks'].length;
 
-    if (subtasksLength > 0) {
-        let checkedSubtasks = subtasks.filter(cs => cs['status'] === 'checked');
-        let checkedSubtasksLength = checkedSubtasks.length;
-        let subtaskProgress = (checkedSubtasksLength / subtasksLength) * 100;
-        return `
+        if (subtasksLength > 0) {
+            let checkedSubtasks = subtasks.filter(cs => cs['status'] === 'checked');
+            let checkedSubtasksLength = checkedSubtasks.length;
+            let subtaskProgress = (checkedSubtasksLength / subtasksLength) * 100;
+            return `
             <div id="board-ticket-statusbar" class="board-ticket-statusbar flex-row flex-center">
                 <div class="board-ticket-bar">
                     <div id="board-ticket-bar-progress" style="width: ${subtaskProgress}%"></div>
                 </div>
                 <div class="board-ticket-progress">${checkedSubtasksLength}/${subtasksLength} Subtasks</div>
             </div>`
-            ;
-    } else {
+                ;
+        } else {
+            return '';
+        }
+    }
+    else {
         return '';
     }
 };

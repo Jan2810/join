@@ -35,13 +35,23 @@ function highlightButton(urg) {
     }
 };
 
-function showWarning() {
-    document.getElementById("subtasksInput").value = "";
-    document.getElementById("subtaskInputCont").style.borderColor = "";
-    document.getElementById("requiredSubtext").style.display = "none";
+function showMaxContacts() {
+    document.getElementById("maxContacts").style.display = "";
+    displayContacts("close");
+};
+
+function hideMaxContacts() {
+    document.getElementById("maxContacts").style.display = "none";
 };
 
 function hideWarning() {
+    document.getElementById("subtasksInput").value = "";
+    document.getElementById("subtaskInputCont").style.borderColor = "";
+    document.getElementById("requiredSubtext").innerHTML = "Cannot set empty subtask";
+    document.getElementById("requiredSubtext").style.display = "none";
+};
+
+function showWarning() {
     document.getElementById("subtaskInputCont").style.borderColor = "red";
     document.getElementById("requiredSubtext").style.display = "block";
     document.getElementById("subtasksInput").focus();
