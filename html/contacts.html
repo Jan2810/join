@@ -158,13 +158,13 @@
                             d="M7.00005 8.40005L2.10005 13.3C1.91672 13.4834 1.68338 13.575 1.40005 13.575C1.11672 13.575 0.883382 13.4834 0.700049 13.3C0.516715 13.1167 0.425049 12.8834 0.425049 12.6C0.425049 12.3167 0.516715 12.0834 0.700049 11.9L5.60005 7.00005L0.700049 2.10005C0.516715 1.91672 0.425049 1.68338 0.425049 1.40005C0.425049 1.11672 0.516715 0.883382 0.700049 0.700049C0.883382 0.516715 1.11672 0.425049 1.40005 0.425049C1.68338 0.425049 1.91672 0.516715 2.10005 0.700049L7.00005 5.60005L11.9 0.700049C12.0834 0.516715 12.3167 0.425049 12.6 0.425049C12.8834 0.425049 13.1167 0.516715 13.3 0.700049C13.4834 0.883382 13.575 1.11672 13.575 1.40005C13.575 1.68338 13.4834 1.91672 13.3 2.10005L8.40005 7.00005L13.3 11.9C13.4834 12.0834 13.575 12.3167 13.575 12.6C13.575 12.8834 13.4834 13.1167 13.3 13.3C13.1167 13.4834 12.8834 13.575 12.6 13.575C12.3167 13.575 12.0834 13.4834 11.9 13.3L7.00005 8.40005Z"
                             fill="#none" />
                     </svg></div>
-                <form id="add-contact-form" class="add-contact-form" onsubmit="editContact(event)">
-                    <input class="add-contact-form-name" id="add-contact-form-name" type="text" placeholder="Name"
+                <form id="edit-contact-form" class="edit-contact-form" onsubmit="editContact(event)">
+                    <input class="edit-contact-form-name" id="edit-contact-form-name" type="text" placeholder="Name"
                         required minlength="2" pattern="[a-zA-Z0-9À-ÖØ-öø-ŸŹ-ž\s]*"
                         title="Name can only contain letters, numbers, spaces, and accented characters.">
-                    <input class="add-contact-form-email" id="add-contact-form-email" type="email" placeholder="Email"
+                    <input class="edit-contact-form-email" id="edit-contact-form-email" type="email" placeholder="Email"
                         required title="Please enter a valid email address.">
-                    <input class="add-contact-form-phone" id="add-contact-form-phone" type="tel" placeholder="Phone"
+                    <input class="edit-contact-form-phone" id="edit-contact-form-phone" type="tel" placeholder="Phone"
                         required minlength="10" pattern="[0-9+ ]+"
                         title="Phone number can only contain numbers, the plus sign, and spaces.">
                     <div class="edit-contact-buttons">
@@ -202,8 +202,8 @@
 
             </div>
             <div class="add-contact-center">
-                <div class="add-contact-person-svg"><svg width="64" height="64" viewBox="0 0 25 25" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
+                <div class="add-contact-person-svg flex-center">
+                    <svg width="64" height="64" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <mask id="mask0_69960_5368" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                             width="25" height="25">
                             <rect x="0.144531" y="0.80835" width="24" height="24" fill="#D9D9D9" />
@@ -273,7 +273,7 @@
 
     <!-- Contact created pop-up -->
 
-    <div class="contact-created-popup-bg flex-center hide-contact-created-popup" id="contact-created-popup-bg">
+    <div class="contact-created-popup-bg hide-contact-created-popup" id="contact-created-popup-bg">
         <div class="contact-created-popup">Contact successfully created</div>
     </div>
 

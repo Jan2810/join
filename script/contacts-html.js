@@ -28,10 +28,10 @@ function renderCapitalLetter(capitalLetter) {
  * @returns { string } HTML markup for displaying contact information.
  */
 function renderContact(contact) {
-    let contactClass = contact.status === 'new' ? 'contacts-view-contact' : '';
+    // let contactClass = contact.status === 'new' ? 'contacts-view-contact' : '';
 
     return /*html*/ `
-        <div class="contacts-list-box contacts-list-box-entry ${contactClass}" onclick="showSingleContactView(this, '${contact.color}', '${contact.initials}', '${contact.name}', '${contact.email}', '${contact.phone}')">
+        <div class="contacts-list-box contacts-list-box-entry" onclick="showSingleContactView(this, '${contact.color}', '${contact.initials}', '${contact.name}', '${contact.email}', '${contact.phone}')">
             <div class="contacts-profile-badge flex-center" style="background-color: ${contact.color};">${contact.initials}</div>
             <div class="contacts-list-name-and-email">
                 <p>${contact.name}</p>
@@ -41,12 +41,12 @@ function renderContact(contact) {
     `;
 };
 
-document.addEventListener('click', function (event) {
-    contactsList.querySelectorAll('.contacts-view-contact').forEach(element => {
-        element.classList.remove('contacts-view-contact');
+// document.addEventListener('click', function (event) {
+//     contactsList.querySelectorAll('.contacts-view-contact').forEach(element => {
+//         element.classList.remove('contacts-view-contact');
 
-    });
-});
+//     });
+// });
 
 
 

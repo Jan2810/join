@@ -9,13 +9,17 @@ let contactCreatedPopupBg = document.getElementById('contact-created-popup-bg');
 let editDeletePopup = document.getElementById('edit-delete-popup');
 let singleContactTripleDots = document.getElementById('single-contact-triple-dots');
 let addPersonIcon = document.getElementById('add-person-icon');
-let manuallyRemoved = false;
+// let manuallyRemoved = false;
 let nameEmailPhoneForEdit = [];
 
-let editName = document.getElementById('add-contact-form-name');
-let editEmail = document.getElementById('add-contact-form-email');
-let editPhone = document.getElementById('add-contact-form-phone');
+let editName = document.getElementById('edit-contact-form-name');
+let editEmail = document.getElementById('edit-contact-form-email');
+let editPhone = document.getElementById('edit-contact-form-phone');
 let editBadge = document.getElementById('edit-contact-profile-badge');
+
+let addContactFormName = document.getElementById('add-contact-form-name');
+let addContactFormEmail = document.getElementById('add-contact-form-email');
+let addContactFormPhone = document.getElementById('add-contact-form-phone');
 
 const badgeAndName = document.querySelector('.single-contact-badge-and-name');
 const profileBadge = document.querySelector('.single-contact-profile-badge');
@@ -96,7 +100,7 @@ function handleResize() {
         contactContainer.classList.remove('d-none');
         contactsContainer.classList.remove('d-none');
         contactsContainer.classList.add('d-flex');
-        manuallyRemoved = false;
+        // manuallyRemoved = false;
     } else if (window.innerWidth < 1120 && badgeAndName.style.display === 'flex') {
         showSingleContactOnly();
         // } else if (!manuallyRemoved) {

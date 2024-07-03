@@ -51,6 +51,25 @@ let hardCodedContacts = [
     }
 ];
 
+async function fetchFixContacts() {
+    for (let fixContact of hardCodedContacts) {
+        let color = getRandomContactColor();
+        let initials = getInitials(fixContact.name);
+        try {
+            await postData(CONTACTS_URL, {
+                "email": fixContact.email,
+                "name": fixContact.name,
+                "phone": fixContact.phone,
+                "color": color,
+                "initials": initials,
+                "status": 'normal'
+            });
+        } catch (error) {
+            console.error('Error adding contact:', error);
+        }
+    }
+}
+
 
 // let backgroundColors = [
 //     "background: rgba(255, 122, 0, 1)",

@@ -512,10 +512,7 @@
         gap: 24px;
     }
     
-    .single-contact h1 {
-        font-size: 61px;
-        padding: 0;
-    }
+    
     
     .single-contact-header {
         display: flex;
@@ -557,11 +554,7 @@
         margin: 0;
     }
 
-    .single-contact-profile-badge {
-        width: 120px;
-        height: 120px;
-        font-size: 47px;
-    }
+    
 
     .single-contact-badge-and-name {
         margin: 20px 0 48px 0;
@@ -574,10 +567,7 @@
         gap: 8px;
     }
 
-    .single-contact-name {
-        font-size: 47px;
-        font-weight: 500;
-    }
+    
 
     /* .edit-and-delete-contact {
         color: #2A3647;
@@ -606,6 +596,27 @@
     }
 
 }
+
+@media only screen and (min-width: 940px) {
+    .single-contact h1 {
+        font-size: 61px;
+        padding: 0;
+    }
+
+    .single-contact-profile-badge {
+        width: 120px;
+        height: 120px;
+        font-size: 47px;
+    }
+
+    .single-contact-name {
+        font-size: 47px;
+        font-weight: 500;
+    }
+
+
+}
+
 
 @media only screen and (min-width: 1120px) and (max-width: 1420px) {
     .contacts-list h3,
