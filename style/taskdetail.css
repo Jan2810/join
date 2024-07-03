@@ -12,7 +12,6 @@
 }
 
 .task-container {
-
     width: 100%;
     max-width: 525px;
     max-height: 90vh;
@@ -53,10 +52,6 @@
     cursor: pointer;
 }
 
-/* .task-contact-name {
-    font-family: 'Open Sans'
-} */
-
 .task-close-container:hover {
     background-color: rgb(226, 226, 226);
 }
@@ -75,7 +70,7 @@
     font-weight: 700;
     font-size: 61px;
     line-height: 73.2px;
-    /* overflow: hidden; */
+    overflow-y: scroll;
 }
 
 .task-date-container,
@@ -152,7 +147,6 @@
     cursor: pointer;
 }
 
-
 .task-edit-container:hover,
 .task-delete-container:hover {
     color: #29ABE2;
@@ -162,18 +156,12 @@
 .task-edit-container:hover svg path,
 .task-delete-container:hover svg path {
     fill: #29ABE2;
-    /* Change fill color to #29ABE2 on hover */
 }
-
-
-
 
 .task-footer-divider {
     height: 24px;
     border-left: 1px solid #D1D1D1;
 }
-
-
 
 .line-through {
     text-decoration: line-through;
@@ -183,10 +171,9 @@
     color: #42526E;
 }
 
- .task-key-assigned-to {
+.task-key-assigned-to {
     margin-bottom: 8px;
- }
-
+}
 
 @media (max-width: 800px) {
     .task-font-regular {
@@ -205,7 +192,6 @@
         font-weight: 700;
         line-height: 43.2px;
         text-align: left;
-
     }
 
     .task-description {
@@ -213,5 +199,4 @@
         font-weight: 400;
         line-height: 19.2px;
     }
-
 }
