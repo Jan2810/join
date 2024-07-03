@@ -45,6 +45,11 @@
     height: 100%;
 }
 
+.task-content-edit {
+    justify-content: center !important;
+    align-items: center !important;
+}
+
 .task-left-cont {
     width: 100%;
     max-width: 440px;
@@ -610,8 +615,7 @@
 }
 
 .task-board-h1 img {
-    width: 30px;
-    height: 30px;
+    transform: scale(1.2);
     cursor: pointer;
     padding: 8px;
     border-radius: 100%;
@@ -656,6 +660,7 @@
 .task-subtask-edit {
     margin-bottom: 40px;
 }
+
 
 @media (max-width: 1175px) {
     .task-body {

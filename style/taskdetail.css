@@ -12,7 +12,7 @@
 }
 
 .task-container {
-    
+    overflow-y: scroll;
     width: 100%;
     max-width: 525px;
     max-height: 90vh;
