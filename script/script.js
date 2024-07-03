@@ -192,7 +192,7 @@ function loadUser() {
     }
 };
 
-if (window.location.pathname.includes('/html/') && !window.location.pathname.includes('register')) {
+if (window.location.pathname.includes('/html/') && !window.location.pathname.includes('register')&& !window.location.pathname.includes('legal')&& !window.location.pathname.includes('privacy')) {
     loadUser();
 };
 
