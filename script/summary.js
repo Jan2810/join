@@ -120,11 +120,11 @@ function getActualGreet() {
     let today = new Date();
     let hourNow = today.getHours();
     if (hourNow <= 12 && hourNow >= 0) {
-        return "Good morning,";
+        return "Good morning";
     } else if (hourNow >= 12 && hourNow <= 18) {
-        return "Good afternoon,";
+        return "Good afternoon";
     } else if (hourNow >= 18 && hourNow <= 24) {
-        return "Good evening,";
+        return "Good evening";
     } else {
         return "Welcome";
     }
