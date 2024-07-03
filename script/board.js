@@ -1,12 +1,3 @@
-/**
- * Adds an event listener to the background element to log a message when clicked.
- */
-function bgClickTracker() {
-    bg.addEventListener("click", () => {
-        console.log("TaskBackground clicked!!!")
-    });
-};
-
 let tasksArray = [];
 let filteredTasks = [];
 let currentDraggedElement;

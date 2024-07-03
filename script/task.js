@@ -106,7 +106,6 @@ function renderTodos(task) {
 
 function updateTodoStatus(id, indexOfTodo) {
     let todoValue = document.getElementById(`todovalue${indexOfTodo}`);
-    console.log("updateTodoStatus");
     let taskIndex = (getTaskIndex(id));
     let task = tasksArray[taskIndex];
     let todo = task.subtasks[indexOfTodo];
@@ -124,7 +123,7 @@ function updateTodoStatus(id, indexOfTodo) {
         todoInDom.setAttribute("src", "../assets/icons/checkbox_checked.svg")
         // todoValue.classList.add("line-through")
         todoValue.classList.add("line-through");
-       
+
     }
     // putData(TASKS_URL, tasksArray);
     putDataObject(TASKS_URL, tasksArray[taskIndex], id);
@@ -151,15 +150,8 @@ function returnCategoryBackground(category) {
 };
 
 function renderTask(id) {
-    console.clear();
-    console.log("Alle Tasks:");
-    console.log(tasksArray);
     let taskIndex = (getTaskIndex(id));
     let task = tasksArray[taskIndex];
-    console.log("Aktuelle TaskID:");
-    console.log(taskIndex);
-    console.log("Aktueller Task als Objekt:");
-    console.log(task);
     renderTaskOwners(task);
     return /*html*/`<div class="task-eyebrow-container">
                 <div class="board-ticket-gategory ${returnCategoryBackground(task.category)}">${task.category}</div>
@@ -204,14 +196,7 @@ function renderTask(id) {
 };
 
 function renderEdit(taskIndex, id) {
-    console.clear();
-    console.log("Alle Tasks:");
-    console.log(tasksArray);
     let task = tasksArray[taskIndex];
-    console.log("Aktuelle TaskID:");
-    console.log(taskIndex);
-    console.log("Aktueller Task als Objekt:");
-    console.log(task);
     taskContainer.innerHTML = returnTaskEditHTML(task);
     initDataEditTask(task, id);
 };

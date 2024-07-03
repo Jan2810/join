@@ -27,12 +27,10 @@ setTimeout(changeImageSource, 300);
  */
 async function login() {
     users = await loadData(USERS_URL);
-    console.log(users);
     let email = document.getElementById("login-input-email");
     let password = document.getElementById("login-input-password");
     activeUser = users.find(user => user.email === email.value);
-    
-    console.log(activeUser);
+
     if (!activeUser) {
         userError();
     } else if (activeUser.password === password.value) {

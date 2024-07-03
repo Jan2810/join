@@ -76,7 +76,6 @@ header {
 .terms-container a {
     color: #919191;
     text-decoration: none;
-    transition: all 100ms ease-in-out;
 }
 
 .terms-container a:hover {
