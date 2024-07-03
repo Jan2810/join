@@ -98,22 +98,3 @@ function showWarningEdit() {
     document.getElementById("requiredSubtextEdit").style.display = "block";
     document.getElementById("subtasksInputEdit").focus();
 };
-
-
-function formValidationFeedbackOnEdit() {
-    document.getElementById("taskTitleEdit").style.borderColor = "red";
-    document.getElementById("requiredTitleEdit").style.display = "";
-    document.getElementById("taskDateEdit").style.borderColor = "red";
-    document.getElementById("requiredDateEdit").style.display = "";
-    document.getElementById("dropdownCategoryToggleEdit").style.borderColor = "red";
-    document.getElementById("requiredCategorysEdit").style.display = "";
-};
-
-function formValidationFeedbackOffEdit() {
-    document.getElementById("taskTitleEdit").style.borderColor = "";
-    document.getElementById("requiredTitleEdit").style.display = "none";
-    document.getElementById("taskDateEdit").style.borderColor = "";
-    document.getElementById("requiredDateEdit").style.display = "none";
-    document.getElementById("dropdownCategoryToggleEdit").style.borderColor = "";
-    document.getElementById("requiredCategorysEdit").style.display = "none";
-};

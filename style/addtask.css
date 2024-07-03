@@ -61,6 +61,7 @@
 
 .task-left-cont-edit {
     gap: 0px;
+    margin-right: 0px !important;
 }
 
 .task-right-cont {
@@ -661,6 +662,15 @@
     margin-bottom: 40px;
 }
 
+.container-edit {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 5px;
+}
+
+.task-bottom-line-cont-edit {
+    position: sticky;
+}
 
 @media (max-width: 1175px) {
     .task-body {

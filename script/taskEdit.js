@@ -18,15 +18,11 @@ let activeUrgEdit = [
 
 async function putEditTask() {
     await setInputValuesEdit();
-    if (taskDataEdit.title.length >= 1 && taskDataEdit.due_date.length >= 1 && taskDataEdit.category.length >= 1) {
-        formValidationFeedbackOffEdit();
+    if (taskDataEdit.title.length >= 1 && taskDataEdit.due_date.length >= 1) {
         if (taskDataEdit.assigned_to.length == 0) {
             taskDataEdit.assigned_to = "";
         }
         await putDataObject(TASKS_URL, taskDataEdit, taskId);
-
-    } else {
-        formValidationFeedbackOnEdit();
     }
     controlContacts = [];
     initBoard();
@@ -50,7 +46,6 @@ async function setInputValuesEdit() {
     taskDataEdit.title = document.getElementById("taskTitleEdit").value;
     taskDataEdit.description = document.getElementById("taskDescriptionEdit").value;
     taskDataEdit.due_date = document.getElementById("taskDateEdit").value;
-    taskDataEdit.category = document.getElementById("categoryInputEdit").value;
 };
 
 async function getAssignedContactsEdit() {
@@ -77,9 +72,7 @@ function getUrgencyEdit() {
 
 function handleClickEventEdit(event) {
     closeContactsEdit(event);
-    closeCategorysEdit(event);
     closeSubtasksEdit(event);
-    formValidationFeedbackOffEdit();
 };
 
 function checkKeyEdit(ev) {
@@ -287,33 +280,6 @@ function closeCategorysEdit(ev) {
     document.getElementById("dropdownCategoryToggleEdit").style.display = "";
     document.getElementById("dropdownCategoryContainerEdit").style.display = "none";
     document.getElementById("dropdownCategorysEdit").style.display = "none";
-};
-
-function renderTaskListEdit() {
-    let content = document.getElementById("dropdownCategorysEdit");
-    content.innerHTML = "";
-    for (let i = 0; i < availableCategorys.length; i++) {
-        const category = availableCategorys[i];
-        content.innerHTML += returnTaskListHTMLEdit(category, i);
-    }
-};
-
-function returnTaskListHTMLEdit(category, i) {
-    return `
-        <div onclick="addCategoryEdit(${i}); closeCategorysEdit(event);" class="category-dd-item task-form-font" id="ctg${i}">
-            <div class="task-cnt-name">${category}</div>
-        </div>
-        `;
-};
-
-function addCategoryEdit(i) {
-    if (taskDataEdit.category === "") {
-        taskDataEdit.category = availableCategorys[i];
-    } else {
-        taskDataEdit.category = "";
-        taskDataEdit.category = availableCategorys[i];
-    }
-    document.getElementById("categoryInputEdit").value = `${taskDataEdit.category}`
 };
 
 function openSubtasksEdit() {

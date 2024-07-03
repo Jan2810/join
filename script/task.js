@@ -244,26 +244,26 @@ function renderEdit(taskIndex, id) {
  */
 function returnTaskEditHTML(task) {
     return `
-    <div onclick="handleClickEventEdit(event)" onkeydown="formValidationFeedbackOffEdit()">
+    <div onclick="handleClickEventEdit(event)" class="container-edit">
         <div class="task-h1 flex-row task-board-h1">
             <h1></h1>
             <img onclick="closeTask()" src="../assets/icons/x-black.png" alt="x">
         </div>
-        <form onsubmit="return false" class="form-edit">
+        <form onsubmit="putEditTask(); return false" class="form-edit">
             <div class="flex-row task-content in-edit-task-cnt">
-                <div class="task-left-cont task-left-cont-edit">
+                <div class="task-left-cont task-left-cont-edit flex-center">
                     <div class="task-width">
                         <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
                         <input value="${task.title}" id="taskTitleEdit" class="task-width task-form-font task-input" type="text" placeholder="Enter a title" maxLength="35"
                             required>
                             <span id="requiredTitleEdit" class="required-text" style="display: none;">This field is required</span>
                     </div>
-                    <div>
+                    <div class="task-width">
                         <h3 class="task-form-font">Description</h3>
                         <textarea id="taskDescriptionEdit" class="task-width task-form-font task-textarea task-input" type="text"
                             placeholder="Enter a Description">${task.description}</textarea>
                     </div>
-                    <div>
+                    <div class="task-width">
                         <h3 class="task-form-font">Assigned to</h3>
                         <div onclick="openContactsEdit(); stopProp(event);" class="dropdown task-width">
                             <div class="dropdown-toggle task-form-font" id="dropdownToggleEdit">
@@ -289,7 +289,7 @@ function returnTaskEditHTML(task) {
                         </div>
                     </div>
                 </div>
-                <div class="task-right-cont task-right-cont-edit" id="taskRightContEdit">
+                <div class="task-right-cont task-right-cont-edit flex-center" id="taskRightContEdit">
                     <div class="task-width">
                         <h3 class="task-form-font">Due date<span class="task-star">*</span></h3>
                         <div class="task-date-input task-width">
@@ -319,27 +319,7 @@ function returnTaskEditHTML(task) {
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <h3 class="task-form-font">Category<span class="task-star">*</span></h3>
-                        <div onclick="openCategorysEdit(); stopProp(event);" class="dropdown task-width">
-                            <div class="dropdown-toggle ctg-input-cnt" id="dropdownCategoryToggleEdit">
-                                <input onclick="openCategorysEdit(); preventDf(event); stopProp(event);" id="categoryInputEdit" type="text" value="${task.category}" placeholder="Select task category" 
-                                class="category-dd-upper-item-input task-width bg-white" required>
-                                <img src="../assets/icons/dropdown.png">
-                            </div>
-                            <div class="dropdownmenu-ctg" id="dropdownCategoryContainerEdit" style="display: none;">
-                                <div onclick="closeCategorysEdit(event)" class="category-dd-upper-item bg-white task-form-font">
-                                    <span>Select task category</span>
-                                    <img src="../assets/icons/dropup.png" alt="">
-                                </div>
-                                <div id="dropdownCategorysEdit" class="dropdown-ctg">
-                                    <!-- rendered Categorys  -->
-                                </div>
-                            </div>
-                            <span id="requiredCategorysEdit" class="required-text" style="display: none;">This field is required</span>
-                        </div>
-                    </div>
-                    <div class="task-subtask-edit">
+                    <div class="task-subtask-edit task-width">
                         <h3 class="task-form-font">Subtasks</h3>
                         <div>
                             <div onkeydown="checkKeyEdit(event)" onclick="openSubtasksEdit(); stopProp(event);" id="subtaskInputContEdit" class="task-width task-form-font subtask-input-cont">
@@ -362,7 +342,7 @@ function returnTaskEditHTML(task) {
             <div class="task-bottom-line-cont-edit flex-center">
                 <div class="flex-row flex-center task-bottom-line bottom-line-edit">
                     <div class="flex-center task-form-btn-cont">
-                        <button onclick="putEditTask(); return false" type="submit" id="createButtonEdit" class="task-send-form-btn task-send-form-btn-edit">
+                        <button type="submit" id="createButtonEdit" class="task-send-form-btn task-send-form-btn-edit">
                             <span>Ok</span>
                             <img src="../assets/icons/hook-white.svg" alt="">
                         </button>
@@ -374,3 +354,23 @@ function returnTaskEditHTML(task) {
         `;
 };
 
+                    // <div>
+                    //     <h3 class="task-form-font">Category<span class="task-star">*</span></h3>
+                    //     <div onclick="openCategorysEdit(); stopProp(event);" class="dropdown task-width">
+                    //         <div class="dropdown-toggle ctg-input-cnt" id="dropdownCategoryToggleEdit">
+                    //             <input onclick="openCategorysEdit(); preventDf(event); stopProp(event);" id="categoryInputEdit" type="text" value="${task.category}" placeholder="Select task category" 
+                    //             class="category-dd-upper-item-input task-width bg-white" required>
+                    //             <img src="../assets/icons/dropdown.png">
+                    //         </div>
+                    //         <div class="dropdownmenu-ctg" id="dropdownCategoryContainerEdit" style="display: none;">
+                    //             <div onclick="closeCategorysEdit(event)" class="category-dd-upper-item bg-white task-form-font">
+                    //                 <span>Select task category</span>
+                    //                 <img src="../assets/icons/dropup.png" alt="">
+                    //             </div>
+                    //             <div id="dropdownCategorysEdit" class="dropdown-ctg">
+                    //                 <!-- rendered Categorys  -->
+                    //             </div>
+                    //         </div>
+                    //         <span id="requiredCategorysEdit" class="required-text" style="display: none;">This field is required</span>
+                    //     </div>
+                    // </div>

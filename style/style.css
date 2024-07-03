@@ -18,6 +18,14 @@ body {
     background-color: #F6F7F8;
 }
 
+.transition-100 {
+    transition: all 100ms ease-in-out;
+}
+
+.transition-200 {
+    transition: all 200ms ease-in-out;
+}
+
 .d-none {
     display: none;
 }

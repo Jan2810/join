@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon.png">
     <link rel="apple-touch-icon" href="../assets/img/favicon.png">
     <link rel="stylesheet" href="../style/style.css">
@@ -44,7 +45,7 @@
                         <input id="board-find-input-responsive"
                             onkeydown="startFilterTasks('board-find-input-responsive')" type="text"
                             placeholder="Find Task">
-                        <button id="board-add-task-button" class="bg-darkblue flex-center" type="button"
+                        <button id="board-add-task-button" class="bg-darkblue flex-center transition-100" type="button"
                             onclick="openAddTaskInBoard('todo')">Add task<img src="../assets/icons/add.svg"
                                 alt="+"></button>
                     </div>
