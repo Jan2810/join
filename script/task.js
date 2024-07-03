@@ -3,6 +3,9 @@ let bg = document.createElement("div");
 let taskContainer = document.createElement("div");
 taskContainer.classList.add("task-container", "flex-column", "task-container-hidden");
 
+/**
+ * Prepares the task environment by resetting certain styles and appending the task container to the body.
+ */
 function prepareTask() {
     bg.classList.add("d-none");
     bg.classList.remove("bg-active");
@@ -10,7 +13,11 @@ function prepareTask() {
     body.classList.remove("overflow-hidden");
     bg.appendChild(taskContainer);
 };
-
+/**
+ * Displays the task with the given ID.
+ * 
+ * @param {string} id - The ID of the task to display.
+ */
 function showTask(id) {
     bg.classList.remove("d-none");
     bg.classList.add("bg-active");
@@ -26,6 +33,9 @@ function showTask(id) {
     });
 };
 
+/**
+ * Stops the propagation of click events on elements with the class `.board-ticket-container`.
+ */
 function stopPropagation() {
     document.querySelectorAll(".board-ticket-container").forEach(ticket => {
         ticket.addEventListener("click", function (event) {
@@ -34,6 +44,9 @@ function stopPropagation() {
     })
 };
 
+/**
+ * Closes the currently displayed task and resets the task environment.
+ */
 function closeTask() {
     taskContainer.classList.add("task-container-hidden");
     setTimeout(() => {
@@ -45,12 +58,23 @@ function closeTask() {
     contactsTaskOpen = false;
 };
 
+/**
+ * Gets the index of a task in the tasks array by its ID.
+ * 
+ * @param {string} id - The ID of the task to find.
+ * @returns {number} The index of the task in the tasks array, or -1 if not found.
+ */
 function getTaskIndex(id) {
     let index = tasksArray.findIndex((e) => e['id'] == id);
-    // let task = tasksArray[index];
-    return index;
+      return index;
 };
 
+/**
+ * Renders the HTML for the owners of a task.
+ * 
+ * @param {Object} task - The task object.
+ * @returns {string} The HTML string representing the task owners.
+ */
 function renderTaskOwners(task) {
     let taskOwnerHtml = "";
     if (task.assigned_to) {
@@ -69,6 +93,12 @@ function renderTaskOwners(task) {
     else { return "" }
 };
 
+/**
+ * Renders the HTML for the subtasks of a task.
+ * 
+ * @param {Object} task - The task object.
+ * @returns {string} The HTML string representing the subtasks of the task.
+ */
 function renderTodos(task) {
     let taskTodoHtml = "";
     let todoArray = task.subtasks;
@@ -92,55 +122,49 @@ function renderTodos(task) {
     else { return "" }
 };
 
-// function strikeThroughTodo(indexOfTodo) {
-//     let todoInDom = document.getElementById(`todo${indexOfTodo}`);
-//     let todoValue = document.getElementById(`todovalue${indexOfTodo}`);
-//     if (todoInDom.checked) {
-
-//         todoValue.classList.add("line-through");
-//     }
-//     else {
-//         todoValue.classList.remove("line-through")
-//     }
-// };
-
+/**
+ * Updates the status of a subtask and updates the DOM accordingly.
+ * 
+ * @param {string} id - The ID of the task.
+ * @param {number} indexOfTodo - The index of the subtask in the task's subtasks array.
+ */
 function updateTodoStatus(id, indexOfTodo) {
     let todoValue = document.getElementById(`todovalue${indexOfTodo}`);
     let taskIndex = (getTaskIndex(id));
     let task = tasksArray[taskIndex];
     let todo = task.subtasks[indexOfTodo];
     let todoInDom = document.getElementById(`todo${indexOfTodo}`);
-    // todoInDom.addEventListener("click", () => {
     if (todo.status == "checked") {
         todo.status = "unchecked";
         todoInDom.setAttribute("src", "../assets/icons/checkbox_unchecked.svg");
         todoValue.classList.remove("line-through");
-        // putData(TASKS_URL, tasksArray);
         putDataObject(TASKS_URL, tasksArray[taskIndex], id);
     }
     else {
         todo.status = "checked";
         todoInDom.setAttribute("src", "../assets/icons/checkbox_checked.svg")
-        // todoValue.classList.add("line-through")
         todoValue.classList.add("line-through");
-
     }
-    // putData(TASKS_URL, tasksArray);
     putDataObject(TASKS_URL, tasksArray[taskIndex], id);
-
-    // }
-    // )
-    // strikeThroughTodo(indexOfTodo);
 };
 
-
-
+/**
+ * Deletes a task by its ID.
+ * 
+ * @param {string} id - The ID of the task to delete.
+ */
 async function deleteTask(id) {
     await deleteData(TASKS_URL, id)
     prepareTask();
     getTasks();
 };
 
+/**
+ * Returns the background CSS class for a task category.
+ * 
+ * @param {string} category - The category of the task.
+ * @returns {string} The CSS class for the category background.
+ */
 function returnCategoryBackground(category) {
     if (category === "Technical Task") {
         return "technical-task-bg"
@@ -149,6 +173,12 @@ function returnCategoryBackground(category) {
     }
 };
 
+/**
+ * Renders the HTML for a task based on its ID.
+ * 
+ * @param {string} id - The ID of the task to render.
+ * @returns {string} The HTML string representing the task.
+ */
 function renderTask(id) {
     let taskIndex = (getTaskIndex(id));
     let task = tasksArray[taskIndex];
@@ -195,18 +225,24 @@ function renderTask(id) {
             </div>`
 };
 
+/**
+ * Renders the edit view for a task.
+ * 
+ * @param {number} taskIndex - The index of the task in the tasks array.
+ * @param {string} id - The ID of the task to edit.
+ */
 function renderEdit(taskIndex, id) {
     let task = tasksArray[taskIndex];
     taskContainer.innerHTML = returnTaskEditHTML(task);
     initDataEditTask(task, id);
 };
 
-// setPrioIcon(task) {
-//     if (task.priority == "mid") {
-
-//     }
-// }
-
+/**
+ * Returns the HTML for editing a task.
+ * 
+ * @param {Object} task - The task object to edit.
+ * @returns {string} The HTML string for the task edit view.
+ */
 function returnTaskEditHTML(task) {
     return `
     <div onclick="handleClickEventEdit(event)" onkeydown="formValidationFeedbackOffEdit()">
