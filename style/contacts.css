@@ -350,9 +350,9 @@
     }
 
     .single-contact-profile-badge {
-        width: 80px;
-        height: 80px;
-        font-size: 27px;
+        width: 70px;
+        height: 70px;
+        font-size: 25px;
     }
 
     .single-contact h1 {
@@ -360,7 +360,7 @@
     }
 
     .single-contact-name {
-    font-size: 36px;
+    font-size: clamp(28px, 36px, 36px);
     }
 
     .contacts-list h3 {
@@ -421,7 +421,11 @@
 }
 
 @media only screen and (min-width: 576px) {
-    
+    .single-contact-profile-badge {
+        width: 90px;
+        height: 90px;
+        font-size: 29px;
+    }
 }
  
 /* Desktop view */
@@ -618,7 +622,7 @@
 }
 
 
-@media only screen and (min-width: 1120px) and (max-width: 1420px) {
+@media only screen and (min-width: 1120px) and (max-width: 1480px) {
     .contacts-list h3,
     .contacts-list p {
         font-size: 16px;

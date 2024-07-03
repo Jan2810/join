@@ -13,9 +13,7 @@ function getRandomContactColor() {
 function displayContactCreatedPopup(event) {
     event.preventDefault();
     addContactsOverlayBg.classList.remove('add-contacts-overlay-bg-transition');
-
     closeAddContactOverlay();
-
     setTimeout(() => {
         addContactsOverlayBg.classList.add('add-contacts-overlay-bg-transition');
     }, 10);
@@ -106,7 +104,6 @@ async function processContactsData() {
             color: data[key].color,
             initials: data[key].initials,
             id: key,
-            status: data[key].status
         });
     }
     return contacts;
@@ -316,6 +313,16 @@ async function updateContactFrontend(contact) {
     findAndHighlightContact(contact[0]);
 }
 
+function updateInMemoryContactData(contact) {
+    nameEmailPhoneForEdit = [
+        contact[4], // backgroundColor
+        contact[3], // initials
+        contact[1], // name
+        contact[0], // email
+        contact[2]  // phone
+    ];
+}
+
 async function deleteContactBackend() {
     let contacts = await loadContactsData();
     for (let key in contacts) {
@@ -327,16 +334,6 @@ async function deleteContactBackend() {
     await deleteContactFrontend();
 }
 
-function updateInMemoryContactData(contact) {
-    nameEmailPhoneForEdit = [
-        contact[4], // backgroundColor
-        contact[3], // initials
-        contact[1], // name
-        contact[0], // email
-        contact[2]  // phone
-    ];
-}
-
 async function deleteContactFrontend() {
     badgeAndName.style.display = 'none';
     contactInformation.classList.add('d-none');
@@ -344,13 +341,8 @@ async function deleteContactFrontend() {
     if (window.innerWidth < 1120) {
         returnToContactsList();
     }
-
     if (!editContactsOverlayBg.classList.contains('hidden')) {
         closeOverlayAfterEditWithoutTransition();
     }
-
     await renderContactsList();
 }
-
-
-
