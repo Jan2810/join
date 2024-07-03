@@ -186,6 +186,8 @@
     padding: 15px 24px;
     font-weight: 700;
     font-size: 21px;
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .login-guest-login-button:hover {

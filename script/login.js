@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const logoBackgroundContainer = document.getElementById('login-start-animation-bg');
 
+    /**
+     * Adds the 'd-none' class and sets zIndex to -1 when the colorFade animation ends.
+     * @param {AnimationEvent} event - The animation event.
+     */
     const addDNoneClass = (event) => {
         if (event.animationName === 'colorFade') {
             logoBackgroundContainer.classList.add('d-none');
@@ -9,13 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 });
 
+/**
+ * Changes the source of the login animation logo image.
+ */
 function changeImageSource() {
     document.getElementById('login-animation-logo').src = '../assets/img/logo.png';
 }
 
 setTimeout(changeImageSource, 300);
 
-
+/**
+ * Handles the login process by validating user credentials and redirecting upon success.
+ */
 async function login() {
     users = await loadData(USERS_URL);
     console.log(users);
@@ -36,6 +45,9 @@ async function login() {
     }
 };
 
+/**
+ * Toggles the visibility of the password field.
+ */
 function toggleVisibility() {
     const passwordField = document.getElementById('login-input-password');
     const toggleImg = document.getElementById('login-visibility-toggle-img');
@@ -49,22 +61,34 @@ function toggleVisibility() {
     }
 };
 
+/**
+ * Displays a user error message when the user is not found.
+ */
 function userError() {
     document.getElementById('login-input-user-error').classList.remove('d-none');
-    document.getElementById('login-input-email').classList.add('login-error-border')
+    document.getElementById('login-input-email').classList.add('login-error-border');
 };
 
+/**
+ * Removes the user error message.
+ */
 function removeUserError() {
     document.getElementById('login-input-user-error').classList.add('d-none');
-    document.getElementById('login-input-email').classList.remove('login-error-border')
+    document.getElementById('login-input-email').classList.remove('login-error-border');
 };
 
+/**
+ * Displays a password error message when the password is incorrect.
+ */
 function passwordError() {
     document.getElementById('login-input-password-error').classList.remove('d-none');
-    document.getElementById('login-input-password').classList.add('login-error-border')
+    document.getElementById('login-input-password').classList.add('login-error-border');
 };
 
+/**
+ * Removes the password error message.
+ */
 function removePasswordError() {
     document.getElementById('login-input-password-error').classList.add('d-none');
-    document.getElementById('login-input-password').classList.remove('login-error-border')
+    document.getElementById('login-input-password').classList.remove('login-error-border');
 };

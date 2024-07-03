@@ -1,36 +1,49 @@
-function bgClickTracker() { bg.addEventListener("click", () => { console.log("TaskBackground clicked!!!") }) };
+/**
+ * Adds an event listener to the background element to log a message when clicked.
+ */
+function bgClickTracker() {
+    bg.addEventListener("click", () => {
+        console.log("TaskBackground clicked!!!")
+    });
+};
 
 let tasksArray = [];
 let filteredTasks = [];
 let currentDraggedElement;
 
+/**
+ * Fetches tasks from the server and initializes the board if tasks are available.
+ */
 async function getTasks() {
     tasksArray = await loadData(TASKS_URL);
-    console.log("Alle Tasks");
-    console.log(tasksArray);
     if (tasksArray.length > 0) {
         initBoard();
     }
 };
 
+/**
+ * Initializes the board by updating task lists and setting the background.
+ */
 async function initBoard() {
     await updateTodos();
     await updateInProgress();
     await updateAwaitFeedback();
     await updateDone();
     setBackground(2);
-    // stopPropagation()
 };
 
+/**
+ * Updates tasks in the specified container based on their status.
+ * @param {string} status - The status of the tasks to be updated.
+ * @param {string} containerId - The ID of the container where tasks will be updated.
+ */
 async function updateTasksByStatus(status, containerId) {
     if (tasksArray.length === 0) {
         await getTasks();
     }
     let tasks = tasksArray.filter(t => t['status'] === status);
-
     let container = document.getElementById(containerId);
     container.innerHTML = '';
-
     if (tasks.length > 0) {
         let taskHTML = '';
         for (let i = 0; i < tasks.length; i++) {
@@ -44,23 +57,38 @@ async function updateTasksByStatus(status, containerId) {
     }
 };
 
-
+/**
+ * Updates the "To Do" tasks.
+ */
 async function updateTodos() {
     await updateTasksByStatus('todo', 'board-ticket-container-todo');
 };
 
+/**
+ * Updates the "In Progress" tasks.
+ */
 async function updateInProgress() {
     await updateTasksByStatus('inprogress', 'board-ticket-container-in-progress');
 };
 
+/**
+ * Updates the "Awaiting Feedback" tasks.
+ */
 async function updateAwaitFeedback() {
     await updateTasksByStatus('awaitfeedback', 'board-ticket-container-await-feedback');
 };
 
+/**
+ * Updates the "Done" tasks.
+ */
 async function updateDone() {
     await updateTasksByStatus('done', 'board-ticket-container-done');
 };
 
+/**
+ * Filters tasks based on the input value and updates the task lists.
+ * @param {string} inputId - The ID of the input element used for filtering tasks.
+ */
 function startFilterTasks(inputId) {
     const search = document.getElementById(inputId).value.toLowerCase();
     if (search.length >= 2) {
@@ -70,14 +98,23 @@ function startFilterTasks(inputId) {
     }
 };
 
+/**
+ * Filters tasks based on the search string and updates the task lists.
+ * @param {string} search - The search string used to filter tasks.
+ */
 function filterTasks(search) {
     filteredTasks = tasksArray.filter(task => task.title.toLowerCase().includes(search));
     updateFilteredTodos();
     updateFilteredInProgress();
-    updateFilteredAwaitFeedback()
+    updateFilteredAwaitFeedback();
     updateFilteredDone();
 };
 
+/**
+ * Updates filtered tasks in the specified container based on their status.
+ * @param {string} status - The status of the tasks to be updated.
+ * @param {string} containerId - The ID of the container where tasks will be updated.
+ */
 function updateFilteredTasks(status, containerId) {
     let tasks = filteredTasks.filter(t => t['status'] === status);
     document.getElementById(containerId).innerHTML = '';
@@ -93,110 +130,66 @@ function updateFilteredTasks(status, containerId) {
     }
 };
 
+/**
+ * Updates the filtered "To Do" tasks.
+ */
 function updateFilteredTodos() {
     updateFilteredTasks('todo', 'board-ticket-container-todo');
 };
 
+/**
+ * Updates the filtered "In Progress" tasks.
+ */
 function updateFilteredInProgress() {
     updateFilteredTasks('inprogress', 'board-ticket-container-in-progress');
 };
 
+/**
+ * Updates the filtered "Awaiting Feedback" tasks.
+ */
 function updateFilteredAwaitFeedback() {
     updateFilteredTasks('awaitfeedback', 'board-ticket-container-await-feedback');
 };
 
+/**
+ * Updates the filtered "Done" tasks.
+ */
 function updateFilteredDone() {
     updateFilteredTasks('done', 'board-ticket-container-done');
 };
 
+/**
+ * Starts the dragging process for a task.
+ * @param {string} id - The ID of the task being dragged.
+ */
 function startDragging(id) {
     currentDraggedElement = id;
     document.getElementById(`board-ticket${id}`).classList.add('board-ticket-tend');
 };
 
+/**
+ * Ends the dragging process for a task.
+ * @param {string} id - The ID of the task being dragged.
+ */
 function endDragging(id) {
     document.getElementById(`board-ticket${id}`).classList.remove('board-ticket-tend');
 };
 
+/**
+ * Allows an element to be dropped.
+ * @param {DragEvent} ev - The drag event.
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 };
 
+/**
+ * Moves a task to a specified status.
+ * @param {string} status - The status to move the task to.
+ */
 function moveTo(status) {
     const currentTask = tasksArray.find((ct) => ct['id'] === currentDraggedElement);
     currentTask['status'] = status;
     putData(TASKS_URL, tasksArray);
     initBoard();
 };
-
-function generateTicketHTML(element, categoryBG) {
-    let subtaskProgressHTML = getSubtasksProgress(element);
-    let assignedHTML = getContacts(element);
-
-    return `
-        <div id="board-ticket${element['id']}" class="board-ticket" draggable="true" ondragstart="startDragging('${element['id']}')" ondragend="endDragging('${element['id']}')" onclick="showTask('${element['id']}')">
-            <div class="board-ticket-content flex-column">
-                <div class="board-ticket-gategory ${categoryBG}-bg">${element['category']}</div>
-                <div class="board-ticket-description">
-                    <div class="board-ticket-headline">${element['title']}</div>
-                    <div class="board-ticket-task">${element['description']}</div>
-                </div>
-                ${subtaskProgressHTML}
-                <div class="flex-row flex-sb flex-center">
-                    <div class="board-ticket-assigned-container flex-row">
-                        ${assignedHTML}
-                    </div>
-                    <div class="board-ticket-priority">
-                        <img src="../assets/icons-addtask/prio-${element['priority']}-color.png" alt="priority">
-                     </div>
-                </div>
-            </div>
-        </div>`;
-};
-
-function getContacts(element) {
-
-    let assignedHTML = '';
-    if (element['assigned_to'].length > 3) {
-        let initials = element['assigned_to'][0].initials;
-        assignedHTML += `<div class="board-ticket-assigned flex-center" style="background-color:${element['assigned_to'][0].color}">${initials}</div><div class="board-ticket-assigned flex-center" style="background-color: rgba(255, 116, 94, 1)">+${element['assigned_to'].length - 1}</div>`;
-    } else {
-        for (let j = 0; j < element['assigned_to'].length; j++) {
-            let initials = element['assigned_to'][j].initials;
-            assignedHTML += `<div class="board-ticket-assigned flex-center" style="background-color:${element['assigned_to'][j].color}">${initials}</div>`;
-        }
-    }
-    return assignedHTML;
-}
-
-function getSubtasksProgress(element) {
-    let subtasks = element['subtasks'];
-    if (element['subtasks']) {
-        let subtasksLength = element['subtasks'].length;
-
-        if (subtasksLength > 0) {
-            let checkedSubtasks = subtasks.filter(cs => cs['status'] === 'checked');
-            let checkedSubtasksLength = checkedSubtasks.length;
-            let subtaskProgress = (checkedSubtasksLength / subtasksLength) * 100;
-            return `
-            <div id="board-ticket-statusbar" class="board-ticket-statusbar flex-row flex-center">
-                <div class="board-ticket-bar">
-                    <div id="board-ticket-bar-progress" style="width: ${subtaskProgress}%"></div>
-                </div>
-                <div class="board-ticket-progress">${checkedSubtasksLength}/${subtasksLength} Subtasks</div>
-            </div>`
-                ;
-        } else {
-            return '';
-        }
-    }
-    else {
-        return '';
-    }
-};
-
-
-function generatePlaceholderHTML() {
-    return `<div class="board-no-tasks-placeholder flex-center">No tasks to do</div>`
-};
-
