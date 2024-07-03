@@ -76,7 +76,6 @@ header {
 .terms-container a {
     color: #919191;
     text-decoration: none;
-    transition: all 100ms ease-in-out;
 }
 
 .terms-container a:hover {
@@ -119,11 +118,11 @@ header {
 
 }
 
-.nav-link-item:hover svg path
- {
+.nav-link-item:hover svg path {
     fill: white;
     color: white
- }
+}
+
 .header-user {
     border-radius: 50%;
     border: 2px solid black;
@@ -219,6 +218,7 @@ header {
         height: 80px;
         gap: 10px;
         justify-content: space-evenly;
+        align-items: center;
     }
 
     .nav-link-item {
@@ -227,6 +227,10 @@ header {
         align-items: center;
         gap: 10px;
         padding: 10px;
+        border-radius: 16px;
+        width: 80px;
+        height: 76px;
+        font-size: 14px;
     }
 
     .terms-container {

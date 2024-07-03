@@ -1,7 +1,6 @@
 function register(event) {
     event.preventDefault();
     checkPassword();
-    console.log("test");
 };
 
 function addUser() {
@@ -12,16 +11,13 @@ function addUser() {
     user.name = name.value;
     user.email = email.value;
     user.password = password.value;
-
     postData(path = "", user, USERS_URL)
-    //weiterleitung zu login seite
 };
 
 function showOverlay() {
     document.getElementById('register-success-overlay').style.display = 'block';
     let successMessage = document.getElementById('register-success-message');
     successMessage.classList.add('show');
-
     setTimeout(function () {
         successMessage.classList.remove('show');
         document.getElementById('register-success-overlay').style.display = 'none';
@@ -36,7 +32,7 @@ function checkPassword() {
         showOverlay();
         addUser();
     }
-    else {confirmPasswordError()}
+    else { confirmPasswordError() }
 };
 
 function confirmPasswordError() {

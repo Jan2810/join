@@ -417,4 +417,22 @@
     .sum-stats-cont {
         align-items: center;
     }
+
+
+    .login-greet-cont {
+     
+        margin-left: 0;
+        text-align: center;
+    }
+
+
+    .login-greet-cont h2 {
+        font-size: 36px;
+        
+    }
+    
+    .login-greet-cont h1 {
+        font-size: 47px;
+        width: 100%;
+    }
 }

@@ -55,7 +55,7 @@ function returnAddTaskInBoardHTML() {
                 <div class="task-left-cont">
                     <div class="task-width">
                         <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
-                        <input id="taskTitle" class="task-width task-form-font task-input" type="text" placeholder="Enter a title" maxlength="35"
+                        <input id="taskTitle" class="task-width task-form-font task-input" type="text" placeholder="Enter a title" maxLength="35"
                             required>
                             <span id="requiredTitle" class="required-text" style="display: none;">This field is required</span>
                     </div>

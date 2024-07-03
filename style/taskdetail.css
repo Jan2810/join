@@ -12,7 +12,6 @@
 }
 
 .task-container {
-    overflow-y: scroll;
     width: 100%;
     max-width: 525px;
     max-height: 90vh;
@@ -53,10 +52,6 @@
     cursor: pointer;
 }
 
-.task-contact-name {
-    font-family: 'Open Sans'
-}
-
 .task-close-container:hover {
     background-color: rgb(226, 226, 226);
 }
@@ -65,12 +60,18 @@
     height: 13px;
 }
 
+.task-scroll-container {
+    gap: 24px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 .task-heading {
-    max-height: 219px;
+    /* max-height: 219px; */
     font-weight: 700;
     font-size: 61px;
     line-height: 73.2px;
-    /* overflow: hidden; */
+    /* overflow-y: scroll; */
 }
 
 .task-date-container,
@@ -99,6 +100,7 @@
 
 .task-todo-value {
     font-size: 16px;
+    color: #2A3647;
 }
 
 .task-contact-icon {
@@ -146,7 +148,6 @@
     cursor: pointer;
 }
 
-
 .task-edit-container:hover,
 .task-delete-container:hover {
     color: #29ABE2;
@@ -156,37 +157,24 @@
 .task-edit-container:hover svg path,
 .task-delete-container:hover svg path {
     fill: #29ABE2;
-    /* Change fill color to #29ABE2 on hover */
 }
-
-
-
 
 .task-footer-divider {
     height: 24px;
     border-left: 1px solid #D1D1D1;
 }
 
-input[type="checkbox"] {
-    /* appearance: none;  */
-    width: 20px;
-    height: 20px;
-    border: 2px solid #444;
-    border-radius: 4px;
-    outline: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    background-color: #0d6efd;
-}
-
-input[type="checkbox"]:checked {
-    background-color: black;
-}
-
 .line-through {
     text-decoration: line-through;
 }
 
+.task-key {
+    color: #42526E;
+}
+
+.task-key-assigned-to {
+    margin-bottom: 8px;
+}
 
 @media (max-width: 800px) {
     .task-font-regular {
@@ -195,13 +183,21 @@ input[type="checkbox"]:checked {
     }
 
     .task-font-small {
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 400;
     }
 
     .task-heading {
         max-height: 219px;
+        font-size: 36px;
         font-weight: 700;
-        font-size: 51px;
+        line-height: 43.2px;
+        text-align: left;
+    }
+
+    .task-description {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.2px;
     }
 }

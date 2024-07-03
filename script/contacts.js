@@ -1,36 +1,8 @@
-let addContactFormName = document.getElementById('add-contact-form-name');
-let addContactFormEmail = document.getElementById('add-contact-form-email');
-let addContactFormPhone = document.getElementById('add-contact-form-phone');
-
 let colorValues = backgroundColors.map(bg => bg.replace("background: ", ""));
 
 async function initContacts() {
     await includeHTML();
     setBackground(3);
-}
-
-function getRandomContactColor() {
-    let colorIndex = Math.floor(Math.random() * colorValues.length);
-    return colorValues[colorIndex];
-}
-
-async function fetchFixContacts() {
-    for (let fixContact of hardCodedContacts) {
-        let color = getRandomContactColor();
-        let initials = getInitials(fixContact.name);
-        try {
-            await postData(CONTACTS_URL, {
-                "email": fixContact.email,
-                "name": fixContact.name,
-                "phone": fixContact.phone,
-                "color": color,
-                "initials": initials,
-                "status": 'normal'
-            });
-        } catch (error) {
-            console.error('Error adding contact:', error);
-        }
-    }
 }
 
 function getRandomContactColor() {
@@ -54,7 +26,7 @@ function displayContactCreatedPopup(event) {
         contactsContainer.classList.remove('d-flex');
         contactsContainer.classList.add('d-none');
         contactContainer.classList.remove('d-none');
-        manuallyRemoved = true;
+        // manuallyRemoved = true;
     }
     contactCreatedPopupBg.classList.remove('hide-contact-created-popup');
     setTimeout(function () {
@@ -62,21 +34,26 @@ function displayContactCreatedPopup(event) {
     }, 800);
 }
 
-function updateNewContactDetails(contact) {
-    document.querySelector('.single-contact-badge-and-name').style.display = 'flex';
-    document.querySelector('.single-contact-profile-badge').style.backgroundColor = contact.color;
-    document.querySelector('.single-contact-profile-badge').textContent = contact.initials;
-    document.querySelector('.single-contact-name').textContent = contact.name;
-    document.querySelector('.single-contact-link').href = `mailto:${contact.email}`;
-    document.querySelector('.single-contact-link').textContent = contact.email;
-    document.querySelector('.single-contact-information').classList.remove('d-none');
-    document.querySelector('.single-contact-phone').textContent = contact.phone;
-}
+// function updateNewContactDetails(contact) {
+//     badgeAndName.style.display = 'flex';
+//     profileBadge.style.backgroundColor = contact.color;
+//     profileBadge.textContent = contact.initials;
+//     contactName.textContent = contact.name;
+//     contactLink.href = `mailto:${contact.email}`;
+//     contactLink.textContent = contact.email;
+//     contactInformation.classList.remove('d-none');
+//     contactPhone.textContent = contact.phone;
+// }
 
 async function addNewContact(event) {
     event.preventDefault();
     let color = getRandomContactColor();
     let initials = getInitials(addContactFormName.value);
+    initials = initials.substring(0, 3);
+    await addNewContactBackend(color, initials);
+}
+
+async function addNewContactBackend(color, initials) {
     if (addContactFormEmail.value.trim() && addContactFormName.value.trim() && addContactFormPhone.value.trim()) {
         let newContact = {
             "email": addContactFormEmail.value,
@@ -84,15 +61,20 @@ async function addNewContact(event) {
             "phone": addContactFormPhone.value,
             "color": color,
             "initials": initials,
-            "status": 'new'
         };
         await postData(CONTACTS_URL, newContact);
-        renderContactsList();
-        updateNewContactDetails(newContact);
-        clearInput();
+        addNewContactFrontend(newContact);
     }
-
 }
+
+async function addNewContactFrontend(newContact) {
+    await renderContactsList();
+    // updateNewContactDetails(newContact);
+    showSingleContactView(null, newContact.color, newContact.initials, newContact.name, newContact.email, newContact.phone);
+    clearInput();
+}
+
+
 
 function clearInput() {
     addContactFormEmail.value = '';
@@ -101,7 +83,13 @@ function clearInput() {
 }
 
 async function loadContactsData() {
-    let response = await fetch(CONTACTS_URL + ".json");
+    let response = await fetch(CONTACTS_URL + ".json", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        cache: 'no-store'
+    });
     let responseAsJson = await response.json();
     return responseAsJson;
 }
@@ -181,50 +169,45 @@ async function renderContactsListHtml(contactsByLetter) {
         }
     }
     contactsList.innerHTML = html;
-    await updateStatusNew();
+    // await updateStatusNew();
 }
 
 async function renderContactsList() {
+    await new Promise(resolve => setTimeout(resolve, 40));
     let contacts = await processContactsData();
     sortContacts(contacts);
 
     let contactsByLetter = organizeContactsByLetter(contacts);
-
     await renderContactsListHtml(contactsByLetter);
 }
 
 renderContactsList();
 
-async function updateContactStatus(key, newStatus) {
-    const url = `${CONTACTS_URL}${key}/status.json`;
-    await fetch(url, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newStatus)
-    });
-}
+// async function updateContactStatus(key, newStatus) {
+//     const url = `${CONTACTS_URL}${key}/status.json`;
+//     await fetch(url, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(newStatus)
+//     });
+// }
 
-async function updateStatusNew() {
-    const contactsData = await loadContactsData();
-    for (let key in contactsData) {
-        if (contactsData[key].status) {
-            console.log(contactsData[key].status);
-        }
+// async function updateStatusNew() {
+//     const contactsData = await loadContactsData();
+//     for (let key in contactsData) {
+//         if (contactsData[key].status) {
+//         }
+//         if (contactsData[key].status && contactsData[key].status === 'new') {
+//             await updateContactStatus(key, 'normal');
+//         }
+//     }
 
-
-        if (contactsData[key].status && contactsData[key].status === 'new') {
-            await updateContactStatus(key, 'normal');
-
-
-        }
-    }
-
-}
+// }
 
 
-// Edit contact:
+
 
 function showSingleContactView(selectedContact, color, initials, name, email, phone) {
     badgeAndName.style.display = 'flex';
@@ -236,7 +219,15 @@ function showSingleContactView(selectedContact, color, initials, name, email, ph
     contactInformation.classList.remove('d-none');
     contactPhone.textContent = phone;
     nameEmailPhoneForEdit = [color, initials, name, email, phone];
-    highlightContact(selectedContact);
+    prepareToHighlightContact(selectedContact, email);
+}
+
+function prepareToHighlightContact(selectedContact, email) {
+    if (selectedContact) {
+        highlightContact(selectedContact);
+    } else {
+        findAndHighlightContact(email);
+    }
 }
 
 function highlightContact(selectedContact) {
@@ -247,7 +238,25 @@ function highlightContact(selectedContact) {
     }
 }
 
+function findAndHighlightContact(email) {
+    const contactsEmailElements = document.querySelectorAll('.contacts-email');
+    let selectedContact = null;
+
+    contactsEmailElements.forEach(element => {
+        if (element.textContent.trim() === email) {
+            selectedContact = element.closest('.contacts-list-box-entry');
+        }
+    });
+
+    if (selectedContact) {
+        highlightContact(selectedContact);
+    }
+}
+
+// Edit contact:
+
 function displayNameEmailPhoneForEdit() {
+    console.log(nameEmailPhoneForEdit);
     editName.value = nameEmailPhoneForEdit[2] || '';
     editEmail.value = nameEmailPhoneForEdit[3] || '';
     editPhone.value = nameEmailPhoneForEdit[4] || '';
@@ -255,27 +264,24 @@ function displayNameEmailPhoneForEdit() {
     editBadge.style.backgroundColor = nameEmailPhoneForEdit[0] || '#fff';
 }
 
-async function saveEditedContact(event) {
+async function editContact(event) {
     event.preventDefault();
     let contact = [editEmail.value, editName.value, editPhone.value, editBadge.textContent, editBadge.style.backgroundColor]
-    console.log(contact);
     if (editName.value.trim() && editEmail.value.trim() && editPhone.value.trim()) {
         let contacts = await loadContactsData();
         for (let key in contacts) {
             if (contacts[key].name === nameEmailPhoneForEdit[2]) {
-                updateContactInFirebase(key, contact);
+                updateContactBackend(key, contact);
+                updateInMemoryContactData(contact);
                 break;
             }
         }
-        closeEditContactOverlayAfterEdit();
-        renderContactsList();
-        updateSingleContactViewAfterEdit(contact);
+        updateContactFrontend(contact);
     }
-
 }
 
-async function updateContactInFirebase(key, contact) {
-    const url = `${CONTACTS_URL}${key}/.json`;
+async function updateContactBackend(key, contact) {
+    const url = `${CONTACTS_URL}${key}.json`;
     await fetch(url, {
         method: 'PUT',
         headers: {
@@ -292,7 +298,7 @@ async function updateContactInFirebase(key, contact) {
     });
 }
 
-function closeEditContactOverlayAfterEdit() {
+function closeOverlayAfterEditWithoutTransition() {
     editContactsOverlayBg.classList.remove('edit-contacts-overlay-bg-transition');
     closeEditContactOverlay();
     setTimeout(() => {
@@ -300,10 +306,51 @@ function closeEditContactOverlayAfterEdit() {
     }, 10);
 }
 
-function updateSingleContactViewAfterEdit(contact) {
+async function updateContactFrontend(contact) {
     contactName.textContent = contact[1];
     contactLink.href = `mailto:${contact[0]}`;
     contactLink.textContent = contact[0];
     contactPhone.textContent = contact[2];
-
+    closeOverlayAfterEditWithoutTransition();
+    await renderContactsList();
+    findAndHighlightContact(contact[0]);
 }
+
+async function deleteContactBackend() {
+    let contacts = await loadContactsData();
+    for (let key in contacts) {
+        if (contacts[key].name === nameEmailPhoneForEdit[2]) {
+            await deleteData(CONTACTS_URL, key);
+            break;
+        }
+    }
+    await deleteContactFrontend();
+}
+
+function updateInMemoryContactData(contact) {
+    nameEmailPhoneForEdit = [
+        contact[4], // backgroundColor
+        contact[3], // initials
+        contact[1], // name
+        contact[0], // email
+        contact[2]  // phone
+    ];
+}
+
+async function deleteContactFrontend() {
+    badgeAndName.style.display = 'none';
+    contactInformation.classList.add('d-none');
+    nameEmailPhoneForEdit = [];
+    if (window.innerWidth < 1120) {
+        returnToContactsList();
+    }
+
+    if (!editContactsOverlayBg.classList.contains('hidden')) {
+        closeOverlayAfterEditWithoutTransition();
+    }
+
+    await renderContactsList();
+}
+
+
+

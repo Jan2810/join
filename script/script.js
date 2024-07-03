@@ -47,7 +47,6 @@ function toggleNav() {
     subMenu.classList.toggle("d-none");
     subMenu.classList.toggle("display-column");
     navOpen = !navOpen;
-    console.log(navOpen);
     document.removeEventListener("click", toggleNav);
     if (navOpen) {
         setTimeout(() => {
@@ -69,7 +68,7 @@ async function loadData(url) {
         let dataArray = Object.keys(data).map(key => {
             return {
                 id: key,
-                ...data[key] 
+                ...data[key]
             };
         });
         return dataArray;
@@ -100,7 +99,6 @@ async function postData(url, data = {}) {
 };
 
 async function putData(url, dataArray = []) {
-    console.log(dataArray);
     let data = dataArray.reduce((acc, item) => {
         let { id, ...rest } = item;
         acc[id] = rest;
@@ -181,7 +179,6 @@ async function includeHTML() {
 
 function saveUser() {
     const userString = JSON.stringify(activeUser);
-    console.log(userString);
     localStorage.setItem('user', userString);
 };
 
@@ -189,8 +186,6 @@ function loadUser() {
     const retrievedUserString = localStorage.getItem('user');
     if (retrievedUserString) {
         activeUser = JSON.parse(retrievedUserString);
-        console.log("Nutzer gefunden");
-        console.log(activeUser.name);
     }
     else {
         window.location.href = "../index.html";
@@ -241,7 +236,6 @@ function setBackground(i) {
 };
 
 function changeBackground(i) {
-    console.log(i);
     if (i <= 3) {
         document.getElementById(`navLink${i}`).style.backgroundColor = "#12223f"
     } else if (i >= 4) {
