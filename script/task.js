@@ -234,7 +234,7 @@ function returnTaskEditHTML(task) {
                 <div class="task-left-cont task-left-cont-edit">
                     <div class="task-width">
                         <h3 class="task-form-font">Title<span class="task-star">*</span></h3>
-                        <input value="${task.title}" id="taskTitleEdit" class="task-width task-form-font task-input" type="text" placeholder="Enter a title" maxlength="35"
+                        <input value="${task.title}" id="taskTitleEdit" class="task-width task-form-font task-input" type="text" placeholder="Enter a title" maxLength="35"
                             required>
                             <span id="requiredTitleEdit" class="required-text" style="display: none;">This field is required</span>
                     </div>

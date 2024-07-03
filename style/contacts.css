@@ -99,6 +99,8 @@
 .contacts-list p {
     font-size: 15px;
     font-weight: 400;
+    word-wrap: break-word;
+    /* width: auto; */
 }
 
 .contacts-list h3 {
@@ -120,6 +122,7 @@
     justify-self: center;
     padding: 15px 0;
     cursor: pointer;
+    overflow-wrap: break-word;
 }
 
 .contacts-list-box-entry:active {
@@ -154,6 +157,25 @@
 
 .contacts-email {
     font-size: 12px;
+    overflow-wrap: break-word;
+    /* width: auto; */
+}
+
+.contacts-list p,
+.contacts-email {
+    overflow-wrap: break-word; /* Text umbrechen, falls erforderlich */
+    flex: 1; /* Flexibles Wachstum */
+}
+
+.contacts-list-name-and-email {
+    /* width: auto; */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    overflow-wrap: break-word;
+    padding-right: 8px;
+
+
 }
 
 /* Single contact - mobile view */
@@ -585,7 +607,7 @@
 
 }
 
-@media only screen and (min-width: 1120px) and (max-width: 1280px) {
+@media only screen and (min-width: 1120px) and (max-width: 1420px) {
     .contacts-list h3,
     .contacts-list p {
         font-size: 16px;
@@ -598,14 +620,38 @@
 
     .contacts-list-box {
         grid-template-columns: 3fr 7fr;
-        min-width: 85%;
+        min-width: 90%;
     }
 
     .add-new-contact-button,
     .contacts-line,
-    .contacts-list-box  {
-        width: 85%;
-}
+    .contacts-list-box 
+    /* .contacts-list-name-and-email  */
+     {
+        width: 90%;
+    }
+
+    .single-contact-profile-badge {
+        width: 80px;
+        height: 80px;
+        font-size: 27px;
+    }
+
+    .single-contact h1 {
+        font-size: 47px;
+    }
+
+    .single-contact-name {
+    font-size: 36px;
+    }
+ 
+    .contacts-profile-badge {
+        margin-left: 16px;
+        width: 36px;
+        height: 36px;
+        font-size: 15px;
+
+    }
 }
 
 @media only screen and (min-width: 1120px) {
