@@ -170,10 +170,16 @@ async function includeHTML() {
         let resp = await fetch(file);
         if (resp.ok) {
             element.innerHTML = await resp.text();
-            document.getElementById("userInitials").innerHTML = getInitials(activeUser.name);
+
         } else {
             element.innerHTML = 'Page not found';
         }
+    }
+
+    const retrievedUserString = localStorage.getItem('user');
+    if (retrievedUserString) {
+        activeUser = JSON.parse(retrievedUserString);
+        document.getElementById("userInitials").innerHTML = getInitials(activeUser.name);
     }
 };
 
@@ -187,14 +193,16 @@ function loadUser() {
     if (retrievedUserString) {
         activeUser = JSON.parse(retrievedUserString);
     }
-    else {
+    else if (window.location.pathname.includes('/html/') && !window.location.pathname.includes('register') && !window.location.pathname.includes('legal') && !window.location.pathname.includes('privacy')) {
         window.location.href = "../index.html";
     }
 };
+loadUser()
 
-if (window.location.pathname.includes('/html/') && !window.location.pathname.includes('register')&& !window.location.pathname.includes('legal')&& !window.location.pathname.includes('privacy')) {
-    loadUser();
-};
+// if()
+// if (window.location.pathname.includes('/html/') && !window.location.pathname.includes('register') && !window.location.pathname.includes('legal') && !window.location.pathname.includes('privacy')) {
+//     loadUser();
+// };
 
 function logout() {
     localStorage.removeItem('user');
@@ -203,7 +211,7 @@ function logout() {
 };
 
 function guestUserActive() {
-    activeUser.name = "Guest";
+    activeUser.name = "Guest User";
     saveUser(activeUser);
     goToBoard();
 };
