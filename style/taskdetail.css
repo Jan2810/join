@@ -66,11 +66,11 @@
 }
 
 .task-heading {
-    max-height: 219px;
+    /* max-height: 219px; */
     font-weight: 700;
     font-size: 61px;
     line-height: 73.2px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 
 .task-date-container,
