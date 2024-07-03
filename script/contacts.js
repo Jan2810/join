@@ -313,6 +313,7 @@ async function updateContactFrontend(contact) {
     contactPhone.textContent = contact[2];
     closeOverlayAfterEditWithoutTransition();
     await renderContactsList();
+    findAndHighlightContact(contact[0]);
 }
 
 async function deleteContactBackend() {
