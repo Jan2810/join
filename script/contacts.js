@@ -77,6 +77,7 @@ async function addNewContact(event) {
     event.preventDefault();
     let color = getRandomContactColor();
     let initials = getInitials(addContactFormName.value);
+    initials = initials.substring(0, 3);
     if (addContactFormEmail.value.trim() && addContactFormName.value.trim() && addContactFormPhone.value.trim()) {
         let newContact = {
             "email": addContactFormEmail.value,
@@ -101,7 +102,13 @@ function clearInput() {
 }
 
 async function loadContactsData() {
-    let response = await fetch(CONTACTS_URL + ".json");
+    let response = await fetch(CONTACTS_URL + ".json", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        cache: 'no-store'
+    });
     let responseAsJson = await response.json();
     return responseAsJson;
 }
@@ -185,11 +192,12 @@ async function renderContactsListHtml(contactsByLetter) {
 }
 
 async function renderContactsList() {
+    await new Promise(resolve => setTimeout(resolve, 500));
     let contacts = await processContactsData();
     sortContacts(contacts);
 
     let contactsByLetter = organizeContactsByLetter(contacts);
-
+    console.log(contacts);
     await renderContactsListHtml(contactsByLetter);
 }
 
@@ -210,14 +218,9 @@ async function updateStatusNew() {
     const contactsData = await loadContactsData();
     for (let key in contactsData) {
         if (contactsData[key].status) {
-            console.log(contactsData[key].status);
         }
-
-
         if (contactsData[key].status && contactsData[key].status === 'new') {
             await updateContactStatus(key, 'normal');
-
-
         }
     }
 
@@ -255,27 +258,24 @@ function displayNameEmailPhoneForEdit() {
     editBadge.style.backgroundColor = nameEmailPhoneForEdit[0] || '#fff';
 }
 
-async function saveEditedContact(event) {
+async function editContact(event) {
     event.preventDefault();
     let contact = [editEmail.value, editName.value, editPhone.value, editBadge.textContent, editBadge.style.backgroundColor]
-    console.log(contact);
     if (editName.value.trim() && editEmail.value.trim() && editPhone.value.trim()) {
         let contacts = await loadContactsData();
         for (let key in contacts) {
             if (contacts[key].name === nameEmailPhoneForEdit[2]) {
-                updateContactInFirebase(key, contact);
+                updateContactBackend(key, contact);
+                updateInMemoryContactData(contact);
                 break;
             }
         }
-        closeEditContactOverlayAfterEdit();
-        renderContactsList();
-        updateSingleContactViewAfterEdit(contact);
+        updateContactFrontend(contact);
     }
-
 }
 
-async function updateContactInFirebase(key, contact) {
-    const url = `${CONTACTS_URL}${key}/.json`;
+async function updateContactBackend(key, contact) {
+    const url = `${CONTACTS_URL}${key}.json`;
     await fetch(url, {
         method: 'PUT',
         headers: {
@@ -292,7 +292,7 @@ async function updateContactInFirebase(key, contact) {
     });
 }
 
-function closeEditContactOverlayAfterEdit() {
+function closeOverlayAfterEditWithoutTransition() {
     editContactsOverlayBg.classList.remove('edit-contacts-overlay-bg-transition');
     closeEditContactOverlay();
     setTimeout(() => {
@@ -300,10 +300,42 @@ function closeEditContactOverlayAfterEdit() {
     }, 10);
 }
 
-function updateSingleContactViewAfterEdit(contact) {
+function updateContactFrontend(contact) {
     contactName.textContent = contact[1];
     contactLink.href = `mailto:${contact[0]}`;
     contactLink.textContent = contact[0];
     contactPhone.textContent = contact[2];
+    closeOverlayAfterEditWithoutTransition();
+    renderContactsList();
+}
 
+async function deleteContactBackend() {
+    let contacts = await loadContactsData();
+    for (let key in contacts) {
+        if (contacts[key].name === nameEmailPhoneForEdit[2]) {
+            await deleteData(CONTACTS_URL, key);
+            break;
+        }
+    }
+    deleteContactFrontend();
+}
+
+function updateInMemoryContactData(contact) {
+    nameEmailPhoneForEdit = [
+        contact[4], // backgroundColor
+        contact[3], // initials
+        contact[1], // name
+        contact[0], // email
+        contact[2]  // phone
+    ];
+}
+
+function deleteContactFrontend() {
+    badgeAndName.style.display = 'none';
+    contactInformation.classList.add('d-none');
+    nameEmailPhoneForEdit = [];
+    if (window.innerWidth < 1120) {
+        returnToContactsList();
+    }
+    renderContactsList();
 }

@@ -33,7 +33,7 @@ function renderContact(contact) {
     return /*html*/ `
         <div class="contacts-list-box contacts-list-box-entry ${contactClass}" onclick="showSingleContactView(this, '${contact.color}', '${contact.initials}', '${contact.name}', '${contact.email}', '${contact.phone}')">
             <div class="contacts-profile-badge flex-center" style="background-color: ${contact.color};">${contact.initials}</div>
-            <div>
+            <div class="contacts-list-name-and-email">
                 <p>${contact.name}</p>
                 <div class="contacts-email color-lightblue">${contact.email}</div>
             </div>
