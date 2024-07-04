@@ -164,11 +164,9 @@ function returnTaskListHTML(category, i) {
  */
 function displayContacts(ev) {
     if (ev === "open") {
-        document.getElementById("dropdownToggle").style.display = "none";
         document.getElementById("dropdownMenuContainer").style.display = "";
         document.getElementById("dropdownMenu").style.display = "block";
     } else if (ev === "close") {
-        document.getElementById("dropdownToggle").style.display = "flex";
         document.getElementById("dropdownMenuContainer").style.display = "none";
         document.getElementById("dropdownMenu").style.display = "none";
     }
