@@ -6,6 +6,7 @@ function openAddTaskInBoard(status) {
     setStatus(status);
     if (window.innerWidth > 800) {
         document.getElementById("addTaskBg").style.display = "";
+        setTimeout(function() { document.getElementById("addTaskBg").style.opacity = "1";},1)
         document.getElementById("newTaskContainer").innerHTML = "";
         document.getElementById("newTaskContainer").innerHTML += returnAddTaskInBoardHTML();
         setTimeout(() => {
@@ -25,9 +26,10 @@ function closeNewTaskInBoard() {
     let bg = document.getElementById("addTaskBg");
     let container = document.getElementById("newTaskContainer");
     container.style.transform = "translateX(1500px)";
+    bg.style.opacity = "0";
     setTimeout(() => {
         bg.style.display = "none";
-    }, 100);
+    }, 301);
 };
 
 /**

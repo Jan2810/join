@@ -20,7 +20,6 @@
     padding: 38px 30px;
     z-index: 100;
     gap: 24px;
-    transition: all 100ms ease-in-out;
 }
 
 .task-container-hidden {
