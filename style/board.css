@@ -1,6 +1,7 @@
 body {
     height: 100vh;
     overflow-y: hidden;
+    transition: all 100ms ease-in-out;
 }
 
 .dashed-container {
@@ -140,7 +141,8 @@ main {
     color: rgba(66, 82, 110, 1);
 }
 
-.board-categories-add-task-button rect, path {
+.board-categories-add-task-button rect,
+path {
     transition: all 100ms ease-in-out;
 }
 
@@ -178,8 +180,8 @@ main {
     cursor: pointer;
 }
 
-.board-ticket:active{
-    cursor:grabbing;
+.board-ticket:active {
+    cursor: grabbing;
 }
 
 .board-ticket-tend {

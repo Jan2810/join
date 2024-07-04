@@ -64,7 +64,7 @@
 .hide-edit-contact-overlay,
 .hide-add-contact-overlay {
     /* transition: transform 300ms ease-out; */
-    transform: translateY(100%);
+    transform: translateY(200%);
     /* animation: move-out-bottom 300ms ease-out forwards; */
 }
 
