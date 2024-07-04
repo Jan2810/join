@@ -69,8 +69,8 @@
                                 </svg>
                             </div>
                         </div>
-                        <div id="board-ticket-container-todo" class="board-ticket-container" ondrop="moveTo('todo')"
-                            ondragover="allowDrop(event)">
+                        <div id="board-ticket-container-todo" class="board-ticket-container" ondrop="moveTo('todo', 'todo')"
+                            ondragover="allowDrop(event, 'todo')" ondragleave="removeDashed('todo')">
                             <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                             </div>
                         </div>
                         <div id="board-ticket-container-in-progress" class="board-ticket-container"
-                            ondrop="moveTo('inprogress')" ondragover="allowDrop(event)">
+                            ondrop="moveTo('inprogress', 'in-progress')" ondragover="allowDrop(event, 'in-progress')" ondragleave="removeDashed('in-progress')">
                             <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <div id="board-ticket-container-await-feedback" class="board-ticket-container"
-                            ondrop="moveTo('awaitfeedback')" ondragover="allowDrop(event)">
+                            ondrop="moveTo('awaitfeedback', 'await-feedback')" ondragover="allowDrop(event, 'await-feedback')" ondragleave="removeDashed('await-feedback')">
                             <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
                         </div>
                     </div>
@@ -129,8 +129,8 @@
                                 </svg>
                             </div>
                         </div>
-                        <div id="board-ticket-container-done" class="board-ticket-container" ondrop="moveTo('done')"
-                            ondragover="allowDrop(event)">
+                        <div id="board-ticket-container-done" class="board-ticket-container" ondrop="moveTo('done', 'done')"
+                            ondragover="allowDrop(event, 'done')" ondragleave="removeDashed('done')">
                             <div class="board-no-tasks-placeholder flex-center">No tasks to do</div>
                         </div>
                     </div>

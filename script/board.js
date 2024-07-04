@@ -170,15 +170,23 @@ function endDragging(id) {
  * Allows an element to be dropped.
  * @param {DragEvent} ev - The drag event.
  */
-function allowDrop(ev) {
+function allowDrop(ev, contName) {
     ev.preventDefault();
+    let container = document.getElementById(`board-ticket-container-${contName}`);
+    container.classList.add("dashed-container");
 };
+
+function removeDashed(contName) {
+    let container = document.getElementById(`board-ticket-container-${contName}`);
+    container.classList.remove("dashed-container");
+}
 
 /**
  * Moves a task to a specified status.
  * @param {string} status - The status to move the task to.
  */
-function moveTo(status) {
+function moveTo(status, contName) {
+    document.getElementById(`board-ticket-container-${contName}`).classList.remove("dashed-container");
     const currentTask = tasksArray.find((ct) => ct['id'] === currentDraggedElement);
     currentTask['status'] = status;
     putData(TASKS_URL, tasksArray);

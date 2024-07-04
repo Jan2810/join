@@ -4,7 +4,7 @@ body {
 }
 
 .dashed-container {
-    border: 1px dashed lightgrey;
+    border: 2px dotted lightgrey;
 }
 
 .board-scrollable-content {
