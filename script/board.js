@@ -173,7 +173,9 @@ function endDragging(id) {
 function allowDrop(ev, contName) {
     ev.preventDefault();
     let container = document.getElementById(`board-ticket-container-${contName}`);
-    container.classList.add("dashed-container");
+    if (!container.classList.contains("dashed-container")) {
+        container.classList.add("dashed-container");
+    }
 };
 
 /**
