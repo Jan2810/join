@@ -260,13 +260,13 @@
     font-size: 21px;
     font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.1s ease;
     margin-top: 16px;
 }
 
 .create-contact-button {
-    width: 202px;
-    height: 51px;
+    width: 214px;
+    height: 57px;
     background-color: #2A3647;
     color: white;
     display: flex;
@@ -279,6 +279,38 @@
 .edit-contact-save-button:active {
     background: #29ABE2;
     border-color: #29ABE2;
+}
+
+.cancel-button {
+    background-color: #fff;
+    width: 126px;
+    height: 56px;
+    font-weight: 400;
+    border: 1px solid #2A3647;
+    color: #2A3647;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.cancel-button:hover {
+    border: 1px solid #29ABE2;
+    color: #29ABE2;
+}
+
+.cancel-icon {
+    fill: #2A3647;
+}
+.cancel-button:hover .cancel-icon {
+    fill: #29ABE2;
+}
+
+.add-contact-form-buttons-container {
+    display: flex;
+    justify-content: start;
+    gap: 24px;
+    ;
 }
 
 /* .add-new-contact-button {
@@ -488,10 +520,15 @@
         max-width: 467px;
         border-top-right-radius: 0px; 
         border-bottom-left-radius: 20px;
+        padding: 66px 48px;
     }
 
     .add-contact-capa-icon {
         display: block;
+    }
+
+    .add-contact-top-header h3 {
+        padding-top: 16px;
     }
 
     .add-contact-person-svg {
@@ -539,6 +576,10 @@
         fill: #2A3647;
     }
 
+    .edit-contact-form {
+        align-items: start;
+    }
+
     .add-contact-form,
     .edit-contact-form {
         width: 100%;
@@ -556,6 +597,14 @@
     .contact-created-popup-bg {
         left: calc(688px + ((100vw - 1120px) * 0.5)); 
         width: calc(100vw - 680px);
+    }
+
+    .cancel-button {
+        display: flex;
+    }
+
+    .add-contact-form {
+        align-items: start;
     }
 }
 

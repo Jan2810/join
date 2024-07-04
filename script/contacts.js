@@ -45,7 +45,6 @@ function displayContactCreatedPopup(event) {
 
 async function addNewContact(event) {
     event.preventDefault();
-    console.log(addContactFormName.value);
     let color = getRandomContactColor();
     let initials = getInitials(addContactFormName.value);
     initials = initials.substring(0, 3);
@@ -254,11 +253,10 @@ function findAndHighlightContact(email) {
 // Edit contact:
 
 function displayNameEmailPhoneForEdit() {
-    console.log(nameEmailPhoneForEdit);
     editName.value = nameEmailPhoneForEdit[2] || '';
     editEmail.value = nameEmailPhoneForEdit[3] || '';
     editPhone.value = nameEmailPhoneForEdit[4] || '';
-    editBadge.textContent = nameEmailPhoneForEdit[1] || 'GN';
+    editBadge.textContent = nameEmailPhoneForEdit[1] || 'G';
     editBadge.style.backgroundColor = nameEmailPhoneForEdit[0] || '#fff';
 }
 
@@ -266,15 +264,16 @@ async function editContact(event) {
     event.preventDefault();
     let contact = [editEmail.value, editName.value, editPhone.value, editBadge.textContent, editBadge.style.backgroundColor]
     if (editName.value.trim() && editEmail.value.trim() && editPhone.value.trim()) {
+        contact[3] = updateInitials(contact);
         let contacts = await loadContactsData();
         for (let key in contacts) {
             if (contacts[key].name === nameEmailPhoneForEdit[2]) {
-                updateContactBackend(key, contact);
+                await updateContactBackend(key, contact);
                 updateInMemoryContactData(contact);
                 break;
             }
         }
-        updateContactFrontend(contact);
+        await updateContactFrontend(contact);
     }
 }
 
@@ -309,6 +308,7 @@ async function updateContactFrontend(contact) {
     contactLink.href = `mailto:${contact[0]}`;
     contactLink.textContent = contact[0];
     contactPhone.textContent = contact[2];
+    profileBadge.textContent = contact[3];
     closeOverlayAfterEditWithoutTransition();
     await renderContactsList();
     findAndHighlightContact(contact[0]);
@@ -322,6 +322,14 @@ function updateInMemoryContactData(contact) {
         contact[0], // email
         contact[2]  // phone
     ];
+}
+
+function updateInitials(contact) {
+    if (contact[1] !== nameEmailPhoneForEdit[2]) {
+        return getInitials(contact[1]);
+    } else {
+        return contact[3];
+    }
 }
 
 async function deleteContactBackend() {
@@ -393,11 +401,9 @@ function validateEmail(event) {
     if (emailExists) {
         emailInput.setCustomValidity('This email address is already registered.');
         // showValidationMessage(emailInput, 'This email address is already registered.');
-        console.log('Email already exists:', email);
     } else {
         emailInput.setCustomValidity('');
         // showValidationMessage(emailInput, '');
-        console.log('Email is valid:', email);
     }
 }
 
