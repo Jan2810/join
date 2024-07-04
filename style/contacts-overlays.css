@@ -1,4 +1,21 @@
 /* Edit contact overlay / Add contact overlay */
+.window-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.20);
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms ease-out, visibility 300ms ease-out;
+}
+
+.window-bg.visible {
+    opacity: 1;
+    visibility: visible;
+}
 
 .edit-contacts-overlay-bg,
 .add-contacts-overlay-bg {
@@ -7,8 +24,7 @@
     left: 0;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.20);
-    z-index: 10;
+    z-index: 8;
 }
 
 .edit-contacts-overlay-bg-transition, 
@@ -34,14 +50,14 @@
 .overlay-edit-contact {
     width: 100%;
     border-radius: 12px;
-    z-index: 15;
+    /* z-index: 150; */
     position: relative;
 }
 
 .overlay-add-contact {
     width: 100%;
     border-radius: 12px;
-    z-index: 15;
+    /* z-index: 150; */
     position: relative;
 }
 

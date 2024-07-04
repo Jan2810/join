@@ -1,6 +1,7 @@
 let contactsList = document.getElementById('contacts-list');
 let contactsContainer = document.getElementById('contacts-container');
 let contactContainer = document.getElementById('single-contact-container');
+let windowBg = document.getElementById('window-bg');
 let editContactsOverlayBg = document.getElementById('edit-contacts-overlay-bg');
 let addContactsOverlayBg = document.getElementById('add-contacts-overlay-bg');
 let editContactOverlay = document.getElementById('overlay-edit-contact');
@@ -31,6 +32,10 @@ const contactPhone = document.querySelector('.single-contact-phone');
 
 
 function openEditContactOverlay() {
+    windowBg.classList.remove('d-none');
+    setTimeout(() => {
+        windowBg.classList.add('visible');
+    }, 10);
     editContactsOverlayBg.classList.remove('hide-edit-contact-overlay');
     // editContactOverlay.classList.remove('hide-edit-contact-overlay');
     // editContactsOverlayBg.classList.add('show-edit-contact-overlay');
@@ -52,6 +57,10 @@ function closeEditContactOverlay() {
     // editContactOverlay.classList.remove('show-edit-contact-overlay');
     editContactsOverlayBg.classList.add('hide-edit-contact-overlay');
     // editContactOverlay.classList.add('hide-edit-contact-overlay');
+    windowBg.classList.remove('visible');
+    setTimeout(() => {
+        windowBg.classList.add('d-none');
+    }, 300);
 
 }
 
@@ -62,12 +71,20 @@ function closeAddContactOverlay() {
     // addContactOverlay.classList.remove('show-edit-contact-overlay');
     addContactsOverlayBg.classList.add('hide-add-contact-overlay');
     // addContactOverlay.classList.add('hide-add-contact-overlay');
-    console.log('Close Window');
+    windowBg.classList.remove('visible');
+    setTimeout(() => {
+        windowBg.classList.add('d-none');
+    }, 300);
     clearInput();
 }
 
 function openAddContactOverlay() {
+    windowBg.classList.remove('d-none');
+    setTimeout(() => {
+        windowBg.classList.add('visible');
+    }, 10);
     addContactsOverlayBg.classList.remove('hide-add-contact-overlay');
+
     // addContactOverlay.classList.remove('hide-add-contact-overlay');
     // addContactsOverlayBg.classList.add('show-edit-contact-overlay');
     // addContactOverlay.classList.add('show-edit-contact-overlay');
