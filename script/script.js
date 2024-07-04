@@ -318,7 +318,7 @@ function logout() {
  * Activates the guest user mode.
  */
 function guestUserActive() {
-    activeUser.name = "Guest User";
+    activeUser.name = "Guest";
     saveUser(activeUser);
     goToBoard();
 };
