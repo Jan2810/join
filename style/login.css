@@ -1,6 +1,7 @@
 body{
     overflow-x: hidden;
     height: 100%;
+    transition: all 100ms ease-in-out;
 }
 
 :root {
