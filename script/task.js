@@ -1,5 +1,7 @@
 const body = document.querySelector("body");
 let bg = document.createElement("div");
+bg.style.opacity = 0;
+bg.classList.add("transition-300")
 let taskContainer = document.createElement("div");
 taskContainer.classList.add("task-container", "flex-column", "task-container-hidden");
 
@@ -13,6 +15,7 @@ function prepareTask() {
     body.classList.remove("overflow-hidden");
     bg.appendChild(taskContainer);
 };
+
 /**
  * Displays the task with the given ID.
  * 
@@ -22,8 +25,11 @@ function showTask(id) {
     bg.classList.remove("d-none");
     bg.classList.add("bg-active");
     setTimeout(() => {
+        bg.style.opacity = 1;
+    }, 1);
+    setTimeout(() => {
         taskContainer.classList.remove("task-container-hidden");
-    }, 0);
+    }, 100);
     taskContainer.innerHTML = renderTask(id);
     body.classList.add("overflow-hidden");
     bg.addEventListener('click', function (event) {
@@ -48,11 +54,12 @@ function stopPropagation() {
  * Closes the currently displayed task and resets the task environment.
  */
 function closeTask() {
+    bg.style.opacity = "0";
     taskContainer.classList.add("task-container-hidden");
     setTimeout(() => {
         prepareTask();
-    }, 100);
-    initBoard();
+        initBoard();
+    }, 301);
     controlContacts = [];
     taskId = "";
     contactsTaskOpen = false;
