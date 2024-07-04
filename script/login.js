@@ -17,9 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
  * Changes the source of the login animation logo image.
  */
 function changeImageSource() {
-    document.getElementById('login-animation-logo').src = '../assets/img/logo.png';
+    if (window.location.pathname === "/index.html") {
+        document.getElementById('login-animation-logo').src = '../assets/img/logo.png';
+    }
 }
-
 setTimeout(changeImageSource, 300);
 
 /**

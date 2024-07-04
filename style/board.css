@@ -3,6 +3,10 @@ body {
     overflow-y: hidden;
 }
 
+.dashed-container {
+    border: 1px dashed lightgrey;
+}
+
 .board-scrollable-content {
     overflow: scroll;
     height: 100%;
@@ -136,6 +140,10 @@ main {
     color: rgba(66, 82, 110, 1);
 }
 
+.board-categories-add-task-button rect, path {
+    transition: all 100ms ease-in-out;
+}
+
 .board-categories-add-task-button:hover rect {
     stroke: rgba(41, 171, 226, 1);
 }
@@ -167,10 +175,10 @@ main {
 }
 
 .board-ticket:hover {
-    cursor: grab;
+    cursor: pointer;
 }
 
-.board-ticket:active {
+.board-ticket:active{
     cursor:grabbing;
 }
 
