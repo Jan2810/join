@@ -342,6 +342,12 @@
     transform: translateY(100%);
 }
 
+.email-error {
+    color: #FF8190;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
 
 
 @media only screen and (min-width: 352px) {

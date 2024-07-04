@@ -164,7 +164,8 @@
                         required minlength="2" pattern="[a-zA-Z0-9À-ÖØ-öø-ŸŹ-ž\s]*"
                         title="Name can only contain letters, numbers, spaces, and accented characters.">
                     <input class="edit-contact-form-email" id="edit-contact-form-email" type="email" placeholder="Email"
-                        required title="Please enter a valid email address.">
+                        required minlength="5" title="Please enter a valid email address.">
+                    <div id="edit-email-error" class="email-error"></div>
                     <input class="edit-contact-form-phone" id="edit-contact-form-phone" type="tel" placeholder="Phone"
                         required minlength="10" pattern="[0-9+ ]+"
                         title="Phone number can only contain numbers, the plus sign, and spaces.">
@@ -225,12 +226,13 @@
                             fill="#none" />
                     </svg></div>
                 <form id="add-contact-form" class="add-contact-form"
-                    onsubmit="displayContactCreatedPopup(event); addNewContact(event)">
+                    onsubmit="addNewContact(event); displayContactCreatedPopup(event)">
                     <input class="add-contact-form-name" id="add-contact-form-name" type="text" placeholder="Name"
                         required minlength="2" pattern="[a-zA-Z0-9À-ÖØ-öø-ŸŹ-ž\s]*"
                         title="Name can only contain letters, numbers, spaces, and accented characters.">
                     <input class="add-contact-form-email" id="add-contact-form-email" type="email" placeholder="Email"
-                        required title="Please enter a valid email address.">
+                        required minlength="5" title="Please enter a valid email address.">
+                    <div id="add-email-error" class="email-error"></div>
                     <input class="add-contact-form-phone" id="add-contact-form-phone" type="tel" placeholder="Phone"
                         required minlength="10" pattern="[0-9+ ]+"
                         title="Phone number can only contain numbers, the plus sign, and spaces.">
