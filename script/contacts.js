@@ -45,6 +45,7 @@ function displayContactCreatedPopup(event) {
 
 async function addNewContact(event) {
     event.preventDefault();
+    console.log(addContactFormName.value);
     let color = getRandomContactColor();
     let initials = getInitials(addContactFormName.value);
     initials = initials.substring(0, 3);
@@ -346,3 +347,64 @@ async function deleteContactFrontend() {
     }
     await renderContactsList();
 }
+
+
+// async function fetchExistingEmails() {
+//     let contacts = await loadContactsData();
+//     let emails = [];
+//     for (let key in contacts) {
+//         if (contacts[key].email) {
+//             emails.push(contacts[key].email);
+//         }
+//     }
+//     return emails;
+// }
+
+// let existingEmails = [];
+
+// document.querySelectorAll('.add-contact-form-email, .edit-contact-form-email').forEach(input => {
+//     input.addEventListener('focus', async () => {
+//         existingEmails = await fetchExistingEmails();
+//     });
+//     input.addEventListener('input', validateEmail);
+// });
+
+// function validateEmail(event) {
+//     const emailInput = event.target;
+//     const email = emailInput.value.trim();
+//     const emailExists = existingEmails.includes(email);
+
+//     if (emailExists) {
+//         emailInput.setCustomValidity('This email address is already registered.');
+//         showValidationMessage(emailInput, 'This email address is already registered.');
+//     } else {
+//         emailInput.setCustomValidity('');
+//         showValidationMessage(emailInput, '');
+//     }
+// }
+
+// function showValidationMessage(input, message) {
+//     const errorDivId = input.id === 'add-contact-form-email' ? 'add-email-error' : 'edit-email-error';
+//     const errorDiv = document.getElementById(errorDivId);
+//     errorDiv.textContent = message;
+// }
+
+// document.getElementById('add-contact-form').addEventListener('submit', function (event) {
+//     const emailInput = document.getElementById('add-contact-form-email');
+//     const emailExists = existingEmails.includes(emailInput.value.trim());
+
+//     if (emailExists) {
+//         event.preventDefault(); // Prevent form submission
+//         alert('This email address is already registered.');
+//     }
+// });
+
+// document.getElementById('edit-contact-form').addEventListener('submit', function (event) {
+//     const emailInput = document.getElementById('edit-contact-form-email');
+//     const emailExists = existingEmails.includes(emailInput.value.trim());
+
+//     if (emailExists) {
+//         event.preventDefault(); // Prevent form submission
+//         alert('This email address is already registered.');
+//     }
+// });
