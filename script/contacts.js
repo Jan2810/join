@@ -290,7 +290,6 @@ async function updateContactBackend(key, contact) {
             "initials": contact[3],
             "name": contact[1],
             "phone": contact[2],
-            "status": 'normal'
         })
     });
 }
