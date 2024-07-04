@@ -241,3 +241,9 @@ header {
 
 
 }
+
+@media (max-height: 700px) {
+    .terms-container {
+        display: none;
+    }
+}
