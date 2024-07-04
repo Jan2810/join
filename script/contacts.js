@@ -326,7 +326,8 @@ function updateInMemoryContactData(contact) {
 
 function updateInitials(contact) {
     if (contact[1] !== nameEmailPhoneForEdit[2]) {
-        return getInitials(contact[1]);
+        let initials = getInitials(contact[1]);
+        return initials.substring(0, 3);
     } else {
         return contact[3];
     }
