@@ -13,6 +13,7 @@
     <script src="../script/register.js" defer></script>
     <script src="../script/login.js" defer></script>
     <script src="../script/script.js" defer></script>
+    <script src="../script/contacts-register.js" defer></script>
 </head>
 
 <body>
@@ -36,16 +37,18 @@
                     <input id="register-input-password" class="register-input-fields" type="password"
                         placeholder="Password" required>
                     <div class="register-password-container flex-center flex-column">
-                        <input id="register-input-confirm-password" class="register-input-fields" onkeydown="removeConfirmPasswordError()" type="password"
-                            placeholder="Confirm Password" required>
+                        <input id="register-input-confirm-password" class="register-input-fields"
+                            onkeydown="removeConfirmPasswordError()" type="password" placeholder="Confirm Password"
+                            required>
                         <span id="register-input-password-error" class="d-none">Ups! Your password don't match</span>
                     </div>
                     <label>
-                        <input id="register-privacy-policy-checkbox" type="checkbox" required> I accept the 
+                        <input id="register-privacy-policy-checkbox" type="checkbox" required> I accept the
                         <a class="register-checkbox-link color-lightblue" href="./privacy.html">Privacy policy</a>
                     </label>
                     <div class="register-buttons-container flex-center">
-                        <button class="register-signup-button" type="submit">Sign up</button>
+                        <button class="register-signup-button" type="submit" onclick="addNewContact(event)">Sign
+                            up</button>
                     </div>
                 </div>
             </form>
