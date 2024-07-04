@@ -1,3 +1,9 @@
+/**
+ * Returns the HTML string for the subtask list in editing mode.
+ * @param {Object} subtask - The subtask object.
+ * @param {number} i - The index of the subtask.
+ * @returns {string} The HTML string for the subtask list.
+ */
 function returnSubtasksListEdit(subtask, i) {
     return `
         <div id="subtaskEdit${i}">
@@ -16,6 +22,11 @@ function returnSubtasksListEdit(subtask, i) {
        `;
 };
 
+/**
+ * Returns the HTML string for editing a subtask.
+ * @param {number} i - The index of the subtask.
+ * @returns {string} The HTML string for editing the subtask.
+ */
 function returnEditSubtaskHTMLEdit(i) {
     return `
             <div onkeydown="checkEditKeyEdit(event, ${i})" class="edit-subtask-item">
@@ -32,6 +43,12 @@ function returnEditSubtaskHTMLEdit(i) {
     `;
 };
 
+/**
+ * Returns the HTML string for the contact list in editing mode.
+ * @param {Object} cnt - The contact object.
+ * @param {number} i - The index of the contact.
+ * @returns {string} The HTML string for the contact list.
+ */
 function returnContactListEdit(cnt, i) {
     return `
         <div onclick="assignContactEdit(${i})" class="dropdown-item" id="cntnumEdit${i}" data-value="${i}">
@@ -42,6 +59,10 @@ function returnContactListEdit(cnt, i) {
     `;
 };
 
+/**
+ * Returns the HTML string for the subtask input field in editing mode.
+ * @returns {string} The HTML string for the subtask input field.
+ */
 function returnSubtaskImgEdit() {
     return `
     <div onclick="clearInputfieldEdit()" class=" img-cont-subtask-first-n img-cont-subtask">
@@ -53,15 +74,25 @@ function returnSubtaskImgEdit() {
     `;
 };
 
+/**
+ * Shows a warning message when the maximum number of contacts is reached in editing mode.
+ */
 function showMaxContactsEdit() {
     document.getElementById("maxContactsEdit").style.display = "";
     displayContactsEdit("close");
 };
 
+/**
+ * Hides the warning message when the maximum number of contacts is reached in editing mode.
+ */
 function hideMaxContactsEdit() {
     document.getElementById("maxContactsEdit").style.display = "none";
 };
 
+/**
+ * Highlights the urgency button in editing mode.
+ * @param {string} urg - The urgency level.
+ */
 function highlightButtonEdit(urg) {
     if (urg === "high") {
         document.getElementById("highEdit").classList.add("high-focus");
@@ -87,12 +118,18 @@ function highlightButtonEdit(urg) {
     }
 };
 
+/**
+ * Hides the warning message for the subtask input field in editing mode.
+ */
 function hideWarningEdit() {
     document.getElementById("subtasksInputEdit").value = "";
     document.getElementById("subtaskInputContEdit").style.borderColor = "";
     document.getElementById("requiredSubtextEdit").style.display = "none";
 };
 
+/**
+ * Shows a warning message for the subtask input field in editing mode.
+ */
 function showWarningEdit() {
     document.getElementById("subtaskInputContEdit").style.borderColor = "red";
     document.getElementById("requiredSubtextEdit").style.display = "block";

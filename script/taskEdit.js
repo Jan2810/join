@@ -1,6 +1,25 @@
+/**
+ * Array to control contact assignments.
+ * @type {Array}
+ */
 let controlContacts = [];
+
+/**
+ * Object to store task data being edited.
+ * @type {Object}
+ */
 let taskDataEdit = {};
+
+/**
+ * ID of the task being edited.
+ * @type {string}
+ */
 let taskId = "";
+
+/**
+ * Array to store urgency levels and their active states for task editing.
+ * @type {Array<{urgency: string, active: boolean}>}
+ */
 let activeUrgEdit = [
     {
         "urgency": "high",
@@ -16,6 +35,10 @@ let activeUrgEdit = [
     }
 ];
 
+/**
+ * Updates the edited task data.
+ * @returns {Promise<void>}
+ */
 async function putEditTask() {
     await setInputValuesEdit();
     if (taskDataEdit.title.length >= 1 && taskDataEdit.due_date.length >= 1) {
@@ -29,6 +52,12 @@ async function putEditTask() {
     taskContainer.innerHTML = renderTask(taskDataEdit.id);
 };
 
+/**
+ * Initializes data for editing a task.
+ * @param {Object} task - The task object.
+ * @param {string} id - The task ID.
+ * @returns {Promise<void>}
+ */
 async function initDataEditTask(task, id) {
     taskDataEdit = task;
     taskId = id;
@@ -40,6 +69,10 @@ async function initDataEditTask(task, id) {
     renderSubtasksEdit();
 };
 
+/**
+ * Sets input values for editing a task.
+ * @returns {Promise<void>}
+ */
 async function setInputValuesEdit() {
     await getAssignedContactsEdit();
     getUrgencyEdit();
@@ -48,6 +81,10 @@ async function setInputValuesEdit() {
     taskDataEdit.due_date = document.getElementById("taskDateEdit").value;
 };
 
+/**
+ * Gets assigned contacts for editing a task.
+ * @returns {Promise<void>}
+ */
 async function getAssignedContactsEdit() {
     let contacts = await loadData(CONTACTS_URL);
     taskDataEdit.assigned_to = [];
@@ -61,6 +98,9 @@ async function getAssignedContactsEdit() {
     }
 };
 
+/**
+ * Gets the urgency level for editing a task.
+ */
 function getUrgencyEdit() {
     for (let i = 0; i < activeUrgEdit.length; i++) {
         const urg = activeUrgEdit[i];
@@ -70,11 +110,19 @@ function getUrgencyEdit() {
     }
 };
 
+/**
+ * Handles click events for editing.
+ * @param {Event} event
+ */
 function handleClickEventEdit(event) {
     closeContactsEdit(event);
     closeSubtasksEdit(event);
 };
 
+/**
+ * Checks if the Enter key is pressed and adds a subtask for editing.
+ * @param {KeyboardEvent} ev
+ */
 function checkKeyEdit(ev) {
     if (ev.key === 'Enter') {
         ev.preventDefault();
@@ -82,6 +130,11 @@ function checkKeyEdit(ev) {
     }
 };
 
+/**
+ * Sets control contacts for editing based on the current and assigned contacts.
+ * @param {Array} contacts - Array of current contacts.
+ * @param {Array} assignedContacts - Array of assigned contacts.
+ */
 function settingControlContacts(contacts, assignedContacts) {
     if (assignedContacts.length > 0) {
         for (let i = 0; i < contacts.length; i++) {
@@ -102,6 +155,9 @@ function settingControlContacts(contacts, assignedContacts) {
     }
 };
 
+/**
+ * Opens the calendar for selecting a due date for editing a task.
+ */
 function openCalenderEdit() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById("taskDateEdit").setAttribute('min', today);
@@ -109,14 +165,22 @@ function openCalenderEdit() {
     document.getElementById("taskDateEdit").style.color = "black";
 };
 
+/**
+ * Opens the contacts dropdown for editing.
+ * @returns {Promise<void>}
+ */
 async function openContactsEdit() {
     if (contactsTaskOpen === false) {
-        displayContactsEdit("open")
+        displayContactsEdit("open");
         renderContactListEdit();
         contactsTaskOpen = true;
     }
 };
 
+/**
+ * Closes the contacts dropdown for editing.
+ * @param {Event} event
+ */
 function closeContactsEdit(event) {
     if (contactsTaskOpen === true) {
         event.stopPropagation();
@@ -125,6 +189,10 @@ function closeContactsEdit(event) {
     }
 };
 
+/**
+ * Renders the contact list for editing.
+ * @returns {Promise<void>}
+ */
 async function renderContactListEdit() {
     let content = document.getElementById("dropdownMenuEdit");
     content.innerHTML = "";
@@ -132,20 +200,28 @@ async function renderContactListEdit() {
     content.innerHTML = ``;
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-        content.innerHTML += returnContactListEdit(contact, i)
+        content.innerHTML += returnContactListEdit(contact, i);
         checkAssignmentsEdit(i);
     }
 };
 
-
+/**
+ * Checks assignments for editing.
+ * @param {number} i - The index of the contact.
+ */
 function checkAssignmentsEdit(i) {
     if (controlContacts[i] === true) {
-        displayAssignmentsEdit("checked", i)
+        displayAssignmentsEdit("checked", i);
     } else if (controlContacts[i] === false) {
-        displayAssignmentsEdit("unchecked", i)
+        displayAssignmentsEdit("unchecked", i);
     }
 };
 
+/**
+ * Assigns a contact for editing.
+ * @param {number} i - The index of the contact.
+ * @returns {Promise<void>}
+ */
 async function assignContactEdit(i) {
     let trueContacts = controlContacts.filter(controlContact => controlContact === true);
     if (trueContacts.length < 12) {
@@ -161,6 +237,10 @@ async function assignContactEdit(i) {
     }
 };
 
+/**
+ * Renders the sign list for editing.
+ * @returns {Promise<void>}
+ */
 async function renderSignListEdit() {
     if (controlContacts.includes(true)) {
         let content = document.getElementById("signContainerEdit");
@@ -170,12 +250,15 @@ async function renderSignListEdit() {
         for (let i = 0; i < contacts.length; i++) {
             const contact = contacts[i];
             if (controlContacts[i] === true) {
-                content.innerHTML += returnSignListEdit(contact, i)
+                content.innerHTML += returnSignListEdit(contact, i);
             }
         }
     }
 };
 
+/**
+ * Controls the display of checked contacts for editing.
+ */
 function controlCheckedLengthEdit() {
     let container = document.getElementById("signContainerEdit");
     let trueCount = controlContacts.filter(value => value === true).length;
@@ -186,6 +269,10 @@ function controlCheckedLengthEdit() {
     }
 };
 
+/**
+ * Displays the contacts dropdown for editing.
+ * @param {string} ev - The event type ("open" or "close").
+ */
 function displayContactsEdit(ev) {
     if (ev === "open") {
         document.getElementById("dropdownToggleEdit").style.display = "none";
@@ -198,6 +285,11 @@ function displayContactsEdit(ev) {
     }
 };
 
+/**
+ * Displays the assignment status for editing.
+ * @param {string} check - The assignment status ("checked" or "unchecked").
+ * @param {number} i - The index of the contact.
+ */
 function displayAssignmentsEdit(check, i) {
     if (check === "checked") {
         document.getElementById(`cntimgEdit${i}`).src = "../assets/icons/rb-checked.png";
@@ -212,6 +304,12 @@ function displayAssignmentsEdit(check, i) {
     }
 };
 
+/**
+ * Returns the HTML string for the sign list in editing mode.
+ * @param {Object} cnt - The contact object.
+ * @param {number} i - The index of the contact.
+ * @returns {string} The HTML string for the sign list.
+ */
 function returnSignListEdit(cnt, i) {
     return `
            <div class="task-cnt-assigned-sign">
@@ -221,6 +319,10 @@ function returnSignListEdit(cnt, i) {
            </div>`;
 };
 
+/**
+ * Changes the urgency level for editing a task.
+ * @param {string} urg - The urgency level.
+ */
 function changeUrgencyEdit(urg) {
     if (urg === "high") {
         activeUrgEdit[0].active = true;
@@ -235,9 +337,12 @@ function changeUrgencyEdit(urg) {
         activeUrgEdit[1].active = false;
         activeUrgEdit[2].active = true;
     }
-    changeBgBtnEdit()
+    changeBgBtnEdit();
 };
 
+/**
+ * Changes the background button color for editing based on urgency.
+ */
 function changeBgBtnEdit() {
     if (activeUrgEdit[0].active === true) {
         highlightButtonEdit("high");
@@ -250,6 +355,11 @@ function changeBgBtnEdit() {
     }
 };
 
+/**
+ * Handles hover effect on urgency buttons for editing.
+ * @param {boolean} boolean - Indicates if the mouse is hovering over the button.
+ * @param {string} id - The id of the button.
+ */
 function hoverBtnEdit(boolean, id) {
     if (boolean === true && id === "img-highEdit") {
         document.getElementById(id).src = "../assets/icons-addtask/prio-high-white.png";
@@ -268,6 +378,9 @@ function hoverBtnEdit(boolean, id) {
     }
 };
 
+/**
+ * Opens the categories dropdown for editing.
+ */
 function openCategorysEdit() {
     document.getElementById("dropdownCategoryToggleEdit").style.display = "none";
     document.getElementById("dropdownCategoryContainerEdit").style.display = "";
@@ -275,6 +388,10 @@ function openCategorysEdit() {
     renderTaskListEdit();
 };
 
+/**
+ * Closes the categories dropdown for editing.
+ * @param {Event} ev
+ */
 function closeCategorysEdit(ev) {
     ev.stopPropagation();
     document.getElementById("dropdownCategoryToggleEdit").style.display = "";
@@ -282,13 +399,20 @@ function closeCategorysEdit(ev) {
     document.getElementById("dropdownCategorysEdit").style.display = "none";
 };
 
+/**
+ * Opens the subtasks input field for editing.
+ */
 function openSubtasksEdit() {
     let imgContainer = document.getElementById("subtaskImgContEdit");
     document.getElementById("subtasksInputEdit").focus();
     imgContainer.innerHTML = "";
-    imgContainer.innerHTML = returnSubtaskImgEdit()
+    imgContainer.innerHTML = returnSubtaskImgEdit();
 };
 
+/**
+ * Closes the subtasks input field for editing.
+ * @param {Event} ev
+ */
 function closeSubtasksEdit(ev) {
     ev.stopPropagation();
     document.getElementById("subtaskInputContEdit").style.borderColor = "";
@@ -302,6 +426,9 @@ function closeSubtasksEdit(ev) {
     `;
 };
 
+/**
+ * Adds a subtask for editing.
+ */
 function addSubtaskEdit() {
     let input = document.getElementById("subtasksInputEdit").value;
     if (taskDataEdit.subtasks === "") {
@@ -317,12 +444,15 @@ function addSubtaskEdit() {
     }
     if (taskDataEdit.subtasks.length === 4) {
         document.getElementById("requiredSubtextEdit").style.display = "block";
-        document.getElementById("requiredSubtextEdit").innerHTML = "You reached the maximum number of tasks"
+        document.getElementById("requiredSubtextEdit").innerHTML = "You reached the maximum number of tasks";
     }
 };
 
+/**
+ * Renders the subtasks list for editing.
+ */
 function renderSubtasksEdit() {
-    container = document.getElementById("addedSubtasksEdit")
+    container = document.getElementById("addedSubtasksEdit");
     container.innerHTML = "";
     for (let i = 0; i < taskDataEdit.subtasks.length; i++) {
         const subtask = taskDataEdit.subtasks[i];
@@ -330,12 +460,21 @@ function renderSubtasksEdit() {
     }
 };
 
+/**
+ * Edits a subtask in editing mode.
+ * @param {number} i - The index of the subtask.
+ */
 function editSubtaskEdit(i) {
     document.getElementById(`subtaskEdit${i}`).innerHTML = returnEditSubtaskHTMLEdit(i);
-    document.getElementById("editedValueEdit").focus()
-    document.getElementById("editedValueEdit").select()
+    document.getElementById("editedValueEdit").focus();
+    document.getElementById("editedValueEdit").select();
 };
 
+/**
+ * Checks if the Enter key is pressed and saves the edited subtask.
+ * @param {KeyboardEvent} ev
+ * @param {number} i - The index of the subtask.
+ */
 function checkEditKeyEdit(ev, i) {
     if (ev.key === "Enter") {
         ev.preventDefault();
@@ -343,18 +482,29 @@ function checkEditKeyEdit(ev, i) {
     }
 };
 
+/**
+ * Saves the edited subtask.
+ * @param {number} i - The index of the subtask.
+ */
 function saveSubtaskEdit(i) {
-    let subtask = document.getElementById("editedValueEdit").value
+    let subtask = document.getElementById("editedValueEdit").value;
     let subtaskArray = { text: subtask, status: "unchecked" };
     taskDataEdit.subtasks[i] = subtaskArray;
     renderSubtasksEdit();
 };
 
+/**
+ * Clears the input field for subtasks in editing mode.
+ */
 function clearInputfieldEdit() {
     document.getElementById("subtasksInputEdit").value = "";
     hideWarningEdit();
 };
 
+/**
+ * Deletes a subtask in editing mode.
+ * @param {number} i - The index of the subtask.
+ */
 function deleteSubtaskEdit(i) {
     taskDataEdit.subtasks.splice(i, 1);
     renderSubtasksEdit();

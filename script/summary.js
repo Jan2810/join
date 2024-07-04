@@ -1,9 +1,37 @@
+/**
+ * Array to store tasks with status 'todo'.
+ * @type {Array}
+ */
 let todosArray = [];
+
+/**
+ * Array to store tasks with status 'inprogress'.
+ * @type {Array}
+ */
 let inProgressArray = [];
+
+/**
+ * Array to store tasks with status 'awaitfeedback'.
+ * @type {Array}
+ */
 let awaitFeedbackArray = [];
+
+/**
+ * Array to store tasks with status 'done'.
+ * @type {Array}
+ */
 let doneArray = [];
+
+/**
+ * Array to store tasks with high priority.
+ * @type {Array}
+ */
 let urgentArray = [];
 
+/**
+ * Initializes the summary page.
+ * @returns {Promise<void>}
+ */
 async function sumStart() {
     checkForPreviousPage();
     await includeHTML();
@@ -13,6 +41,10 @@ async function sumStart() {
     setBackground(0);
 };
 
+/**
+ * Renders the summary page with tasks data.
+ * @returns {Promise<void>}
+ */
 async function renderPage() {
     let tasks = await loadData(TASKS_URL);
     if (tasks !== undefined) {
@@ -21,73 +53,89 @@ async function renderPage() {
     }
 };
 
+/**
+ * Gets the count of 'todo' tasks.
+ * @param {Array} t - Array of tasks.
+ * @returns {number} The count of 'todo' tasks.
+ */
 function getTodos(t) {
-    let todos = t.filter(task => task.status === "todo"); 
-    if (todos.length !== 0) {
-        return todos.length;
-    } else {
-        return 0;
-    }
+    let todos = t.filter(task => task.status === "todo");
+    return todos.length !== 0 ? todos.length : 0;
 };
 
+/**
+ * Gets the count of 'done' tasks.
+ * @param {Array} t - Array of tasks.
+ * @returns {number} The count of 'done' tasks.
+ */
 function getDone(t) {
     let dones = t.filter(task => task.status === "done");
-    if (dones.length !== 0) {
-        return dones.length;
-    } else {
-        return 0;
-    }
+    return dones.length !== 0 ? dones.length : 0;
 };
 
+/**
+ * Gets the count of high priority tasks.
+ * @param {Array} t - Array of tasks.
+ * @returns {number} The count of high priority tasks.
+ */
 function getUrgent(t) {
     let urgents = t.filter(task => task.priority === "high");
-    if (urgents.length !== 0) {
-        return urgents.length;
-    } else {
-        return 0;
-    }
+    return urgents.length !== 0 ? urgents.length : 0;
 };
 
+/**
+ * Gets the earliest due date of high priority tasks.
+ * @param {Array} t - Array of tasks.
+ * @returns {string} The earliest due date of high priority tasks or "--.--.----" if none exist.
+ */
 function getUrgentDate(t) {
     let urgents = t.filter(task => task.priority === "high");
     if (urgents.length !== 0) {
         let dateString = getUpcomingUrgentDate(urgents);
         return formatDate(dateString);
     } else {
-        return "--.--.----"
+        return "--.--.----";
     }
 };
 
+/**
+ * Gets the total count of tasks.
+ * @param {Array} t - Array of tasks.
+ * @returns {number} The total count of tasks.
+ */
 function getTasksLength(t) {
-    if (t.length !== 0) {
-        return t.length;
-    } else {
-        return 0;
-    }
+    return t.length !== 0 ? t.length : 0;
 };
 
+/**
+ * Gets the count of 'inprogress' tasks.
+ * @param {Array} t - Array of tasks.
+ * @returns {number} The count of 'inprogress' tasks.
+ */
 function getInProgress(t) {
     let inProgress = t.filter(task => task.status === "inprogress");
-    if (inProgress.length !== 0) {
-        return inProgress.length;
-    } else {
-        return 0;
-    }
+    return inProgress.length !== 0 ? inProgress.length : 0;
 };
 
+/**
+ * Gets the count of 'awaitfeedback' tasks.
+ * @param {Array} t - Array of tasks.
+ * @returns {number} The count of 'awaitfeedback' tasks.
+ */
 function getAwaitingFeedback(t) {
     let awaitFeedback = t.filter(task => task.status === "awaitfeedback");
-    if (awaitFeedback.length !== 0) {
-        return awaitFeedback.length;
-    } else {
-        return 0;
-    }
-}
+    return awaitFeedback.length !== 0 ? awaitFeedback.length : 0;
+};
 
+/**
+ * Gets the earliest due date from an array of high priority tasks.
+ * @param {Array} urgents - Array of high priority tasks.
+ * @returns {string} The earliest due date.
+ */
 function getUpcomingUrgentDate(urgents) {
     let prioDates = [];
     urgents.forEach(task => {
-        prioDates.push(task.due_date)
+        prioDates.push(task.due_date);
     });
     let sortedDates = prioDates.sort(function (a, b) {
         return new Date(a) - new Date(b);
@@ -95,6 +143,9 @@ function getUpcomingUrgentDate(urgents) {
     return sortedDates[0];
 };
 
+/**
+ * Checks for the previous page and triggers a greeting animation if navigated from index.html.
+ */
 function checkForPreviousPage() {
     let previousPage = document.referrer;
     if (previousPage.includes("index.html")) {
@@ -102,6 +153,9 @@ function checkForPreviousPage() {
     }
 };
 
+/**
+ * Displays a greeting animation.
+ */
 function greetingAnimation() {
     let container = document.getElementById("greetingBg");
     container.style.display = "";
@@ -112,10 +166,14 @@ function greetingAnimation() {
         container.style.opacity = "0%";
         setTimeout(() => {
             container.style.display = "none";
-        }, 600)
-    }, 1500)
+        }, 600);
+    }, 1500);
 };
 
+/**
+ * Gets the appropriate greeting based on the current time.
+ * @returns {string} The greeting message.
+ */
 function getActualGreet() {
     let today = new Date();
     let hourNow = today.getHours();
@@ -130,14 +188,19 @@ function getActualGreet() {
     }
 };
 
+/**
+ * Gets the name of the active user.
+ * @returns {string} The name of the active user or an empty string for guest users.
+ */
 function getUser() {
-    if (activeUser.name !== "Gast Nutzer") {
-        return activeUser.name
-    } else {
-        return "";
-    }
+    return activeUser.name !== "Gast Nutzer" ? activeUser.name : "";
 };
 
+/**
+ * Returns the HTML string for the summary page.
+ * @param {Array} tasks - Array of tasks.
+ * @returns {string} The HTML string for the summary page.
+ */
 function returnSummaryHTML(tasks) {
     return `
         <div class="flex-center summary-headline mgn-l-328">
@@ -223,6 +286,10 @@ function returnSummaryHTML(tasks) {
     `;
 };
 
+/**
+ * Returns the HTML string for the greeting.
+ * @returns {string} The HTML string for the greeting.
+ */
 function returnGreetingHTML() {
     return `
         <div class="login-greet-cont flex-center flex-column">
@@ -232,24 +299,36 @@ function returnGreetingHTML() {
     `;
 };
 
+/**
+ * Changes the color of the first row container on mouse enter.
+ */
 function changeColor1() {
     document.getElementById("firstRowCont1").classList.remove("bg-darkblue");
     document.getElementById('firstRowCont1').classList.add("bg-white");
     document.getElementById("sumEdit").src = "../assets/icons/edit-black.svg";
 };
 
+/**
+ * Recreates the color of the first row container on mouse leave.
+ */
 function recreateColor1() {
     document.getElementById('firstRowCont1').classList.remove("bg-white");
     document.getElementById("firstRowCont1").classList.add("bg-darkblue");
     document.getElementById("sumEdit").src = "../assets/icons/edit-white.svg";
 };
 
+/**
+ * Changes the color of the second row container on mouse enter.
+ */
 function changeColor2() {
     document.getElementById("firstRowCont2").classList.remove("bg-darkblue");
     document.getElementById('firstRowCont2').classList.add("bg-white");
     document.getElementById("sumHook").src = "../assets/icons/hook-sum-dark.png";
 };
 
+/**
+ * Recreates the color of the second row container on mouse leave.
+ */
 function recreateColor2() {
     document.getElementById("firstRowCont2").classList.add("bg-darkblue");
     document.getElementById('firstRowCont2').classList.remove("bg-white");

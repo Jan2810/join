@@ -1,3 +1,6 @@
+/**
+ * Changes the background button based on the urgency level.
+ */
 function changeBgBtn() {
     if (activeUrg[0].active === true) {
         highlightButton("high");
@@ -10,6 +13,10 @@ function changeBgBtn() {
     }
 };
 
+/**
+ * Highlights the button corresponding to the given urgency level.
+ * @param {string} urg - The urgency level.
+ */
 function highlightButton(urg) {
     if (urg === "high") {
         document.getElementById("high").classList.add("high-focus");
@@ -35,15 +42,24 @@ function highlightButton(urg) {
     }
 };
 
+/**
+ * Shows the maximum contacts warning.
+ */
 function showMaxContacts() {
     document.getElementById("maxContacts").style.display = "";
     displayContacts("close");
 };
 
+/**
+ * Hides the maximum contacts warning.
+ */
 function hideMaxContacts() {
     document.getElementById("maxContacts").style.display = "none";
 };
 
+/**
+ * Hides the subtask warning.
+ */
 function hideWarning() {
     document.getElementById("subtasksInput").value = "";
     document.getElementById("subtaskInputCont").style.borderColor = "";
@@ -51,12 +67,20 @@ function hideWarning() {
     document.getElementById("requiredSubtext").style.display = "none";
 };
 
+/**
+ * Shows the subtask warning.
+ */
 function showWarning() {
     document.getElementById("subtaskInputCont").style.borderColor = "red";
     document.getElementById("requiredSubtext").style.display = "block";
     document.getElementById("subtasksInput").focus();
 };
 
+/**
+ * Handles hover effect on buttons.
+ * @param {boolean} boolean - Indicates if the mouse is hovering over the button.
+ * @param {string} id - The id of the button.
+ */
 function hoverBtn(boolean, id) {
     if (boolean === true && id === "img-high") {
         document.getElementById(id).src = "../assets/icons-addtask/prio-high-white.png";
@@ -75,14 +99,23 @@ function hoverBtn(boolean, id) {
     }
 };
 
+/**
+ * Changes the task close icon on mouse enter.
+ */
 function enterIcon() {
     document.getElementById("task-x").src = "../assets/icons-addtask/clear-blue.png";
 };
 
+/**
+ * Changes the task close icon on mouse leave.
+ */
 function outIcon() {
     document.getElementById("task-x").src = "../assets/icons-addtask/clear-black.png";
 };
 
+/**
+ * Opens the categories dropdown.
+ */
 function openCategorys() {
     document.getElementById("dropdownCategoryToggle").style.display = "none";
     document.getElementById("dropdownCategoryContainer").style.display = "";
@@ -90,6 +123,10 @@ function openCategorys() {
     renderTaskList();
 };
 
+/**
+ * Closes the categories dropdown.
+ * @param {Event} ev
+ */
 function closeCategorys(ev) {
     ev.stopPropagation();
     document.getElementById("dropdownCategoryToggle").style.display = "";
@@ -97,6 +134,9 @@ function closeCategorys(ev) {
     document.getElementById("dropdownCategorys").style.display = "none";
 };
 
+/**
+ * Opens the calendar for date selection.
+ */
 function openCalender() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById("taskDate").setAttribute('min', today);
@@ -104,6 +144,12 @@ function openCalender() {
     document.getElementById("taskDate").style.color = "black";
 };
 
+/**
+ * Returns the HTML for the task list.
+ * @param {string} category - The category name.
+ * @param {number} i - The index of the category.
+ * @returns {string} The HTML string for the task list item.
+ */
 function returnTaskListHTML(category, i) {
     return `
         <div onclick="addCategory(${i}); closeCategorys(event);" class="category-dd-item" id="ctg${i}">
@@ -112,6 +158,10 @@ function returnTaskListHTML(category, i) {
         `;
 };
 
+/**
+ * Displays the contacts dropdown.
+ * @param {string} ev - The event type ("open" or "close").
+ */
 function displayContacts(ev) {
     if (ev === "open") {
         document.getElementById("dropdownToggle").style.display = "none";
@@ -124,6 +174,12 @@ function displayContacts(ev) {
     }
 };
 
+/**
+ * Returns the HTML for a contact list item.
+ * @param {Object} cnt - The contact object.
+ * @param {number} i - The index of the contact.
+ * @returns {string} The HTML string for the contact list item.
+ */
 function returnContactList(cnt, i) {
     return `
         <div onclick="assignContact(${i})" class="dropdown-item" id="cntnum${i}" data-value="${i}">
@@ -134,6 +190,11 @@ function returnContactList(cnt, i) {
     `;
 };
 
+/**
+ * Displays the assignment status of a contact.
+ * @param {string} check - The assignment status ("checked" or "unchecked").
+ * @param {number} i - The index of the contact.
+ */
 function displayAssignments(check, i) {
     if (check === "checked") {
         document.getElementById(`cntimg${i}`).src = "../assets/icons/rb-checked.png";
@@ -148,6 +209,12 @@ function displayAssignments(check, i) {
     }
 };
 
+/**
+ * Returns the HTML for a sign list item.
+ * @param {Object} cnt - The contact object.
+ * @param {number} i - The index of the contact.
+ * @returns {string} The HTML string for the sign list item.
+ */
 function returnSignList(cnt, i) {
     return `
            <div class="task-cnt-assigned-sign">
@@ -157,6 +224,12 @@ function returnSignList(cnt, i) {
            </div>`;
 };
 
+/**
+ * Returns the HTML for a subtask list item.
+ * @param {Object} subtask - The subtask object.
+ * @param {number} i - The index of the subtask.
+ * @returns {string} The HTML string for the subtask list item.
+ */
 function returnSubtasksList(subtask, i) {
     return `
         <div id="subtask${i}">
@@ -175,6 +248,11 @@ function returnSubtasksList(subtask, i) {
        `;
 };
 
+/**
+ * Returns the HTML for editing a subtask.
+ * @param {number} i - The index of the subtask.
+ * @returns {string} The HTML string for editing the subtask.
+ */
 function returnEditSubtaskHTML(i) {
     return `
             <div onkeydown="checkEditKey(event, ${i})" class="edit-subtask-item">
@@ -191,6 +269,10 @@ function returnEditSubtaskHTML(i) {
     `;
 };
 
+/**
+ * Returns the HTML for the subtask input field.
+ * @returns {string} The HTML string for the subtask input field.
+ */
 function returnSubtaskImg() {
     return `
     <div onclick="clearInputfield()" class=" img-cont-subtask-first-n img-cont-subtask">
@@ -201,6 +283,10 @@ function returnSubtaskImg() {
     </div>
     `;
 };
+
+/**
+ * Shows form validation feedback.
+ */
 function formValidationFeedbackOn() {
     document.getElementById("taskTitle").style.borderColor = "red";
     document.getElementById("requiredTitle").style.display = "";
@@ -210,6 +296,9 @@ function formValidationFeedbackOn() {
     document.getElementById("requiredCategorys").style.display = "";
 };
 
+/**
+ * Hides form validation feedback.
+ */
 function formValidationFeedbackOff() {
     document.getElementById("taskTitle").style.borderColor = "";
     document.getElementById("requiredTitle").style.display = "none";

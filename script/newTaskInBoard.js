@@ -1,3 +1,7 @@
+/**
+ * Opens the add task form in the board view.
+ * @param {string} status - The status of the task.
+ */
 function openAddTaskInBoard(status) {
     setStatus(status);
     if (window.innerWidth > 800) {
@@ -5,24 +9,31 @@ function openAddTaskInBoard(status) {
         document.getElementById("newTaskContainer").innerHTML = "";
         document.getElementById("newTaskContainer").innerHTML += returnAddTaskInBoardHTML();
         setTimeout(() => {
-            document.getElementById("newTaskContainer").style.transform = "translateX(0px)"
+            document.getElementById("newTaskContainer").style.transform = "translateX(0px)";
             changeUrgency("mid");
-        }, 100)
+        }, 100);
     } else {
-        statusReset(status)
+        statusReset(status);
         goToAddTask();
     }
 };
 
+/**
+ * Closes the add task form in the board view.
+ */
 function closeNewTaskInBoard() {
     let bg = document.getElementById("addTaskBg");
-    let container = document.getElementById("newTaskContainer")
-    container.style.transform = "translateX(1500px)"
+    let container = document.getElementById("newTaskContainer");
+    container.style.transform = "translateX(1500px)";
     setTimeout(() => {
         bg.style.display = "none";
-    }, 100)
+    }, 100);
 };
 
+/**
+ * Sets the status of the task.
+ * @param {string} status - The status of the task.
+ */
 function setStatus(status) {
     taskData = {
         "title": "",
@@ -36,14 +47,25 @@ function setStatus(status) {
     };
 };
 
+/**
+ * Resets the status of the task in local storage.
+ * @param {string} status - The status of the task.
+ */
 function statusReset(status) {
     localStorage.setItem('status', status);
 };
 
+/**
+ * Redirects to the add task page.
+ */
 function goToAddTask() {
     window.location = "../html/addtask.html";
 };
 
+/**
+ * Returns the HTML for the add task form in the board view.
+ * @returns {string} The HTML string for the add task form.
+ */
 function returnAddTaskInBoardHTML() {
     return `
         <div class="task-h1 flex-row task-board-h1">
@@ -142,7 +164,7 @@ function returnAddTaskInBoardHTML() {
                     </div>
                     <div>
                         <h3 class="task-form-font">Subtasks</h3>
-                        <div >
+                        <div>
                             <div onkeydown="checkKey(event)" onclick="openSubtasks(); stopProp(event);" id="subtaskInputCont" class="task-width task-form-font subtask-input-cont">
                                 <input id="subtasksInput" class="subtasks-input task-input" type="text"
                                     placeholder="Add new subtask">
@@ -177,4 +199,4 @@ function returnAddTaskInBoardHTML() {
             </div>
         </form>
     `;
-};;
+};

@@ -1,8 +1,37 @@
+/**
+ * URL for users data.
+ * @type {string}
+ */
 const USERS_URL = "https://join-14fdc-default-rtdb.europe-west1.firebasedatabase.app/";
+
+/**
+ * URL for tasks data.
+ * @type {string}
+ */
 const TASKS_URL = "https://join-tasks-default-rtdb.europe-west1.firebasedatabase.app/";
+
+/**
+ * URL for contacts data.
+ * @type {string}
+ */
 const CONTACTS_URL = "https://join---contacts-default-rtdb.europe-west1.firebasedatabase.app/";
+
+/**
+ * Array to store user data.
+ * @type {Array}
+ */
 let users = [];
+
+/**
+ * Object to store active user data.
+ * @type {Object}
+ */
 let activeUser = {};
+
+/**
+ * Array to track the active page state.
+ * @type {Array<boolean>}
+ */
 let activePage = [
     false,
     false,
@@ -12,8 +41,16 @@ let activePage = [
     false
 ];
 
+/**
+ * Indicates whether the navigation is open.
+ * @type {boolean}
+ */
 let navOpen = false;
 
+/**
+ * Array of background colors.
+ * @type {Array<string>}
+ */
 let backgroundColors = [
     "background: rgba(255, 122, 0, 1)",
     "background: rgba(255, 94, 179, 1)",
@@ -32,16 +69,27 @@ let backgroundColors = [
     "background: rgba(255, 187, 43, 1)"
 ];
 
+/**
+ * Initializes the private page.
+ * @returns {Promise<void>}
+ */
 async function initPrivate() {
     await includeHTML();
-    setBackground(4)
+    setBackground(4);
 };
 
+/**
+ * Initializes the legal page.
+ * @returns {Promise<void>}
+ */
 async function initLegal() {
     await includeHTML();
     setBackground(5);
 };
 
+/**
+ * Toggles the navigation menu.
+ */
 function toggleNav() {
     let subMenu = document.querySelector(".submenu");
     subMenu.classList.toggle("d-none");
@@ -55,6 +103,11 @@ function toggleNav() {
     }
 };
 
+/**
+ * Loads data from a given URL.
+ * @param {string} url - The URL to load data from.
+ * @returns {Promise<Array>} The loaded data.
+ */
 async function loadData(url) {
     try {
         let response = await fetch(url + ".json");
@@ -63,7 +116,7 @@ async function loadData(url) {
         }
         let data = await response.json();
         if (!data) {
-            return []
+            return [];
         }
         let dataArray = Object.keys(data).map(key => {
             return {
@@ -77,6 +130,12 @@ async function loadData(url) {
     }
 };
 
+/**
+ * Posts data to a given URL.
+ * @param {string} url - The URL to post data to.
+ * @param {Object} data - The data to post.
+ * @returns {Promise<Object>} The posted data with ID.
+ */
 async function postData(url, data = {}) {
     let response = await fetch(url + ".json", {
         method: "POST",
@@ -98,6 +157,12 @@ async function postData(url, data = {}) {
     return data;
 };
 
+/**
+ * Puts data to a given URL.
+ * @param {string} url - The URL to put data to.
+ * @param {Array<Object>} dataArray - The data array to put.
+ * @returns {Promise<Response>} The response.
+ */
 async function putData(url, dataArray = []) {
     let data = dataArray.reduce((acc, item) => {
         let { id, ...rest } = item;
@@ -114,6 +179,13 @@ async function putData(url, dataArray = []) {
     return response;
 };
 
+/**
+ * Puts a data object to a given URL with a specified ID.
+ * @param {string} url - The URL to put data to.
+ * @param {Object} data - The data to put.
+ * @param {string} id - The ID of the data.
+ * @returns {Promise<Object>} The result.
+ */
 async function putDataObject(url, data, id) {
     try {
         const response = await fetch(`${url}${id}.json`, {
@@ -130,6 +202,12 @@ async function putDataObject(url, data, id) {
     }
 };
 
+/**
+ * Deletes data from a given URL with a specified ID.
+ * @param {string} url - The URL to delete data from.
+ * @param {string} id - The ID of the data to delete.
+ * @returns {Promise<Response>} The response.
+ */
 async function deleteData(url, id) {
     let response = await fetch(`${url}${id}.json`, {
         method: "DELETE",
@@ -140,11 +218,21 @@ async function deleteData(url, id) {
     return response;
 };
 
+/**
+ * Formats a date string.
+ * @param {string} dateString - The date string to format.
+ * @returns {string} The formatted date string.
+ */
 function formatDate(dateString) {
     let parts = dateString.split("-");
     return `${parts[2]} ${getMonthName(parts[1])} ${parts[0]}`;
 };
 
+/**
+ * Gets the month name from a month number.
+ * @param {string} monthNumber - The month number.
+ * @returns {string} The month name.
+ */
 function getMonthName(monthNumber) {
     const monthNames = [
         "Januar", "Februar", "März", "April", "Mai", "Juni",
@@ -153,14 +241,26 @@ function getMonthName(monthNumber) {
     return monthNames[monthNumber - 1];
 };
 
+/**
+ * Stops the propagation of an event.
+ * @param {Event} ev - The event to stop propagation.
+ */
 function stopProp(ev) {
     ev.stopPropagation();
 };
 
+/**
+ * Prevents the default action of an event.
+ * @param {Event} ev - The event to prevent default action.
+ */
 function preventDf(ev) {
     ev.preventDefault();
 };
 
+/**
+ * Includes HTML content from external files.
+ * @returns {Promise<void>}
+ */
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
@@ -182,11 +282,17 @@ async function includeHTML() {
     }
 };
 
+/**
+ * Saves the active user to local storage.
+ */
 function saveUser() {
     const userString = JSON.stringify(activeUser);
     localStorage.setItem('user', userString);
 };
 
+/**
+ * Loads the active user from local storage.
+ */
 function loadUser() {
     const retrievedUserString = localStorage.getItem('user');
     if (retrievedUserString) {
@@ -199,32 +305,53 @@ function loadUser() {
 
 loadUser();
 
+/**
+ * Logs out the active user.
+ */
 function logout() {
     localStorage.removeItem('user');
     activeUser = "";
     goTologin();
 };
 
+/**
+ * Activates the guest user mode.
+ */
 function guestUserActive() {
     activeUser.name = "Guest User";
     saveUser(activeUser);
     goToBoard();
 };
 
+/**
+ * Gets the initials from a name.
+ * @param {string} name - The name to get initials from.
+ * @returns {string} The initials.
+ */
 function getInitials(name) {
     const nameParts = name.trim().split(/\s+/);
     const initials = nameParts.map(part => part[0].toUpperCase()).join('');
     return initials;
 };
 
+/**
+ * Redirects to the board page.
+ */
 function goToBoard() {
     window.location.href = "./html/summary.html"
 };
 
+/**
+ * Redirects to the login page.
+ */
 function goTologin() {
     window.location.href = "../index.html"
 };
 
+/**
+ * Sets the background for the active page.
+ * @param {number} i - The index of the active page.
+ */
 function setBackground(i) {
     activePage = [
         false,
@@ -238,6 +365,10 @@ function setBackground(i) {
     changeBackground(i);
 };
 
+/**
+ * Changes the background for the active page.
+ * @param {number} i - The index of the active page.
+ */
 function changeBackground(i) {
     if (i <= 3) {
         document.getElementById(`navLink${i}`).style.backgroundColor = "#12223f"
