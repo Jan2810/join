@@ -349,62 +349,87 @@ async function deleteContactFrontend() {
 }
 
 
-// async function fetchExistingEmails() {
-//     let contacts = await loadContactsData();
-//     let emails = [];
-//     for (let key in contacts) {
-//         if (contacts[key].email) {
-//             emails.push(contacts[key].email);
-//         }
-//     }
-//     return emails;
-// }
+async function fetchExistingEmails() {
+    let contacts = await loadContactsData();
+    let emails = [];
+    for (let key in contacts) {
+        if (contacts[key].email) {
+            emails.push(contacts[key].email);
+        }
+    }
+    return emails;
+}
 
-// let existingEmails = [];
+let existingEmails = [];
 
-// document.querySelectorAll('.add-contact-form-email, .edit-contact-form-email').forEach(input => {
-//     input.addEventListener('focus', async () => {
-//         existingEmails = await fetchExistingEmails();
-//     });
-//     input.addEventListener('input', validateEmail);
-// });
+document.querySelectorAll('.add-contact-form-email, .edit-contact-form-email').forEach(input => {
+    input.addEventListener('focus', async () => {
+        existingEmails = await fetchExistingEmails();
+        console.log('Focus Event Listener');
+    });
 
-// function validateEmail(event) {
-//     const emailInput = event.target;
-//     const email = emailInput.value.trim();
-//     const emailExists = existingEmails.includes(email);
 
-//     if (emailExists) {
-//         emailInput.setCustomValidity('This email address is already registered.');
-//         showValidationMessage(emailInput, 'This email address is already registered.');
-//     } else {
-//         emailInput.setCustomValidity('');
-//         showValidationMessage(emailInput, '');
-//     }
-// }
+    input.addEventListener('input', validateEmail);
+});
+
+function validateEmail(event) {
+
+    const emailInput = event.target;
+    const email = emailInput.value.trim();
+    const emailExists = existingEmails.includes(email);
+
+    // const errorDivId = emailInput.id === 'add-contact-form-email' ? 'add-email-error' : 'edit-email-error';
+    // const errorDiv = document.getElementById(errorDivId);
+
+    // if (emailExists) {
+    //     errorDiv.textContent = 'This email address is already registered.';
+    //     errorDiv.style.display = 'block'; // Fehlermeldung anzeigen
+    // } else {
+    //     errorDiv.textContent = ''; // Fehlermeldung leeren
+    //     errorDiv.style.display = 'none'; // Fehlermeldung ausblenden
+    // }
+
+
+    if (emailExists) {
+        emailInput.setCustomValidity('This email address is already registered.');
+        // showValidationMessage(emailInput, 'This email address is already registered.');
+        console.log('Email already exists:', email);
+    } else {
+        emailInput.setCustomValidity('');
+        // showValidationMessage(emailInput, '');
+        console.log('Email is valid:', email);
+    }
+}
 
 // function showValidationMessage(input, message) {
-//     const errorDivId = input.id === 'add-contact-form-email' ? 'add-email-error' : 'edit-email-error';
+//     // const errorDivId = input.id === 'add-contact-form-email' ? 'add-email-error' : 'edit-email-error';
+//     let errorDivId;
+//     if (input.id === 'add-contact-form-email') {
+//         errorDivId = 'add-email-error';
+//     } else {
+//         errorDivId = 'edit-email-error';
+//     }
+
 //     const errorDiv = document.getElementById(errorDivId);
 //     errorDiv.textContent = message;
 // }
 
-// document.getElementById('add-contact-form').addEventListener('submit', function (event) {
-//     const emailInput = document.getElementById('add-contact-form-email');
-//     const emailExists = existingEmails.includes(emailInput.value.trim());
+document.getElementById('add-contact-form').addEventListener('submit', function (event) {
+    const emailInput = document.getElementById('add-contact-form-email');
+    const emailExists = existingEmails.includes(emailInput.value.trim());
 
-//     if (emailExists) {
-//         event.preventDefault(); // Prevent form submission
-//         alert('This email address is already registered.');
-//     }
-// });
+    if (emailExists) {
+        event.preventDefault(); // Prevent form submission
+        emailInput.setCustomValidity('This email address is already registered.');
+    }
+});
 
-// document.getElementById('edit-contact-form').addEventListener('submit', function (event) {
-//     const emailInput = document.getElementById('edit-contact-form-email');
-//     const emailExists = existingEmails.includes(emailInput.value.trim());
+document.getElementById('edit-contact-form').addEventListener('submit', function (event) {
+    const emailInput = document.getElementById('edit-contact-form-email');
+    const emailExists = existingEmails.includes(emailInput.value.trim());
 
-//     if (emailExists) {
-//         event.preventDefault(); // Prevent form submission
-//         alert('This email address is already registered.');
-//     }
-// });
+    if (emailExists) {
+        event.preventDefault(); // Prevent form submission
+        emailInput.setCustomValidity('This email address is already registered.');
+    }
+});

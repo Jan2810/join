@@ -1,5 +1,6 @@
 body{
     overflow-x: hidden;
+    height: 100%;
 }
 
 :root {
@@ -9,18 +10,22 @@ body{
 
 #login-start-animation-bg {
     height: 100%;
-    width: 100vw;
+    width: 100%;
     background-color: rgb(255, 255, 255);
     z-index: 999;
-    top: 0;
-    bottom: 0;
     position: absolute;
     display: flex;
+    top: 0;
+    left: 0;
     justify-content: center;
     align-items: center;
     pointer-events: none;
     animation: colorFade 0.9s forwards;
     animation-delay: 0.3s;
+}
+
+.overflow-y {
+    overflow-y: scroll;
 }
 
 .login-logo-animation-container {
@@ -239,13 +244,17 @@ body{
     }
 
     .login-animation-logo-responsive {
-        content: url(../assets/img/logo_white.svg);
+        display: none;
+    }
+
+    .login-animation-logo-responsive-white {
         height: 339px;
         width: 274px;
+        display: block;
     }
 
     :root {
-        --margin-top: -14px;
+        --margin-top: 0px;
         --margin-left: 69px;
     }
 

@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 function changeImageSource() {
     if (window.location.pathname === "/index.html") {
-        document.getElementById('login-animation-logo').src = '../assets/img/logo.png';
+        document.getElementById('login-animation-logo-white').src = '../assets/img/logo.png';
     }
 }
-setTimeout(changeImageSource, 300);
+setTimeout(changeImageSource, 400);
 
 /**
  * Handles the login process by validating user credentials and redirecting upon success.
