@@ -176,11 +176,6 @@ function allowDrop(ev, contName) {
     container.classList.add("dashed-container");
 };
 
-function removeDashed(contName) {
-    let container = document.getElementById(`board-ticket-container-${contName}`);
-    container.classList.remove("dashed-container");
-}
-
 /**
  * Moves a task to a specified status.
  * @param {string} status - The status to move the task to.
@@ -192,3 +187,12 @@ function moveTo(status, contName) {
     putData(TASKS_URL, tasksArray);
     initBoard();
 };
+
+/**
+ * Removes the "dashed-container" class from the element with the specified container name.
+ * @param {string} contName - The unique part of the container's ID.
+ */
+function removeDashed(contName) {
+    let container = document.getElementById(`board-ticket-container-${contName}`);
+    container.classList.remove("dashed-container");
+}
