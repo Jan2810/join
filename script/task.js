@@ -360,24 +360,3 @@ function returnTaskEditHTML(task) {
         </div>
         `;
 };
-
-                    // <div>
-                    //     <h3 class="task-form-font">Category<span class="task-star">*</span></h3>
-                    //     <div onclick="openCategorysEdit(); stopProp(event);" class="dropdown task-width">
-                    //         <div class="dropdown-toggle ctg-input-cnt" id="dropdownCategoryToggleEdit">
-                    //             <input onclick="openCategorysEdit(); preventDf(event); stopProp(event);" id="categoryInputEdit" type="text" value="${task.category}" placeholder="Select task category" 
-                    //             class="category-dd-upper-item-input task-width bg-white" required>
-                    //             <img src="../assets/icons/dropdown.png">
-                    //         </div>
-                    //         <div class="dropdownmenu-ctg" id="dropdownCategoryContainerEdit" style="display: none;">
-                    //             <div onclick="closeCategorysEdit(event)" class="category-dd-upper-item bg-white task-form-font">
-                    //                 <span>Select task category</span>
-                    //                 <img src="../assets/icons/dropup.png" alt="">
-                    //             </div>
-                    //             <div id="dropdownCategorysEdit" class="dropdown-ctg">
-                    //                 <!-- rendered Categorys  -->
-                    //             </div>
-                    //         </div>
-                    //         <span id="requiredCategorysEdit" class="required-text" style="display: none;">This field is required</span>
-                    //     </div>
-                    // </div>
