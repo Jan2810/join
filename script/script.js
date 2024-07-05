@@ -280,6 +280,13 @@ async function includeHTML() {
         activeUser = JSON.parse(retrievedUserString);
         document.getElementById("userInitials").innerHTML = getInitials(activeUser.name);
     }
+    else if (!retrievedUserString && window.location.pathname.includes('legal')) {
+        document.querySelector(".nav-link-container").style.display = "none";
+    }
+
+    else if (!retrievedUserString && window.location.pathname.includes('privacy')) {
+        document.querySelector(".nav-link-container").style.display = "none";
+    }
 };
 
 /**
