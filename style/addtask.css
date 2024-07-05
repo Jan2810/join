@@ -2,10 +2,6 @@
     margin-left: 328px;
 }
 
-/* .d-none {
-    display: none;
-} */
-
 .d-none-edit {
     display: none;
 }
@@ -789,6 +785,10 @@
 
     .add-task-bottom-line-board {
         margin: 0;
+    }
+
+    .status-edit {
+        margin-bottom: 12px;
     }
 }
 

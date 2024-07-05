@@ -270,7 +270,7 @@ function returnTaskEditHTML(task) {
                         <textarea id="taskDescriptionEdit" class="task-width task-form-font task-textarea task-input" type="text"
                             placeholder="Enter a Description">${task.description}</textarea>
                     </div>
-                    <div class="task-width d-none-edit">
+                    <div class="task-width d-none-edit status-edit">
                         <h3 class="task-form-font">Task status</h3>
                         <div onclick="openStatusEdit(); stopProp(event);" class="dropdown task-width">
                             <div class="dropdown-toggle ctg-input-cnt" id="dropdownCategoryToggleEdit">
