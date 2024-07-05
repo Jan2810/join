@@ -1,19 +1,6 @@
-/**
- * Array of checked contacts.
- * @type {Array}
- */
+
 let checkedContacts = [];
-
-/**
- * Indicates if contacts task is open.
- * @type {boolean}
- */
 let contactsTaskOpen = false;
-
-/**
- * Array of urgency levels with their active states.
- * @type {Array<{urgency: string, active: boolean}>}
- */
 let activeUrg = [
     {
         "urgency": "high",
@@ -29,10 +16,6 @@ let activeUrg = [
     }
 ];
 
-/**
- * Object containing task data.
- * @type {{title: string, description: string, assigned_to: Array, due_date: string, priority: string, category: string, subtasks: Array, status: string, id: string}}
- */
 let taskData = {
     "title": "",
     "description": "",
@@ -45,31 +28,22 @@ let taskData = {
     "id": "",
 };
 
-/**
- * Array of available categories.
- * @type {Array<string>}
- */
 let availableCategorys = [
     "Technical Task",
     "User Story"
 ];
 
-/**
- * Initializes the task addition functionality.
- * @returns {Promise<void>}
- */
+let contacts = {};
+
 async function initAddTask() {
     await includeHTML();
     changeUrgency("mid");
+    contacts = await loadData(CONTACTS_URL);
     let status = localStorage.getItem("status");
     setStatus(status);
     setBackground(1);
 };
 
-/**
- * Handles click events.
- * @param {Event} event
- */
 function handleClickEvent(event) {
     closeContacts(event);
     closeCategorys(event);
@@ -99,9 +73,6 @@ function changeUrgency(urg) {
     changeBgBtn();
 };
 
-/**
- * Clears the task data array.
- */
 function clearTaskDataArray() {
     taskData = {
         "title": "",
@@ -115,9 +86,6 @@ function clearTaskDataArray() {
     };
 };
 
-/**
- * Renders the task list.
- */
 function renderTaskList() {
     let content = document.getElementById("dropdownCategorys");
     content.innerHTML = "";
@@ -149,7 +117,6 @@ async function openContacts() {
     if (contactsTaskOpen === false) {
         displayContacts("open");
         renderContactList();
-        let contacts = await loadData(CONTACTS_URL);
         for (let i = 0; i < contacts.length; i++) {
             if (contacts.length > checkedContacts.length) {
                 const count = checkedContacts.push(false);
@@ -178,7 +145,6 @@ function closeContacts(event) {
 async function renderContactList() {
     let content = document.getElementById("dropdownMenu");
     content.innerHTML = "";
-    let contacts = await loadData(CONTACTS_URL);
     content.innerHTML = ``;
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
@@ -227,7 +193,6 @@ async function renderSignList() {
     let content = document.getElementById("signContainer");
     controlCheckedLength();
     content.innerHTML = "";
-    let contacts = await loadData(CONTACTS_URL);
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         if (checkedContacts[i] === true) {
@@ -253,19 +218,13 @@ function controlCheckedLength() {
  * Adds a subtask.
  */
 function addSubtask() {
-    let input = document.getElementById("subtasksInput").value;
-    if (input !== "" && taskData.subtasks.length < 4) {
-        let subtaskArray = { text: `${input}`, status: "unchecked" };
+    let input = document.getElementById("subtasksInput");
+    if (input.value !== "") {
+        let subtaskArray = { text: `${input.value}`, status: "unchecked" };
         taskData.subtasks.push(subtaskArray);
-        hideWarning();
         renderSubtasks();
-    } else {
-        showWarning();
     }
-    if (taskData.subtasks.length === 4) {
-        document.getElementById("requiredSubtext").style.display = "block";
-        document.getElementById("requiredSubtext").innerHTML = "You reached the maximum number of tasks";
-    }
+    clearInputfield();
 };
 
 /**
@@ -278,16 +237,6 @@ function renderSubtasks() {
         const subtask = taskData.subtasks[i];
         container.innerHTML += returnSubtasksList(subtask, i);
     }
-};
-
-/**
- * Edits a subtask.
- * @param {number} i
- */
-function editSubtask(i) {
-    document.getElementById(`subtask${i}`).innerHTML = returnEditSubtaskHTML(i);
-    document.getElementById("editedValue").focus();
-    document.getElementById("editedValue").select();
 };
 
 /**
@@ -331,33 +280,6 @@ function checkKey(ev) {
         ev.preventDefault();
         addSubtask();
     }
-};
-
-/**
- * Opens the subtasks input field.
- */
-function openSubtasks() {
-    let imgContainer = document.getElementById("subtaskImgCont");
-    document.getElementById("subtasksInput").focus();
-    imgContainer.innerHTML = "";
-    imgContainer.innerHTML = returnSubtaskImg();
-};
-
-/**
- * Closes the subtasks input field.
- * @param {Event} ev
- */
-function closeSubtasks(ev) {
-    ev.stopPropagation();
-    document.getElementById("subtaskInputCont").style.borderColor = "";
-    document.getElementById("requiredSubtext").style.display = "none";
-    let imgContainer = document.getElementById("subtaskImgCont");
-    imgContainer.innerHTML = "";
-    imgContainer.innerHTML = `
-    <div class="img-cont-subtask">
-        <img src="../assets/icons/add.png" alt="">
-    </div>
-    `;
 };
 
 /**
@@ -421,24 +343,6 @@ function getUrgency() {
 };
 
 /**
- * Shows successful addition message.
- */
-function succesfullAdded() {
-    document.getElementById("succesImgCnt").style.display = "flex";
-    void document.getElementById("succesImg").offsetWidth;
-    document.getElementById("succesImg").style.transform = "translateY(0px)";
-};
-
-/**
- * Closes the successful addition message.
- */
-function succesfullAddedClose() {
-    document.getElementById("succesImgCnt").style.display = "none";
-    void document.getElementById("succesImg").offsetWidth;
-    document.getElementById("succesImg").style.transform = "translateY(500px)";
-};
-
-/**
  * Adds a new task.
  * @returns {Promise<void>}
  */
@@ -446,6 +350,7 @@ async function addNewTask() {
     document.getElementById("createButton").onclick = "";
     document.getElementById("createButton").disabled = true;
     saveInputValues();
+    
 };
 
 /**
@@ -516,7 +421,6 @@ async function postingTask(title, due_date, description, category) {
  * @returns {Promise<void>}
  */
 async function setTaskData(title, due_date, description, category) {
-    let contacts = await loadData(CONTACTS_URL);
     if (taskData.subtasks.length === 0) {
         taskData.subtasks = "";
     }

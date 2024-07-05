@@ -305,3 +305,50 @@ function formValidationFeedbackOff() {
     document.getElementById("dropdownCategoryToggle").style.borderColor = "";
     document.getElementById("requiredCategorys").style.display = "none";
 };
+
+
+function succesfullAdded() {
+    document.getElementById("succesImgCnt").style.display = "flex";
+    void document.getElementById("succesImg").offsetWidth;
+    document.getElementById("succesImg").style.transform = "translateY(0px)";
+};
+
+function succesfullAddedClose() {
+    document.getElementById("succesImgCnt").style.display = "none";
+    void document.getElementById("succesImg").offsetWidth;
+    document.getElementById("succesImg").style.transform = "translateY(500px)";
+};
+
+/**
+ * Edits a subtask.
+ * @param {number} i
+ */
+function editSubtask(i) {
+    document.getElementById(`subtask${i}`).innerHTML = returnEditSubtaskHTML(i);
+    document.getElementById("editedValue").focus();
+    document.getElementById("editedValue").select();
+};
+
+function openSubtasks() {
+    let imgContainer = document.getElementById("subtaskImgCont");
+    document.getElementById("subtasksInput").focus();
+    imgContainer.innerHTML = "";
+    imgContainer.innerHTML = returnSubtaskImg();
+};
+
+/**
+ * Closes the subtasks input field.
+ * @param {Event} ev
+ */
+function closeSubtasks(ev) {
+    ev.stopPropagation();
+    document.getElementById("subtaskInputCont").style.borderColor = "";
+    document.getElementById("requiredSubtext").style.display = "none";
+    let imgContainer = document.getElementById("subtaskImgCont");
+    imgContainer.innerHTML = "";
+    imgContainer.innerHTML = `
+    <div class="img-cont-subtask">
+        <img src="../assets/icons/add.png" alt="">
+    </div>
+    `;
+};

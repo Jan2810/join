@@ -1,31 +1,8 @@
-/**
- * Array to store tasks with status 'todo'.
- * @type {Array}
- */
+
 let todosArray = [];
-
-/**
- * Array to store tasks with status 'inprogress'.
- * @type {Array}
- */
 let inProgressArray = [];
-
-/**
- * Array to store tasks with status 'awaitfeedback'.
- * @type {Array}
- */
 let awaitFeedbackArray = [];
-
-/**
- * Array to store tasks with status 'done'.
- * @type {Array}
- */
 let doneArray = [];
-
-/**
- * Array to store tasks with high priority.
- * @type {Array}
- */
 let urgentArray = [];
 
 /**

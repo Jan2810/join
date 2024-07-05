@@ -1,38 +1,15 @@
-/**
- * Array to control contact assignments.
- * @type {Array}
- */
+
 let controlContacts = [];
-
-/**
- * Object to store task data being edited.
- * @type {Object}
- */
 let taskDataEdit = {};
-
-/**
- * ID of the task being edited.
- * @type {string}
- */
+let contactsEdit = {};
 let taskId = "";
-
-/**
- * An array of available task statuses.
- * @type {string[]}
- */
 let availableStatus = [
     "To do",
     "In progress",
     "Await feedback",
     "Done"
 ];
-
-/**
- * The new status for a task being edited.
- * @type {string}
- */
 let newStatus = "";
-
 
 /**
  * Array to store urgency levels and their active states for task editing.
@@ -79,10 +56,10 @@ async function putEditTask() {
 async function initDataEditTask(task, id) {
     taskDataEdit = task;
     taskId = id;
-    let contacts = await loadData(CONTACTS_URL);
+    contactsEdit = await loadData(CONTACTS_URL);
     let assignedContacts = task.assigned_to;
     changeUrgencyEdit(task.priority);
-    settingControlContacts(contacts, assignedContacts);
+    settingControlContacts(assignedContacts);
     renderSignListEdit();
     renderSubtasksEdit();
 };
@@ -105,13 +82,12 @@ async function setInputValuesEdit() {
  * @returns {Promise<void>}
  */
 async function getAssignedContactsEdit() {
-    let contacts = await loadData(CONTACTS_URL);
     taskDataEdit.assigned_to = [];
-    if (contacts.length > 0) {
+    if (contactsEdit.length > 0) {
         for (let i = 0; i < controlContacts.length; i++) {
             const assignedContact = controlContacts[i];
             if (assignedContact === true) {
-                taskDataEdit.assigned_to.push(contacts[i]);
+                taskDataEdit.assigned_to.push(contactsEdit[i]);
             }
         }
     }
@@ -129,10 +105,6 @@ function getUrgencyEdit() {
     }
 };
 
-/**
- * Handles click events for editing.
- * @param {Event} event
- */
 function handleClickEventEdit(event) {
     closeContactsEdit(event);
     closeSubtasksEdit(event);
@@ -152,13 +124,12 @@ function checkKeyEdit(ev) {
 
 /**
  * Sets control contacts for editing based on the current and assigned contacts.
- * @param {Array} contacts - Array of current contacts.
  * @param {Array} assignedContacts - Array of assigned contacts.
  */
-function settingControlContacts(contacts, assignedContacts) {
+function settingControlContacts(assignedContacts) {
     if (assignedContacts.length > 0) {
-        for (let i = 0; i < contacts.length; i++) {
-            const contact = contacts[i];
+        for (let i = 0; i < contactsEdit.length; i++) {
+            const contact = contactsEdit[i];
             let isAssigned = false;
             for (let j = 0; j < assignedContacts.length; j++) {
                 const assignedContact = assignedContacts[j];
@@ -169,15 +140,12 @@ function settingControlContacts(contacts, assignedContacts) {
             controlContacts.push(isAssigned);
         }
     } else if (assignedContacts.length === 0) {
-        for (let i = 0; i < contacts.length; i++) {
+        for (let i = 0; i < contactsEdit.length; i++) {
             controlContacts.push(false);
         }
     }
 };
 
-/**
- * Opens the calendar for selecting a due date for editing a task.
- */
 function openCalenderEdit() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById("taskDateEdit").setAttribute('min', today);
@@ -216,10 +184,9 @@ function closeContactsEdit(event) {
 async function renderContactListEdit() {
     let content = document.getElementById("dropdownMenuEdit");
     content.innerHTML = "";
-    let contacts = await loadData(CONTACTS_URL);
     content.innerHTML = ``;
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
+    for (let i = 0; i < contactsEdit.length; i++) {
+        const contact = contactsEdit[i];
         content.innerHTML += returnContactListEdit(contact, i);
         checkAssignmentsEdit(i);
     }
@@ -266,9 +233,8 @@ async function renderSignListEdit() {
         let content = document.getElementById("signContainerEdit");
         controlCheckedLengthEdit();
         content.innerHTML = "";
-        let contacts = await loadData(CONTACTS_URL);
-        for (let i = 0; i < contacts.length; i++) {
-            const contact = contacts[i];
+        for (let i = 0; i < contactsEdit.length; i++) {
+            const contact = contactsEdit[i];
             if (controlContacts[i] === true) {
                 content.innerHTML += returnSignListEdit(contact, i);
             }

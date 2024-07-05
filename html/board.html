@@ -26,8 +26,6 @@
 
 <body onload="initBoard()">
     <div w3-include-html="../assets/templates/navigation.html"></div>
-
-
     <main>
         <div class="board-scrollable-content">
 
@@ -139,7 +137,7 @@
     </main>
 
     <div id="addTaskBg" class="add-task-dialog-bg flex-center transition-300" style="display: none; opacity: 0;" onclick="closeNewTaskInBoard();">
-        <div onclick="handleClickEvent(event);stopProp(event);" id="newTaskContainer" class="sum-in-board-html flex-column transition-300"
+        <div onclick="handleClickEvent(event); stopProp(event);" id="newTaskContainer" class="sum-in-board-html flex-column transition-300"
             style="transform: translateX(1500px);">
         </div>
     </div>

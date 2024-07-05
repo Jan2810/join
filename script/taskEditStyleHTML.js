@@ -75,7 +75,7 @@ function returnSubtaskImgEdit() {
 };
 
 /**
- * Opens the categories dropdown for editing.
+ * Opens the status dropdown for editing.
  */
 function openStatusEdit() {
     document.getElementById("dropdownCategoryToggleEdit").style.display = "none";
@@ -85,7 +85,7 @@ function openStatusEdit() {
 };
 
 /**
- * Closes the categories dropdown for editing.
+ * Closes the status dropdown for editing.
  * @param {Event} ev
  */
 function closeStatusEdit(ev) {
@@ -97,7 +97,6 @@ function closeStatusEdit(ev) {
 
 /**
  * Returns the HTML string for a task list item with the given status and index.
- *
  * @param {string} status - The status of the task.
  * @param {number} i - The index of the task.
  * @returns {string} The HTML string for the task list item.
@@ -108,8 +107,7 @@ function returnTaskListHTMLEdit(status, i) {
             <div class="task-cnt-name">${status}</div>
         </div>
     `;
-}
-
+};
 
 /**
  * Shows a warning message when the maximum number of contacts is reached in editing mode.
@@ -256,22 +254,4 @@ function closeSubtasksEdit(ev) {
         <img src="../assets/icons/add.png" alt="">
     </div>
     `;
-};
-
-/**
- * Hides the warning message for the subtask input field in editing mode.
- */
-function hideWarningEdit() {
-    document.getElementById("subtasksInputEdit").value = "";
-    document.getElementById("subtaskInputContEdit").style.borderColor = "";
-    document.getElementById("requiredSubtextEdit").style.display = "none";
-};
-
-/**
- * Shows a warning message for the subtask input field in editing mode.
- */
-function showWarningEdit() {
-    document.getElementById("subtaskInputContEdit").style.borderColor = "red";
-    document.getElementById("requiredSubtextEdit").style.display = "block";
-    document.getElementById("subtasksInputEdit").focus();
 };

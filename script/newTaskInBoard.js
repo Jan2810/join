@@ -2,7 +2,8 @@
  * Opens the add task form in the board view.
  * @param {string} status - The status of the task.
  */
-function openAddTaskInBoard(status) {
+async function openAddTaskInBoard(status) {
+    contacts = await loadData(CONTACTS_URL);
     setStatus(status);
     if (window.innerWidth > 800) {
         document.getElementById("addTaskBg").style.display = "";
@@ -14,7 +15,7 @@ function openAddTaskInBoard(status) {
             changeUrgency("mid");
         }, 100);
     } else {
-        statusReset(status);
+        await statusReset(status);
         goToAddTask();
     }
 };
@@ -53,7 +54,7 @@ function setStatus(status) {
  * Resets the status of the task in local storage.
  * @param {string} status - The status of the task.
  */
-function statusReset(status) {
+async function statusReset(status) {
     localStorage.setItem('status', status);
 };
 
