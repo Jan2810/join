@@ -143,7 +143,8 @@ function getFirstName(fullName) {
  * @returns {string} The surname.
  */
 function getSurname(fullName) {
-    return fullName.split(' ')[1];
+    let surname = fullName.split(' ')[1] || '';
+    return surname;
 }
 
 /**
