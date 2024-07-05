@@ -156,6 +156,7 @@
 .task-btn-cont {
     gap: 16px;
     margin: 12px 0px;
+    width: 100%;
 }
 
 .task-btn-cont img {
@@ -308,7 +309,7 @@
     top: 0px;
     left: 0;
     width: 100%;
-    max-height: 220px;
+    max-height: 250px;
     border-radius: 10px;
     overflow-y: scroll;
     border: 1px solid #ccc;
@@ -653,8 +654,8 @@
 }
 
 .task-right-cont-edit {
-    padding-left: 0;
-    border: 0;
+
+    margin: 0px 10px;
 }
 
 .task-subtask-edit {
@@ -801,6 +802,8 @@
         height: 41px;
         font-size: 14px;
         padding: 10px;
+        width: 100%;
+        max-width: 136px;
     }
 
     .task-bottom-line-cont {

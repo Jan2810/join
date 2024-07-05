@@ -275,11 +275,9 @@ function controlCheckedLengthEdit() {
  */
 function displayContactsEdit(ev) {
     if (ev === "open") {
-        document.getElementById("dropdownToggleEdit").style.display = "none";
         document.getElementById("dropdownMenuContainerEdit").style.display = "";
         document.getElementById("dropdownMenuEdit").style.display = "block";
     } else if (ev === "close") {
-        document.getElementById("dropdownToggleEdit").style.display = "flex";
         document.getElementById("dropdownMenuContainerEdit").style.display = "none";
         document.getElementById("dropdownMenuEdit").style.display = "none";
     }

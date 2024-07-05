@@ -163,6 +163,7 @@ function startDragging(id) {
  * @param {string} id - The ID of the task being dragged.
  */
 function endDragging(id) {
+    console.log(id);
     document.getElementById(`board-ticket${id}`).classList.remove('board-ticket-tend');
 };
 

@@ -306,7 +306,7 @@ function returnTaskEditHTML(task) {
                                 <span id="requiredDateEdit" class="required-text" style="display: none;">This field is required</span>
                         </div>
                     </div>
-                    <div>
+                    <div class="task-width">
                         <h3 class="task-form-font">Prio</h3>
                         <div class="flex-row task-btn-cont">
                             <div onclick="changeUrgencyEdit('high')" onmouseover="hoverBtnEdit(true, 'img-high')"
