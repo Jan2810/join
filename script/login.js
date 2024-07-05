@@ -14,6 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
+ * Initializes the login process by temporarily hiding the vertical scrollbar of the login body.
+ * The scrollbar will be hidden for 900 milliseconds.
+ */
+function initLogin() {
+    document.getElementById("loginBody").style.overflowY = 'hidden';
+    setTimeout(() => {
+        document.getElementById("loginBody").style.overflowY = '';
+    }, 900);
+}
+
+
+/**
  * Changes the source of the login animation logo image.
  */
 function changeImageSource() {
@@ -21,7 +33,7 @@ function changeImageSource() {
         document.getElementById('login-animation-logo-white').src = '../assets/img/logo.png';
     }
 }
-setTimeout(changeImageSource, 400);
+setTimeout(changeImageSource, 700);
 
 /**
  * Handles the login process by validating user credentials and redirecting upon success.

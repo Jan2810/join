@@ -159,11 +159,16 @@ function startDragging(id) {
 };
 
 /**
- * Ends the dragging process for a task.
+ * Ends the dragging process for a task. Returns an error if task is not found.
  * @param {string} id - The ID of the task being dragged.
  */
 function endDragging(id) {
-    document.getElementById(`board-ticket${id}`).classList.remove('board-ticket-tend');
+    const element = document.getElementById(`board-ticket${id}`);
+    if (element) {
+        element.classList.remove('board-ticket-tend');
+    } else {
+        console.error(`Element with ID board-ticket${id} not found.`);
+    }
 };
 
 /**
