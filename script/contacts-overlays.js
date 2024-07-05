@@ -31,11 +31,17 @@ const contactLink = document.querySelector('.single-contact-link');
 const contactInformation = document.querySelector('.single-contact-information');
 const contactPhone = document.querySelector('.single-contact-phone');
 
+/**
+ * Initializes the contacts by including HTML and setting the background.
+ */
 async function initContacts() {
     await includeHTML();
     setBackground(3);
 }
 
+/**
+ * Opens the edit contact overlay.
+ */
 function openEditContactOverlay() {
     windowBg.classList.remove('d-none');
     setTimeout(() => {
@@ -48,12 +54,18 @@ function openEditContactOverlay() {
     displayNameEmailPhoneForEdit();
 }
 
+/**
+ * Hides the edit/delete popup.
+ */
 function hideEditDeletePopup() {
     editDeletePopup.classList.add('hide-edit-delete-popup');
     singleContactTripleDots.classList.remove('d-none');
     addPersonIcon.classList.remove('d-none');
 }
 
+/**
+ * Closes the edit contact overlay.
+ */
 function closeEditContactOverlay() {
     editContactsOverlayBg.classList.add('hide-edit-contact-overlay');
     windowBg.classList.remove('visible');
@@ -63,6 +75,9 @@ function closeEditContactOverlay() {
 
 }
 
+/**
+ * Closes the add contact overlay and clears the input fields.
+ */
 function closeAddContactOverlay() {
     addContactsOverlayBg.classList.add('hide-add-contact-overlay');
     windowBg.classList.remove('visible');
@@ -72,6 +87,9 @@ function closeAddContactOverlay() {
     clearInput();
 }
 
+/**
+ * Opens the add contact overlay.
+ */
 function openAddContactOverlay() {
     windowBg.classList.remove('d-none');
     setTimeout(() => {
@@ -80,18 +98,27 @@ function openAddContactOverlay() {
     addContactsOverlayBg.classList.remove('hide-add-contact-overlay');
 }
 
+/**
+ * Closes the single contact view.
+ */
 function closeContactView() {
     badgeAndName.style.display = 'none';
     contactInformation.classList.add('d-none');
     removeViewedContactClass()
 }
 
+/**
+ * Removes the 'viewed-contact' class from all contacts.
+ */
 function removeViewedContactClass() {
     contactsList.querySelectorAll('.viewed-contact').forEach(element => {
         element.classList.remove('viewed-contact');
     });
 }
 
+/**
+ * Handles window resize events to adjust the contact view layout.
+ */
 function handleResize() {
     if (window.innerWidth >= 1120) {
         contactContainer.classList.remove('d-none');
@@ -104,6 +131,9 @@ function handleResize() {
     }
 }
 
+/**
+ * Shows only the single contact view.
+ */
 function showSingleContactOnly() {
     contactContainer.classList.remove('d-none');
     contactContainer.classList.add('d-block');
@@ -111,6 +141,9 @@ function showSingleContactOnly() {
     contactsContainer.classList.add('d-none');
 }
 
+/**
+ * Returns to the contacts list view from the single contact view.
+ */
 function returnToContactsList() {
     contactsContainer.classList.add('d-flex');
     contactsContainer.classList.remove('d-none');
@@ -123,6 +156,9 @@ window.addEventListener('resize', handleResize);
 
 handleResize();
 
+/**
+ * Displays the edit/delete popup.
+ */
 function displayEditDeletePopup() {
     editDeletePopup.classList.remove('hide-edit-delete-popup');
     setTimeout(function () {
@@ -133,10 +169,17 @@ function displayEditDeletePopup() {
     }, 100);
 }
 
+/**
+ * Prevents the event from propagating and closing the popup.
+ * @param {Event} event - The event object.
+ */
 function doNotClose(event) {
     event.stopPropagation();
 }
 
+/**
+ * Hides the edit/delete popup on small screens.
+ */
 function hideEditDeletePopup() {
     if (window.innerWidth < 800) {
         editDeletePopup.classList.add('hide-edit-delete-popup');
@@ -150,6 +193,9 @@ function hideEditDeletePopup() {
 
 }
 
+/**
+ * Handles the popup for editing or deleting a contact.
+ */
 function popupDeleteContact() {
     hideEditDeletePopup();
     returnToContactsList();

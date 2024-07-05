@@ -1,5 +1,6 @@
 function register(event) {
     event.preventDefault();
+    registerNewUser(event) // adds user to contacts list
     checkPassword();
 };
 

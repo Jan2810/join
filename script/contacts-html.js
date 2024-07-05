@@ -1,3 +1,7 @@
+/**
+ * Renders the "Add new contact" button.
+ * @returns {string} HTML string for the "Add new contact" button.
+ */
 function renderNewContactButton() {
     return /*html*/ `
         <button class="add-new-contact-button" onclick="openAddContactOverlay();">
@@ -8,6 +12,11 @@ function renderNewContactButton() {
     `;
 }
 
+/**
+ * Renders a capital letter header for the contact list.
+ * @param {string} capitalLetter - The capital letter to display.
+ * @returns {string} HTML string for the capital letter header.
+ */
 function renderCapitalLetter(capitalLetter) {
     return /*html*/ `
         <div class="contacts-list-box">
@@ -17,6 +26,11 @@ function renderCapitalLetter(capitalLetter) {
     `;
 };
 
+/**
+ * Renders a single contact entry in the contact list.
+ * @param {Object} contact - The contact object containing details like color, initials, name, email, and phone.
+ * @returns {string} HTML string for the contact entry.
+ */
 function renderContact(contact) {
     return /*html*/ `
         <div class="contacts-list-box contacts-list-box-entry" onclick="showSingleContactView(this, '${contact.color}', '${contact.initials}', '${contact.name}', '${contact.email}', '${contact.phone}')">
