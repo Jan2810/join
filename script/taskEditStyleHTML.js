@@ -75,6 +75,43 @@ function returnSubtaskImgEdit() {
 };
 
 /**
+ * Opens the categories dropdown for editing.
+ */
+function openStatusEdit() {
+    document.getElementById("dropdownCategoryToggleEdit").style.display = "none";
+    document.getElementById("dropdownCategoryContainerEdit").style.display = "";
+    document.getElementById("dropdownCategorysEdit").style.display = "flex";
+    renderStatusListEdit();
+};
+
+/**
+ * Closes the categories dropdown for editing.
+ * @param {Event} ev
+ */
+function closeStatusEdit(ev) {
+    ev.stopPropagation();
+    document.getElementById("dropdownCategoryToggleEdit").style.display = "";
+    document.getElementById("dropdownCategoryContainerEdit").style.display = "none";
+    document.getElementById("dropdownCategorysEdit").style.display = "none";
+};
+
+/**
+ * Returns the HTML string for a task list item with the given status and index.
+ *
+ * @param {string} status - The status of the task.
+ * @param {number} i - The index of the task.
+ * @returns {string} The HTML string for the task list item.
+ */
+function returnTaskListHTMLEdit(status, i) {
+    return `
+        <div onclick="addStatusEdit(${i}); closeStatusEdit(event);" class="category-dd-item task-form-font" id="ctg${i}">
+            <div class="task-cnt-name">${status}</div>
+        </div>
+    `;
+}
+
+
+/**
  * Shows a warning message when the maximum number of contacts is reached in editing mode.
  */
 function showMaxContactsEdit() {
@@ -87,6 +124,92 @@ function showMaxContactsEdit() {
  */
 function hideMaxContactsEdit() {
     document.getElementById("maxContactsEdit").style.display = "none";
+};
+
+/**
+ * Displays the contacts dropdown for editing.
+ * @param {string} ev - The event type ("open" or "close").
+ */
+function displayContactsEdit(ev) {
+    if (ev === "open") {
+        document.getElementById("dropdownMenuContainerEdit").style.display = "";
+        document.getElementById("dropdownMenuEdit").style.display = "block";
+    } else if (ev === "close") {
+        document.getElementById("dropdownMenuContainerEdit").style.display = "none";
+        document.getElementById("dropdownMenuEdit").style.display = "none";
+    }
+};
+
+/**
+ * Displays the assignment status for editing.
+ * @param {string} check - The assignment status ("checked" or "unchecked").
+ * @param {number} i - The index of the contact.
+ */
+function displayAssignmentsEdit(check, i) {
+    if (check === "checked") {
+        document.getElementById(`cntimgEdit${i}`).src = "../assets/icons/rb-checked.png";
+        document.getElementById(`cntnumEdit${i}`).classList.add("bg-darkblue");
+        document.getElementById(`cntnumEdit${i}`).classList.add("task-hover-dark");
+        document.getElementById(`cntnumEdit${i}`).classList.add("color-white");
+    } else if (check === "unchecked") {
+        document.getElementById(`cntimgEdit${i}`).src = "../assets/icons/rb-unchecked.png";
+        document.getElementById(`cntnumEdit${i}`).classList.remove("bg-darkblue");
+        document.getElementById(`cntnumEdit${i}`).classList.remove("color-white");
+        document.getElementById(`cntnumEdit${i}`).classList.remove("task-hover-dark");
+    }
+};
+
+/**
+ * Returns the HTML string for the sign list in editing mode.
+ * @param {Object} cnt - The contact object.
+ * @param {number} i - The index of the contact.
+ * @returns {string} The HTML string for the sign list.
+ */
+function returnSignListEdit(cnt, i) {
+    return `
+           <div class="task-cnt-assigned-sign">
+                <div class="task-cnt-sign flex-center" id="contactsignEdit${i}" style='background-color:${cnt.color}'>
+                ${getInitials(cnt.name)}
+                </div>
+           </div>`;
+};
+
+/**
+ * Changes the background button color for editing based on urgency.
+ */
+function changeBgBtnEdit() {
+    if (activeUrgEdit[0].active === true) {
+        highlightButtonEdit("high");
+    }
+    if (activeUrgEdit[1].active === true) {
+        highlightButtonEdit("mid");
+    }
+    if (activeUrgEdit[2].active === true) {
+        highlightButtonEdit("low");
+    }
+};
+
+/**
+ * Handles hover effect on urgency buttons for editing.
+ * @param {boolean} boolean - Indicates if the mouse is hovering over the button.
+ * @param {string} id - The id of the button.
+ */
+function hoverBtnEdit(boolean, id) {
+    if (boolean === true && id === "img-highEdit") {
+        document.getElementById(id).src = "../assets/icons-addtask/prio-high-white.png";
+    } else if (boolean === false && id === "img-highEdit" && activeUrgEdit[0].active === false) {
+        document.getElementById(id).src = "../assets/icons-addtask/prio-high-color.png";
+    }
+    if (boolean === true && id === "img-midEdit") {
+        document.getElementById(id).src = "../assets/icons-addtask/prio-mid-white.png";
+    } else if (boolean === false && id === "img-midEdit" && activeUrgEdit[1].active === false) {
+        document.getElementById(id).src = "../assets/icons-addtask/prio-mid-color.png";
+    }
+    if (boolean === true && id === "img-lowEdit") {
+        document.getElementById(id).src = "../assets/icons-addtask/prio-low-white.png";
+    } else if (boolean === false && id === "img-lowEdit" && activeUrgEdit[2].active === false) {
+        document.getElementById(id).src = "../assets/icons-addtask/prio-low-color.png";
+    }
 };
 
 /**
@@ -116,6 +239,23 @@ function highlightButtonEdit(urg) {
         document.getElementById("img-midEdit").src = `../assets/icons-addtask/prio-mid-color.png`;
         document.getElementById("img-lowEdit").src = `../assets/icons-addtask/prio-low-white.png`;
     }
+};
+
+/**
+ * Closes the subtasks input field for editing.
+ * @param {Event} ev
+ */
+function closeSubtasksEdit(ev) {
+    ev.stopPropagation();
+    document.getElementById("subtaskInputContEdit").style.borderColor = "";
+    document.getElementById("requiredSubtextEdit").style.display = "none";
+    let imgContainer = document.getElementById("subtaskImgContEdit");
+    imgContainer.innerHTML = "";
+    imgContainer.innerHTML = `
+    <div class="img-cont-subtask">
+        <img src="../assets/icons/add.png" alt="">
+    </div>
+    `;
 };
 
 /**

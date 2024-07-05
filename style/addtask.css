@@ -6,6 +6,10 @@
     display: none;
 } */
 
+.d-none-edit {
+    display: none;
+}
+
 .task-body {
     position: relative;
     padding: 8px;
@@ -348,6 +352,24 @@
     z-index: 1;
 }
 
+.dropdown-ctg-edit {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: absolute;
+    top: 33px;
+    left: 0;
+    width: 100%;
+    height: 190px !important;
+    border-radius: 10px;
+    background-color: white;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border: 1px solid #ccc;
+    border-top: 0;
+    z-index: 1;
+}
+
 .signParentContainer {
     margin: 10px 0px;
     height: 40px;
@@ -674,6 +696,10 @@
 }
 
 @media (max-width: 1175px) {
+    .d-none-edit {
+        display: block;
+    }
+
     .task-body {
         top: 130px;
         font-size: 16px;

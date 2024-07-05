@@ -270,6 +270,26 @@ function returnTaskEditHTML(task) {
                         <textarea id="taskDescriptionEdit" class="task-width task-form-font task-textarea task-input" type="text"
                             placeholder="Enter a Description">${task.description}</textarea>
                     </div>
+                    <div class="task-width d-none-edit">
+                        <h3 class="task-form-font">Task status</h3>
+                        <div onclick="openStatusEdit(); stopProp(event);" class="dropdown task-width">
+                            <div class="dropdown-toggle ctg-input-cnt" id="dropdownCategoryToggleEdit">
+                                <input onclick="openStatusEdit(); preventDf(event); stopProp(event);" id="categoryInputEdit" type="text" value="${getActualStatus(task.status)}" placeholder="Select task status" 
+                                class="category-dd-upper-item-input task-width bg-white" required>
+                                <img src="../assets/icons/dropdown.png">
+                            </div>
+                            <div class="dropdownmenu-ctg" id="dropdownCategoryContainerEdit" style="display: none;">
+                                <div onclick="closeStatusEdit(event)" class="category-dd-upper-item bg-white task-form-font">
+                                    <span>Select task status</span>
+                                    <img src="../assets/icons/dropup.png" alt="">
+                                </div>
+                                <div id="dropdownCategorysEdit" class="dropdown-ctg-edit">
+                                    <!-- rendered Categorys  -->
+                                </div>
+                            </div>
+                            <span id="requiredCategorysEdit" class="required-text" style="display: none;">This field is required</span>
+                        </div>
+                    </div>
                     <div class="task-width">
                         <h3 class="task-form-font">Assigned to</h3>
                         <div onclick="openContactsEdit(); stopProp(event);" class="dropdown task-width">
