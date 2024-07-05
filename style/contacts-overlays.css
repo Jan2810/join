@@ -1,4 +1,5 @@
 /* Edit contact overlay / Add contact overlay */
+
 .window-bg {
     position: fixed;
     top: 0;
@@ -32,66 +33,22 @@
     transition: transform 300ms ease-out;
 }
 
-
-
-
-
-/* .contacts-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 0, 0, 0.20);
-    transition: transform 200ms ease-in-out;
-    z-index: 200;
-} */
-
 .overlay-edit-contact {
     width: 100%;
     border-radius: 12px;
-    /* z-index: 150; */
     position: relative;
 }
 
 .overlay-add-contact {
     width: 100%;
     border-radius: 12px;
-    /* z-index: 150; */
     position: relative;
 }
 
 .hide-edit-contact-overlay,
 .hide-add-contact-overlay {
-    /* transition: transform 300ms ease-out; */
     transform: translateY(200%);
-    /* animation: move-out-bottom 300ms ease-out forwards; */
 }
-
-/* .show-edit-contact-overlay,
-.show-add-contact-overlay {
-    transition: transform 300ms ease-out;
-    transform: translateY(0); */
-    /* animation: move-in-bottom 300ms ease-out forwards; */
-/* } */
-
-/* @keyframes move-in-bottom {
-  from {
-    transform: translateY(200%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes move-out-bottom {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(200%);
-  } 
-}*/
 
 .add-contact-top {
     height: 352px;
@@ -178,7 +135,6 @@
     gap: 20px;
     font-size: 21px;
     font-weight: 700;
-
 }
 
 .edit-contact-delete-button {
@@ -241,7 +197,6 @@
 .add-contact-form-name,
 .edit-contact-form-name {
     background-image: url(../assets/icons/person.svg);
-
 }
 
 .add-contact-form-email,
@@ -313,30 +268,8 @@
     ;
 }
 
-/* .add-new-contact-button {
-        width: 352px;
-        height: 56px;
-        background: #2A3647;
-        color: #fff;
-        border-radius: 10px;
-        border: none;
-        outline: none;
-        font-size: 21px;
-        font-weight: 700;
-        cursor: pointer;
-        justify-self: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        transition: all 100ms ease-in-out;
-    } */
-    
-
-
-
-
 /* Contact successfully created pop-up */
+
 .contact-created-popup-bg {
     transition: transform 200ms ease-in-out;
     transform: translateY(25%); 
@@ -350,9 +283,8 @@
     justify-content: center;
     align-items: center;
 }
+
 .contact-created-popup {
-    /* transition: transform 200ms ease-in-out;
-    transform: translateY(60%);  */
     width: 90vw;
     height: 74px;
     border-radius: 20px;    
@@ -367,7 +299,6 @@
     justify-content: center;
     text-align: center;
     padding: 16px;
-   
 }
 
 .hide-contact-created-popup {
@@ -381,27 +312,17 @@
     display: none;
 }
 
-
-
 @media only screen and (min-width: 352px) {
     .contact-created-popup {
-    width: 326px;
+        width: 326px;
     }
 }
 
 @media only screen and (min-width: 396px) {
     .overlay-add-contact, 
     .overlay-edit-contact {
-    width: 396px;
-}
-}
-
-@media only screen and (min-width: 440px) {
-    
-}
-
-@media only screen and (min-width: 576px) {
-    
+        width: 396px;
+    }
 }
     
 @media only screen and (min-width: 800px) {
@@ -414,8 +335,7 @@
     }
 
     .contact-created-popup {
-        width: 326px;  
-        
+        width: 326px;     
     }
 
     .hide-contact-created-popup {
@@ -445,62 +365,16 @@
     }
 
      .hide-edit-contact-overlay {
-      /*  transition: transform 200ms ease-in-out; */
         transform: translateX(100%);
     }
-
-    /* .show-edit-contact-overlay {
-        transition: transform 200ms ease-in-out;
-        transform: translateX(0);
-    } */
 
     .hide-add-contact-overlay {
-        /* transition: transform 300ms ease-out; */
         transform: translateX(100%);
     }
-
-    /* .show-add-contact-overlay {
-        transition: transform 300ms ease-out;
-        transform: translateX(0);
-    } */
 
     .edit-contacts-overlay-bg-transition {
         transition: transform 200ms ease-in-out;
     } 
-
-    /* .hide-edit-contact-overlay {
-        animation: move-out-right 200ms ease-in-out forwards;
-    }
-
-    .show-edit-contact-overlay {
-        animation: move-in-right 200ms ease-in-out forwards;
-    }
-
-    .hide-add-contact-overlay {
-        animation: move-out-right 300ms ease-out forwards;
-    }
-
-    .show-add-contact-overlay {
-        animation: move-in-right 300ms ease-out forwards;
-    }
-
-    @keyframes move-in-right {
-      from {
-        transform: translateX(200%);
-      }
-      to {
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes move-out-right {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(200%);
-      }
-    } */
 
     .overlay-add-contact,
     .overlay-edit-contact {
@@ -511,7 +385,6 @@
         height: 594px;
         padding: 64px;
         position: static;
-        /* max-width: 1170px; */
     }
 
     .add-contact-top {
@@ -549,10 +422,6 @@
         height: 594px;
         width: 100%;
         max-width: 486px;
-        /* display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #fff; */
         border-bottom-left-radius: 0px;
         border-top-right-radius: 20px; 
         position: relative; 

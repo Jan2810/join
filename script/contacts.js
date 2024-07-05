@@ -1,10 +1,5 @@
 let colorValues = backgroundColors.map(bg => bg.replace("background: ", ""));
 
-async function initContacts() {
-    await includeHTML();
-    setBackground(3);
-}
-
 function getRandomContactColor() {
     let colorIndex = Math.floor(Math.random() * colorValues.length);
     return colorValues[colorIndex];
@@ -17,14 +12,8 @@ function displayContactCreatedPopup(event) {
     setTimeout(() => {
         addContactsOverlayBg.classList.add('add-contacts-overlay-bg-transition');
     }, 10);
-
-    if (window.innerWidth >= 800) {
-
-    } else {
-        contactsContainer.classList.remove('d-flex');
-        contactsContainer.classList.add('d-none');
-        contactContainer.classList.remove('d-none');
-        // manuallyRemoved = true;
+    if (window.innerWidth < 800) {
+        hideContactsList();
     }
     contactCreatedPopupBg.classList.remove('hide-contact-created-popup');
     setTimeout(function () {
@@ -32,16 +21,11 @@ function displayContactCreatedPopup(event) {
     }, 800);
 }
 
-// function updateNewContactDetails(contact) {
-//     badgeAndName.style.display = 'flex';
-//     profileBadge.style.backgroundColor = contact.color;
-//     profileBadge.textContent = contact.initials;
-//     contactName.textContent = contact.name;
-//     contactLink.href = `mailto:${contact.email}`;
-//     contactLink.textContent = contact.email;
-//     contactInformation.classList.remove('d-none');
-//     contactPhone.textContent = contact.phone;
-// }
+function hideContactsList() {
+    contactsContainer.classList.remove('d-flex');
+    contactsContainer.classList.add('d-none');
+    contactContainer.classList.remove('d-none');
+}
 
 async function addNewContact(event) {
     event.preventDefault();
@@ -67,12 +51,9 @@ async function addNewContactBackend(color, initials) {
 
 async function addNewContactFrontend(newContact) {
     await renderContactsList();
-    // updateNewContactDetails(newContact);
     showSingleContactView(null, newContact.color, newContact.initials, newContact.name, newContact.email, newContact.phone);
     clearInput();
 }
-
-
 
 function clearInput() {
     addContactFormEmail.value = '';
@@ -92,7 +73,6 @@ async function loadContactsData() {
     return responseAsJson;
 }
 
-// Process data into a contacts array
 async function processContactsData() {
     const data = await loadContactsData();
     let contacts = [];
@@ -119,30 +99,36 @@ function getSurname(fullName) {
 
 function sortContacts(contacts) {
     contacts.sort((a, b) => {
-        let firstNameA = getFirstName(a.name).toUpperCase();
-        let firstNameB = getFirstName(b.name).toUpperCase();
-
-        if (firstNameA < firstNameB) {
-            return -1;
-        }
-        if (firstNameA > firstNameB) {
-            return 1;
-        }
-
-        let surnameA = getSurname(a.name).toUpperCase();
-        let surnameB = getSurname(b.name).toUpperCase();
-
-        if (surnameA < surnameB) {
-            return -1;
-        }
-        if (surnameA > surnameB) {
-            return 1;
-        }
-        return 0;
+        return compareFirstNames(a, b) || compareSurnames(a, b);
     });
 }
 
-// Organize contacts by first letter
+function compareFirstNames(a, b) {
+    let firstNameA = getFirstName(a.name).toUpperCase();
+    let firstNameB = getFirstName(b.name).toUpperCase();
+
+    if (firstNameA < firstNameB) {
+        return -1;
+    }
+    if (firstNameA > firstNameB) {
+        return 1;
+    }
+    return 0;
+}
+
+function compareSurnames(a, b) {
+    let surnameA = getSurname(a.name).toUpperCase();
+    let surnameB = getSurname(b.name).toUpperCase();
+
+    if (surnameA < surnameB) {
+        return -1;
+    }
+    if (surnameA > surnameB) {
+        return 1;
+    }
+    return 0;
+}
+
 function organizeContactsByLetter(contacts) {
     let contactsByLetter = {};
 
@@ -166,7 +152,6 @@ async function renderContactsListHtml(contactsByLetter) {
         }
     }
     contactsList.innerHTML = html;
-    // await updateStatusNew();
 }
 
 async function renderContactsList() {
@@ -179,32 +164,6 @@ async function renderContactsList() {
 }
 
 renderContactsList();
-
-// async function updateContactStatus(key, newStatus) {
-//     const url = `${CONTACTS_URL}${key}/status.json`;
-//     await fetch(url, {
-//         method: 'PUT',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(newStatus)
-//     });
-// }
-
-// async function updateStatusNew() {
-//     const contactsData = await loadContactsData();
-//     for (let key in contactsData) {
-//         if (contactsData[key].status) {
-//         }
-//         if (contactsData[key].status && contactsData[key].status === 'new') {
-//             await updateContactStatus(key, 'normal');
-//         }
-//     }
-
-// }
-
-
-
 
 function showSingleContactView(selectedContact, color, initials, name, email, phone) {
     badgeAndName.style.display = 'flex';
@@ -250,8 +209,6 @@ function findAndHighlightContact(email) {
     }
 }
 
-// Edit contact:
-
 function displayNameEmailPhoneForEdit() {
     editName.value = nameEmailPhoneForEdit[2] || '';
     editEmail.value = nameEmailPhoneForEdit[3] || '';
@@ -266,14 +223,18 @@ async function editContact(event) {
     if (editName.value.trim() && editEmail.value.trim() && editPhone.value.trim()) {
         contact[3] = updateInitials(contact);
         let contacts = await loadContactsData();
-        for (let key in contacts) {
-            if (contacts[key].name === nameEmailPhoneForEdit[2]) {
-                await updateContactBackend(key, contact);
-                updateInMemoryContactData(contact);
-                break;
-            }
-        }
+        await updateMatchingContact(contacts, contact);
         await updateContactFrontend(contact);
+    }
+}
+
+async function updateMatchingContact(contacts, contact) {
+    for (let key in contacts) {
+        if (contacts[key].name === nameEmailPhoneForEdit[2]) {
+            await updateContactBackend(key, contact);
+            updateInMemoryContactData(contact);
+            break;
+        }
     }
 }
 
@@ -356,7 +317,6 @@ async function deleteContactFrontend() {
     await renderContactsList();
 }
 
-
 async function fetchExistingEmails() {
     let contacts = await loadContactsData();
     let emails = [];
@@ -373,59 +333,28 @@ let existingEmails = [];
 document.querySelectorAll('.add-contact-form-email, .edit-contact-form-email').forEach(input => {
     input.addEventListener('focus', async () => {
         existingEmails = await fetchExistingEmails();
-        console.log('Focus Event Listener');
     });
-
-
     input.addEventListener('input', validateEmail);
 });
 
 function validateEmail(event) {
-
     const emailInput = event.target;
     const email = emailInput.value.trim();
     const emailExists = existingEmails.includes(email);
 
-    // const errorDivId = emailInput.id === 'add-contact-form-email' ? 'add-email-error' : 'edit-email-error';
-    // const errorDiv = document.getElementById(errorDivId);
-
-    // if (emailExists) {
-    //     errorDiv.textContent = 'This email address is already registered.';
-    //     errorDiv.style.display = 'block'; // Fehlermeldung anzeigen
-    // } else {
-    //     errorDiv.textContent = ''; // Fehlermeldung leeren
-    //     errorDiv.style.display = 'none'; // Fehlermeldung ausblenden
-    // }
-
-
     if (emailExists) {
         emailInput.setCustomValidity('This email address is already registered.');
-        // showValidationMessage(emailInput, 'This email address is already registered.');
     } else {
         emailInput.setCustomValidity('');
-        // showValidationMessage(emailInput, '');
     }
 }
-
-// function showValidationMessage(input, message) {
-//     // const errorDivId = input.id === 'add-contact-form-email' ? 'add-email-error' : 'edit-email-error';
-//     let errorDivId;
-//     if (input.id === 'add-contact-form-email') {
-//         errorDivId = 'add-email-error';
-//     } else {
-//         errorDivId = 'edit-email-error';
-//     }
-
-//     const errorDiv = document.getElementById(errorDivId);
-//     errorDiv.textContent = message;
-// }
 
 document.getElementById('add-contact-form').addEventListener('submit', function (event) {
     const emailInput = document.getElementById('add-contact-form-email');
     const emailExists = existingEmails.includes(emailInput.value.trim());
 
     if (emailExists) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault();
         emailInput.setCustomValidity('This email address is already registered.');
     }
 });
@@ -435,7 +364,26 @@ document.getElementById('edit-contact-form').addEventListener('submit', function
     const emailExists = existingEmails.includes(emailInput.value.trim());
 
     if (emailExists) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault();
         emailInput.setCustomValidity('This email address is already registered.');
     }
 });
+
+async function fetchFixContacts() {
+    for (let fixContact of hardCodedContacts) {
+        let color = getRandomContactColor();
+        let initials = getInitials(fixContact.name);
+        try {
+            await postData(CONTACTS_URL, {
+                "email": fixContact.email,
+                "name": fixContact.name,
+                "phone": fixContact.phone,
+                "color": color,
+                "initials": initials,
+                "status": 'normal'
+            });
+        } catch (error) {
+            console.error('Error adding contact:', error);
+        }
+    }
+}

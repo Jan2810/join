@@ -11,7 +11,7 @@
 }
 
 .help-container::-webkit-scrollbar {
-  width: 4px; 
+    width: 4px; 
 }
 
 .help-container::-webkit-scrollbar-track {
@@ -135,8 +135,9 @@
 
 @media only screen and (min-width: 800px) {
     .help-body {
-    height: calc(100vh - 96px);
-}
+        height: calc(100vh - 96px);
+    }
+
     .help-container {
         margin-left: 232px;
         margin-top: 96px;
@@ -166,12 +167,3 @@
         transform: scale(1.15);
     }
 }
-/* Centers text for larger screen widths */
-
-/* @media only screen and (min-width: 1016px) {
-    .help-container {
-        margin-left: calc((100vw - 1016px - 232px) / 2 + 232px + 116px);
-        margin-right: calc((100vw - 1016px - 232px) / 2  + 116px);
-    }
-} */
-

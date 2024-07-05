@@ -100,7 +100,6 @@
     font-size: 15px;
     font-weight: 400;
     word-wrap: break-word;
-    /* width: auto; */
 }
 
 .contacts-list h3 {
@@ -127,7 +126,6 @@
 
 .contacts-list-box-entry:active {
     background: linear-gradient(180deg, hsl(210, 12%, 98%) 0%, hsl(210, 12%, 95%) 100%);
-
 }
 
 .contacts-view-contact, .viewed-contact {
@@ -158,24 +156,20 @@
 .contacts-email {
     font-size: 12px;
     overflow-wrap: break-word;
-    /* width: auto; */
 }
 
 .contacts-list p,
 .contacts-email {
-    overflow-wrap: break-word; /* Text umbrechen, falls erforderlich */
-    flex: 1; /* Flexibles Wachstum */
+    overflow-wrap: break-word; 
+    flex: 1; 
 }
 
 .contacts-list-name-and-email {
-    /* width: auto; */
     display: flex;
     flex-direction: column;
     gap: 5px;
     overflow-wrap: break-word;
     padding-right: 8px;
-
-
 }
 
 /* Single contact - mobile view */
@@ -221,9 +215,6 @@
     transform: scale(1.15); 
 }
 
-
-
-
 .single-contact-subheader {
     display: flex;
     flex-direction: column-reverse;
@@ -248,7 +239,6 @@
 
 .single-contact-badge-and-name {
     margin: 20px 16px;
-    /* display: none; */
     flex-direction: column;
     gap: 16px;
 }
@@ -310,10 +300,6 @@
     transform: translateX(120%);
 }
 
-
-
-
-
 .mobile-view-padding-8 {
     padding: 8px;
 }
@@ -349,10 +335,6 @@
         font-size: 16px;
     }
 
-    
-
-    
-
     .contacts-list h3 {
         margin-left: 30px;
     }
@@ -372,10 +354,8 @@
     }
     .single-contact-badge-and-name {
         flex-direction: row;
-        align-items: center;
-        
+        align-items: center;    
     }
-
 }
 
 @media only screen and (min-width: 376px) and (max-width: 800px) {
@@ -392,7 +372,6 @@
 }
 
 @media only screen and (min-width: 440px) {
-
     .contacts-profile-badge {
         margin-left: 24px;
     }
@@ -421,14 +400,14 @@
     }
 
     .single-contact-name {
-    font-size: 24px;
-    font-weight: 700;
-}
+        font-size: 24px;
+        font-weight: 700;
+    }
 }
  
 @media only screen and (min-width: 576px) {
     .single-contact-name {
-    font-size: 36px;
+        font-size: 36px;
     }
 
     .single-contact h1 {
@@ -440,10 +419,9 @@
         width: 90px;
         height: 90px;
         font-size: 32px;
-    }
-
-    
+    }  
 }
+
 /* Desktop view */
 
 @media only screen and (min-width: 800px) {
@@ -476,7 +454,7 @@
     .viewed-contact:hover {
         background: #2A3647;
         color: #fff;
-}
+    }
 
     .add-person-icon,
     .single-contact-triple-dots,
@@ -516,7 +494,6 @@
         background: #091931;
     }
 
-    
     /* Single contact - desktop view */
 
     .single-contact-container {
@@ -531,8 +508,6 @@
         margin: 0;
         gap: 24px;
     }
-    
-    
     
     .single-contact-header {
         display: flex;
@@ -600,22 +575,13 @@
         gap: 8px;
     }
 
-    
-
-    /* .edit-and-delete-contact {
-        color: #2A3647;
-        display: flex;
-        gap: 18px;
-    } */
-
     .edit-and-delete-contact {
         color: #2A3647;
         display: grid;
-        grid-template-columns: 62px 81px; /* Two columns: 62px and 81px */
-        gap: 18px; /* Gap between grid items */
+        grid-template-columns: 62px 81px; 
+        gap: 18px; 
     }
 
-    
     .single-contact-information {
         margin: 0;
     }
@@ -647,11 +613,6 @@
 
 
 @media only screen and (min-width: 800px) and (max-width: 1120px) {
-    /* .arrow-800-box {
-        width: 70px;
-        height: 70px;
-    } */
-
     .single-contact-arrow-left-800 {
         display: block;
         margin-right: 16px;
@@ -672,8 +633,6 @@
     }
 }
 
-
-
 @media only screen and (min-width: 1120px) and (max-width: 1480px) {
     .contacts-list h3,
     .contacts-list p {
@@ -692,9 +651,7 @@
 
     .add-new-contact-button,
     .contacts-line,
-    .contacts-list-box 
-    /* .contacts-list-name-and-email  */
-     {
+    .contacts-list-box {
         width: 90%;
     }
 
@@ -740,13 +697,10 @@
     .contacts-list {
         width: 456px;
         align-items: center;
-    }
-      
-    
+    } 
 }
  
-@media only screen and (min-width: 1480px) {
-    
+@media only screen and (min-width: 1480px) {  
     .single-contact-name {
         font-size: 47px;
     }

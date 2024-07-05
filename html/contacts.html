@@ -21,20 +21,12 @@
         <!-- Contacts list -->
 
         <div class="contacts-container d-flex" id="contacts-container">
-            <div class="contacts-list" id="contacts-list">
-
-                <!-- <button class="add-new-contact-button" onclick="openAddContactOverlay();"><span>Add new
-                        contact</span>
-                    <img class="" src="../assets/icons/add-person.svg" alt=""></button>
-                <img class="add-person-icon bg-darkblue" id="add-person-icon" onclick="openAddContactOverlay()"
-                    src="../assets/icons/add-person.svg" alt=""> -->
-            </div>
+            <div class="contacts-list" id="contacts-list"></div>
         </div>
 
         <!-- Single contact view -->
 
         <div class="single-contact-container d-none" onclick="hideEditDeletePopup()" id="single-contact-container">
-            <!-- Single contact triple-dots -->
 
             <div class="single-contact-triple-dots" id="single-contact-triple-dots"
                 onclick="displayEditDeletePopup(), doNotClose(event)">
@@ -85,13 +77,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="arrow-800-box"> -->
                 <img src="../assets/icons/arrow-left-line.svg" class="single-contact-arrow-left-800 d-none"
                     onclick="returnToContactsList()">
-                <!-- </div> -->
-
             </div>
-
 
             <div class="single-contact-badge-and-name d-none">
                 <div class="single-contact-profile-badge flex-center">TW</div>
@@ -117,7 +105,6 @@
                             <span>Delete</span>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -132,7 +119,6 @@
                 <p class="single-contact-phone">+49 2222 222 22 2</p>
             </div>
         </div>
-
     </main>
 
     <!-- Edit contact overlay -->
@@ -140,7 +126,7 @@
     <div class="edit-contacts-overlay-bg hide-edit-contact-overlay edit-contacts-overlay-bg-transition flex-center"
         onclick="closeEditContactOverlay()" id="edit-contacts-overlay-bg">
 
-        <div class="overlay-edit-contact" onclick="doNotClose(event)" id="overlay-edit-contact">
+        <div class="overlay-edit-contact" id="overlay-edit-contact">
             <div class="close-svg" onclick="closeEditContactOverlay()">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -148,7 +134,7 @@
                         fill="none" />
                 </svg>
             </div>
-            <div class="add-contact-top">
+            <div class="add-contact-top" onclick="doNotClose(event)">
 
                 <div class="add-contact-top-header">
                     <img class="add-contact-capa-icon" src="../assets/icons/capa-2.svg" alt="">
@@ -157,10 +143,10 @@
                 </div>
 
             </div>
-            <div class="add-contact-center">
+            <div class="add-contact-center" onclick="doNotClose(event)">
                 <div class="edit-contact-profile-badge flex-center" id="edit-contact-profile-badge">TW</div>
             </div>
-            <div class="add-contact-bottom">
+            <div class="add-contact-bottom" onclick="doNotClose(event)">
                 <div class="close-svg-desktop" onclick="closeEditContactOverlay()"><svg width="14" height="14"
                         viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -190,18 +176,19 @@
     </div>
 
     <!-- Add contact overlay -->
-    <div class="window-bg d-none" id="window-bg"></div>
+
+    <div class="window-bg d-none" id="window-bg" onclick="closeAddContactOverlay()"></div>
     <div class="add-contacts-overlay-bg hide-add-contact-overlay add-contacts-overlay-bg-transition flex-center"
         onclick="closeAddContactOverlay()" id="add-contacts-overlay-bg">
 
-        <div class="overlay-add-contact" onclick="doNotClose(event)" id="overlay-add-contact">
+        <div class="overlay-add-contact" id="overlay-add-contact">
             <div class="close-svg" onclick="closeAddContactOverlay()"><svg width="14" height="14" viewBox="0 0 14 14"
                     fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M7.00005 8.40005L2.10005 13.3C1.91672 13.4834 1.68338 13.575 1.40005 13.575C1.11672 13.575 0.883382 13.4834 0.700049 13.3C0.516715 13.1167 0.425049 12.8834 0.425049 12.6C0.425049 12.3167 0.516715 12.0834 0.700049 11.9L5.60005 7.00005L0.700049 2.10005C0.516715 1.91672 0.425049 1.68338 0.425049 1.40005C0.425049 1.11672 0.516715 0.883382 0.700049 0.700049C0.883382 0.516715 1.11672 0.425049 1.40005 0.425049C1.68338 0.425049 1.91672 0.516715 2.10005 0.700049L7.00005 5.60005L11.9 0.700049C12.0834 0.516715 12.3167 0.425049 12.6 0.425049C12.8834 0.425049 13.1167 0.516715 13.3 0.700049C13.4834 0.883382 13.575 1.11672 13.575 1.40005C13.575 1.68338 13.4834 1.91672 13.3 2.10005L8.40005 7.00005L13.3 11.9C13.4834 12.0834 13.575 12.3167 13.575 12.6C13.575 12.8834 13.4834 13.1167 13.3 13.3C13.1167 13.4834 12.8834 13.575 12.6 13.575C12.3167 13.575 12.0834 13.4834 11.9 13.3L7.00005 8.40005Z"
                         fill="#none" />
                 </svg></div>
-            <div class="add-contact-top">
+            <div class="add-contact-top" onclick="doNotClose(event)">
 
                 <div class="add-contact-top-header">
                     <img class="add-contact-capa-icon" src="../assets/icons/capa-2.svg" alt="">
@@ -211,7 +198,7 @@
                 </div>
 
             </div>
-            <div class="add-contact-center">
+            <div class="add-contact-center" onclick="doNotClose(event)">
                 <div class="add-contact-person-svg flex-center">
                     <svg width="64" height="64" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <mask id="mask0_69960_5368" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
@@ -226,7 +213,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="add-contact-bottom">
+            <div class="add-contact-bottom" onclick="doNotClose(event)">
                 <div class="close-svg-desktop" onclick="closeAddContactOverlay()"><svg width="14" height="14"
                         viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -245,7 +232,7 @@
                         required minlength="10" pattern="[0-9+ ]+"
                         title="Phone number can only contain numbers, the plus sign, and spaces.">
                     <div class="add-contact-form-buttons-container">
-                        <button type="submit" class="cancel-button">
+                        <button type="submit" class="cancel-button" onclick="closeAddContactOverlay()">
                             <span>Cancel</span>
                             <svg class="cancel-icon" width="11" height="11" viewBox="0 0 14 14" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -265,8 +252,6 @@
 
         </div>
     </div>
-
-
 
     <!--  Edit-delete pop-up -->
 
@@ -289,9 +274,7 @@
             </svg>
             <span>Delete</span>
         </div>
-
     </div>
-
 
     <!-- Contact created pop-up -->
 
@@ -299,15 +282,11 @@
         <div class="contact-created-popup">Contact successfully created</div>
     </div>
 
-
-
     <script src="../script/contacts-data.js" defer></script>
     <script src="../script/contacts-overlays.js" defer></script>
     <script src="../script/script.js" defer></script>
     <script src="../script/contacts-html.js" defer></script>
     <script src="../script/contacts.js" defer></script>
-
-
 
 </body>
 

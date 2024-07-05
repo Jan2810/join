@@ -27,5 +27,3 @@ async function addNewContactBackend(name, email, color, initials) {
         await postData(CONTACTS_URL, newContact);
     }
 }
-
-

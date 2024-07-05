@@ -1,16 +1,18 @@
 let contactsList = document.getElementById('contacts-list');
 let contactsContainer = document.getElementById('contacts-container');
+
 let contactContainer = document.getElementById('single-contact-container');
 let windowBg = document.getElementById('window-bg');
 let editContactsOverlayBg = document.getElementById('edit-contacts-overlay-bg');
 let addContactsOverlayBg = document.getElementById('add-contacts-overlay-bg');
 let editContactOverlay = document.getElementById('overlay-edit-contact');
 let addContactOverlay = document.getElementById('overlay-add-contact');
+
 let contactCreatedPopupBg = document.getElementById('contact-created-popup-bg');
 let editDeletePopup = document.getElementById('edit-delete-popup');
 let singleContactTripleDots = document.getElementById('single-contact-triple-dots');
 let addPersonIcon = document.getElementById('add-person-icon');
-// let manuallyRemoved = false;
+
 let nameEmailPhoneForEdit = [];
 
 let editName = document.getElementById('edit-contact-form-name');
@@ -29,7 +31,10 @@ const contactLink = document.querySelector('.single-contact-link');
 const contactInformation = document.querySelector('.single-contact-information');
 const contactPhone = document.querySelector('.single-contact-phone');
 
-
+async function initContacts() {
+    await includeHTML();
+    setBackground(3);
+}
 
 function openEditContactOverlay() {
     windowBg.classList.remove('d-none');
@@ -37,9 +42,6 @@ function openEditContactOverlay() {
         windowBg.classList.add('visible');
     }, 10);
     editContactsOverlayBg.classList.remove('hide-edit-contact-overlay');
-    // editContactOverlay.classList.remove('hide-edit-contact-overlay');
-    // editContactsOverlayBg.classList.add('show-edit-contact-overlay');
-    // editContactOverlay.classList.add('show-edit-contact-overlay');
     if (window.innerWidth < 800) {
         hideEditDeletePopup();
     }
@@ -53,10 +55,7 @@ function hideEditDeletePopup() {
 }
 
 function closeEditContactOverlay() {
-    // editContactsOverlayBg.classList.remove('show-edit-contact-overlay');
-    // editContactOverlay.classList.remove('show-edit-contact-overlay');
     editContactsOverlayBg.classList.add('hide-edit-contact-overlay');
-    // editContactOverlay.classList.add('hide-edit-contact-overlay');
     windowBg.classList.remove('visible');
     setTimeout(() => {
         windowBg.classList.add('d-none');
@@ -64,13 +63,8 @@ function closeEditContactOverlay() {
 
 }
 
-// Cancel Cancel Cancel Button
-
 function closeAddContactOverlay() {
-    // addContactsOverlayBg.classList.remove('show-edit-contact-overlay');
-    // addContactOverlay.classList.remove('show-edit-contact-overlay');
     addContactsOverlayBg.classList.add('hide-add-contact-overlay');
-    // addContactOverlay.classList.add('hide-add-contact-overlay');
     windowBg.classList.remove('visible');
     setTimeout(() => {
         windowBg.classList.add('d-none');
@@ -84,21 +78,7 @@ function openAddContactOverlay() {
         windowBg.classList.add('visible');
     }, 10);
     addContactsOverlayBg.classList.remove('hide-add-contact-overlay');
-
-    // addContactOverlay.classList.remove('hide-add-contact-overlay');
-    // addContactsOverlayBg.classList.add('show-edit-contact-overlay');
-    // addContactOverlay.classList.add('show-edit-contact-overlay');
-
 }
-
-/**
- * Displays a "Contact successfully created" popup for 1500ms.
- * 
- * Prevents the default form submission, closes the add contact overlay,
- * and shows the success message.The message is hidden again after 1500ms.
- * 
- * @param { Event } event - The form submission event.
- */
 
 function closeContactView() {
     badgeAndName.style.display = 'none';
@@ -112,30 +92,17 @@ function removeViewedContactClass() {
     });
 }
 
-/**
- * Handles the window resize event to toggle the visibility of the contactContainer.
- * Removes 'd-none' if window width is 1120px or greater.
- * Adds 'd-none' if window width is less than 1120px, unless manually removed.
- */
 function handleResize() {
     if (window.innerWidth >= 1120) {
         contactContainer.classList.remove('d-none');
         contactsContainer.classList.remove('d-none');
         contactsContainer.classList.add('d-flex');
-        // manuallyRemoved = false;
     } else if (window.innerWidth < 1120 && badgeAndName.style.display === 'flex') {
         showSingleContactOnly();
-        // } else if (!manuallyRemoved) {
-        //     contactContainer.classList.add('d-none');
     } else if (window.innerWidth < 1120 && badgeAndName.style.display !== 'flex') {
         returnToContactsList();
     }
 }
-
-/**
-* Handles the click event on the contact-arrow-left element.
- * Shows the contactsContainer and hides the contactContainer if the window width is less than 1120px.
- */
 
 function showSingleContactOnly() {
     contactContainer.classList.remove('d-none');
@@ -150,14 +117,8 @@ function returnToContactsList() {
     contactContainer.classList.remove('d-block');
     contactContainer.classList.add('d-none');
     closeContactView();
-    // if (window.innerWidth < 1120) {
-    //     contactContainer.classList.add('d-none');
-    //     manuallyRemoved = true; // Reset the flag
-    //     closeContactView();
-    // }
 }
 
-// Add event listener for window resize
 window.addEventListener('resize', handleResize);
 
 handleResize();
@@ -170,7 +131,6 @@ function displayEditDeletePopup() {
             addPersonIcon.classList.add('d-none');
         }
     }, 100);
-
 }
 
 function doNotClose(event) {
