@@ -167,3 +167,9 @@
         transform: scale(1.15);
     }
 }
+
+@media only screen and (min-width: 1120px) {
+    .help-container::-webkit-scrollbar {
+        width: 0px; /* Hide scrollbar */
+    }
+}
