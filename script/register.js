@@ -1,6 +1,6 @@
-function register(event) {
+async function register(event) {
     event.preventDefault();
-    registerNewUser(event) // adds user to contacts list
+    await registerNewUser(event) // adds user to contacts list
     checkPassword();
 };
 
