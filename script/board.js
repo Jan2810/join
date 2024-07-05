@@ -16,11 +16,13 @@ async function getTasks() {
  * Initializes the board by updating task lists and setting the background.
  */
 async function initBoard() {
+    await includeHTML();    
+    setBackground(2);
     await updateTodos();
     await updateInProgress();
     await updateAwaitFeedback();
     await updateDone();
-    setBackground(2);
+    prepareTask();
 };
 
 /**
