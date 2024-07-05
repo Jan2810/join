@@ -3,7 +3,7 @@ function register(event) {
     checkPassword();
 };
 
-function addUser() {
+async function addUser() {
     let user = {};
     let email = document.getElementById("register-input-email");
     let password = document.getElementById("register-input-password");
@@ -11,7 +11,7 @@ function addUser() {
     user.name = name.value;
     user.email = email.value;
     user.password = password.value;
-    postData(path = "", user, USERS_URL)
+    await postData(USERS_URL, user)
 };
 
 function showOverlay() {
