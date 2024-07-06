@@ -376,3 +376,4 @@ function organizeContactsByLetter(contacts) {
     });
     return contactsByLetter;
 }
+
