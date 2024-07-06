@@ -10,6 +10,7 @@ let availableStatus = [
     "Done"
 ];
 let newStatus = "";
+let taskStatusEdit = "";
 
 /**
  * Array to store urgency levels and their active states for task editing.
@@ -55,6 +56,8 @@ async function putEditTask() {
  */
 async function initDataEditTask(task, id) {
     taskDataEdit = task;
+    taskStatusEdit = task.status;
+    console.log(taskStatusEdit);
     taskId = id;
     contactsEdit = await loadData(CONTACTS_URL);
     let assignedContacts = task.assigned_to;
@@ -74,7 +77,11 @@ async function setInputValuesEdit() {
     taskDataEdit.title = document.getElementById("taskTitleEdit").value;
     taskDataEdit.description = document.getElementById("taskDescriptionEdit").value;
     taskDataEdit.due_date = document.getElementById("taskDateEdit").value;
+    if (newStatus !== "") {
     taskDataEdit.status = newStatus;
+    } else {
+        taskDataEdit.status = taskStatusEdit;
+    }
 };
 
 /**
