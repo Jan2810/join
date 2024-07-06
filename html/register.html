@@ -32,8 +32,11 @@
                 <div class="flex-column flex-center">
                     <input id="register-input-name" class="register-input-fields" type="text" placeholder="Name"
                         required>
-                    <input id="register-input-email" class="register-input-fields" type="email" placeholder="Email"
-                        required>
+                    <div class="register-email-container flex-center flex-column">
+                        <input id="register-input-email" class="register-input-fields" onkeydown="removeDoubleUserError()" type="email" placeholder="Email"
+                            required>
+                        <span id="register-input-email-error" class="d-none">There is already an account for this email</span>
+                    </div>
                     <input id="register-input-password" class="register-input-fields" type="password"
                         placeholder="Password" required>
                     <div class="register-password-container flex-center flex-column">

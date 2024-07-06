@@ -1,7 +1,7 @@
 async function register(event) {
     event.preventDefault();
-    await registerNewUser(event) // adds user to contacts list
-    checkPassword();
+    // registerNewUser(event) // adds user to contacts list
+    checkPassword(event);
 };
 
 async function addUser() {
@@ -26,14 +26,37 @@ function showOverlay() {
     setTimeout(function () { window.location.href = "../index.html" }, 1000);
 };
 
-function checkPassword() {
+async function checkPassword(event) {
+    users = await loadData(USERS_URL);
+    let email = document.getElementById('register-input-email');
     let password = document.getElementById("register-input-password");
     let passwordConfirm = document.getElementById("register-input-confirm-password");
-    if (password.value == passwordConfirm.value) {
+    let doubleUser = users.find(u => u.email === email.value);
+    if (password.value == passwordConfirm.value && !doubleUser) {
         showOverlay();
         addUser();
+        registerNewUser(event) // adds user to contacts list
     }
-    else { confirmPasswordError() }
+    else if (password.value !== passwordConfirm.value && doubleUser) {
+        confirmPasswordError();
+        doubleUserError()
+    }
+    else if (password.value !== passwordConfirm.value) {
+        confirmPasswordError()
+    }
+    else if (doubleUser) {
+        doubleUserError()
+    }
+};
+
+function doubleUserError() {
+    document.getElementById('register-input-email').classList.add('register-error-border');
+    document.getElementById('register-input-email-error').classList.remove('d-none');
+};
+
+function removeDoubleUserError() {
+    document.getElementById('register-input-email').classList.remove('register-error-border');
+    document.getElementById('register-input-email-error').classList.add('d-none');
 };
 
 function confirmPasswordError() {

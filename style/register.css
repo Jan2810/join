@@ -66,10 +66,12 @@ body {
 
 #register-input-email {
     background: url('../assets/icons/mail.svg') no-repeat right 21px center;
+    margin-bottom: 0px;
 }
 
 #register-input-password {
     background: url('../assets/icons/lock.svg') no-repeat right 21px center;
+    margin-top: 20px;
 }
 
 #register-input-confirm-password {
@@ -82,6 +84,11 @@ body {
 }
 
 #register-input-password-error {
+    color: red;
+    font-size: 12px;
+}
+
+#register-input-email-error {
     color: red;
     font-size: 12px;
 }
