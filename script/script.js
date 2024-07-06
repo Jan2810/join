@@ -1,56 +1,8 @@
-/**
- * URL for users data.
- * @type {string}
- */
+
 const USERS_URL = "https://join-14fdc-default-rtdb.europe-west1.firebasedatabase.app/";
-
-/**
- * URL for tasks data.
- * @type {string}
- */
 const TASKS_URL = "https://join-tasks-default-rtdb.europe-west1.firebasedatabase.app/";
-
-/**
- * URL for contacts data.
- * @type {string}
- */
 const CONTACTS_URL = "https://join---contacts-default-rtdb.europe-west1.firebasedatabase.app/";
 
-/**
- * Array to store user data.
- * @type {Array}
- */
-let users = [];
-
-/**
- * Object to store active user data.
- * @type {Object}
- */
-let activeUser = {};
-
-/**
- * Array to track the active page state.
- * @type {Array<boolean>}
- */
-let activePage = [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-];
-
-/**
- * Indicates whether the navigation is open.
- * @type {boolean}
- */
-let navOpen = false;
-
-/**
- * Array of background colors.
- * @type {Array<string>}
- */
 let backgroundColors = [
     "background: rgba(255, 122, 0, 1)",
     "background: rgba(255, 94, 179, 1)",
@@ -69,10 +21,20 @@ let backgroundColors = [
     "background: rgba(255, 187, 43, 1)"
 ];
 
-/**
- * Initializes the private page.
- * @returns {Promise<void>}
- */
+let users = [];
+let activeUser = {};
+
+let activePage = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+];
+
+let navOpen = false;
+
 async function initPrivate() {
     await includeHTML();
     setBackground(4);
