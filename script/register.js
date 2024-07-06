@@ -1,6 +1,5 @@
 async function register(event) {
     event.preventDefault();
-    // registerNewUser(event) // adds user to contacts list
     checkPassword(event);
 };
 
@@ -35,7 +34,7 @@ async function checkPassword(event) {
     if (password.value == passwordConfirm.value && !doubleUser) {
         showOverlay();
         addUser();
-        registerNewUser(event) // adds user to contacts list
+        registerNewUser(event);
     }
     else if (password.value !== passwordConfirm.value && doubleUser) {
         confirmPasswordError();
