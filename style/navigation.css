@@ -137,7 +137,7 @@ header {
     background-color: #ebebeb;
 }
 
-@media (min-width: 801px) {
+@media (min-width: 1201px) {
 
 
     .header-logo {
@@ -174,7 +174,7 @@ header {
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
     nav {
         width: 100vw;
         height: 80px;
