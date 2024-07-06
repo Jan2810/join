@@ -124,10 +124,6 @@ main {
     justify-content: space-between;
 }
 
-.board-category {
-    min-width: 268px
-}
-
 .board-category-header {
     display: flex;
     justify-content: space-between;
@@ -167,7 +163,8 @@ path {
 }
 
 .board-ticket {
-    width: 252px;
+    max-width: 252px;
+    width: -webkit-fill-available;
     height: fit-content;
     flex: 0 0 auto;
     border-radius: 24px;
@@ -252,7 +249,9 @@ path {
 }
 
 .board-ticket-bar {
-    width: 128px;
+    min-width: 78px;
+    max-width: 128px;
+    width: 100%;
     height: 8px;
     background-color: rgba(244, 244, 244, 1);
     border-radius: 8px;
@@ -269,6 +268,7 @@ path {
 
 .board-ticket-progress {
     font-size: 12px;
+    white-space: nowrap; 
 }
 
 .board-no-tasks-placeholder {
@@ -304,7 +304,7 @@ path {
     overflow: visible;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1200px) {
     .board-categories {
         flex-direction: column;
     }
