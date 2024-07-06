@@ -1,7 +1,3 @@
-.mgn-l-328 {
-    margin-left: 328px;
-}
-
 .d-none-edit {
     display: none;
 }
@@ -16,6 +12,7 @@
     z-index: 1;
     top: 190px;
     font-weight: 400;
+    margin-left: 328px;
 }
 
 .task-body h1 {
@@ -700,6 +697,7 @@
     .task-body {
         top: 130px;
         font-size: 16px;
+        margin: 0;
     }
 
     .task-form-font {
@@ -713,9 +711,9 @@
 
     .task-content {
         display: flex;
-        /* flex-direction: column;
+        flex-direction: column;
         justify-content: flex-start;
-        align-items: flex-start; */
+        align-items: flex-start;
         height: 100%;
     }
 
@@ -732,8 +730,8 @@
     }
 
     .task-right-cont {
-        /* border-left: 0;
-        padding-left: 0; */
+        border-left: 0;
+        padding-left: 0;
         margin: 0;
         gap: 0;
     } 
