@@ -287,7 +287,7 @@
     position: relative;
     display: inline-block;
     padding: 0;
-    margin: 16px 0px 4px 0px;
+    margin: 16px 0px 10px 0px;
 }
 
 .dropdown-toggle {
@@ -366,7 +366,6 @@
 
 .signParentContainer {
     margin: 10px 0px;
-    height: 40px;
 }
 
 .dropdown-menu::-webkit-scrollbar {
