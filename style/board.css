@@ -133,6 +133,10 @@ main {
     color: rgba(66, 82, 110, 1);
 }
 
+.board-category {
+    width: 100%;
+}
+
 .board-categories-add-task-button rect,
 path {
     transition: all 100ms ease-in-out;
@@ -275,7 +279,10 @@ path {
 
 .board-no-tasks-placeholder {
     margin-top: 12px;
-    width: 252px;
+    margin-left: 8px;
+    margin-right: 8px;
+    max-width: 252px;
+    width: -webkit-fill-available;
     height: 48px;
     color: rgba(168, 168, 168, 1);
     border-radius: 10px;
