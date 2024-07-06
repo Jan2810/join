@@ -48,7 +48,8 @@
 }
 
 .task-left-cont {
-    width: 440px;
+    width: 100%;
+    max-width: 440px;
     display: flex;
     flex-direction: column;
     gap: 8px;
