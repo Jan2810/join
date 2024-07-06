@@ -411,6 +411,10 @@ path {
         padding-right: 16px;
         padding-bottom: 80px;
     }
+
+    .board-categories {
+        padding-bottom: 80px;
+    }
 }
 
 @media (max-width: 470px) {
