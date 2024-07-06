@@ -33,9 +33,6 @@ function displayContactCreatedPopup(event) {
     }, 800);
 }
 
-/**
- * Hides the contacts list and displays the single contact container.
- */
 function hideContactsList() {
     contactsContainer.classList.remove('d-flex');
     contactsContainer.classList.add('d-none');
@@ -56,8 +53,6 @@ async function addNewContact(event) {
 
 /**
  * Adds a new contact to the backend.
- * @param {string} color - The color of the contact.
- * @param {string} initials - The initials of the contact.
  */
 async function addNewContactBackend(color, initials) {
     if (addContactFormEmail.value.trim() && addContactFormName.value.trim() && addContactFormPhone.value.trim()) {
@@ -75,7 +70,6 @@ async function addNewContactBackend(color, initials) {
 
 /**
  * Adds a new contact to the frontend.
- * @param {Object} newContact - The new contact object.
  */
 async function addNewContactFrontend(newContact) {
     await renderContactsList();
@@ -83,9 +77,6 @@ async function addNewContactFrontend(newContact) {
     clearInput();
 }
 
-/**
- * Clears the input fields for adding a contact.
- */
 function clearInput() {
     addContactFormEmail.value = '';
     addContactFormName.value = '';
@@ -159,14 +150,11 @@ function sortContacts(contacts) {
 
 /**
  * Compares the first names of two contacts.
- * @param {Object} a - The first contact object.
- * @param {Object} b - The second contact object.
  * @returns {number} Comparison result.
  */
 function compareFirstNames(a, b) {
     let firstNameA = getFirstName(a.name).toUpperCase();
     let firstNameB = getFirstName(b.name).toUpperCase();
-
     if (firstNameA < firstNameB) {
         return -1;
     }
@@ -178,8 +166,6 @@ function compareFirstNames(a, b) {
 
 /**
  * Compares the surnames of two contacts.
- * @param {Object} a - The first contact object.
- * @param {Object} b - The second contact object.
  * @returns {number} Comparison result.
  */
 function compareSurnames(a, b) {
@@ -197,7 +183,6 @@ function compareSurnames(a, b) {
 
 /**
  * Organizes contacts by the first letter of their first name.
- * @param {Array<Object>} contacts - The array of contacts.
  * @returns {Object} An object with contacts organized by letter.
  */
 function organizeContactsByLetter(contacts) {
@@ -245,12 +230,6 @@ renderContactsList();
 
 /**
  * Displays the detailed view of a single contact.
- * @param {HTMLElement} selectedContact - The selected contact element.
- * @param {string} color - The color of the contact.
- * @param {string} initials - The initials of the contact.
- * @param {string} name - The name of the contact.
- * @param {string} email - The email of the contact.
- * @param {string} phone - The phone number of the contact.
  */
 function showSingleContactView(selectedContact, color, initials, name, email, phone) {
     badgeAndName.style.display = 'flex';
@@ -267,8 +246,6 @@ function showSingleContactView(selectedContact, color, initials, name, email, ph
 
 /**
  * Prepares to highlight the selected contact.
- * @param {HTMLElement} selectedContact - The selected contact element.
- * @param {string} email - The email of the contact.
  */
 function prepareToHighlightContact(selectedContact, email) {
     if (selectedContact) {
@@ -280,7 +257,6 @@ function prepareToHighlightContact(selectedContact, email) {
 
 /**
  * Highlights the selected contact element.
- * @param {HTMLElement} selectedContact - The selected contact element.
  */
 function highlightContact(selectedContact) {
     removeViewedContactClass();
@@ -292,7 +268,6 @@ function highlightContact(selectedContact) {
 
 /**
  * Finds and highlights the contact with the specified email.
- * @param {string} email - The email of the contact.
  */
 function findAndHighlightContact(email) {
     const contactsEmailElements = document.querySelectorAll('.contacts-email');
@@ -324,8 +299,6 @@ function displayNameEmailPhoneForEdit() {
 /**
  * Handles the contact edit form submission.
  * Updates the contact details both in the backend and frontend.
- * 
- * @param {Event} event - The form submission event.
  */
 async function editContact(event) {
     event.preventDefault();
@@ -340,9 +313,6 @@ async function editContact(event) {
 
 /**
  * Finds and updates the matching contact in the backend.
- * 
- * @param {Object} contacts - The contacts data.
- * @param {Array} contact - The contact details array.
  */
 async function updateMatchingContact(contacts, contact) {
     for (let key in contacts) {
@@ -356,9 +326,6 @@ async function updateMatchingContact(contacts, contact) {
 
 /**
  * Sends a PUT request to update the contact details in the backend.
- * 
- * @param {string} key - The contact's unique key.
- * @param {Array} contact - The contact details array.
  */
 async function updateContactBackend(key, contact) {
     const url = `${CONTACTS_URL}${key}.json`;
@@ -390,8 +357,6 @@ function closeOverlayAfterEditWithoutTransition() {
 
 /**
  * Updates the contact details in the frontend.
- * 
- * @param {Array} contact - The contact details array.
  */
 async function updateContactFrontend(contact) {
     contactName.textContent = contact[1];
@@ -406,8 +371,6 @@ async function updateContactFrontend(contact) {
 
 /**
  * Updates the in-memory contact data after editing.
- * 
- * @param {Array} contact - The contact details array.
  */
 function updateInMemoryContactData(contact) {
     nameEmailPhoneForEdit = [
@@ -421,8 +384,6 @@ function updateInMemoryContactData(contact) {
 
 /**
  * Updates the initials if the contact's name has changed.
- * 
- * @param {Array} contact - The contact details array.
  * @returns {string} - The updated initials.
  */
 function updateInitials(contact) {
@@ -507,7 +468,6 @@ function validateEmail(event) {
     }
 }
 
-// Adds event listeners to the contact forms for email validation
 document.getElementById('add-contact-form').addEventListener('submit', function (event) {
     const emailInput = document.getElementById('add-contact-form-email');
     const emailExists = existingEmails.includes(emailInput.value.trim());
@@ -522,7 +482,6 @@ document.getElementById('add-contact-form').addEventListener('submit', function 
 document.getElementById('edit-contact-form').addEventListener('submit', function (event) {
     const emailInput = document.getElementById('edit-contact-form-email');
     const emailExists = existingEmails.includes(emailInput.value.trim());
-
     if (emailExists) {
         event.preventDefault();
         emailInput.setCustomValidity('This email address is already registered.');
