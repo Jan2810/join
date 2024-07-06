@@ -371,6 +371,16 @@ path {
     .board-categories {
         padding-bottom: 80px;
     }
+
+    .board-ticket-section {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 80px;
+    }
+
+    .board-header {
+        padding: 0 16px;
+    }
 }
 
 @media (max-width: 850px) {
@@ -415,17 +425,6 @@ path {
 
         .board-ticket-section {
             margin-top: 32px;
-        }
-
-
-        .board-header {
-            padding: 0 16px;
-        }
-
-        .board-ticket-section {
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-bottom: 80px;
         }
     }
 
