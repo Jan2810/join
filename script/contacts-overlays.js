@@ -148,7 +148,7 @@ function doNotClose(event) {
  * Hides the edit/delete popup on small screens.
  */
 function hideEditDeletePopup() {
-    if (window.innerWidth < 800) {
+    if (window.innerWidth < 1200) {
         editDeletePopup.classList.add('hide-edit-delete-popup');
         setTimeout(function () {
             singleContactTripleDots.classList.remove('d-none');

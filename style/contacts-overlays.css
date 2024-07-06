@@ -325,7 +325,7 @@
     }
 }
     
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 1200px) {
     .contact-created-popup-bg {
         left: 288px;
         width: calc(100vw - 288px);
@@ -462,7 +462,7 @@
     }
 }
 
-@media only screen and (min-width: 1120px) {
+@media only screen and (min-width: 1201px) {
     .contact-created-popup-bg {
         left: calc(688px + ((100vw - 1120px) * 0.5)); 
         width: calc(100vw - 680px);

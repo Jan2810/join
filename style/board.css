@@ -124,10 +124,6 @@ main {
     justify-content: space-between;
 }
 
-.board-category {
-    min-width: 268px
-}
-
 .board-category-header {
     display: flex;
     justify-content: space-between;
@@ -135,6 +131,10 @@ main {
     font-weight: 700;
     font-size: 20px;
     color: rgba(66, 82, 110, 1);
+}
+
+.board-category {
+    width: 100%;
 }
 
 .board-categories-add-task-button rect,
@@ -167,7 +167,8 @@ path {
 }
 
 .board-ticket {
-    width: 252px;
+    max-width: 252px;
+    width: -webkit-fill-available;
     height: fit-content;
     flex: 0 0 auto;
     border-radius: 24px;
@@ -252,12 +253,15 @@ path {
 }
 
 .board-ticket-bar {
-    width: 128px;
+    min-width: 78px;
+    max-width: 128px;
+    width: 100%;
     height: 8px;
     background-color: rgba(244, 244, 244, 1);
     border-radius: 8px;
     overflow: hidden;
     position: relative;
+    margin-right: 3px;
 }
 
 #board-ticket-bar-progress {
@@ -268,12 +272,17 @@ path {
 }
 
 .board-ticket-progress {
+    margin-left: 3px;
     font-size: 12px;
+    white-space: nowrap;
 }
 
 .board-no-tasks-placeholder {
     margin-top: 12px;
-    width: 252px;
+    margin-left: 8px;
+    margin-right: 8px;
+    max-width: 252px;
+    width: -webkit-fill-available;
     height: 48px;
     color: rgba(168, 168, 168, 1);
     border-radius: 10px;
@@ -304,7 +313,16 @@ path {
     overflow: visible;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1200px) {
+    main {
+        height: calc(100vh - 80px);
+        margin-left: 0;
+    }
+
+    .board-header {
+        margin-top: 48px;
+    }
+
     .board-categories {
         flex-direction: column;
     }
@@ -349,61 +367,9 @@ path {
     .board-ticket-container::-webkit-scrollbar-thumb:hover {
         background: rgba(0, 0, 0, 0.2);
     }
-}
 
-@media (max-width: 1100px) {
-    #board-add-task-button {
-        display: none;
-    }
-
-    #board-add-task-button-responsive {
-        display: flex;
-    }
-
-    #board-find-input {
-        display: none;
-    }
-
-    #board-find-input-responsive {
-        display: flex;
-        margin-top: 40px;
-    }
-
-    .board-header {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 48px;
-    }
-
-    .board-header-responsive {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-    }
-
-    .board-header-responsive h1 {
-        font-size: 47px;
-    }
-
-    .board-header-lower-section-responsive {
-        justify-content: flex-start;
-    }
-
-    .board-ticket-section {
-        margin-top: 32px;
-    }
-}
-
-@media (max-width: 800px) {
-    main {
-        height: calc(100vh - 80px);
-        margin-left: 0;
-    }
-
-    .board-header {
-        padding: 0 16px;
+    .board-categories {
+        padding-bottom: 80px;
     }
 
     .board-ticket-section {
@@ -411,16 +377,65 @@ path {
         padding-right: 16px;
         padding-bottom: 80px;
     }
-}
 
-@media (max-width: 470px) {
-    #board-find-input-responsive {
-        max-width: 364px;
-        width: 100%;
-    }
-
-    .board-no-tasks-placeholder {
-        width: 100%;
-        max-width: 364px;
+    .board-header {
+        padding: 0 16px;
     }
 }
+
+@media (max-width: 850px) {
+        #board-add-task-button {
+            display: none;
+        }
+
+        #board-add-task-button-responsive {
+            display: flex;
+        }
+
+        #board-find-input {
+            display: none;
+        }
+
+        #board-find-input-responsive {
+            display: flex;
+            margin-top: 40px;
+        }
+
+        .board-header {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 48px;
+        }
+
+        .board-header-responsive {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .board-header-responsive h1 {
+            font-size: 47px;
+        }
+
+        .board-header-lower-section-responsive {
+            justify-content: flex-start;
+        }
+
+        .board-ticket-section {
+            margin-top: 32px;
+        }
+    }
+
+    @media (max-width: 470px) {
+        #board-find-input-responsive {
+            max-width: 364px;
+            width: 100%;
+        }
+
+        .board-no-tasks-placeholder {
+            width: 100%;
+            max-width: 364px;
+        }
+    }
