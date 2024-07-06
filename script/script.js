@@ -166,7 +166,7 @@ async function postData(url, data = {}) {
 async function putData(url, dataArray = []) {
     let data = dataArray.reduce((acc, item) => {
         let { id, ...rest } = item;
-        acc[id] = rest;
+        acc[id] = { id, ...rest };
         return acc;
     }, {});
     let response = await fetch(url + ".json", {

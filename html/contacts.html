@@ -161,7 +161,7 @@
                         required minlength="5" title="Please enter a valid email address.">
                     <div id="edit-email-error" class="email-error"></div>
                     <input class="edit-contact-form-phone" id="edit-contact-form-phone" type="tel" placeholder="Phone"
-                        required minlength="10" pattern="[0-9+ ]+"
+                        required minlength="10" pattern="^\+?[0-9 ]{9,}$"
                         title="Phone number can only contain numbers, the plus sign, and spaces.">
                     <div class="edit-contact-buttons">
                         <button type="button" class="edit-contact-delete-button"
@@ -229,7 +229,7 @@
                         required minlength="5" title="Please enter a valid email address.">
                     <div id="add-email-error" class="email-error"></div>
                     <input class="add-contact-form-phone" id="add-contact-form-phone" type="tel" placeholder="Phone"
-                        required minlength="10" pattern="[0-9+ ]+"
+                        required minlength="10" pattern="^\+?[0-9 ]{9,}$"
                         title="Phone number can only contain numbers, the plus sign, and spaces.">
                     <div class="add-contact-form-buttons-container">
                         <button type="submit" class="cancel-button" onclick="closeAddContactOverlay()">
@@ -283,8 +283,8 @@
     </div>
 
     <script src="../script/contacts-data.js" defer></script>
-    <script src="../script/contacts-overlays.js" defer></script>
     <script src="../script/script.js" defer></script>
+    <script src="../script/contacts-overlays.js" defer></script>
     <script src="../script/contacts-html.js" defer></script>
     <script src="../script/contacts.js" defer></script>
 
