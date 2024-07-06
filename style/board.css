@@ -257,6 +257,7 @@ path {
     border-radius: 8px;
     overflow: hidden;
     position: relative;
+    margin-right: 3px;
 }
 
 #board-ticket-bar-progress {
@@ -267,6 +268,7 @@ path {
 }
 
 .board-ticket-progress {
+    margin-left: 3px;
     font-size: 12px;
     white-space: nowrap; 
 }
