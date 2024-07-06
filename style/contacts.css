@@ -358,7 +358,7 @@
     }
 }
 
-@media only screen and (min-width: 376px) and (max-width: 800px) {
+@media only screen and (min-width: 376px) and (max-width: 1200px) {
     .single-contact-container {
         padding-left: 3%;
     }
@@ -424,7 +424,7 @@
 
 /* Desktop view */
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 1200px) {
     .contacts-container {
         margin-left: 232px;
         height: calc(100vh - 96px);
@@ -612,7 +612,7 @@
 }
 
 
-@media only screen and (min-width: 800px) and (max-width: 1120px) {
+@media only screen and (min-width: 1200px) and (max-width: 1250px) {
     .single-contact-arrow-left-800 {
         display: block;
         margin-right: 16px;
