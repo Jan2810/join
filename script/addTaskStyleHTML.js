@@ -42,17 +42,12 @@ function highlightButton(urg) {
     }
 };
 
-/**
- * Shows the maximum contacts warning.
- */
+
 function showMaxContacts() {
     document.getElementById("maxContacts").style.display = "";
     displayContacts("close");
 };
 
-/**
- * Hides the maximum contacts warning.
- */
 function hideMaxContacts() {
     document.getElementById("maxContacts").style.display = "none";
 };

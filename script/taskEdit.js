@@ -57,7 +57,6 @@ async function putEditTask() {
 async function initDataEditTask(task, id) {
     taskDataEdit = task;
     taskStatusEdit = task.status;
-    console.log(taskStatusEdit);
     taskId = id;
     contactsEdit = await loadData(CONTACTS_URL);
     let assignedContacts = task.assigned_to;
@@ -78,7 +77,7 @@ async function setInputValuesEdit() {
     taskDataEdit.description = document.getElementById("taskDescriptionEdit").value;
     taskDataEdit.due_date = document.getElementById("taskDateEdit").value;
     if (newStatus !== "") {
-    taskDataEdit.status = newStatus;
+        taskDataEdit.status = newStatus;
     } else {
         taskDataEdit.status = taskStatusEdit;
     }
@@ -340,18 +339,10 @@ function addSubtaskEdit() {
     if (taskDataEdit.subtasks === "") {
         taskDataEdit.subtasks = [];
     }
-    if (input !== "" && taskDataEdit.subtasks.length < 4) {
-        let subtaskArray = { text: `${input}`, status: "unchecked" }
-        taskDataEdit.subtasks.push(subtaskArray);
-        hideWarningEdit();
-        renderSubtasksEdit();
-    } else {
-        showWarningEdit();
-    }
-    if (taskDataEdit.subtasks.length === 4) {
-        document.getElementById("requiredSubtextEdit").style.display = "block";
-        document.getElementById("requiredSubtextEdit").innerHTML = "You reached the maximum number of tasks";
-    }
+    let subtaskArray = { text: `${input}`, status: "unchecked" }
+    taskDataEdit.subtasks.push(subtaskArray);
+    renderSubtasksEdit();
+    clearInputfieldEdit();
 };
 
 /**
@@ -404,7 +395,6 @@ function saveSubtaskEdit(i) {
  */
 function clearInputfieldEdit() {
     document.getElementById("subtasksInputEdit").value = "";
-    hideWarningEdit();
 };
 
 /**
