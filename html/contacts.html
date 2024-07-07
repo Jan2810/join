@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../style/contacts-overlays.css" />
 </head>
 
-<body onload="initContacts()">
+<body onload="initContacts()" onclick="hideEditDeletePopup()">
     <div w3-include-html="../assets/templates/navigation.html"></div>
     <main class="contacts-main-container" id="contacts-main-container">
 
@@ -26,7 +26,7 @@
 
         <!-- Single contact view -->
 
-        <div class="single-contact-container d-none" onclick="hideEditDeletePopup()" id="single-contact-container">
+        <div class="single-contact-container d-none" id="single-contact-container">
 
             <div class="single-contact-triple-dots" id="single-contact-triple-dots"
                 onclick="displayEditDeletePopup(), doNotClose(event)">
