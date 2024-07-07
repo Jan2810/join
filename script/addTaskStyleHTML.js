@@ -1,6 +1,21 @@
-/**
- * Changes the background button based on the urgency level.
- */
+function clearAll() {
+    clearAllInputs();
+    checkedContacts = [];
+    clearTaskDataArray();
+    renderSignList();
+    changeUrgency("mid");
+    renderSubtasks();
+};
+
+function getUrgency() {
+    for (let i = 0; i < activeUrg.length; i++) {
+        const urg = activeUrg[i];
+        if (urg.active === true) {
+            taskData.priority = urg.urgency;
+        }
+    }
+};
+
 function changeBgBtn() {
     if (activeUrg[0].active === true) {
         highlightButton("high");
@@ -216,6 +231,21 @@ function returnSignList(cnt, i) {
                 </div>
            </div>`;
 };
+
+/**
+ * Adds a category to the task.
+ * @param {number} i - The index of the category to add.
+ */
+function addCategory(i) {
+    if (taskData.category === "") {
+        taskData.category = availableCategorys[i];
+    } else {
+        taskData.category = "";
+        taskData.category = availableCategorys[i];
+    }
+    document.getElementById("categoryInput").value = `${taskData.category}`;
+};
+
 
 /**
  * Returns the HTML for a subtask list item.

@@ -13,25 +13,6 @@ let newStatus = "";
 let taskStatusEdit = "";
 
 /**
- * Array to store urgency levels and their active states for task editing.
- * @type {Array<{urgency: string, active: boolean}>}
- */
-let activeUrgEdit = [
-    {
-        "urgency": "high",
-        "active": false
-    },
-    {
-        "urgency": "mid",
-        "active": false
-    },
-    {
-        "urgency": "low",
-        "active": false
-    }
-];
-
-/**
  * Updates the edited task data.
  * @returns {Promise<void>}
  */
@@ -168,6 +149,8 @@ async function openContactsEdit() {
         displayContactsEdit("open");
         renderContactListEdit();
         contactsTaskOpen = true;
+    } else if (trueContacts.length === 12) {
+        contactsTaskOpen = false;
     }
 };
 
@@ -176,10 +159,13 @@ async function openContactsEdit() {
  * @param {Event} event
  */
 function closeContactsEdit(event) {
-    if (contactsTaskOpen === true) {
+    if (contactsTaskOpen === true && event) {
         event.stopPropagation();
         displayContactsEdit("close");
         contactsTaskOpen = false;
+    }
+    if (trueContacts.length < 12) {
+        hideMaxContactsEdit();
     }
 };
 
@@ -216,17 +202,26 @@ function checkAssignmentsEdit(i) {
  * @returns {Promise<void>}
  */
 async function assignContactEdit(i) {
-    let trueContacts = controlContacts.filter(controlContact => controlContact === true);
-    if (trueContacts.length < 12) {
-        if (controlContacts[i] === true) {
-            controlContacts[i] = false;
-        } else if (controlContacts[i] === false) {
-            controlContacts[i] = true;
-        }
-        renderSignListEdit();
-        checkAssignmentsEdit(i);
-    } else {
+    contactsTaskOpen = true;
+    trueContacts = controlContacts.filter(controlContact => controlContact === true);
+    if (controlContacts[i] === false && trueContacts.length < 12) {
+        controlContacts[i] = true;
+        contactsTaskOpen = false;
+    } else if (controlContacts[i] === true && trueContacts.length <= 12) {
+        controlContacts[i] = false;
+        contactsTaskOpen = false;
+    }
+    renderSignListEdit();
+    checkAssignmentsEdit(i);
+    trueContacts = controlContacts.filter(controlContact => controlContact === true);
+    checkTrueContactsEdit()
+};
+
+function checkTrueContactsEdit() {
+    if (trueContacts.length === 12) {
         showMaxContactsEdit();
+    } else if (trueContacts.length < 12) {
+        hideMaxContactsEdit();
     }
 };
 

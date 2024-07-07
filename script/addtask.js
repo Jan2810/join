@@ -1,5 +1,6 @@
 
 let checkedContacts = [];
+let trueContacts = [];
 let contactsTaskOpen = false;
 let activeUrg = [
     {
@@ -96,20 +97,6 @@ function renderTaskList() {
 };
 
 /**
- * Adds a category to the task.
- * @param {number} i - The index of the category to add.
- */
-function addCategory(i) {
-    if (taskData.category === "") {
-        taskData.category = availableCategorys[i];
-    } else {
-        taskData.category = "";
-        taskData.category = availableCategorys[i];
-    }
-    document.getElementById("categoryInput").value = `${taskData.category}`;
-};
-
-/**
  * Opens the contacts list.
  * @returns {Promise<void>}
  */
@@ -119,10 +106,12 @@ async function openContacts() {
         renderContactList();
         for (let i = 0; i < contacts.length; i++) {
             if (contacts.length > checkedContacts.length) {
-                const count = checkedContacts.push(false);
+                checkedContacts.push(false);
             }
         }
         contactsTaskOpen = true;
+    } else if (trueContacts.length === 12) {
+        contactsTaskOpen = false;
     }
 };
 
@@ -135,6 +124,9 @@ function closeContacts(event) {
         event.stopPropagation();
         displayContacts("close");
         contactsTaskOpen = false;
+    }
+    if (trueContacts.length < 12) {
+        hideMaxContacts();
     }
 };
 
@@ -171,17 +163,26 @@ function checkAssignments(i) {
  * @returns {Promise<void>}
  */
 async function assignContact(i) {
-    let trueContacts = checkedContacts.filter(checkedContact => checkedContact === true);
-    if (trueContacts.length < 12) {
-        if (checkedContacts[i] === true) {
-            checkedContacts[i] = false;
-        } else if (checkedContacts[i] === false) {
-            checkedContacts[i] = true;
-        }
-        renderSignList();
-        checkAssignments(i);
-    } else {
+    contactsTaskOpen = true;
+    trueContacts = checkedContacts.filter(checkedContact => checkedContact === true);
+    if (checkedContacts[i] === false && trueContacts.length < 12) {
+        checkedContacts[i] = true;
+        contactsTaskOpen = false;
+    } else if (checkedContacts[i] === true && trueContacts.length <= 12) {
+        checkedContacts[i] = false;
+        contactsTaskOpen = false;
+    }
+    renderSignList();
+    checkAssignments(i);
+    trueContacts = checkedContacts.filter(checkedContact => checkedContact === true);
+    checkTrueContacts()
+};
+
+function checkTrueContacts() {
+    if (trueContacts.length === 12) {
         showMaxContacts();
+    } else if (trueContacts.length < 12) {
+        hideMaxContacts();
     }
 };
 
@@ -201,9 +202,6 @@ async function renderSignList() {
     }
 };
 
-/**
- * Controls the checked length.
- */
 function controlCheckedLength() {
     let container = document.getElementById("signContainer");
     let trueCount = checkedContacts.filter(value => value === true).length;
@@ -214,9 +212,6 @@ function controlCheckedLength() {
     }
 };
 
-/**
- * Adds a subtask.
- */
 function addSubtask() {
     let input = document.getElementById("subtasksInput");
     if (input.value !== "") {
@@ -227,9 +222,6 @@ function addSubtask() {
     clearInputfield();
 };
 
-/**
- * Renders the subtasks.
- */
 function renderSubtasks() {
     container = document.getElementById("addedSubtasks");
     container.innerHTML = "";
@@ -282,29 +274,11 @@ function checkKey(ev) {
     }
 };
 
-/**
- * Clears the input field for subtasks.
- */
 function clearInputfield() {
     document.getElementById("subtasksInput").value = "";
     hideWarning();
 };
 
-/**
- * Clears all input fields and resets task data.
- */
-function clearAll() {
-    clearAllInputs();
-    checkedContacts = [];
-    clearTaskDataArray();
-    renderSignList();
-    changeUrgency("mid");
-    renderSubtasks();
-};
-
-/**
- * Clears all input fields.
- */
 function clearAllInputs() {
     document.getElementById("taskTitle").value = "";
     document.getElementById("taskDescription").value = "";
@@ -330,33 +304,13 @@ async function getAssignedContacts(contacts) {
     }
 };
 
-/**
- * Gets the urgency level and updates task data.
- */
-function getUrgency() {
-    for (let i = 0; i < activeUrg.length; i++) {
-        const urg = activeUrg[i];
-        if (urg.active === true) {
-            taskData.priority = urg.urgency;
-        }
-    }
-};
-
-/**
- * Adds a new task.
- * @returns {Promise<void>}
- */
 async function addNewTask() {
     document.getElementById("createButton").onclick = "";
     document.getElementById("createButton").disabled = true;
     saveInputValues();
-    
+
 };
 
-/**
- * Saves input values and posts the new task.
- * @returns {Promise<void>}
- */
 async function saveInputValues() {
     let title = document.getElementById("taskTitle").value;
     let description = document.getElementById("taskDescription").value;
@@ -368,9 +322,6 @@ async function saveInputValues() {
     }
 };
 
-/**
- * Handles form validation feedback.
- */
 function handleFormValidation() {
     let title = document.getElementById("taskTitle").value;
     let due_date = document.getElementById("taskDate").value;
@@ -433,9 +384,6 @@ async function setTaskData(title, due_date, description, category) {
     taskData.id = "";
 };
 
-/**
- * Gets the current location and redirects as needed.
- */
 function getLocationAndMove() {
     let location = window.location;
     if (location.pathname == "/html/board.html") {

@@ -1,4 +1,24 @@
 /**
+ * Array to store urgency levels and their active states for task editing.
+ * @type {Array<{urgency: string, active: boolean}>}
+ */
+let activeUrgEdit = [
+    {
+        "urgency": "high",
+        "active": false
+    },
+    {
+        "urgency": "mid",
+        "active": false
+    },
+    {
+        "urgency": "low",
+        "active": false
+    }
+];
+
+
+/**
  * Returns the HTML string for the subtask list in editing mode.
  * @param {Object} subtask - The subtask object.
  * @param {number} i - The index of the subtask.
