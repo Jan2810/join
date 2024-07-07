@@ -1,5 +1,9 @@
 /* Contacts list */
 
+.d-none-arrow {
+    display: none;
+}
+
 .d-flex {
     display: flex;
 }
@@ -419,12 +423,19 @@
         width: 90px;
         height: 90px;
         font-size: 32px;
-    }  
+    } 
+}
+
+@media only screen and (max-width: 1120px) {
+    .d-none-arrow {
+        display: block;
+    }
 }
 
 /* Desktop view */
 
 @media only screen and (min-width: 1200px) {
+
     .contacts-container {
         margin-left: 232px;
         height: calc(100vh - 96px);
@@ -608,28 +619,6 @@
 
     .single-contact h1 {
         font-size: 61px;
-    }
-}
-
-
-@media only screen and (min-width: 1200px) and (max-width: 1200px) {
-    .single-contact-arrow-left-800 {
-        display: block;
-        margin-right: 16px;
-        height: 48px;
-        width: 48px;
-        cursor: pointer;
-        transition: transform 10ms linear;   
-    }
-
-    .single-contact-arrow-left-800:active {
-        transform: scale(1.15); 
-    }
-    
-
-    .arrow-800-container {
-        display: flex;
-        justify-content: space-between;
     }
 }
 
