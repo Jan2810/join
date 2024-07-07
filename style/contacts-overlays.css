@@ -312,6 +312,22 @@
     display: none;
 }
 
+@media (max-height: 800px) {
+    /* .overlay-add-contact, .overlay-edit-contact {
+        max-height: 100%; 
+    } */
+
+    .add-contact-top {
+    height: auto;
+    }
+
+    .add-contact-form,
+    .edit-contact-form {
+        margin-bottom: 48px;
+    
+}
+}
+
 @media only screen and (min-width: 352px) {
     .contact-created-popup {
         width: 326px;
