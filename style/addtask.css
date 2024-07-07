@@ -727,7 +727,7 @@
         gap: 0;
         padding: 0;
         border: 0;
-        max-width: 440px;
+        min-width: 280px;
     }
 
     .task-right-cont {
