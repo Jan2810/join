@@ -175,7 +175,8 @@
 /* Single contact - mobile view */
 
 .single-contact-container {
-    max-width: 1016px;
+    /* max-width: 1016px; */
+    width: 100%;
     margin-top: 80px;
     padding-top: 48px;
     height: calc(100vh - 160px);
