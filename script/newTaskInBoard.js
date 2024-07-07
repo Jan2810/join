@@ -5,7 +5,7 @@
 async function openAddTaskInBoard(status) {
     contacts = await loadData(CONTACTS_URL);
     setStatus(status);
-    if (window.innerWidth > 800) {
+    if (window.innerWidth > 1200) {
         document.getElementById("addTaskBg").style.display = "";
         setTimeout(function() { document.getElementById("addTaskBg").style.opacity = "1";},1)
         document.getElementById("newTaskContainer").innerHTML = "";
