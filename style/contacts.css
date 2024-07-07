@@ -358,7 +358,7 @@
     }
 }
 
-@media only screen and (min-width: 376px) and (max-width: 1200px) {
+@media only screen and (min-width: 376px) and (max-width: 800px) {
     .single-contact-container {
         padding-left: 3%;
     }
@@ -423,15 +423,6 @@
 }
 
 /* Desktop view */
-
-@media only screen and (min-width: 1200px) {
-    .single-contact-container {
-        padding-top: 110px;
-        margin-left: 290px;
-        height: calc(100vh - 96px);
-    } 
-}
-
 
 @media only screen and (min-width: 800px) {
     .contacts-container {
@@ -505,7 +496,11 @@
 
     /* Single contact - desktop view */
 
-    
+    .single-contact-container {
+        padding-top: 110px;
+        margin-left: 290px;
+        height: calc(100vh - 96px);
+    }
     
     .single-contact {
         align-items: center;
