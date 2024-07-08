@@ -424,7 +424,7 @@
 
 /* Desktop view */
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 1200px) {
     .contacts-container {
         margin-left: 232px;
         height: calc(100vh - 96px);
@@ -458,7 +458,7 @@
 
     .add-person-icon,
     .single-contact-triple-dots,
-    .single-contact-arrow-left, 
+     
     .edit-delete-popup {
         display: none;
     }
@@ -595,7 +595,7 @@
     }
 }
 
-@media only screen and (min-width: 940px) {
+/* @media only screen and (min-width: 940px) {
     .single-contact-profile-badge {
         width: 120px;
         height: 120px;
@@ -609,10 +609,10 @@
     .single-contact h1 {
         font-size: 61px;
     }
-}
+} */
 
 
-@media only screen and (min-width: 800px) and (max-width: 1120px) {
+/* @media only screen and (min-width: 800px) and (max-width: 1120px) {
     .single-contact-arrow-left-800 {
         display: block;
         margin-right: 16px;
@@ -631,7 +631,7 @@
         display: flex;
         justify-content: space-between;
     }
-}
+} */
 
 @media only screen and (min-width: 1120px) and (max-width: 1480px) {
     .contacts-list h3,
@@ -703,5 +703,13 @@
 @media only screen and (min-width: 1480px) {  
     .single-contact-name {
         font-size: 47px;
+    }
+}
+
+
+
+@media only screen and (min-width: 1120px) {
+    .single-contact-arrow-left {
+        display: none;
     }
 }
