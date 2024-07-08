@@ -114,6 +114,10 @@ function checkKeyEdit(ev) {
  * @param {Array} assignedContacts - Array of assigned contacts.
  */
 function settingControlContacts(assignedContacts) {
+    console.log(assignedContacts);
+    if (assignedContacts === undefined) {
+        assignedContacts = [];
+    }
     if (assignedContacts.length > 0) {
         for (let i = 0; i < contactsEdit.length; i++) {
             const contact = contactsEdit[i];
@@ -149,8 +153,6 @@ async function openContactsEdit() {
         displayContactsEdit("open");
         renderContactListEdit();
         contactsTaskOpen = true;
-    } else if (trueContacts.length === 12) {
-        contactsTaskOpen = false;
     }
 };
 
@@ -163,9 +165,6 @@ function closeContactsEdit(event) {
         event.stopPropagation();
         displayContactsEdit("close");
         contactsTaskOpen = false;
-    }
-    if (trueContacts.length < 12) {
-        hideMaxContactsEdit();
     }
 };
 
@@ -202,28 +201,15 @@ function checkAssignmentsEdit(i) {
  * @returns {Promise<void>}
  */
 async function assignContactEdit(i) {
-    contactsTaskOpen = true;
-    trueContacts = controlContacts.filter(controlContact => controlContact === true);
-    if (controlContacts[i] === false && trueContacts.length < 12) {
+    if (controlContacts[i] === false) {
         controlContacts[i] = true;
-        contactsTaskOpen = false;
-    } else if (controlContacts[i] === true && trueContacts.length <= 12) {
+    } else if (controlContacts[i] === true) {
         controlContacts[i] = false;
-        contactsTaskOpen = false;
     }
     renderSignListEdit();
     checkAssignmentsEdit(i);
-    trueContacts = controlContacts.filter(controlContact => controlContact === true);
-    checkTrueContactsEdit()
 };
 
-function checkTrueContactsEdit() {
-    if (trueContacts.length === 12) {
-        showMaxContactsEdit();
-    } else if (trueContacts.length < 12) {
-        hideMaxContactsEdit();
-    }
-};
 
 /**
  * Renders the sign list for editing.
@@ -232,7 +218,6 @@ function checkTrueContactsEdit() {
 async function renderSignListEdit() {
     if (controlContacts.includes(true)) {
         let content = document.getElementById("signContainerEdit");
-        controlCheckedLengthEdit();
         content.innerHTML = "";
         for (let i = 0; i < contactsEdit.length; i++) {
             const contact = contactsEdit[i];
@@ -241,6 +226,7 @@ async function renderSignListEdit() {
             }
         }
     }
+    controlCheckedLengthEdit();
 };
 
 /**

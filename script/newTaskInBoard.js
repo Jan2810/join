@@ -38,16 +38,7 @@ function closeNewTaskInBoard() {
  * @param {string} status - The status of the task.
  */
 function setStatus(status) {
-    taskData = {
-        "title": "",
-        "description": "",
-        "assigned_to": [],
-        "due_date": "",
-        "priority": "",
-        "category": "",
-        "subtasks": [],
-        "status": status
-    };
+    taskData.status = status;
 };
 
 /**

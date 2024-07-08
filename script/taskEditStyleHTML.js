@@ -130,21 +130,6 @@ function returnTaskListHTMLEdit(status, i) {
 };
 
 /**
- * Shows a warning message when the maximum number of contacts is reached in editing mode.
- */
-function showMaxContactsEdit() {
-    document.getElementById("maxContactsEdit").style.display = "";
-    displayContactsEdit("close");
-};
-
-/**
- * Hides the warning message when the maximum number of contacts is reached in editing mode.
- */
-function hideMaxContactsEdit() {
-    document.getElementById("maxContactsEdit").style.display = "none";
-};
-
-/**
  * Displays the contacts dropdown for editing.
  * @param {string} ev - The event type ("open" or "close").
  */

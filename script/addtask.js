@@ -40,8 +40,6 @@ async function initAddTask() {
     await includeHTML();
     changeUrgency("mid");
     contacts = await loadData(CONTACTS_URL);
-    let status = localStorage.getItem("status");
-    setStatus(status);
     setBackground(1);
 };
 
@@ -49,7 +47,6 @@ function handleClickEvent(event) {
     closeContacts(event);
     closeCategorys(event);
     closeSubtasks(event);
-    hideMaxContacts(event);
     formValidationFeedbackOff();
 };
 
@@ -110,8 +107,6 @@ async function openContacts() {
             }
         }
         contactsTaskOpen = true;
-    } else if (trueContacts.length === 12) {
-        contactsTaskOpen = false;
     }
 };
 
@@ -124,9 +119,6 @@ function closeContacts(event) {
         event.stopPropagation();
         displayContacts("close");
         contactsTaskOpen = false;
-    }
-    if (trueContacts.length < 12) {
-        hideMaxContacts();
     }
 };
 
@@ -163,27 +155,14 @@ function checkAssignments(i) {
  * @returns {Promise<void>}
  */
 async function assignContact(i) {
-    contactsTaskOpen = true;
     trueContacts = checkedContacts.filter(checkedContact => checkedContact === true);
-    if (checkedContacts[i] === false && trueContacts.length < 12) {
+    if (checkedContacts[i] === false) {
         checkedContacts[i] = true;
-        contactsTaskOpen = false;
-    } else if (checkedContacts[i] === true && trueContacts.length <= 12) {
+    } else if (checkedContacts[i] === true) {
         checkedContacts[i] = false;
-        contactsTaskOpen = false;
     }
     renderSignList();
     checkAssignments(i);
-    trueContacts = checkedContacts.filter(checkedContact => checkedContact === true);
-    checkTrueContacts()
-};
-
-function checkTrueContacts() {
-    if (trueContacts.length === 12) {
-        showMaxContacts();
-    } else if (trueContacts.length < 12) {
-        hideMaxContacts();
-    }
 };
 
 /**
@@ -192,7 +171,6 @@ function checkTrueContacts() {
  */
 async function renderSignList() {
     let content = document.getElementById("signContainer");
-    controlCheckedLength();
     content.innerHTML = "";
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
@@ -200,6 +178,7 @@ async function renderSignList() {
             content.innerHTML += returnSignList(contact, i);
         }
     }
+    controlCheckedLength();
 };
 
 function controlCheckedLength() {

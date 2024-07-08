@@ -57,16 +57,6 @@ function highlightButton(urg) {
     }
 };
 
-
-function showMaxContacts() {
-    document.getElementById("maxContacts").style.display = "";
-    displayContacts("close");
-};
-
-function hideMaxContacts() {
-    document.getElementById("maxContacts").style.display = "none";
-};
-
 /**
  * Hides the subtask warning.
  */

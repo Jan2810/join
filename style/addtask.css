@@ -377,7 +377,7 @@
 .task-sign-cont {
     width: 90%;
     max-width: 440px;
-    flex-wrap: wrap;
+    overflow-x: scroll;
     justify-content: flex-start;
 }
 
