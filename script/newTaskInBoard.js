@@ -47,6 +47,7 @@ function setStatus(status) {
  */
 async function statusReset(status) {
     localStorage.setItem('status', status);
+    console.log(status);
 };
 
 /**

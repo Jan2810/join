@@ -40,6 +40,8 @@ async function initAddTask() {
     await includeHTML();
     changeUrgency("mid");
     contacts = await loadData(CONTACTS_URL);
+    let status = localStorage.getItem("status");
+    setStatus(status);
     setBackground(1);
 };
 
