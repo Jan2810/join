@@ -114,7 +114,6 @@ function checkKeyEdit(ev) {
  * @param {Array} assignedContacts - Array of assigned contacts.
  */
 function settingControlContacts(assignedContacts) {
-    console.log(assignedContacts);
     if (assignedContacts === undefined) {
         assignedContacts = [];
     }
