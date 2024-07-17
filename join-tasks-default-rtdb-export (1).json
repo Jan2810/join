@@ -1,0 +1,525 @@
+{
+  "-O1pL1Tzy1234Eue6HZu6": {
+    "assigned_to": [
+      {
+        "color": "rgb(0, 56, 255)",
+        "email": "anna.mueller@hotmail.com",
+        "id": "-O0Nob2HY-b8GwkHNQ1t",
+        "initials": "AM",
+        "name": "Anna Müller",
+        "phone": "+49 151 23456701",
+        "status": "normal"
+      },
+      {
+        "color": "rgba(255, 163, 94, 1)",
+        "email": "markus.schneider@example.com",
+        "id": "-O0Nob3TV3LADGyIeC4R",
+        "initials": "MS",
+        "name": "Markus Schneider",
+        "phone": "+49 151 23456702"
+      }
+    ],
+    "category": "Technical Task",
+    "description": "Fix login issue on mobile devices",
+    "due_date": "2024-07-12",
+    "id": "-O1pL1Tzy1234Eue6HZu6",
+    "priority": "high",
+    "status": "inprogress",
+    "subtasks": [
+      {
+        "status": "unchecked",
+        "text": "Identify root cause"
+      },
+      {
+        "status": "unchecked",
+        "text": "Implement fix"
+      },
+      {
+        "status": "unchecked",
+        "text": "Test on multiple devices"
+      }
+    ],
+    "title": "Mobile Login Bug Fix"
+  },
+  "-O1pM2Uzy5678Gue7HZu7": {
+    "assigned_to": [
+      {
+        "color": "rgba(255, 94, 179, 1)",
+        "email": "sophie.wagner@example.com",
+        "id": "-O0Nob6T3m8--jcmOUbG",
+        "initials": "SW",
+        "name": "Sophie Wagner",
+        "phone": "+49 151 23456705"
+      },
+      {
+        "color": "rgb(0, 190, 232)",
+        "email": "benjamin.meyer@hotmail.com",
+        "id": "-O0Nob9V23TjgsWOlIuH",
+        "initials": "BM",
+        "name": "Benjamin Stefan Sonntag",
+        "phone": "+49 151 23456708",
+        "status": "normal"
+      }
+    ],
+    "category": "User Story",
+    "description": "Implement user profile page",
+    "due_date": "2024-07-25",
+    "id": "-O1pM2Uzy5678Gue7HZu7",
+    "priority": "mid",
+    "status": "todo",
+    "subtasks": [
+      {
+        "status": "unchecked",
+        "text": "Design wireframe"
+      },
+      {
+        "status": "unchecked",
+        "text": "Develop backend"
+      },
+      {
+        "status": "unchecked",
+        "text": "Create frontend"
+      },
+      {
+        "status": "unchecked",
+        "text": "Test and deploy"
+      }
+    ],
+    "title": "User Profile Page"
+  },
+  "-O1pN3Vzy9101Hue8HZu8": {
+    "assigned_to": [
+      {
+        "color": "rgba(110, 82, 255, 1)",
+        "email": "julia.bauer@example.com",
+        "id": "-O0NobATY2jEbHXAHcAm",
+        "initials": "JB",
+        "name": "Julia Bauer",
+        "phone": "+49 151 23456709"
+      },
+      {
+        "color": "rgba(31, 215, 193, 1)",
+        "email": "johannes.becker@example.com",
+        "id": "-O0Nob5S9eiRacAj4uEJ",
+        "initials": "JB",
+        "name": "Johannes Becker",
+        "phone": "+49 151 23456704"
+      }
+    ],
+    "category": "Technical Task",
+    "description": "Update API documentation",
+    "due_date": "2024-07-15",
+    "id": "-O1pN3Vzy9101Hue8HZu8",
+    "priority": "mid",
+    "status": "awaitfeedback",
+    "subtasks": [
+      {
+        "status": "unchecked",
+        "text": "Review existing documentation"
+      },
+      {
+        "status": "unchecked",
+        "text": "Add new API endpoints"
+      },
+      {
+        "status": "unchecked",
+        "text": "Update examples"
+      },
+      {
+        "status": "unchecked",
+        "text": "Get feedback from team"
+      }
+    ],
+    "title": "API Documentation Update"
+  },
+  "-O1pO4Wzy1123Iue9HZu9": {
+    "assigned_to": [
+      {
+        "color": "rgba(255, 163, 94, 1)",
+        "email": "markus.schneider@example.com",
+        "id": "-O0Nob3TV3LADGyIeC4R",
+        "initials": "MS",
+        "name": "Markus Schneider",
+        "phone": "+49 151 23456702"
+      },
+      {
+        "color": "rgb(0, 56, 255, 1)",
+        "email": "jack_harvey@outlook.com",
+        "id": "-O0NtBUDBvqzGOVTuU3b",
+        "initials": "JH",
+        "name": "Jack Harvey",
+        "phone": "+49 151 27465738"
+      }
+    ],
+    "category": "User Story",
+    "description": "Add search functionality to the app",
+    "due_date": "2024-08-01",
+    "id": "-O1pO4Wzy1123Iue9HZu9",
+    "priority": "high",
+    "status": "inprogress",
+    "subtasks": [
+      {
+        "status": "unchecked",
+        "text": "Define search requirements"
+      },
+      {
+        "status": "unchecked",
+        "text": "Implement search algorithm"
+      },
+      {
+        "status": "unchecked",
+        "text": "Integrate with frontend"
+      },
+      {
+        "status": "unchecked",
+        "text": "Test search results"
+      }
+    ],
+    "title": "Search Functionality"
+  },
+  "-O1pP5Xzy1345Jue0HZv0": {
+    "assigned_to": [
+      {
+        "color": "rgba(255, 163, 94, 1)",
+        "email": "laura.fischer@example.com",
+        "id": "-O0Nob4Ql0LRcnyVa8oP",
+        "initials": "LF",
+        "name": "Laura Fischer",
+        "phone": "+49 151 23456703"
+      },
+      {
+        "color": "rgb(0, 56, 255, 1)",
+        "email": "jack_harvey@outlook.com",
+        "id": "-O0NtBUDBvqzGOVTuU3b",
+        "initials": "JH",
+        "name": "Jack Harvey",
+        "phone": "+49 151 27465738"
+      },
+      {
+        "color": "rgba(255, 199, 1, 1)",
+        "email": "j.winter@gmail.com",
+        "id": "-O0NtXoVDlOsb5aSG6dS",
+        "initials": "JW",
+        "name": "Joe Winter",
+        "phone": "+49 151 38725478"
+      }
+    ],
+    "category": "Technical Task",
+    "description": "Migrate database to new server",
+    "due_date": "2024-07-30",
+    "id": "-O1pP5Xzy1345Jue0HZv0",
+    "priority": "high",
+    "status": "todo",
+    "subtasks": [
+      {
+        "status": "unchecked",
+        "text": "Backup current database"
+      },
+      {
+        "status": "unchecked",
+        "text": "Set up new server"
+      },
+      {
+        "status": "unchecked",
+        "text": "Restore database on new server"
+      },
+      {
+        "status": "unchecked",
+        "text": "Verify data integrity"
+      }
+    ],
+    "title": "Database Migration"
+  },
+  "-O1pQ6Yzy1567Kue1HZv1": {
+    "assigned_to": [
+      {
+        "color": "rgb(0, 56, 255, 1)",
+        "email": "jack_harvey@outlook.com",
+        "id": "-O0NtBUDBvqzGOVTuU3b",
+        "initials": "JH",
+        "name": "Jack Harvey",
+        "phone": "+49 151 27465738"
+      },
+      {
+        "color": "rgba(195, 255, 43, 1)",
+        "email": "lea_winter@gmail.com",
+        "id": "-O0Opn2YhQDD9FORA3wG",
+        "initials": "LW",
+        "name": "Lea Winter",
+        "phone": "+49 151 19857478",
+        "status": "normal"
+      }
+    ],
+    "category": "User Story",
+    "description": "Implement dark mode",
+    "due_date": "2024-08-05",
+    "id": "-O1pQ6Yzy1567Kue1HZv1",
+    "priority": "mid",
+    "status": "awaitfeedback",
+    "subtasks": [
+      {
+        "status": "unchecked",
+        "text": "Design dark mode theme"
+      },
+      {
+        "status": "unchecked",
+        "text": "Develop frontend changes"
+      },
+      {
+        "status": "unchecked",
+        "text": "Test in different browsers"
+      }
+    ],
+    "title": "Dark Mode Implementation"
+  },
+  "-O1pR7Zzy1789Lue2HZv2": {
+    "assigned_to": [
+      {
+        "color": "rgba(110, 82, 255, 1)",
+        "email": "julia.bauer@example.com",
+        "id": "-O0NobATY2jEbHXAHcAm",
+        "initials": "JB",
+        "name": "Julia Bauer",
+        "phone": "+49 151 23456709"
+      },
+      {
+        "color": "rgba(31, 215, 193, 1)",
+        "email": "johannes.becker@example.com",
+        "id": "-O0Nob5S9eiRacAj4uEJ",
+        "initials": "JB",
+        "name": "Johannes Becker",
+        "phone": "+49 151 23456704"
+      },
+      {
+        "color": "rgb(0, 56, 255)",
+        "email": "lea.krause@example.com",
+        "id": "-O0Nob8RbM6T6eUt6yn1",
+        "initials": "LK",
+        "name": "Lea Krause",
+        "phone": "+49 151 23456809",
+        "status": "normal"
+      }
+    ],
+    "category": "Technical Task",
+    "description": "Fix broken links in the footer",
+    "due_date": "2024-07-18",
+    "id": "-O1pR7Zzy1789Lue2HZv2",
+    "priority": "low",
+    "status": "inprogress",
+    "subtasks": [
+      {
+        "status": "unchecked",
+        "text": "Identify broken links"
+      },
+      {
+        "status": "unchecked",
+        "text": "Update URLs"
+      },
+      {
+        "status": "unchecked",
+        "text": "Test all links"
+      }
+    ],
+    "title": "Footer Links Fix"
+  },
+  "-O1pS8Azy1901Mue3HZv3": {
+    "assigned_to": [
+      {
+        "color": "rgba(255, 163, 94, 1)",
+        "email": "markus.schneider@example.com",
+        "id": "-O0Nob3TV3LADGyIeC4R",
+        "initials": "MS",
+        "name": "Markus Schneider",
+        "phone": "+49 151 23456702"
+      },
+      {
+        "color": "rgba(255, 94, 179, 1)",
+        "email": "sophie.wagner@example.com",
+        "id": "-O0Nob6T3m8--jcmOUbG",
+        "initials": "SW",
+        "name": "Sophie Wagner",
+        "phone": "+49 151 23456705"
+      },
+      {
+        "color": "rgb(0, 56, 255)",
+        "email": "lea.krause@example.com",
+        "id": "-O0Nob8RbM6T6eUt6yn1",
+        "initials": "LK",
+        "name": "Lea Krause",
+        "phone": "+49 151 23456809",
+        "status": "normal"
+      }
+    ],
+    "category": "Technical Task",
+    "description": "Optimize website speed",
+    "due_date": "2024-08-15",
+    "id": "-O1pS8Azy1901Mue3HZv3",
+    "priority": "high",
+    "status": "todo",
+    "subtasks": [
+      {
+        "status": "unchecked",
+        "text": "Analyze current speed"
+      },
+      {
+        "status": "unchecked",
+        "text": "Implement caching"
+      },
+      {
+        "status": "unchecked",
+        "text": "Optimize images"
+      },
+      {
+        "status": "unchecked",
+        "text": "Minify CSS and JS"
+      }
+    ],
+    "title": "Website Speed Optimization"
+  },
+  "-O1pT9Bzy2123Nue4HZv4": {
+    "assigned_to": [
+      {
+        "color": "rgb(0, 56, 255)",
+        "email": "anna.mueller@hotmail.com",
+        "id": "-O0Nob2HY-b8GwkHNQ1t",
+        "initials": "AM",
+        "name": "Anna Müller",
+        "phone": "+49 151 23456701",
+        "status": "normal"
+      },
+      {
+        "color": "rgba(110, 82, 255, 1)",
+        "email": "julia.bauer@example.com",
+        "id": "-O0NobATY2jEbHXAHcAm",
+        "initials": "JB",
+        "name": "Julia Bauer",
+        "phone": "+49 151 23456709"
+      }
+    ],
+    "category": "User Story",
+    "description": "Add notification system",
+    "due_date": "2024-08-10",
+    "id": "-O1pT9Bzy2123Nue4HZv4",
+    "priority": "mid",
+    "status": "awaitfeedback",
+    "subtasks": [
+      {
+        "status": "unchecked",
+        "text": "Define notification types"
+      },
+      {
+        "status": "unchecked",
+        "text": "Implement backend logic"
+      },
+      {
+        "status": "unchecked",
+        "text": "Integrate with frontend"
+      },
+      {
+        "status": "unchecked",
+        "text": "Test notifications"
+      }
+    ],
+    "title": "Notification System"
+  },
+  "-O1pU0Czy2345Oue5HZv5": {
+    "assigned_to": [
+      {
+        "color": "rgba(255, 163, 94, 1)",
+        "email": "laura.fischer@example.com",
+        "id": "-O0Nob4Ql0LRcnyVa8oP",
+        "initials": "LF",
+        "name": "Laura Fischer",
+        "phone": "+49 151 23456703"
+      },
+      {
+        "color": "rgb(0, 190, 232, 1)",
+        "email": "benjamin.meyer@hotmail.com",
+        "id": "-O0Nob9V23TjgsWOlIuH",
+        "initials": "BM",
+        "name": "Benjamin Stefan Sonntag",
+        "phone": "+49 151 23456708",
+        "status": "normal"
+      },
+      {
+        "color": "rgba(255, 199, 1, 1)",
+        "email": "j.winter@gmail.com",
+        "id": "-O0NtXoVDlOsb5aSG6dS",
+        "initials": "JW",
+        "name": "Joe Winter",
+        "phone": "+49 151 38725478"
+      }
+    ],
+    "category": "Technical Task",
+    "description": "Set up CI/CD pipeline",
+    "due_date": "2024-07-22",
+    "id": "-O1pU0Czy2345Oue5HZv5",
+    "priority": "high",
+    "status": "inprogress",
+    "subtasks": [
+      {
+        "status": "unchecked",
+        "text": "Configure build server"
+      },
+      {
+        "status": "unchecked",
+        "text": "Set up automated tests"
+      },
+      {
+        "status": "unchecked",
+        "text": "Deploy to staging"
+      },
+      {
+        "status": "unchecked",
+        "text": "Test deployment"
+      }
+    ],
+    "title": "CI/CD Pipeline Setup"
+  },
+  "-O1pV1Dzy2567Pue6HZv6": {
+    "assigned_to": [
+      {
+        "color": "rgba(31, 215, 193, 1)",
+        "email": "maxweber@yahoo.de",
+        "id": "-O0O2NyXDleZcFlDN8WA",
+        "initials": "MW",
+        "name": "Max Weber",
+        "phone": "+49 151 87223064"
+      },
+      {
+        "color": "rgb(0, 56, 255)",
+        "email": "proper-meister@gmail.com",
+        "id": "-O0tJbxujjkETZTbRunb",
+        "initials": "MP",
+        "name": "Meister Proper",
+        "phone": "015248958293",
+        "status": "normal"
+      }
+    ],
+    "category": "User Story",
+    "description": "Implement multi-language support",
+    "due_date": "2024-08-20",
+    "id": "-O1pV1Dzy2567Pue6HZv6",
+    "priority": "mid",
+    "status": "awaitfeedback",
+    "subtasks": [
+      {
+        "status": "unchecked",
+        "text": "Define supported languages"
+      },
+      {
+        "status": "unchecked",
+        "text": "Translate UI"
+      },
+      {
+        "status": "unchecked",
+        "text": "Implement language switcher"
+      },
+      {
+        "status": "unchecked",
+        "text": "Test translations"
+      }
+    ],
+    "title": "Multi-language Support"
+  }
+}
